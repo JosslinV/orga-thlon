@@ -8,7 +8,7 @@ public class Tache {
 	private String commentaire;
 	private Date dateDebut;
 	private Date dateEcheance;
-	private double etatAvancement;
+	private float etatAvancement;
 	private Date dateRappel;
 	private String frequenceRappel;
 	private int priorite;
@@ -52,7 +52,7 @@ public class Tache {
 		return etatAvancement;
 	}
 
-	public void setEtatAvancement(double etatAvancement) {
+	public void setEtatAvancement(float etatAvancement) {
 		this.etatAvancement = etatAvancement;
 	}
 
