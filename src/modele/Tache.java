@@ -2,7 +2,7 @@ package modele;
 
 import java.util.Date;
 
-public class tache {
+public class Tache {
 
 	private String libelle;
 	private String commentaire;
