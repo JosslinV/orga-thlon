@@ -1,10 +1,12 @@
 package modele;
 
+import java.util.Date;
+
 public class Course {
 	
 	private String nom;
 	private String format;
-	/* private classe à définir dateC; */
+	private Date dateC;
 	private String descriptionCourse;
 	private String lieu;
 	private int nbParticipants;
@@ -32,6 +34,14 @@ public class Course {
 
 	public void setFormat(String format) {
 		this.format = format;
+	}
+	
+	public Date getDateC() {
+		return dateC;
+	}
+
+	public void setDateC(Date dateC) {
+		this.dateC = dateC;
 	}
 
 	public String getDescriptionCourse() {

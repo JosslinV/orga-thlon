@@ -1,17 +1,19 @@
 package modele;
 
+import java.util.Date;
+
 public class tache {
 
 	private String libelle;
 	private String commentaire;
-	private int dateDebut;
-	private int dateEcheance;
+	private Date dateDebut;
+	private Date dateEcheance;
 	private double etatAvancement;
-	private int dateRappel;
+	private Date dateRappel;
 	private String frequenceRappel;
 	private int priorite;
 	private int tempsRestant;
-	private int dateCreationTache;
+	private Date dateCreationTache;
 	private String etatAvancementGlobal;
 	
 	public String getLibelle() {
@@ -30,19 +32,19 @@ public class tache {
 		this.commentaire = commentaire;
 	}
 
-	public int getDateDebut() {
+	public Date getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(int dateDebut) {
+	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public int getDateEcheance() {
+	public Date getDateEcheance() {
 		return dateEcheance;
 	}
 
-	public void setDateEcheance(int dateEcheance) {
+	public void setDateEcheance(Date dateEcheance) {
 		this.dateEcheance = dateEcheance;
 	}
 
@@ -54,11 +56,11 @@ public class tache {
 		this.etatAvancement = etatAvancement;
 	}
 
-	public int getDateRappel() {
+	public Date getDateRappel() {
 		return dateRappel;
 	}
 
-	public void setDateRappel(int dateRappel) {
+	public void setDateRappel(Date dateRappel) {
 		this.dateRappel = dateRappel;
 	}
 
@@ -86,11 +88,11 @@ public class tache {
 		this.tempsRestant = tempsRestant;
 	}
 
-	public int getDateCreationTache() {
+	public Date getDateCreationTache() {
 		return dateCreationTache;
 	}
 
-	public void setDateCreationTache(int dateCreationTache) {
+	public void setDateCreationTache(Date dateCreationTache) {
 		this.dateCreationTache = dateCreationTache;
 	}
 
