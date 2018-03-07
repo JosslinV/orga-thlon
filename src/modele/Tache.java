@@ -1,5 +1,6 @@
 package modele;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Tache {
@@ -15,6 +16,13 @@ public class Tache {
 	private int tempsRestant;
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
+	
+	public Tache(String libelle, Date dateDebut) {
+		this.libelle = libelle;
+		this.dateDebut = dateDebut;
+		//récupère la date du jour (à convertir!)
+		this.dateCreationTache = new Date();
+	}
 	
 	public String getLibelle() {
 		return libelle;

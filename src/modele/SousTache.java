@@ -1,10 +1,15 @@
 package modele;
 
-public class SousTache extends Tache {
+public class SousTache {
 
 	private String titre;
 	private String description;
 	private float partAvancement;
+	
+	public SousTache(String titre, float partAvancement) {
+		this.titre = titre;
+		this.partAvancement = partAvancement;
+	}
 	
 	public String getTitre() {
 		return titre;

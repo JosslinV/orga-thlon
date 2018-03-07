@@ -20,6 +20,12 @@ public class Course {
 	private boolean agrement;
 	private boolean predefini;
 	
+	public Course(String nom, Date dateC, boolean predefini) {
+		this.nom = nom;
+		this.dateC = dateC;
+		this.predefini = predefini;
+	}
+	
 	public String getNom() {
 		return nom;
 	}
