@@ -2,6 +2,8 @@ package modele;
 
 import java.util.Date;
 
+import modele.contacts.Contact;
+
 public class Course {
 	
 	private String nom;
@@ -146,10 +148,8 @@ public class Course {
 		this.predefini = predefini;
 	}
 	
-	public void affecter(tâche t, contact c) {
+	public void affecter(Tache t, Contact c) {
 		
 	}
 	
 }
-
-;;;;;
