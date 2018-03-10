@@ -30,8 +30,6 @@ public class MySQLAccess {
 
             // PreparedStatements can use variables and are more efficient
             preparedStatement = connect.prepareStatement("insert into  testorga.course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
-            // "myuser, webpage, datum, summary, COMMENTS from feedback.comments");
-            // Parameters start with 1
             preparedStatement.setString(1, "");
             preparedStatement.setString(2, "");
             preparedStatement.setDate(3, new java.sql.Date(2009, 12, 11));
@@ -115,7 +113,7 @@ public class MySQLAccess {
 
         }
     }
-
+;
 }
 
 
