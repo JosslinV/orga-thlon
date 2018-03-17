@@ -42,7 +42,7 @@ public class Course2 {
 		
 		 try {
 	      Class.forName("com.mysql.jdbc.Driver");
-		  connect = DriverManager.getConnection("jdbc:mysql://192.168.1.22/Orgathlon" + "?user=ptutas3&password=Mdp2ptutas3");
+		  connect = DriverManager.getConnection("jdbc:mysql://intra.info.iut-tlse3.fr:3306/Orgathlon" + "?user=ptutas3&password=Mdp2ptutas3");
 		  
 		  preparedStatement = connect.prepareStatement("insert into  Orgathlon.Course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
           preparedStatement.setString(1, nom1);
@@ -71,12 +71,12 @@ public class Course2 {
 		
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection("jdbc:mysql://localhost/testorga?" + "user=sqluser&password=orgathlon");
+		connect = DriverManager.getConnection("jdbc:mysql://intra.info.iut-tlse3.fr:3306/Orgathlon" + "?user=ptutas3&password=Mdp2ptutas3");
 		statement = connect.createStatement();
 		//resultSet = statement.executeQuery("select * from testorga.course");
        
          
-		preparedStatement = connect.prepareStatement("SELECT nom_course from testorga.course WHERE id_Course = "+id);
+		preparedStatement = connect.prepareStatement("SELECT nom_course from Orgathlon.Course WHERE id_Course = "+id);
         resultSet = preparedStatement.executeQuery();
         
         String nom="" ;
