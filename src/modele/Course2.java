@@ -42,7 +42,7 @@ public class Course2 {
 		
 		 try {
 	      Class.forName("com.mysql.jdbc.Driver");
-		  connect = DriverManager.getConnection("jdbc:mysql://infra.info.iut-tlse3.fr/Orgathlon" + "?user=ptutas3&password=Mdp2ptutas3");
+		  connect = DriverManager.getConnection("jdbc:mysql://192.168.1.22/Orgathlon" + "?user=ptutas3&password=Mdp2ptutas3");
 		  
 		  preparedStatement = connect.prepareStatement("insert into  Orgathlon.Course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
           preparedStatement.setString(1, nom1);
