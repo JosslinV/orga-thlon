@@ -1,4 +1,4 @@
-
+package modele;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,34 +26,36 @@ public class Course2 {
 	private String type_epreuve;
 	private int duree;
 	private boolean agrement;
-	private int predefini;
+	private boolean predefini;
 	
 	private Connection connect = null;
     private Statement statement = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 	
+    private String serveur = "intra.info.iut-tlse3.fr/Orgathlon";
 	
 	
 	
-	public Course2 (String nom1, int predefini) throws Exception {
+	public Course2 (String nom1, boolean predefini) throws Exception {
 		
 		
 		 try {
-		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection("jdbc:mysql://localhost/testorga?" + "user=sqluser&password=orgathlon");
-		  preparedStatement = connect.prepareStatement("insert into  testorga.course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
+	      Class.forName("com.mysql.jdbc.Driver");
+		  connect = DriverManager.getConnection("jdbc:mysql://infra.info.iut-tlse3.fr/Orgathlon" + "?user=ptutas3&password=Mdp2ptutas3");
+		  
+		  preparedStatement = connect.prepareStatement("insert into  Orgathlon.Course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
           preparedStatement.setString(1, nom1);
           preparedStatement.setString(2, "");
           preparedStatement.setDate(3, new java.sql.Date(1900, 01, 01));
           preparedStatement.setString (4, "");
           preparedStatement.setString(5, "");
-          preparedStatement.setInt(6, predefini);
+          preparedStatement.setBoolean(6, predefini);
           preparedStatement.setDouble(7, 0);
           preparedStatement.setInt(8, 3);
           preparedStatement.setString(9, "");
           preparedStatement.setString(10, "");
-          preparedStatement.setInt(11, 10000);
+          preparedStatement.setInt(11, 00000);
           preparedStatement.setString(12, "");
           preparedStatement.executeUpdate();
           
@@ -205,11 +207,11 @@ public class Course2 {
 		this.agrement = agrement;
 	}
 
-	public int isPredefini() {
+	public boolean isPredefini() {
 		return predefini;
 	}
 
-	public void setPredefini(int predefini) {
+	public void setPredefini(boolean predefini) {
 		this.predefini = predefini;
 	}
 	
