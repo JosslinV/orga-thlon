@@ -15,7 +15,7 @@ public class DatabaseSettings {
 	public static Connection connect() throws Exception {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connect = (Connection) DriverManager.getConnection("jdbc:mysql://"+ SERVEUR + "user="+ USER +"&password="+ MDP);
+			connect = (Connection) DriverManager.getConnection("jdbc:mysql://"+ SERVEUR + "?user="+ USER +"&password="+ MDP);
 			return connect;
 			
 		} catch (Exception e) {

@@ -21,7 +21,7 @@ public class RequestCourse {
 			String nom = "";
 
 			while (resultSet.next()) {
-				nom = nom + resultSet.getString("nom_course");
+				nom += resultSet.getString("nom_course");
 			}
 			return nom;
 
@@ -31,7 +31,5 @@ public class RequestCourse {
 			DatabaseSettings.close();
 		}
 	}
-	
-	
-	
+		
 }
