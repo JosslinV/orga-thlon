@@ -1,4 +1,5 @@
 package rocher;
+import vue.*;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -34,12 +35,13 @@ import javax.swing.JTabbedPane;
 			//JTabbedPane onglets2 = new JTabbedPane();
 			VueUnOnglet p = new VueUnOnglet();
 			VueUnOnglet p2 = new VueUnOnglet();
+		
 			p2.setTest();
 			this.setLayout(new GridLayout(1,2));
 			
 			onglets.setTabPlacement(JTabbedPane.LEFT);
 			//onglets.setOpaque(true);
-			onglets.addTab("tab1", resize(image2), p);
+			onglets.addTab("tab1", resize(image2), new VueNouveauContactExterne());
 			//onglets.setMnemonicAt(0, KeyEvent.VK_2);
 			
 			onglets.addTab("tab2", resize(image), p2);
