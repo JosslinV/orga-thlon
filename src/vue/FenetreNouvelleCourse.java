@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 public class FenetreNouvelleCourse extends JFrame {
 	
 	public FenetreNouvelleCourse() {
-		this.setTitle("crÃ©ation d'une nouvelle fiche COURSE");
+		this.setTitle("création d'une nouvelle fiche COURSE");
 		this.setLayout(new GridLayout(1,1));
 		this.add(new VueNouvelleCourse());
 		
