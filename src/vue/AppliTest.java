@@ -7,7 +7,7 @@ public class AppliTest {
 		new FenetreNouveauMateriel();
 		new FenetreNouvelleCourse();
 		new FenetreNouveauBenevole();
-
+		new FenetreNouveauContactExterne();
 	}
 
 }

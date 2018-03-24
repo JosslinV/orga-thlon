@@ -11,7 +11,7 @@ public class FenetreNouveauContactExterne extends JFrame{
 		
 		
 		this.pack();
-		this.setSize(750, 500);
+		this.setSize(750, 360);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

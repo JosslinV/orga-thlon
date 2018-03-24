@@ -38,8 +38,8 @@ public class VueNouveauContactExterne extends JPanel {
 		northPanel.setLayout(new GridBagLayout());
 		northPanel.setBorder(new EmptyBorder(20,0,0,0));
 		GridBagConstraints c = new GridBagConstraints();
-		//ligne 0 : SociÃ©tÃ©  (Jlabel + JTextField) + Titre (JLabel + JComBox)
-		lb = new JLabel("SociÃ©tÃ©");
+		//ligne 0 : Société  (Jlabel + JTextField) + Titre (JLabel + JComBox)
+		lb = new JLabel("Société");
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
@@ -71,8 +71,8 @@ public class VueNouveauContactExterne extends JPanel {
 		c.anchor = GridBagConstraints.LINE_START;
 		northPanel.add(titreEx, c);
 		
-		//ligne 1 : TÃ©lÃ©phone  (Jlabel + JTextField) + Nom (JLabel + JTextField)
-		lb = new JLabel("TÃ©lÃ©phone   ");
+		//ligne 1 : Téléphone  (Jlabel + JTextField) + Nom (JLabel + JTextField)
+		lb = new JLabel("Téléphone   ");
 		c.gridx = 0;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
@@ -101,7 +101,7 @@ public class VueNouveauContactExterne extends JPanel {
 		c.anchor = GridBagConstraints.LINE_START;
 		northPanel.add(tf, c);
 		
-		//ligne 2 : Email  (Jlabel + JTextField) + PrÃ©nom (JLabel + JTextField)
+		//ligne 2 : Email  (Jlabel + JTextField) + Prénom (JLabel + JTextField)
 		lb = new JLabel("E-mail");
 		c.gridx = 0;
 		c.gridy = 2;
@@ -115,7 +115,7 @@ public class VueNouveauContactExterne extends JPanel {
 		c.anchor = GridBagConstraints.LINE_START;
 		northPanel.add(tf, c);
 		
-		lb = new JLabel("PrÃ©nom");
+		lb = new JLabel("Prénom    ");
 		lb.setBorder(new EmptyBorder(0,40,0,0));
 		c.gridx = 2;
 		c.gridy = 2;
@@ -194,7 +194,7 @@ public class VueNouveauContactExterne extends JPanel {
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
 		northPanel.add(tf, c);
 		//Code Postal (ligne 7)
-		lb = new JLabel("Code Postal");
+		lb = new JLabel("Code Postal    ");
 		c.gridx = 0;
 		c.gridy = 7;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
