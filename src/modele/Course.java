@@ -2,14 +2,10 @@ package modele;
 
 
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+
+
 import java.util.Date;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.util.Scanner ;
 
 import modele.contacts.Contact;
 
@@ -29,75 +25,15 @@ public class Course {
 	private String type_epreuve;
 	private int duree;
 	private boolean agrement;
-	private int predefini;
-	
-	private Connection connect = null;
-    private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
-	
-	
-	
-	
-	public Course (String nom1, int predefini) throws Exception {
-		
-		
-		 try {
-		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection("jdbc:mysql://localhost/testorga?" + "user=sqluser&password=orgathlon");
-		  preparedStatement = connect.prepareStatement("insert into  testorga.course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
-          preparedStatement.setString(1, nom1);
-          preparedStatement.setString(2, "");
-          preparedStatement.setDate(3, new java.sql.Date(1900, 01, 01));
-          preparedStatement.setString (4, "");
-          preparedStatement.setString(5, "");
-          preparedStatement.setInt(6, predefini);
-          preparedStatement.setDouble(7, 0);
-          preparedStatement.setInt(8, 3);
-          preparedStatement.setString(9, "");
-          preparedStatement.setString(10, "");
-          preparedStatement.setInt(11, 10000);
-          preparedStatement.setString(12, "");
-          preparedStatement.executeUpdate();
-          
-		 } catch (Exception e) {
-	            throw e;
-	        } finally {
-	            close();
-	        }
+	private boolean predefini;
+
+	public Course (String nom, boolean predefini) throws Exception {
+		this.nom_course = nom;
+		this.predefini = predefini;
 	}
 	
-	public String getNom(int id) throws Exception {
-		//Au lieu de retourner le nom, retourne un select du nom pour une course donnée 
-		
-		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection("jdbc:mysql://localhost/testorga?" + "user=sqluser&password=orgathlon");
-		statement = connect.createStatement();
-		//resultSet = statement.executeQuery("select * from testorga.course");
-       
-         
-		preparedStatement = connect.prepareStatement("SELECT nom_course from testorga.course WHERE id_Course = "+id);
-        resultSet = preparedStatement.executeQuery();
-        
-        String nom="" ;
-        
-      while(resultSet.next()) {
-    	  
-       nom = nom + resultSet.getString("nom_course");
-       
-      }
-		return nom;
-		
-        
-        
-		
-	} catch (Exception e) {
-        throw e;
-    } finally {
-        close();
-    }
-
+	public String getNom()  {
+		return this.nom_course;
 	}
 
 	public void setNom(String nom) {
@@ -208,30 +144,16 @@ public class Course {
 		this.agrement = agrement;
 	}
 
-	public int isPredefini() {
+	public boolean isPredefini() {
 		return predefini;
 	}
 
-	public void setPredefini(int predefini) {
+	public void setPredefini(boolean predefini) {
 		this.predefini = predefini;
 	}
 	
 	public void affecter(Tache t, Contact c) {
 		
 	}
-	*/
-	
-	private void writeResultSet(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()) {
-            String nom = resultSet.getString("nom_course");
-         
-           
-        }
 	
 }
-	
-	 private void close() {
-	        try {
-	            if (resultSet != null) {
-	                resultSet.close();
-	            }
