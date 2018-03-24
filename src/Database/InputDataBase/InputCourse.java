@@ -1,7 +1,6 @@
 package Database.InputDataBase;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import Database.DatabaseSettings;
@@ -32,7 +31,7 @@ public class InputCourse {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-		
+			DatabaseSettings.close();
 		}
 	}
 }
