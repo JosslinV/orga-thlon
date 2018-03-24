@@ -1,5 +1,5 @@
 package Database.InputDataBase;
 
-public class InputTache {
+public class InputTache{
 
 }
