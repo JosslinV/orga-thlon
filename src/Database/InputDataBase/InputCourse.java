@@ -1,24 +1,20 @@
-package InputDataBase;
+package Database.InputDataBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import Database.DatabaseSettings;
+
 public class InputCourse {
 
-	private static final String SERVEUR = "intra.info.iut-tlse3.fr/Orgathlon";
-	private static final String USER = "ptutas3";
-	private static final String MDP = "Mdp2ptutas3";
-	
-	private static Connection connect = null;
     private static PreparedStatement preparedStatement = null;
     
 	public static void inputNom(String nom, boolean predefini) throws Exception {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://"+ SERVEUR + "user="+ USER +"&password="+ MDP);
+			Connection database = DatabaseSettings.connect();
 			
-			preparedStatement = connect.prepareStatement("insert into  Orgathlon.Course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
+			preparedStatement = database.prepareStatement("insert into  Orgathlon.Course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, nom);
 			preparedStatement.setString(2, "");
 			preparedStatement.setDate(3, new java.sql.Date(1900, 01, 01));
@@ -36,7 +32,7 @@ public class InputCourse {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			connect.close();
+		
 		}
 	}
 }

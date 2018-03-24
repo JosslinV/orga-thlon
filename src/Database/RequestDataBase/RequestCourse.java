@@ -1,4 +1,4 @@
-package RequestDataBase;
+package Database.RequestDataBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
