@@ -6,6 +6,8 @@ public class AppliTest {
 		new FenetreNouvelleSousTache();
 		new FenetreNouveauMateriel();
 		new FenetreNouvelleCourse();
+		new FenetreNouveauBenevole();
+
 	}
 
 }

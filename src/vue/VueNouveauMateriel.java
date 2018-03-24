@@ -23,13 +23,13 @@ public class VueNouveauMateriel extends JPanel {
 		this.add(northPanel, BorderLayout.NORTH);
 		northPanel.setBorder(new EmptyBorder(10,20,0,20));
 		northPanel.setLayout(new GridLayout(7,2));
-		northPanel.add(new JLabel("CrÃ©Ã©e par ... "));
+		northPanel.add(new JLabel("Créée par ... "));
 		northPanel.add(new JLabel("le ../../...."));
-		northPanel.add(new JLabel("LibellÃ©"));
+		northPanel.add(new JLabel("Libellé"));
 		northPanel.add(new JTextField("",JTextField.LEFT));
 		northPanel.add(new JLabel("Stock initial"));
 		northPanel.add(new JLabel("?"));	
-		northPanel.add(new JLabel("QuantitÃ© ajoutÃ©e"));
+		northPanel.add(new JLabel("Quantité ajoutée"));
 		JSpinner quantiteAjoutee = new JSpinner();
 		northPanel.add(quantiteAjoutee);
 		northPanel.add(new JLabel("Stock final"));
@@ -54,23 +54,23 @@ public class VueNouveauMateriel extends JPanel {
 		textSP.setPreferredSize(new Dimension(100,100));
 		p1.add(textSP, BorderLayout.CENTER);
 		
-		//zone tableau MatÃ©riel-TÃ¢che-BÃ©nÃ©vole
+		//zone tableau Matériel-Tâche-Bénévole
 		JPanel pGrille = new JPanel();
 		centerPanel.add(pGrille);
 		pGrille.setLayout(new GridLayout(1,1));
 		JPanel p2 = new JPanel();
 		p2.setLayout(new BorderLayout());
 		pGrille.add(p2);
-		//Etiquette quantitÃ© allouÃ©e
+		//Etiquette quantité allouée
 		JPanel pquantiteAllouee = new JPanel();
 		p2.add(pquantiteAllouee, BorderLayout.NORTH);
 		pquantiteAllouee.setLayout(new GridLayout(1,2));
-		JLabel lbquantiteAllouee = new JLabel("QuantitÃ© allouÃ©e totale: ");
+		JLabel lbquantiteAllouee = new JLabel("Quantité allouée totale: ");
 		pquantiteAllouee.add(lbquantiteAllouee);
 		JSpinner spquantiteAllouee = new JSpinner();
 		pquantiteAllouee.add(spquantiteAllouee);
 		//tableau MTB
-		String titresColonnes [] = {"BÃ©nÃ©vole","TÃ¢che","QuantitÃ©","Date prÃªt"};
+		String titresColonnes [] = {"Bénévole","Tâche","Quantité","Date prêt"};
 		
 		Object [][] donneesMTB = {
 				{"","","",""},
@@ -78,11 +78,10 @@ public class VueNouveauMateriel extends JPanel {
 				{"","","",""}
 		};
 		JTable tabMTB = new JTable(donneesMTB, titresColonnes);
-		tabMTB.setRowHeight(30);
 		JScrollPane tabMTBSP = new JScrollPane(tabMTB);
-		tabMTBSP.setPreferredSize(new Dimension(150,170));
+		tabMTBSP.setPreferredSize(new Dimension(100,70));
 		p2.add(tabMTBSP, BorderLayout.SOUTH);		
-		//panneau au sud
+
 
 		this.add(southPanel, BorderLayout.SOUTH);
 		southPanel.setBorder(new EmptyBorder(10,15,10,15));
