@@ -1,7 +1,6 @@
 package Database.RequestDataBase;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -32,9 +31,6 @@ public class RequestCourse {
 			DatabaseSettings.close();
 		}
 	}
-<<<<<<< HEAD
-		
-=======
 
 	public static String requestFormat(int id) throws Exception {
 		//Au lieu de retourner le nom, retourne un select du nom pour une course donnée 
@@ -313,18 +309,4 @@ public class RequestCourse {
 
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> refs/remotes/origin/master
 }
