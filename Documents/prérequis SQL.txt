@@ -1,0 +1,7 @@
+create database testorga;
+use testorga;
+
+CREATE USER sqluser IDENTIFIED BY 'orgathlon';
+
+grant usage on *.* to sqluser@localhost identified by 'orgathlon';
+grant all privileges on testorga.* to sqluser@localhost;
