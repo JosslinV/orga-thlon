@@ -60,7 +60,7 @@ public class RequestCourse {
 
 	}
 
-	public static String getDateC(int id) throws Exception {
+	public static String requestDateC(int id) throws Exception {
 
 		//Au lieu de retourner le nom, retourne un select du nom pour une course donnée 
 
@@ -90,7 +90,7 @@ public class RequestCourse {
 		}
 	}
 
-	public String getDescriptionCourse(int id) throws Exception {
+	public String requestDescriptionCourse(int id) throws Exception {
 
 		try {
 
@@ -117,7 +117,8 @@ public class RequestCourse {
 			DatabaseSettings.close();
 		}
 	}
-	public String getLieu(int id) throws Exception {
+	
+	public String requestLieu(int id) throws Exception {
 
 		try {
 
@@ -144,7 +145,7 @@ public class RequestCourse {
 			DatabaseSettings.close();
 		}
 	}
-	public int getNbParticipants(int id) throws Exception {
+	public int requestNbParticipants(int id) throws Exception {
 
 		try {
 
@@ -169,7 +170,7 @@ public class RequestCourse {
 			DatabaseSettings.close();
 		}
 	}
-	public String getParcours(int id) throws Exception{
+	public String requestParcours(int id) throws Exception{
 
 		try {
 
@@ -197,7 +198,7 @@ public class RequestCourse {
 		}
 	}
 
-	public double getBudget(int id) throws Exception {
+	public double requestBudget(int id) throws Exception {
 		try {
 
 			Connection database = DatabaseSettings.connect();
@@ -222,7 +223,7 @@ public class RequestCourse {
 		}
 	}
 
-	public String getNom_ville(int id) throws Exception {
+	public String requestNom_ville(int id) throws Exception {
 
 		try {
 
@@ -250,7 +251,7 @@ public class RequestCourse {
 		}
 	}
 
-	public int getCp_ville(int id) throws Exception{
+	public int requestCp_ville(int id) throws Exception{
 
 		try {
 
@@ -280,7 +281,7 @@ public class RequestCourse {
 	}	
 
 
-	public String getType_epreuve(int id) throws Exception{
+	public String requestType_epreuve(int id) throws Exception{
 
 		try {
 
