@@ -1,5 +1,6 @@
 package vue;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,47 +18,48 @@ import javax.swing.border.EmptyBorder;
 
 
 public class VueNouveauContactExterne extends JPanel {
-	
-	private JPanel northPanel;
-	private JPanel p;
-	private JLabel lb;
-	private JTextField tf;
-	private JScrollPane textSP;
-	private String telephone;
-	private JButton b;
-	private JPanel southPanel;
-
 		
+	private JTextField tfSociete;
+	private JTextField tfTelephone;
+	private JTextField tfNom;
+	private JTextField tfMail;
+	private JTextField tfPrenom;
+	private JTextField tfAdresse1;
+	private JTextField tfAdresse2;
+	private JTextField tfAdresse3;
+	private JTextField tfVille;
+	private JTextField tfCP;
+
 	public VueNouveauContactExterne() {
 		
-		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout(20,20));
 		
-		//northPanel 
-		northPanel = new JPanel();
-		this.add(northPanel, BorderLayout.NORTH);
-		northPanel.setLayout(new GridBagLayout());
-		northPanel.setBorder(new EmptyBorder(20,0,0,0));
+		//p1 
+		JPanel p1 = new JPanel();
+		this.add(p1);
+		p1.setLayout(new GridBagLayout());
+		p1.setBorder(new EmptyBorder(20,0,0,0));
 		GridBagConstraints c = new GridBagConstraints();
 		//ligne 0 : Société  (Jlabel + JTextField) + Titre (JLabel + JComBox)
-		lb = new JLabel("Société");
+		JLabel lbSociete = new JLabel("Société");
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbSociete,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(250,25));
+		tfSociete = new JTextField("");
+		tfSociete.setPreferredSize(new Dimension(250,25));
 		c.gridx = 1;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(tf, c);
+		p1.add(tfSociete, c);
 
-		lb = new JLabel("Titre");
-		lb.setBorder(new EmptyBorder(0,40,0,0));
+		JLabel lbTitre = new JLabel("Titre");
+		lbTitre.setBorder(new EmptyBorder(0,40,0,0));
 		c.gridx = 2;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(lb, c);
+		p1.add(lbTitre, c);
 
 		String [] titreExemples = {
 				"M",
@@ -69,155 +71,155 @@ public class VueNouveauContactExterne extends JPanel {
 		c.gridx = 3;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(titreEx, c);
+		p1.add(titreEx, c);
 		
 		//ligne 1 : Téléphone  (Jlabel + JTextField) + Nom (JLabel + JTextField)
-		lb = new JLabel("Téléphone   ");
+		JLabel lbTel = new JLabel("Téléphone   ");
 		c.gridx = 0;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbTel,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(120,25));
+		tfTelephone = new JTextField("");
+		tfTelephone.setPreferredSize(new Dimension(120,25));
 		c.gridx = 1;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
 		
-		northPanel.add(tf, c);
+		p1.add(tfTelephone, c);
 		
-		lb = new JLabel("Nom");
-		lb.setBorder(new EmptyBorder(0,40,0,0));
+		JLabel lbNom = new JLabel("Nom");
+		lbNom.setBorder(new EmptyBorder(0,40,0,0));
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbNom,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(170,25));
+		tfNom = new JTextField("");
+		tfNom.setPreferredSize(new Dimension(170,25));
 		c.gridx = 3;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(tf, c);
+		p1.add(tfNom, c);
 		
 		//ligne 2 : Email  (Jlabel + JTextField) + Prénom (JLabel + JTextField)
-		lb = new JLabel("E-mail");
+		JLabel lbMail = new JLabel("E-mail");
 		c.gridx = 0;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbMail,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
+		tfMail = new JTextField("");
+		tfMail.setPreferredSize(new Dimension(235,25));
 		c.gridx = 1;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(tf, c);
+		p1.add(tfMail, c);
 		
-		lb = new JLabel("Prénom");
-		lb.setBorder(new EmptyBorder(0,40,0,0));
+		JLabel lbPrenom = new JLabel("Prénom");
+		lbPrenom.setBorder(new EmptyBorder(0,40,0,0));
 		c.gridx = 2;
 		c.gridy = 2;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbPrenom,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(170,25));
+		tfPrenom = new JTextField("");
+		tfPrenom.setPreferredSize(new Dimension(170,25));
 		c.gridx = 3;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(tf, c);	
+		p1.add(tfPrenom, c);	
 		
 
 
 
 		//ligne 3 : Adresse  (Jlabel + JTextField) + Description (JLabel + JTextField)
-		lb = new JLabel("Adresse");
-		lb.setBorder(new EmptyBorder(20,0,0,0));
+		JLabel lbAdresse = new JLabel("Adresse");
+		lbAdresse.setBorder(new EmptyBorder(20,0,0,0));
 		c.gridx = 0;
 		c.gridy = 3;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbAdresse,c); 
 		
-		p = new JPanel();
-		p.setLayout(new GridLayout(3,1));
-		p.setBorder(new EmptyBorder(20,0,0,0));
+		JPanel pAdresse = new JPanel();
+		pAdresse.setLayout(new GridLayout(3,1));
+		pAdresse.setBorder(new EmptyBorder(20,0,0,0));
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridheight = 3;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		northPanel.add(p, c);
+		p1.add(pAdresse, c);
 		//paragraphe 1 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
-		p.add(tf);
+		tfAdresse1 = new JTextField("");
+		tfAdresse1.setPreferredSize(new Dimension(235,25));
+		pAdresse.add(tfAdresse1);
 		//paragraphe 2 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
-		p.add(tf);
+		tfAdresse2 = new JTextField("");
+		tfAdresse2.setPreferredSize(new Dimension(235,25));
+		pAdresse.add(tfAdresse2);
 		//paragraphe 3 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
-		p.add(tf);
+		tfAdresse3 = new JTextField("");
+		tfAdresse3.setPreferredSize(new Dimension(235,25));
+		pAdresse.add(tfAdresse3);
 		
-		lb = new JLabel("Notes");
-		lb.setBorder(new EmptyBorder(20,40,0,0));
+		JLabel lbNotes = new JLabel("Notes");
+		lbNotes.setBorder(new EmptyBorder(20,40,0,0));
 		c.gridx = 2;
 		c.gridy = 3;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		northPanel.add(lb,c); 
+		p1.add(lbNotes,c); 
 		
-		p = new JPanel();
-		p.setLayout(new GridLayout(1,1));
-		p.setBorder(new EmptyBorder(20,0,0,0));
-		textSP = new JScrollPane(new JTextArea(7,5));
-		textSP.setPreferredSize(new Dimension(167,125));
-		p.add(textSP);
+		//p = new JPanel();
+		//p.setLayout(new GridLayout(1,1));
+		//p.setBorder(new EmptyBorder(20,0,0,0));
+		JScrollPane textSPNotes = new JScrollPane(new JTextArea(7,5));
+		textSPNotes.setPreferredSize(new Dimension(167,170));
+		//p.add(textSP);
 		c.gridheight = 5;
 		c.gridx = 3;
 		c.gridy = 3;
 		c.anchor = GridBagConstraints.LINE_START;
-		northPanel.add(p,c);	
+		p1.add(textSPNotes,c);	
 		
 		//nom Ville (ligne 6)
-		lb = new JLabel("Ville");
+		JLabel lbVille = new JLabel("Ville");
 		c.gridx = 0;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		northPanel.add(lb,c); 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
+		p1.add(lbVille,c); 
+		tfVille = new JTextField("");
+		tfVille.setPreferredSize(new Dimension(235,25));
 		c.gridx = 1;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		northPanel.add(tf, c);
+		p1.add(tfVille, c);
 		//Code Postal (ligne 7)
-		lb = new JLabel("Code Postal");
+		JLabel lbCP = new JLabel("Code Postal");
 		c.gridx = 0;
 		c.gridy = 7;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		northPanel.add(lb,c); 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(50,25));
+		p1.add(lbCP,c); 
+		tfCP = new JTextField("");
+		tfCP.setPreferredSize(new Dimension(50,25));
 		c.gridx = 1;
 		c.gridy = 7;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		northPanel.add(tf, c);
-
-		//southPanel : SUD
-		southPanel = new JPanel();
-		this.add(southPanel, BorderLayout.SOUTH);
-		southPanel.setLayout(new GridLayout(1,2,150,0));
-		southPanel.setBorder(new EmptyBorder(0,80,30,80));
-		b = new JButton("Annuler");
-		b.setPreferredSize(new Dimension(40,40));
-		southPanel.add(b);
-		b = new JButton("Valider");
-		b.setPreferredSize(new Dimension(40,40));
-		southPanel.add(b);
-
+		p1.add(tfCP, c);
+		
+		//p2 : SUD
+		JPanel p2 = new JPanel();
+		this.add(p2, BorderLayout.SOUTH);
+		p2.setLayout(new GridLayout(1,2,150,0));
+		p2.setBorder(new EmptyBorder(0,80,30,80));
+		JButton btAnnuler = new JButton("Annuler");
+		btAnnuler.setPreferredSize(new Dimension(40,40));
+		p2.add(btAnnuler);
+		JButton btValider = new JButton("Valider");
+		btValider.setPreferredSize(new Dimension(40,40));
+		p2.add(btValider);
+		
 		
 	}
 	/**
