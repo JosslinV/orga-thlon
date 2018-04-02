@@ -131,9 +131,6 @@ public class VueNouveauContactExterne extends JPanel {
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
 		p1.add(tfPrenom, c);	
-		
-
-
 
 		//ligne 3 : Adresse  (Jlabel + JTextField) + Description (JLabel + JTextField)
 		JLabel lbAdresse = new JLabel("Adresse");
@@ -171,9 +168,6 @@ public class VueNouveauContactExterne extends JPanel {
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
 		p1.add(lbNotes,c); 
 		
-		//p = new JPanel();
-		//p.setLayout(new GridLayout(1,1));
-		//p.setBorder(new EmptyBorder(20,0,0,0));
 		JScrollPane textSPNotes = new JScrollPane(new JTextArea(7,5));
 		textSPNotes.setPreferredSize(new Dimension(167,170));
 		//p.add(textSP);

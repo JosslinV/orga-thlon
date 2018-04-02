@@ -7,7 +7,7 @@ public class AppliTest {
 		//new FenetreNouveauMateriel();
 		//new FenetreNouvelleCourse();
 		//new FenetreNouveauBenevole();
-		//new FenetreNouvelleTache(1,"Disponibilité du site?");
+		new FenetreNouvelleTache(1,"Disponibilité du site?");
 		new FenetreNouveauContactExterne();
 	}
 
