@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class VueUnOnglet extends JPanel{
+	
 	private String test = new String("a");
 	
 	ImageIcon contact = new ImageIcon("rocher/contacts.png");

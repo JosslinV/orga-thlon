@@ -1,19 +1,24 @@
 package modele;
 
+
+
+
+
+
 import java.util.Date;
 
 import modele.contacts.Contact;
 
 public class Course {
 	
-	private String nom;
+	private String nom_course;
 	private String format;
-	private Date dateC;
-	private String descriptionCourse;
-	private String lieu;
+	private Date date_course;
+	private String description_course;
+	private String lieu_course;
 	private int nbParticipants;
 	private String parcours;
-	private String commentaire;
+	private String commentaire_course;
 	private float budget;
 	private String nom_ville;
 	private int cp_ville;
@@ -21,18 +26,18 @@ public class Course {
 	private int duree;
 	private boolean agrement;
 	private boolean predefini;
-	
-	public Course(String nom, boolean predefini) {
-		this.nom = nom;
+
+	public Course (String nom, boolean predefini) throws Exception {
+		this.nom_course = nom;
 		this.predefini = predefini;
 	}
 	
-	public String getNom() {
-		return nom;
+	public String getNom()  {
+		return this.nom_course;
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.nom_course = nom;
 	}
 
 	public String getFormat() {
@@ -44,27 +49,27 @@ public class Course {
 	}
 	
 	public Date getDateC() {
-		return dateC;
+		return date_course;
 	}
 
 	public void setDateC(Date dateC) {
-		this.dateC = dateC;
+		this.date_course = dateC;
 	}
 
 	public String getDescriptionCourse() {
-		return descriptionCourse;
+		return description_course;
 	}
 
 	public void setDescriptionCourse(String descriptionCourse) {
-		this.descriptionCourse = descriptionCourse;
+		this.description_course = descriptionCourse;
 	}
 
 	public String getLieu() {
-		return lieu;
+		return lieu_course;
 	}
 
 	public void setLieu(String lieu) {
-		this.lieu = lieu;
+		this.lieu_course = lieu;
 	}
 
 	public int getNbParticipants() {
@@ -84,11 +89,11 @@ public class Course {
 	}
 
 	public String getCommentaire() {
-		return commentaire;
+		return commentaire_course;
 	}
 
 	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
+		this.commentaire_course = commentaire;
 	}
 
 	public float getBudget() {

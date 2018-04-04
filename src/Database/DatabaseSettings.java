@@ -7,15 +7,15 @@ import com.mysql.jdbc.Connection;
 
 public class DatabaseSettings {
 
-	private static final String SERVEUR = "intra.info.iut-tlse3.fr/Orgathlon";
-	private static final String USER = "ptutas3";
-	private static final String MDP = "Mdp2ptutas3";
+	private static final String SERVEUR = "Azimut-Pulsar.ddns.net/Orgathlon";
+	private static final String USER = "";
+	private static final String MDP = "";
 	private static Connection connect;
 	
 	public static Connection connect() throws Exception {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connect = (Connection) DriverManager.getConnection("jdbc:mysql://"+ SERVEUR + "user="+ USER +"&password="+ MDP);
+			connect = (Connection) DriverManager.getConnection("jdbc:mysql://"+ SERVEUR + "?user="+ USER +"&password="+ MDP);
 			return connect;
 			
 		} catch (Exception e) {
