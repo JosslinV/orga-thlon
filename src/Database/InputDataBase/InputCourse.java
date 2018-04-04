@@ -19,7 +19,7 @@ public class InputCourse {
 			preparedStatement = database.prepareStatement("insert into  Orgathlon.Course values (default, ?, ?, ?, ? , ?, ?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, donnees.getNom());
 			preparedStatement.setString(2, donnees.getFormat());
-			preparedStatement.setDate(3,(Date) donnees.getDateC());
+			preparedStatement.setDate(3,new java.sql.Date(donnees.getDateC().getTime()));
 			preparedStatement.setString(4, donnees.getDescriptionCourse());
 			preparedStatement.setString(5, donnees.getLieu());
 			preparedStatement.setBoolean(6, donnees.isAgrement());

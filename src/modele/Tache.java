@@ -1,7 +1,8 @@
 package modele;
 
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.LinkedList;
+import modele.contacts.Benevole;
 
 public class Tache {
 
@@ -17,11 +18,17 @@ public class Tache {
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
 	
+	private LinkedList<Materiel> materiel;
+	private LinkedList<Benevole> benevole;
+	
 	public Tache(String libelle, Date dateDebut) {
 		this.libelle = libelle;
 		this.dateDebut = dateDebut;
-		//récupère la date du jour (à convertir!)
 		this.dateCreationTache = new Date();
+		
+		this.materiel = new LinkedList<Materiel>();
+		this.benevole = new LinkedList<Benevole>();
+		
 	}
 	
 	public String getLibelle() {
@@ -112,5 +119,12 @@ public class Tache {
 		this.etatAvancementGlobal = etatAvancementGlobal;
 	}
 	
+	public void ajouterMateriel(Materiel item) {
+		this.materiel.add(item);
+	}
+	
+	public void ajouterBenevole(Benevole personnel) {
+		this.benevole.add(personnel);
+	}
 	
 }
