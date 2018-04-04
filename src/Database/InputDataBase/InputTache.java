@@ -18,13 +18,13 @@ public class InputTache{
 			preparedStatement = database.prepareStatement("insert into  Orgathlon.Tache values (default,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, donnees.getLibelle());
 			preparedStatement.setString(2, donnees.getCommentaire());
-			preparedStatement.setDate(3,(Date) donnees.getDateDebut());
-			preparedStatement.setDate(4,(Date) donnees.getDateEcheance());
+			preparedStatement.setDate(3,new java.sql.Date(donnees.getDateDebut().getTime()));
+			preparedStatement.setDate(4,new java.sql.Date(donnees.getDateEcheance().getTime()));
 			preparedStatement.setDouble(5, donnees.getEtatAvancement());
-			preparedStatement.setDate(6,(Date) donnees.getDateRappel());
+			preparedStatement.setDate(6,new java.sql.Date(donnees.getDateRappel().getTime()));
 			preparedStatement.setInt(7, donnees.getPriorite());
 			preparedStatement.setInt(8, 0);									//Remplacer par Boolean
-			preparedStatement.setDate(9,(Date) donnees.getDateCreationTache());
+			preparedStatement.setDate(9,new java.sql.Date(donnees.getDateCreationTache().getTime()));
 			preparedStatement.setString(10, null);							//Créer nom_créateur
 			preparedStatement.setInt(11, 0);								//Créer id_personne
 			preparedStatement.executeUpdate();
