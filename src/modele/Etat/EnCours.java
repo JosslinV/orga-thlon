@@ -2,46 +2,42 @@ package modele.Etat;
 
 import modele.Tache;
 
-public class Supprime extends Etat{
+public class EnCours extends Etat {
 
-	private Etat etat;
-	
-	public Supprime(Tache tache, Etat etat) {
+	public EnCours(Tache tache) {
 		super(tache);
-		this.etat = etat;
 	}
 
 	@Override
 	public void suspendre() {
+		this.tache.setEtat(new Suspendu(this.tache));
 	}
 
 	@Override
 	public void terminer() {
+		this.tache.setEtat(new Termine(this.tache));
 	}
-
+	
 	@Override
 	public void reprendre() {	
 	}
 
 	@Override
 	public void supprimer() {
+		this.tache.setEtat(new Supprime(this.tache, this.tache.getEtat()));
 	}
 
 	@Override
 	public void restaurer() {
-		this.tache.setEtat(etat);
 	}
 
 	@Override
 	public void debuter() {
 	}
 	
-	public void effacer() {	
-	}
-	
 	@Override
 	public String toString() {
-		return "Etat: Supprimée";
+		return "Etat: En cours";
 	}
 
 }

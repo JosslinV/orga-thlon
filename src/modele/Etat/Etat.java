@@ -4,17 +4,21 @@ import modele.Tache;
 
 public abstract class Etat {
 	
-	public abstract void suspendre(Tache tache);
+	protected Tache tache;
 	
-	public abstract void terminer(Tache tache);
+	public Etat(Tache tache) {
+		this.tache = tache;
+	}
 	
-	public abstract void effacer(Tache tache);
+	public abstract void suspendre();
 	
-	public abstract void reprendre(Tache tache);
+	public abstract void terminer();
 	
-	public abstract void supprimer(Tache tache);
+	public abstract void reprendre();
 	
-	public abstract void restaurer(Tache tache);
+	public abstract void supprimer();
 	
-	public abstract void debuter(Tache tache);
+	public abstract void restaurer();
+	
+	public abstract void debuter();
 }

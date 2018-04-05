@@ -2,6 +2,9 @@ package modele;
 
 import java.util.Date;
 import java.util.LinkedList;
+
+import modele.Etat.AFaire;
+import modele.Etat.Etat;
 import modele.contacts.Benevole;
 
 public class Tache {
@@ -17,6 +20,7 @@ public class Tache {
 	private int tempsRestant;
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
+	private Etat etat;
 	
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
@@ -25,10 +29,19 @@ public class Tache {
 		this.libelle = libelle;
 		this.dateDebut = dateDebut;
 		this.dateCreationTache = new Date();
+		this.etat = new AFaire(this);
 		
 		this.materiel = new LinkedList<Materiel>();
 		this.benevole = new LinkedList<Benevole>();
 		
+	}
+	
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
+	
+	public Etat getEtat() {
+		return this.etat;
 	}
 	
 	public String getLibelle() {
