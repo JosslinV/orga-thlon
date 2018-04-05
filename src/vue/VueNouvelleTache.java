@@ -2,6 +2,7 @@ package vue;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -12,10 +13,12 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 import javax.swing.JRadioButton;
-import java.awt.FlowLayout;
 import javax.swing.JScrollPane;
+
+import java.awt.FlowLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JProgressBar;
 
 public class VueNouvelleTache extends JPanel {
 	private JTextField tfTitre;
@@ -23,8 +26,7 @@ public class VueNouvelleTache extends JPanel {
 	private JTextField tfJour;
 	private JTextField tfDateDebut;
 	private JTextField tfDateEcheance;
-	private JTextField textField;
-	private JTable table;
+	private JTextField tfResponsable;
 
 	/**
 	 * Create the panel.
@@ -205,9 +207,9 @@ public class VueNouvelleTache extends JPanel {
 		add(pOuest, BorderLayout.WEST);
 		GridBagLayout gbl_pOuest = new GridBagLayout();
 		gbl_pOuest.columnWidths = new int[]{0, 0, 0};
-		gbl_pOuest.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_pOuest.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_pOuest.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gbl_pOuest.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_pOuest.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		pOuest.setLayout(gbl_pOuest);
 		
 		JLabel lbResponsable = new JLabel("Responsable");
@@ -217,14 +219,14 @@ public class VueNouvelleTache extends JPanel {
 		Responsable.gridy = 0;
 		pOuest.add(lbResponsable, Responsable);
 		
-		textField = new JTextField();
+		tfResponsable = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
 		gbc_textField.gridy = 0;
-		pOuest.add(textField, gbc_textField);
-		textField.setColumns(10);
+		pOuest.add(tfResponsable, gbc_textField);
+		tfResponsable.setColumns(10);
 		
 		JLabel lbEquipe = new JLabel("Equipe");
 		GridBagConstraints gbc_lbEquipe = new GridBagConstraints();
@@ -233,23 +235,52 @@ public class VueNouvelleTache extends JPanel {
 		gbc_lbEquipe.gridy = 1;
 		pOuest.add(lbEquipe, gbc_lbEquipe);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 2;
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 2;
-		pOuest.add(scrollPane, gbc_scrollPane);
+		GridBagConstraints gbc_tabSP = new GridBagConstraints();
+		gbc_tabSP.fill = GridBagConstraints.BOTH;
+		gbc_tabSP.anchor = GridBagConstraints.FIRST_LINE_START;
+		gbc_tabSP.insets = new Insets(0, 0, 5, 0);
+		gbc_tabSP.gridwidth = 2;
+		gbc_tabSP.gridheight = 2;
+		gbc_tabSP.gridx = 0;
+		gbc_tabSP.gridy = 2;
+
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Responsable"
-			}
-		));
-		scrollPane.setColumnHeaderView(table);
+		String titresColonnes [] = {
+				"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"
+			};
+		Object[][] donneesEquipe = {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			};
+		JTable tabEquipe = new JTable(donneesEquipe,titresColonnes );
+		
+		JLabel lbEtatAvancement = new JLabel("New label");
+		GridBagConstraints gbc_lbEtatAvancement = new GridBagConstraints();
+		gbc_lbEtatAvancement.insets = new Insets(0, 0, 5, 5);
+		gbc_lbEtatAvancement.gridx = 0;
+		gbc_lbEtatAvancement.gridy = 5;
+		pOuest.add(lbEtatAvancement, gbc_lbEtatAvancement);
+		
+		JProgressBar progressBar = new JProgressBar();
+		GridBagConstraints gbc_progressBar = new GridBagConstraints();
+		gbc_progressBar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_progressBar.insets = new Insets(0, 0, 5, 0);
+		gbc_progressBar.gridx = 1;
+		gbc_progressBar.gridy = 5;
+		pOuest.add(progressBar, gbc_progressBar);
 		
 		JPanel pCentre = new JPanel();
 		pCentre.setBorder(new CompoundBorder(null, new EmptyBorder(50, 50, 50, 50)));
