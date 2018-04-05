@@ -152,7 +152,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.CENTER;
 		panneauPrincipal.add(cb,c);
 		
-		lb = new JLabel("Code Postal");
+		lb = new JLabel("Code Postal    ");
 		c.gridx = 4;
 		c.gridy = 4;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
@@ -207,10 +207,15 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.gridx = 1;
 		c.gridy = 8;
 		c.gridheight = 2;
-		c.insets = new Insets(0,0,0,100);
+		c.gridwidth = 1;
+		c.insets = new Insets(0,0,0,115);
 		c.ipady = 40;
 		panneauPrincipal.add(b,c);
 		
+		p = new JPanel();
+		
+		
+		/**
 		p = new JPanel();
 		p.setBackground(Color.RED);
 		p.setLayout(new BorderLayout());
@@ -238,7 +243,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		JScrollPane tabSP = new JScrollPane(materielTab);
 		tabSP.setPreferredSize(new Dimension(250,170));
 		cp.add(tabSP); 
-		
+		*/
 		//p : SUD
 		JPanel ps = new JPanel();
 		this.add(ps, BorderLayout.SOUTH);

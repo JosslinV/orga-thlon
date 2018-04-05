@@ -5,14 +5,14 @@ import javax.swing.JFrame;
 
 public class FenetreNouveauContactExterne extends JFrame{
 	public FenetreNouveauContactExterne() {
-		this.setTitle("crï¿½ation d'une nouvelle fiche CONTACT EXTERNE");
+		this.setTitle("création d'une nouvelle fiche CONTACT EXTERNE");
 		this.setLayout(new GridLayout(1,1));
 		this.add(new VueNouveauContactExterne());
 		
 		
 		this.pack();
-		this.setSize(650, 380);
-		this.setResizable(true);
+		this.setSize(750, 360);
+		this.setResizable(false);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 	}
