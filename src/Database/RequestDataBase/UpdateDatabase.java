@@ -21,7 +21,7 @@ private static ResultSet resultSet = null;
 		try {
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE nom_course from Orgathlon.Course WHERE id_Course = " + id + "SET nom_course="+nom_course);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET nom_course='" + nom_course + "' WHERE id_Course = " + id );
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -40,7 +40,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE format_course from Orgathlon.Course WHERE id_Course = " + id + "SET format_course="+format_course);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET format_course='" + format_course + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE date_course from Orgathlon.Course WHERE id_Course = " + id + "SET date_course="+date_course);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET date_course='" + date_course + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE description_course from Orgathlon.Course WHERE id_Course = " + id + "SET description_course="+description_course);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET description_course='" + description_course + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -98,7 +98,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE lieu from Orgathlon.Course WHERE id_Course = " + id + "SET lieu="+lieu);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET lieu='" + lieu + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -116,7 +116,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE nb_participants from Orgathlon.Course WHERE id_Course = " + id + "SET nb_participants="+nb_participants);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET nb_participants='" + nb_participants + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();			
 			
 		} catch (Exception e) {
@@ -134,7 +134,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE nb_participants from Orgathlon.Course WHERE id_Course = " + id + "SET parcours="+parcours);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET parcours='" + parcours + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -152,7 +152,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE budget from Orgathlon.Course WHERE id_Course = " + id + "SET budget="+budget);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET budget='" + budget + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -171,7 +171,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE budagrementget from Orgathlon.Course WHERE id_Course = " + id + "SET agrement="+agrement);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET agrement='" + agrement + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -189,7 +189,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE nom_ville from Orgathlon.Course WHERE id_Course = " + id + "SET nom_ville="+nom_ville);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET nom_ville='" + nom_ville + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();			
 			
 		} catch (Exception e) {
@@ -207,7 +207,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE CP_ville from Orgathlon.Course WHERE id_Course = " + id + "SET CP_ville="+CP_ville);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET CP_ville='" + CP_ville + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -226,7 +226,7 @@ private static ResultSet resultSet = null;
 			
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE type_epreuve from Orgathlon.Course WHERE id_Course = " + id + "SET type_epreuve="+type_epreuve);
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.course" + " SET type_epreuve='" + type_epreuve + "' WHERE id_Course = " + id );			
 			preparedStatement.executeUpdate();			
 			
 		} catch (Exception e) {

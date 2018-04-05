@@ -11,24 +11,216 @@
 	private static PreparedStatement preparedStatement = null;
 	private static ResultSet resultSet = null;
 
-		public void Update_libelle_tache ( String nom_course, int id) throws Exception {
-			
+	public void Updatelibelle( String libelle, int id) throws Exception {
 		
-			try {
-				Connection database = DatabaseSettings.connect();
+		
+		try {
+			Connection database = DatabaseSettings.connect();
 
-				preparedStatement = database.prepareStatement("UPDATE nom_course from Orgathlon.Course WHERE id_Course = " + id + "SET nom_course="+nom_course);
-				resultSet = preparedStatement.executeQuery();		
-				
-			} catch (Exception e) {
-				throw e;
-			} finally {
-				DatabaseSettings.close();
-			}
-		
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET libelle='" + libelle + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
 		}
 	
+	}
 	
 	
+	public void UpdateCommentaire( String commentaire, int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
 
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET commentaire='" + commentaire + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	
+	public void UpdateDateDebut( Date dateDebut , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET dateDebut='" + dateDebut + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+
+	
+	
+	public void UpdateDateEcheance( Date dateEcheance , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET dateEcheance='" + dateEcheance + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	public void UpdateEtatAvancement ( float etatAvancement , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET etatAvancement='" + etatAvancement + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	public void UpdateDateRappel ( Date DateRappel , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET DateRappel='" + DateRappel + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	
+	public void UpdateDateRappel ( int priorite , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET priorite='" + priorite + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	public void UpdatePriorité ( int priorite , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET priorite='" + priorite + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	
+	public void UpdatePredefinie ( int predefinie , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET predefinie='" + predefinie + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+		
+	public void UpdateFrequence_rappel ( String frequence_rappel , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET frequence_rappel='" + frequence_rappel + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	
+	public void UpdateDate_creation ( Date date_creation , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET date_creation='" + date_creation + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	public void UpdateNom_createur ( Date nom_createur , int id) throws Exception {
+		
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			preparedStatement = database.prepareStatement("UPDATE orgathlon.tache" + " SET nom_createur='" + nom_createur + "' WHERE id_Course = " + id );
+			preparedStatement.executeUpdate();		
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+	
+	}
+	
+	
 }
