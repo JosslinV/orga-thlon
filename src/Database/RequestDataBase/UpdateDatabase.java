@@ -13,8 +13,8 @@ public class UpdateDatabase {
 
 
 
-private static PreparedStatement preparedStatement = null;
-private static ResultSet resultSet = null;
+//private static PreparedStatement preparedStatement = null;
+//private static ResultSet resultSet = null;
 
 
 public void updateDatabase (String nom_course, String format_course, Date date_course, String description_course, String lieu, int nb_participants, String parcours, float budget, int agrement, String nom_ville, int CP_ville, int type_epreuve, int id  ) throws Exception {
@@ -24,14 +24,14 @@ public void updateDatabase (String nom_course, String format_course, Date date_c
 
 		String requete = "UPDATE orgathlon.course" + " SET nom_course='" + nom_course 
 													+"'AND format_course='" + format_course
-													+"'AND date_course='" + date_course
-													+"'AND description_course='" + description_course
+													+"'AND `date_course`=\"" + date_course
+													+"\"AND description_course='" + description_course
 													+"'AND lieu='" + lieu
-													+"'AND nb_participants='" + nb_participants
-													+"'AND parcours='" + parcours
-													+"'AND budget='" + budget
-													+"'AND agrement='" + agrement
-													+"'AND nom_ville='" + nom_ville
+													+"'AND nb_participants=" + nb_participants
+													+"AND parcours='" + parcours
+													+"'AND budget=" + budget
+													+"AND agrement=" + agrement
+													+"AND nom_ville='" + nom_ville
 													+"'AND CP_ville='" + CP_ville
 													+"'AND type_epreuve='" + type_epreuve
 													+"'WHERE id_Course = " + id ;
