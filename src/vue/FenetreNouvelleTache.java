@@ -11,7 +11,7 @@ public class FenetreNouvelleTache extends JFrame{
 			this.add(new VueNouvelleTache());
 
 			this.pack();
-			this.setSize(800, 800);
+			this.setSize(800, 600);
 			this.setResizable(false);
 			this.setVisible(true);
 			this.setLocationRelativeTo(null);	
