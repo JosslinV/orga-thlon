@@ -32,8 +32,8 @@ public void updateDatabase (String nom_course, String format_course, Date date_c
 													+"'AND budget=" + budget
 													+"AND agrement=" + agrement
 													+"AND nom_ville='" + nom_ville
-													+"'AND CP_ville='" + CP_ville
-													+"'AND type_epreuve='" + type_epreuve
+													+"'AND CP_ville=" + CP_ville
+													+"AND type_epreuve='" + type_epreuve
 													+"'WHERE id_Course = " + id ;
 		Statement stmt = database.createStatement() ;
 		stmt.executeQuery(requete) ;

@@ -2,15 +2,47 @@
 	import java.sql.Connection;
 	import java.sql.PreparedStatement;
 	import java.sql.ResultSet;
-	import Database.DatabaseSettings;
+import java.sql.Statement;
+
+import Database.DatabaseSettings;
 	import java.util.Date ;
 
 	public class UpdateDatabaseTache {
 
 
-	private static PreparedStatement preparedStatement = null;
-	private static ResultSet resultSet = null;
+//	private static PreparedStatement preparedStatement = null;
+//	private static ResultSet resultSet = null;
 
+
+	public void updateDatabaseTache (String libelle, String commentaire, Date dateDebut, Date DateEcheance, float etatAvancement, Date DateRappel, int priorite, int predefinie, int frequence_rappel, Date date_creation, Date nom_createur, int id ) throws Exception {
+		
+		try {
+			Connection database = DatabaseSettings.connect();
+
+			String requete = "UPDATE orgathlon.course" + " SET libelle='" + libelle
+														+"'AND commentaire='" + commentaire
+														+"'AND `dateDebut`=\"" + dateDebut
+														+"\"AND `DateEcheance`=\"" + DateEcheance
+														+"\"AND etatAvancement=" + etatAvancement
+														+"AND `DateRappel`=\"" + DateRappel
+														+"\"AND priorite=" + priorite
+														+"AND predefinie=" + predefinie
+														+"AND frequence_rappel=" + frequence_rappel
+														+"AND `date_creation`=\"" + date_creation
+														+"\"AND nom_createur='" + nom_createur 
+														+"'WHERE id_Course = " + id ;
+			Statement stmt = database.createStatement() ;
+			stmt.executeQuery(requete) ;
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			DatabaseSettings.close();
+		}
+		
+	}
+	
+/*	
 	public void Updatelibelle( String libelle, int id) throws Exception {
 		
 		
@@ -222,5 +254,5 @@
 	
 	}
 	
-	
+	*/
 }
