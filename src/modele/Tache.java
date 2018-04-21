@@ -14,6 +14,7 @@ public class Tache {
 	private Date dateRappel;
 	private String frequenceRappel;
 	private int priorite;
+	private boolean predefinie;
 	private int tempsRestant;
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
@@ -125,6 +126,14 @@ public class Tache {
 	
 	public void ajouterBenevole(Benevole personnel) {
 		this.benevole.add(personnel);
+	}
+
+	public boolean isPredefinie() {
+		return predefinie;
+	}
+
+	public void setPredefinie(boolean predefinie) {
+		this.predefinie = predefinie;
 	}
 	
 }
