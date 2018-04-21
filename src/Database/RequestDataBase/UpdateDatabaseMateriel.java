@@ -9,16 +9,16 @@ import Database.DatabaseSettings;
 public class UpdateDatabaseMateriel {
 
 
-	public void updateDatabaseMateriel (int id, String libelle, float stock, float budget, String Description_mat  ) throws Exception {
+	public void updateDatabaseMateriel (int id_Materiel, String libelle, float stock, float budget, String Description_mat  ) throws Exception {
 		
 		try {
 			Connection database = DatabaseSettings.connect();
 
-			String requete = "UPDATE orgathlon.course" + " SET libelle='" + libelle
+			String requete = "UPDATE orgathlon.materiel" + " SET libelle='" + libelle
 														+"'AND stock=" + stock
 														+"AND budget=" + budget
 														+"AND Description_mat='" + Description_mat											
-														+"'WHERE id_Course = " + id ;
+														+"'WHERE id_Materiel = " + id_Materiel ;
 			
 			Statement stmt = database.createStatement() ;
 			stmt.executeQuery(requete) ;

@@ -14,12 +14,12 @@ import Database.DatabaseSettings;
 //	private static ResultSet resultSet = null;
 
 
-	public void updateDatabaseTache (String libelle, String commentaire, Date dateDebut, Date DateEcheance, float etatAvancement, Date DateRappel, int priorite, int predefinie, int frequence_rappel, Date date_creation, Date nom_createur, int id ) throws Exception {
+	public void updateDatabaseTache (int id_Tache, String libelle, String commentaire, Date dateDebut, Date DateEcheance, float etatAvancement, Date DateRappel, int priorite, int predefinie, int frequence_rappel, Date date_creation, Date nom_createur ) throws Exception {
 		
 		try {
 			Connection database = DatabaseSettings.connect();
 
-			String requete = "UPDATE orgathlon.course" + " SET libelle='" + libelle
+			String requete = "UPDATE orgathlon.tache" + " SET libelle='" + libelle
 														+"'AND commentaire='" + commentaire
 														+"'AND `dateDebut`=\"" + dateDebut
 														+"\"AND `DateEcheance`=\"" + DateEcheance
@@ -30,7 +30,7 @@ import Database.DatabaseSettings;
 														+"AND frequence_rappel=" + frequence_rappel
 														+"AND `date_creation`=\"" + date_creation
 														+"\"AND nom_createur='" + nom_createur 
-														+"'WHERE id_Course = " + id ;
+														+"'WHERE id_Tache = " + id_Tache ;
 			Statement stmt = database.createStatement() ;
 			stmt.executeQuery(requete) ;
 			
