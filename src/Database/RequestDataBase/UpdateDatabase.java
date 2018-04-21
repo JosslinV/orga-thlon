@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Database.DatabaseSettings;
 import java.util.Date ;
+import java.sql.Statement ;
 
 public class UpdateDatabase {
 
@@ -14,6 +15,40 @@ public class UpdateDatabase {
 
 private static PreparedStatement preparedStatement = null;
 private static ResultSet resultSet = null;
+
+
+public void updateDatabase (String nom_course, String format_course, Date date_course, String description_course, String lieu, int nb_participants, String parcours, float budget, int agrement, String nom_ville, int CP_ville, int type_epreuve, int id  ) throws Exception {
+	
+	try {
+		Connection database = DatabaseSettings.connect();
+
+		String requete = "UPDATE orgathlon.course" + " SET nom_course='" + nom_course 
+													+"'AND format_course='" + format_course
+													+"'AND date_course='" + date_course
+													+"'AND description_course='" + description_course
+													+"'AND lieu='" + lieu
+													+"'AND nb_participants='" + nb_participants
+													+"'AND parcours='" + parcours
+													+"'AND budget='" + budget
+													+"'AND agrement='" + agrement
+													+"'AND nom_ville='" + nom_ville
+													+"'AND CP_ville='" + CP_ville
+													+"'AND type_epreuve='" + type_epreuve
+													+"'WHERE id_Course = " + id ;
+		Statement stmt = database.createStatement() ;
+		stmt.executeQuery(requete) ;
+		
+	} catch (Exception e) {
+		throw e;
+	} finally {
+		DatabaseSettings.close();
+	}
+	
+}
+
+
+
+/*
 
 	public void UpdateNomC( String nom_course, int id) throws Exception {
 		
@@ -144,8 +179,7 @@ private static ResultSet resultSet = null;
 		}
 	
 	}
-	
-	public void UpdateBudget( float budget, int id) throws Exception {
+		public void UpdateBudget( float budget, int id) throws Exception {
 		
 		
 		try {
@@ -236,5 +270,7 @@ private static ResultSet resultSet = null;
 		}
 	
 	}
-	
+*/
+
+
 }
