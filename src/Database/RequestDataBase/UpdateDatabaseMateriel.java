@@ -9,7 +9,7 @@ import Database.DatabaseSettings;
 public class UpdateDatabaseMateriel {
 
 
-	public void updateDatabaseTache (int id, String libelle, float stock, float budget, String Description_mat  ) throws Exception {
+	public void updateDatabaseMateriel (int id, String libelle, float stock, float budget, String Description_mat  ) throws Exception {
 		
 		try {
 			Connection database = DatabaseSettings.connect();
