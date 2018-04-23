@@ -17,7 +17,7 @@ public class UpdateDatabase {
 //private static ResultSet resultSet = null;
 
 
-public void updateDatabase (String nom_course, String format_course, Date date_course, String description_course, String lieu, int nb_participants, String parcours, float budget, int agrement, String nom_ville, int CP_ville, int type_epreuve, int id  ) throws Exception {
+public void updateDatabase (String nom_course, String format_course, Date date_course, String description_course, String lieu, int nb_participants, String parcours, float budget, int agrement, String nom_ville_nat, String nom_ville_cyc, String nom_ville_cou, String nom_ville_arr, int CP_ville, int CP_ville_nat, int CP_ville_cyc, int CP_ville_cou, int CP_ville_arr, int type_epreuve, int distance_nat, int distance_cyc, int distance_cou, int id  ) throws Exception {
 	
 	try {
 		Connection database = DatabaseSettings.connect();
@@ -31,8 +31,17 @@ public void updateDatabase (String nom_course, String format_course, Date date_c
 													+"AND parcours='" + parcours
 													+"'AND budget=" + budget
 													+"AND agrement=" + agrement
-													+"AND nom_ville='" + nom_ville
-													+"'AND CP_ville=" + CP_ville
+													+"AND nom_ville_nat='" + nom_ville_nat
+													+"'AND nom_ville_cyc='" + nom_ville_cyc
+													+"'AND nom_ville_cou='" + nom_ville_cou
+													+"'AND nom_ville_arr='" + nom_ville_arr
+													+"'AND CP_ville_nat=" + CP_ville_nat
+													+"AND CP_ville_cyc=" + CP_ville_cyc
+													+"AND CP_ville_cou=" + CP_ville_cou
+													+"AND CP_ville_arr=" + CP_ville_arr
+													+"AND distance_nat=" + distance_nat
+													+"AND distance_cyc=" + distance_cyc
+													+"AND distance_cou=" + distance_cou
 													+"AND type_epreuve='" + type_epreuve
 													+"'WHERE id_Course = " + id ;
 		Statement stmt = database.createStatement() ;
