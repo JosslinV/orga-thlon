@@ -1,10 +1,5 @@
 package modele;
 
-
-
-
-
-
 import java.util.Date;
 
 import modele.contacts.Contact;

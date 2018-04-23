@@ -8,7 +8,7 @@ public class Contact {
 	private String nom_c;
 	private String prenom_c;
 	private String adresse;
-	private int cp_c;
+	private String cp_c;
 	private String ville_c;
 	private String telephone_c;
 	private String mail_c;
@@ -57,11 +57,11 @@ public class Contact {
 		this.adresse = adresse;
 	}
 
-	public int getCp_c() {
+	public String getCp_c() {
 		return cp_c;
 	}
 
-	public void setCp_c(int cp_c) {
+	public void setCp_c(String cp_c) {
 		this.cp_c = cp_c;
 	}
 
