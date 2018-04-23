@@ -9,7 +9,7 @@ import modele.Course;
 
 public class RequestCourse {
 	
-	public Course requestCourse(int id) throws Exception{
+	public Course request(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
 

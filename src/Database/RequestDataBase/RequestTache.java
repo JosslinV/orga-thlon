@@ -9,7 +9,7 @@ import modele.Tache;
 
 public class RequestTache {
 	
-	public Tache requestCourse(int id) throws Exception{
+	public Tache request(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
 
