@@ -5,7 +5,9 @@
 import java.sql.Statement;
 
 import Database.DatabaseSettings;
-	import java.util.Date ;
+import modele.Tache;
+
+import java.util.Date ;
 
 	public class UpdateDatabaseTache {
 
@@ -14,23 +16,23 @@ import Database.DatabaseSettings;
 //	private static ResultSet resultSet = null;
 
 
-	public void updateDatabaseTache (int id_Tache, String libelle, String commentaire, Date dateDebut, Date DateEcheance, float etatAvancement, Date DateRappel, int priorite, int predefinie, int frequence_rappel, Date date_creation, Date nom_createur ) throws Exception {
+	public void updateDatabaseTache (Tache donnees) throws Exception {
+	//(int id_Tache, String libelle, String commentaire, Date dateDebut, Date DateEcheance, float etatAvancement, Date DateRappel, int priorite, int predefinie, int frequence_rappel, Date date_creation, Date nom_createur ) throws Exception {
 		
 		try {
 			Connection database = DatabaseSettings.connect();
 
-			String requete = "UPDATE orgathlon.tache" + " SET libelle='" + libelle
-														+"'AND commentaire='" + commentaire
-														+"'AND `dateDebut`=\"" + dateDebut
-														+"\"AND `DateEcheance`=\"" + DateEcheance
-														+"\"AND etatAvancement=" + etatAvancement
-														+"AND `DateRappel`=\"" + DateRappel
-														+"\"AND priorite=" + priorite
-														+"AND predefinie=" + predefinie
-														+"AND frequence_rappel=" + frequence_rappel
-														+"AND `date_creation`=\"" + date_creation
-														+"\"AND nom_createur='" + nom_createur 
-														+"'WHERE id_Tache = " + id_Tache ;
+			String requete = "UPDATE orgathlon.tache" + " SET libelle='" + donnees.getLibelle()
+														+"'AND commentaire='" + donnees.getCommentaire()
+														+"'AND `dateDebut`=\"" + donnees.getDateDebut()
+														+"\"AND `DateEcheance`=\"" + donnees.getDateEcheance() 
+														+"\"AND etatAvancement=" + donnees.getEtatAvancement()
+														+"AND `DateRappel`=\"" + donnees.getDateRappel()
+														+"\"AND priorite=" + donnees.getPriorite()
+														+"AND predefinie=" + donnees.isPredefinie()
+														+"AND frequence_rappel=" + donnees.getFrequenceRappel()
+														+"AND `date_creation`=\"" + donnees.getDateCreationTache()
+														+"'WHERE id_Tache = " + donnees.getId_tache() ;
 			Statement stmt = database.createStatement() ;
 			stmt.executeQuery(requete) ;
 			
