@@ -15,13 +15,24 @@ public class Course {
 	private String parcours;
 	private String commentaire_course;
 	private float budget;
-	private String nom_ville;
-	private int cp_ville;
 	private String type_epreuve;
 	private int duree;
 	private boolean agrement;
 	private boolean predefini;
+	private String nom_ville_nat ;
+	private String nom_ville_cyc ;
+	private String nom_ville_cou ;
+	private String nom_ville_arr ;
+	private String CP_ville_nat ;
+	private String CP_ville_cyc ;
+	private String CP_ville_cou ;
+	private String CP_ville_arr ;
+	private int distance_nat ;
+	private int distance_cyc ;
+	private int distance_cou ;
+	private int id_course ;
 
+	
 	public Course (String nom, boolean predefini) throws Exception {
 		this.nom_course = nom;
 		this.predefini = predefini;
@@ -99,21 +110,6 @@ public class Course {
 		this.budget = budget;
 	}
 
-	public String getNom_ville() {
-		return nom_ville;
-	}
-
-	public void setNom_ville(String nom_ville) {
-		this.nom_ville = nom_ville;
-	}
-
-	public int getCp_ville() {
-		return cp_ville;
-	}
-
-	public void setCp_ville(int cp_ville) {
-		this.cp_ville = cp_ville;
-	}
 
 	public String getType_epreuve() {
 		return type_epreuve;
@@ -151,4 +147,100 @@ public class Course {
 		
 	}
 	
+	public Course getCourse() {
+		return this ;
+	}
+
+	public String getNom_ville_nat() {
+		return nom_ville_nat;
+	}
+
+	public void setNom_ville_nat(String nom_ville_nat) {
+		this.nom_ville_nat = nom_ville_nat;
+	}
+
+	public String getNom_ville_cyc() {
+		return nom_ville_cyc;
+	}
+
+	public void setNom_ville_cyc(String nom_ville_cyc) {
+		this.nom_ville_cyc = nom_ville_cyc;
+	}
+
+	public String getNom_ville_cou() {
+		return nom_ville_cou;
+	}
+
+	public void setNom_ville_cou(String nom_ville_cou) {
+		this.nom_ville_cou = nom_ville_cou;
+	}
+
+	public String getNom_ville_arr() {
+		return nom_ville_arr;
+	}
+
+	public void setNom_ville_arr(String nom_ville_arr) {
+		this.nom_ville_arr = nom_ville_arr;
+	}
+
+	public String getCP_ville_nat() {
+		return CP_ville_nat;
+	}
+
+	public void setCP_ville_nat(String cP_ville_nat) {
+		CP_ville_nat = cP_ville_nat;
+	}
+
+	public String getCP_ville_cyc() {
+		return CP_ville_cyc;
+	}
+
+	public void setCP_ville_cyc(String cP_ville_cyc) {
+		CP_ville_cyc = cP_ville_cyc;
+	}
+
+	public String getCP_ville_cou() {
+		return CP_ville_cou;
+	}
+
+	public void setCP_ville_cou(String cP_ville_cou) {
+		CP_ville_cou = cP_ville_cou;
+	}
+
+	public String getCP_ville_arr() {
+		return CP_ville_arr;
+	}
+
+	public void setCP_ville_arr(String cP_ville_arr) {
+		CP_ville_arr = cP_ville_arr;
+	}
+
+	public int getDistance_nat() {
+		return distance_nat;
+	}
+
+	public void setDistance_nat(int distance_nat) {
+		this.distance_nat = distance_nat;
+	}
+
+	public int getDistance_cyc() {
+		return distance_cyc;
+	}
+
+	public void setDistance_cyc(int distance_cyc) {
+		this.distance_cyc = distance_cyc;
+	}
+
+	public int getDistance_cou() {
+		return distance_cou;
+	}
+
+	public void setDistance_cou(int distance_cou) {
+		this.distance_cou = distance_cou;
+	}
+
+	public int getId_course() {
+		return id_course;
+	}
+
 }
