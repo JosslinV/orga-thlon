@@ -37,6 +37,8 @@ public class UpdateDatabaseBenevole {
 		Connection database = DatabaseSettings.connect();
 
 		String requete = "UPDATE orgathlon.benevole" + " SET nom_benevole='" + donnees.getNom_c()
+													+"'AND commentaire = '" + donnees.getCommentaire()
+													+"'AND civilite = '" + donnees.getCivilite()
 													+"'AND prenom_benevole='" + donnees.getPrenom_c()
 													+"'AND adresse_benevole='" + donnees.getAdresse()
 													+"'AND CodePostal_benevole=" + donnees.getCp_c() 
