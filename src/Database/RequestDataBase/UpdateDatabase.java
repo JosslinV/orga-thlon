@@ -1,10 +1,7 @@
 package Database.RequestDataBase;
 import java.sql.Connection;
 import modele.Course ;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import Database.DatabaseSettings;
-import java.util.Date ;
 import java.sql.Statement ;
 
 public class UpdateDatabase {

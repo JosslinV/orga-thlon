@@ -43,7 +43,7 @@ public class UpdateDatabaseContactExt {
 														+"'AND telephone_c='" + donnees.getTelephone_c()
 														+"'WHERE id_Contact = " + donnees.getId_personne() ;
 			Statement stmt = database.createStatement() ;
-			stmt.executeQuery(requete) ;
+			stmt.executeUpdate(requete) ;
 			
 		} catch (Exception e) {
 			throw e;
