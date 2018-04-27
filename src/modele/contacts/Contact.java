@@ -12,7 +12,12 @@ public class Contact {
 	private String ville_c;
 	private String telephone_c;
 	private String mail_c;
+	private int id_personne ;
 	
+	public int getId_personne() {
+		return id_personne;
+	}
+
 	public Contact (String nom) {
 		this.nom_c = nom;
 	}
