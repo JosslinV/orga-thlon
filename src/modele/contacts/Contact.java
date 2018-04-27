@@ -14,6 +14,12 @@ public class Contact {
 	private String mail_c;
 	private int id_personne ;
 	
+	
+	
+	public void setId_personne(int id_personne) {
+		this.id_personne = id_personne;
+	}
+
 	public int getId_personne() {
 		return id_personne;
 	}
