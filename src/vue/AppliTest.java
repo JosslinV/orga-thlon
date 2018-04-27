@@ -8,7 +8,7 @@ public class AppliTest {
 		new FenetreNouvelleCourse();
 		//new FenetreNouveauBenevole();
 		//new FenetreNouveauContactExterne();
-		new FenetreNouvelleTache();
+		//new FenetreNouvelleTache();
 
 		
 	}
