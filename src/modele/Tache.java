@@ -18,7 +18,9 @@ public class Tache {
 	private int tempsRestant;
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
+	private int id_tache ; 
 	
+
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
 	
@@ -135,5 +137,14 @@ public class Tache {
 	public void setPredefinie(boolean predefinie) {
 		this.predefinie = predefinie;
 	}
+	
+	public int getId_tache() {
+		return id_tache;
+	}
+
+	public void setId_tache(int id_tache) {
+		this.id_tache = id_tache;
+	}
+
 	
 }
