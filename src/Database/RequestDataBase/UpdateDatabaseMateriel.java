@@ -19,7 +19,7 @@ public class UpdateDatabaseMateriel {
 														+"'AND stock=" + donnees.getStock()
 														+"AND budget=" + donnees.getBudget()
 														+"AND Description_mat='" + donnees.getDescription()										
-														+"'WHERE id_Materiel = " + donnees.getId_matériel() ;
+														+"'WHERE id_Materiel = " + donnees.getId_materiel() ;
 			
 			Statement stmt = database.createStatement() ;
 			stmt.executeQuery(requete) ;
