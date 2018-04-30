@@ -13,13 +13,10 @@ public class Course {
 	private String description_course;
 	private String lieu_course;
 	private int nbParticipants;
-	private String parcours;
-	private String commentaire_course;
 	private float budget;
 	private String type_epreuve;
 	private int duree;
-	private boolean agrement;
-	private boolean predefini;
+	private int agrement;
 	private String nom_ville_nat ;
 	private String nom_ville_cyc ;
 	private String nom_ville_cou ;
@@ -31,24 +28,22 @@ public class Course {
 	private int distance_nat ;
 	private int distance_cyc ;
 	private int distance_cou ;
+	private int distance_tot ;
+
 	private int id_course ;
 	Calendar calendar = Calendar.getInstance();
 	
-	public Course (String nom, boolean predefini) throws Exception {
+	public Course (String nom) throws Exception {
 		this.nom_course = nom;
-		this.predefini = predefini;
-		
 		this.format = "nvformat" ;
         this.date_course =  calendar.getTime();
         this.description_course = "nvdesccourse" ;
         this.lieu_course = "nvlieu" ;
         this.nbParticipants = 0 ;
-        this.parcours = "nvparcours";
-        this.commentaire_course = "nvcomcou";
         this.budget = 0.0F ;
         this.type_epreuve = "nvtypeepreuve" ;
         this.duree = 0;
-        this.agrement = false;
+        this.agrement = 0;
         this.nom_ville_nat = "nvvilnat";
         this.nom_ville_cyc = "nvvilcyc";
         this.nom_ville_cou = "nvvilcou";
@@ -60,7 +55,8 @@ public class Course {
         this.distance_nat = 0 ;
         this.distance_cyc = 0 ;
         this.distance_cou = 0 ; 
-        this.id_course = 10000 ;
+        this.id_course = 1 ;
+        
 	}
 	
 	public String getNom()  {
@@ -111,22 +107,6 @@ public class Course {
 		this.nbParticipants = nbParticipants;
 	}
 
-	public String getParcours() {
-		return parcours;
-	}
-
-	public void setParcours(String parcours) {
-		this.parcours = parcours;
-	}
-
-	public String getCommentaire() {
-		return commentaire_course;
-	}
-
-	public void setCommentaire(String commentaire) {
-		this.commentaire_course = commentaire;
-	}
-
 	public float getBudget() {
 		return budget;
 	}
@@ -152,22 +132,15 @@ public class Course {
 		this.duree = duree;
 	}
 
-	public boolean isAgrement() {
+	public int isAgrement() {
 		return agrement;
 	}
 
-	public void setAgrement(boolean agrement) {
+	public void setAgrement(int agrement) {
 		this.agrement = agrement;
 	}
 
-	public boolean isPredefini() {
-		return predefini;
-	}
 
-	public void setPredefini(boolean predefini) {
-		this.predefini = predefini;
-	}
-	
 	public void affecter(Tache t, Contact c) {
 		
 	}
@@ -268,4 +241,13 @@ public class Course {
 		return id_course;
 	}
 
+	public int getDistance_tot() {
+		return distance_tot;
+	}
+
+	public void calculer_distance_tot(int distance_tot) {
+		this.distance_tot = this.distance_nat + this.distance_cyc + this.distance_cou;
+	}
+
+	
 }
