@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import modele.contacts.Contact;
@@ -31,11 +32,35 @@ public class Course {
 	private int distance_cyc ;
 	private int distance_cou ;
 	private int id_course ;
-
+	Calendar calendar = Calendar.getInstance();
 	
 	public Course (String nom, boolean predefini) throws Exception {
 		this.nom_course = nom;
 		this.predefini = predefini;
+		
+		this.format = "nvformat" ;
+        this.date_course =  calendar.getTime();
+        this.description_course = "nvdesccourse" ;
+        this.lieu_course = "nvlieu" ;
+        this.nbParticipants = 0 ;
+        this.parcours = "nvparcours";
+        this.commentaire_course = "nvcomcou";
+        this.budget = 0.0F ;
+        this.type_epreuve = "nvtypeepreuve" ;
+        this.duree = 0;
+        this.agrement = false;
+        this.nom_ville_nat = "nvvilnat";
+        this.nom_ville_cyc = "nvvilcyc";
+        this.nom_ville_cou = "nvvilcou";
+        this.nom_ville_arr = "nvvilarr";
+        this.CP_ville_nat = "nvCPVnat" ;
+        this.CP_ville_cyc = "nvCPVcyc" ;
+        this.CP_ville_cou = "nvCPVcou" ;
+        this.CP_ville_arr = "nvCPVarr" ;
+        this.distance_nat = 0 ;
+        this.distance_cyc = 0 ;
+        this.distance_cou = 0 ; 
+        this.id_course = 10000 ;
 	}
 	
 	public String getNom()  {
