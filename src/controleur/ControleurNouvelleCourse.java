@@ -4,7 +4,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-
+import vue.FenetreNouvelleCourse;
+import vue.VueFenetreNouvelleCourse;
 import vue.VueNouvelleCourse ;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
@@ -12,64 +13,58 @@ import Database.InputDataBase.InputCourse ;
 
 public class ControleurNouvelleCourse implements ActionListener {
 
-	private enum etats {CONSULTATION, EDITION};
-	
-	private vue.VueNouvelleCourse vue;
-	private modele.Course course;
+	private enum Etats {CONSULTATION, EDITION};
+	private Etats etatCourant;
+	private FenetreNouvelleCourse vue;
+	private modele.Course modele;
 	private modele.Course courserentree ;
 	
-	private etats etatCourant;
 	
-	public ControleurNouvelleCourse() throws Exception {
-		
+	public ControleurNouvelleCourse(VueFenetreNouvelleCourse vue) throws Exception {	
 		this.vue = vue ;
-		this.course = new modele.Course("nouveau", false) ;
-		this.etatCourant = etats.EDITION ;
-
+		this.modele = new modele.Course("nouveau", false) ;
+		this.etatCourant = Etats.EDITION ;
 	}
 	
-	public void actionPerformed (ActionEvent arg0) {
-		
-		JButton boutonSource = (JButton) arg0.getSource() ;
-
+	public void actionPerformed (ActionEvent e) {
+		JButton b = (JButton) e.getSource() ;
+			switch (this.etatCourant) {
 	
-	switch (this.etatCourant) {
-	
-	case EDITION :
-		
-		
-		if (boutonSource.getText().equals("valider")) {
-			
-		
-			try {
+			case EDITION :
+				if 
 				
-				courserentree = vue.recupererDonnees() ;
-				// ici il faudra adapter Nat
-				InputCourse.input(courserentree) ;
+				if (b.getText().equals("valider")) {
+					
 				
-				this.etatCourant = etats.CONSULTATION ;
+					try {
+						
+						courserentree = vue.getDonneesCourse() ;
+						// ici il faudra adapter Nat
+						InputCourse.input(courserentree) ;
+						
+						this.etatCourant = Etats.CONSULTATION ;
+						
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
 				
 				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				
+			case CONSULTATION :
+				
+				if (boutonSource.getText().equals("editer")) {
+					
+					this.etatCourant = etats.EDITION ;
+				}
+				
 			}
 			
-		}
-		
-		
-		
-		
-	case CONSULTATION :
-		
-		if (boutonSource.getText().equals("editer")) {
-			
-			this.etatCourant = etats.EDITION ;
-		}
-		
-	}
-	
-	}
+			}
 }
 	
 	/*
