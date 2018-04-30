@@ -15,7 +15,7 @@ public class ControleurNouvelleCourse implements ActionListener {
 
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
-	private FenetreNouvelleCourse vue;
+	private VueFenetreNouvelleCourse vue;
 	private modele.Course modele;
 	private modele.Course courserentree ;
 	

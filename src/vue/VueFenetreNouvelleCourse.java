@@ -63,7 +63,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 
 
 	public VueFenetreNouvelleCourse() throws Exception {
-		//ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
+		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
 		this.setTitle("création d'une nouvelle fiche COURSE");
 		this.setLayout(new GridLayout(1,1));
@@ -292,7 +292,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		this.btValider = new JButton("valider");
 		this.btValider.setEnabled(false);
 		pSud.add(this.btValider);
-		//this.btValider.addActionListener(controleur);
+		this.btValider.addActionListener(controleur);
 		
 		this.dateCourse = new SimpleDateFormat("dd/MM/yyyy").parse(tfDateDebutCourse.getText());	
 		this.dureeCourse = new SimpleDateFormat("dd/MM/yyyy").parse(tfDateDebutCourse.getText());	
@@ -304,30 +304,29 @@ public class VueFenetreNouvelleCourse extends JFrame {
 	public HashMap<String, Object> getDonneesCourse() throws ParseException{
 		HashMap<String,Object> donneesCourses = new HashMap<String, Object>();
 		
-		donneesCourses.put("Nom", this.tfTitreCourse.getText());		
-		donneesCourses.put("DateC",this.dateCourse ); 
-		donneesCourses.put("DureeC",this.dureeCourse ); 
-		donneesCourses.put("Budget",this.budget);			
-		donneesCourses.put("NbParticipants", this.nbParticipants);		
-		donneesCourses.put("isAgrement", cbAgrement.isSelected());		
-		donneesCourses.put("Type_Epreuve", tfNomEvenement.getText());
-		donneesCourses.put("Format", tfFormatCourse.getText());		
-		donneesCourses.put("distanceNatation", this.distanceNatation);		
-		donneesCourses.put("distanceCyclisme", distanceCyclisme);
-		donneesCourses.put("distanceCourseAPied", distanceCourseAPied);
+		donneesCourses.put("nom_courseVue", this.tfTitreCourse.getText());		
+		donneesCourses.put("date_courseVue",this.dateCourse ); 
+		donneesCourses.put("dureeVue",this.dureeCourse ); 
+		donneesCourses.put("budgetVue",this.budget);			
+		donneesCourses.put("nbParticipantsVue", this.nbParticipants);		
+		donneesCourses.put("agrementVue", cbAgrement.isSelected());		
+		donneesCourses.put("type_epreuveVue", tfNomEvenement.getText());
+		donneesCourses.put("formatVue", tfFormatCourse.getText());		
+		donneesCourses.put("distance_natVue", this.distanceNatation);		
+		donneesCourses.put("distance_cycVue", distanceCyclisme);
+		donneesCourses.put("distance_couVue", distanceCourseAPied);
 		donneesCourses.put("distanceArrivee", distanceArrivee);
-		donneesCourses.put("villeNatation", villeNatation);
-		donneesCourses.put("villeCyclisme", villeCyclisme);
-		donneesCourses.put("villeCourseAPied", villeCourseAPied);
-		donneesCourses.put("villeArrivee", villeArrivee);
-		donneesCourses.put("cpNatation", cpNatation);
-		donneesCourses.put("cpCyclisme", cpCyclisme);
-		donneesCourses.put("cpCourseAPied", cpCourseAPied);
-		donneesCourses.put("cpArrivee", cpArrivee);	
-		donneesCourses.put("DescriptionCourse", taCommentaireCourse.getText());
+		donneesCourses.put("nom_ville_natVue", villeNatation);
+		donneesCourses.put("nom_ville_cycVue", villeCyclisme);
+		donneesCourses.put("nom_ville_couVue", villeCourseAPied);
+		donneesCourses.put("nom_ville_arrVue", villeArrivee);
+		donneesCourses.put("CP_ville_natVue", cpNatation);
+		donneesCourses.put("CP_ville_cycVue", cpCyclisme);
+		donneesCourses.put("CP_ville_couVue", cpCourseAPied);
+		donneesCourses.put("CP_ville_arrVue", cpArrivee);	
+		donneesCourses.put("description_courseVue", taCommentaireCourse.getText());
 		
 		return donneesCourses ;
-		
 	}
 	
 
@@ -352,6 +351,8 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		public void keyReleased(KeyEvent arg0) {
 			
 		}
+		
+	
 		
 	}
 	
