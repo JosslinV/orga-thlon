@@ -48,7 +48,6 @@ public class VueFenetreNouvelleCourse extends JFrame {
 	private JButton btAnnuler;
 	private JLabel lbTitreCourse;
 	private JButton btDateDebutCourse;
-	private JButton btDureeCourse;
 	private Date dateCourse;
 	private Date dureeCourse;
 	private double budget;
@@ -127,8 +126,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		tfDateDebutCourse.setMinimumSize(new Dimension(70,20));
 		tfDateDebutCourse.setColumns(8);
 		spGauche.add(tfDateDebutCourse, c1);
-
-		
+	
 		this.btDateDebutCourse = new JButton();
 		c1.gridx = 2;
 		c1.gridy = 0;
@@ -314,7 +312,6 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		this.spNbParticipants.setEnabled(actif);
 		this.cbAgrement.setEnabled(actif);
 		this.btDateDebutCourse.setEnabled(actif);
-		this.btDureeCourse.setEnabled(actif);
 	}
 	
 	public void parserDonnees() {
