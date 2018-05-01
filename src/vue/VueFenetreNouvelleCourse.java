@@ -29,6 +29,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 import controleur.ControleurNouvelleCourse;
+import modele.Etat.Etat;
 
 
 
@@ -60,14 +61,23 @@ public class VueFenetreNouvelleCourse extends JFrame {
 	private int cpCyclisme;
 	private int cpCourseAPied;
 	private int cpArrivee;
+	private String nom_course;
+	private String type_epreuve;
+	private JTextField tfDateDebutCourse;
+	private JTextField tfDureeCourse;
+	private JTextField tfBudget;
+	private JSpinner spNbParticipants;
+	private JLabel lbNbParticipantsConsultation;
+	private String nbParticipantsString;
+	private Integer nbParticipantsInt;
+	private JTable parcoursTab;
 
 
 	public VueFenetreNouvelleCourse() throws Exception {
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
 		this.setTitle("création d'une nouvelle fiche COURSE");
-		this.setLayout(new GridLayout(1,1));
-		
+		this.setLayout(new GridLayout(1,1));		
 		this.pack();
 		this.setSize(750, 550);
 		this.setResizable(false);
@@ -78,13 +88,13 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		JPanel pNord = new JPanel();
 		this.add(pNord, BorderLayout.NORTH);
 		pNord.setBorder(new EmptyBorder(10,20,10,20));
-		this.lbTitreCourse = new JLabel("Titre de la course *");
+		this.lbTitreCourse = new JLabel("Titre de la course * : ");
 		this.lbTitreCourse.setForeground(Color.red);
-		pNord.add(this.lbTitreCourse);
+		pNord.add(this.lbTitreCourse);		
 		this.tfTitreCourse = new JTextField("nouveau");
 		this.tfTitreCourse.addKeyListener(new CustomKeyListener());
 		this.tfTitreCourse.setPreferredSize(new Dimension(500,30));
-		pNord.add(tfTitreCourse);
+		pNord.add(tfTitreCourse);		
 		
 		JPanel pCentre = new JPanel();
 		this.add(pCentre,BorderLayout.CENTER);
@@ -100,7 +110,6 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		//à Gauche du séparateur
 		spGauche.setLayout(new GridBagLayout());
 		GridBagConstraints c1 = new GridBagConstraints();
-		spGauche.setMinimumSize(new Dimension(400,400));
 
 		JLabel lbDateDebutCourse = new JLabel("Date de D\u00E9but");
 		c1.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -109,7 +118,8 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		c1.gridy = 0;
 		spGauche.add(lbDateDebutCourse, c1);
 		
-		JTextField tfDateDebutCourse = new JTextField();
+		
+		tfDateDebutCourse = new JTextField();
 		c1.gridx = 1;
 		c1.gridy = 0;
 		c1.insets = new Insets(5, 5, 5, 5);
@@ -133,7 +143,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		c1.gridy = 1;
 		spGauche.add(lbDureeCourse, c1);
 		
-		JTextField tfDureeCourse = new JTextField();
+		tfDureeCourse = new JTextField();
 		c1.insets = new Insets(5, 5, 5, 5);
 		c1.anchor = GridBagConstraints.LINE_START;
 		c1.gridx = 1;
@@ -141,15 +151,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		tfDureeCourse.setColumns(8);
 		tfDureeCourse.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfDureeCourse, c1);
-
 		
-		this.btDureeCourse = new JButton();
-		c1.gridx = 2;
-		c1.gridy = 1;
-		this.btDureeCourse.setPreferredSize(new Dimension(20,20));
-		this.btDureeCourse.setIcon(new ImageIcon("./src/vue/calendar.png"));
-		spGauche.add(this.btDureeCourse, c1);
-
 
 		JLabel lbBudget = new JLabel("Budget");
 		c1.anchor = GridBagConstraints.LINE_START;
@@ -158,7 +160,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		c1.gridy = 2;
 		spGauche.add(lbBudget, c1);
 		
-		JTextField tfBudget = new JTextField();
+		tfBudget = new JTextField();
 		c1.insets = new Insets(5, 5, 5, 5);
 		c1.anchor = GridBagConstraints.LINE_START;
 		c1.gridx = 1;
@@ -166,7 +168,12 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		tfBudget.setColumns(8);
 		tfBudget.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfBudget, c1);
-
+		
+		JLabel lbDevise = new JLabel("€");
+		c1.gridx = 2;
+		c1.gridy = 2;
+		lbDevise.setPreferredSize(new Dimension(20,20));
+		spGauche.add(lbDevise, c1);
 
 		JLabel lbNbParticipants = new JLabel("Effectifs");
 		c1.anchor = GridBagConstraints.LINE_START;
@@ -176,7 +183,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		spGauche.add(lbNbParticipants, c1);
 		
 		SpinnerModel value = new SpinnerNumberModel(5, 0, 50, 1);   
-		JSpinner spNbParticipants = new JSpinner(value);
+		spNbParticipants = new JSpinner(value);
 		c1.insets = new Insets(5, 5, 5, 5);
 		c1.anchor = GridBagConstraints.LINE_START;
 		c1.gridx = 1;
@@ -268,7 +275,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 				{"Course à pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
 				{"Arriv\u00E9e",distanceArrivee,villeArrivee,cpArrivee}
 		};
-		JTable parcoursTab = new JTable(donneesParcours, titresColonnes);
+		parcoursTab = new JTable(donneesParcours, titresColonnes);
 		parcoursTab.setRowHeight(20);
 		JScrollPane tabSP = new JScrollPane(parcoursTab);
 		tabSP.setMinimumSize(new Dimension(250,100)); 
@@ -287,20 +294,61 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		pSud.setBorder(new EmptyBorder(30,100,30,100));
 		this.btAnnuler = new JButton("annuler");
 		this.btAnnuler.setPreferredSize(new Dimension(40,40));
-		pSud.add(this.btAnnuler);
-		//btAnnuler.addActionListener(controleur);
-		this.btValider = new JButton("valider");
-		this.btValider.setEnabled(false);
-		pSud.add(this.btValider);
-		this.btValider.addActionListener(controleur);
-		
-		this.dateCourse = new SimpleDateFormat("dd/MM/yyyy").parse(tfDateDebutCourse.getText());	
-		this.dureeCourse = new SimpleDateFormat("dd/MM/yyyy").parse(tfDateDebutCourse.getText());	
-		this.budget = Double.parseDouble(tfBudget.getText());
-		this.nbParticipants = (Integer)spNbParticipants.getValue();
 
+		this.btValider = new JButton("valider");
+		pSud.add(this.btAnnuler);
+		pSud.add(this.btValider);
+		
+		this.btAnnuler.addActionListener(controleur);
+		this.btValider.addActionListener(controleur);
 	}
 	
+	public void setActifComposants(boolean actif){
+		this.tfDateDebutCourse.setEnabled(actif);
+		this.tfDureeCourse.setEnabled(actif);
+		this.tfBudget.setEnabled(actif);
+		this.tfNomEvenement.setEnabled(actif);
+		this.tfFormatCourse.setEnabled(actif);
+		this.taCommentaireCourse.setEnabled(actif);
+		this.parcoursTab.setEnabled(actif);
+		this.spNbParticipants.setEnabled(actif);
+		this.cbAgrement.setEnabled(actif);
+		this.btDateDebutCourse.setEnabled(actif);
+		this.btDureeCourse.setEnabled(actif);
+	}
+	
+	public void parserDonnees() {
+		try {
+			this.dureeCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebutCourse.getText());	
+			this.dateCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebutCourse.getText());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}	
+		this.budget = Double.parseDouble(this.tfBudget.getText());
+	}
+	
+	public void titreFenetreValide(boolean actif) {
+		this.tfTitreCourse.setVisible(!actif);
+		this.lbTitreCourse.setVisible(!actif);
+		this.setTitle("consultation de la fiche Course: " + this.tfTitreCourse.getText());
+	}
+
+	
+	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
+		if (estEditable) {
+			this.btValider.setText("valider");
+			this.btAnnuler.setText("annuler");
+		}else {
+			this.btValider.setText("imprimer");
+			this.btAnnuler.setText("retour");
+		}
+	}
+	
+
+
+
+	
+	/*
 	public HashMap<String, Object> getDonneesCourse() throws ParseException{
 		HashMap<String,Object> donneesCourses = new HashMap<String, Object>();
 		
@@ -310,7 +358,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		donneesCourses.put("budgetVue",this.budget);			
 		donneesCourses.put("nbParticipantsVue", this.nbParticipants);		
 		donneesCourses.put("agrementVue", cbAgrement.isSelected());		
-		donneesCourses.put("type_epreuveVue", tfNomEvenement.getText());
+		donneesCourses.put("type_epreuveVue", type_epreuve);
 		donneesCourses.put("formatVue", tfFormatCourse.getText());		
 		donneesCourses.put("distance_natVue", this.distanceNatation);		
 		donneesCourses.put("distance_cycVue", distanceCyclisme);
@@ -328,16 +376,29 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		
 		return donneesCourses ;
 	}
-	
+	*/
 
 
-	
+
+
+	public JTextField getTfTitreCourse() {
+		return tfTitreCourse;
+	}
+
+	public void setTfTitreCourse(JTextField tfTitreCourse) {
+		this.tfTitreCourse = tfTitreCourse;
+	}
+
+
+
+
+
 	public class CustomKeyListener implements KeyListener{
 		@Override
 		public void keyTyped(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				lbTitreCourse.setForeground(Color.BLACK);
-				btValider.setEnabled(true);
+
 			}
 		}
 		@Override
@@ -355,6 +416,12 @@ public class VueFenetreNouvelleCourse extends JFrame {
 	
 		
 	}
+
+
+
+
+	
+
 	
 
 }

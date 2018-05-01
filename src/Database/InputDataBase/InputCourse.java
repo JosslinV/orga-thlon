@@ -24,7 +24,6 @@ public class InputCourse {
 																+donnees.isAgrement()+","
 																+donnees.getBudget()+","
 																+donnees.getNbParticipants()+","
-																+donnees.getParcours()+","
 																+donnees.getDistance_nat()+","
 																+donnees.getDistance_cyc()+","
 																+donnees.getDistance_cou()+","

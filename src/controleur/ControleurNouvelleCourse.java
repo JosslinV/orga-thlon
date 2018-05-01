@@ -1,12 +1,11 @@
 package controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 
-import vue.FenetreNouvelleCourse;
 import vue.VueFenetreNouvelleCourse;
-import vue.VueNouvelleCourse ;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
 import Database.InputDataBase.InputCourse ;
@@ -17,54 +16,53 @@ public class ControleurNouvelleCourse implements ActionListener {
 	private Etats etatCourant;
 	private VueFenetreNouvelleCourse vue;
 	private modele.Course modele;
-	private modele.Course courserentree ;
 	
 	
 	public ControleurNouvelleCourse(VueFenetreNouvelleCourse vue) throws Exception {	
 		this.vue = vue ;
-		this.modele = new modele.Course("nouveau", false) ;
-		this.etatCourant = Etats.EDITION ;
+		this.modele = new modele.Course("nouveau") ;
+		this.etatCourant = Etats.EDITION;
 	}
 	
 	public void actionPerformed (ActionEvent e) {
 		JButton b = (JButton) e.getSource() ;
 			switch (this.etatCourant) {
-	
 			case EDITION :
-				if 
-				
 				if (b.getText().equals("valider")) {
-					
-				
+					this.etatCourant = Etats.CONSULTATION ;
+					this.vue.titreFenetreValide(true);
+					this.vue.setActifComposants(false);
+					this.vue.modifierTexteBoutonsPourEdition(false);
+				/*
+
 					try {
 						
-						courserentree = vue.getDonneesCourse() ;
-						// ici il faudra adapter Nat
-						InputCourse.input(courserentree) ;
-						
-						this.etatCourant = Etats.CONSULTATION ;
-						
-						
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						InputCourse.input() ;
+					} catch (Exception exception) {
+						exception.printStackTrace();
 					}
 					
+					//this.vue.saisieValidee = true;
+
+					*/
+
 				}
-				
-				
-				
-				
+
 			case CONSULTATION :
-				
-				if (boutonSource.getText().equals("editer")) {
-					
-					this.etatCourant = etats.EDITION ;
+
+				if (b.getText().equals("retour")) {
+					this.etatCourant = Etats.EDITION ;
+					this.vue.modifierTexteBoutonsPourEdition(true);
+					this.vue.setActifComposants(true);
+					this.vue.titreFenetreValide(false);
+
 				}
 				
 			}
 			
 			}
+	
+	
 }
 	
 	/*
