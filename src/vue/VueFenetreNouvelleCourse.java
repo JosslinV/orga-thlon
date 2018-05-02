@@ -150,6 +150,11 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		tfDureeCourse.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfDureeCourse, c1);
 		
+		JLabel lbUnitéTemps = new JLabel("Jours"); //comboBox Heures, Jours, Semaines...  
+		c1.gridx = 1;
+		c1.gridy = 2;
+		lbUnitéTemps.setPreferredSize(new Dimension(20,20));
+		spGauche.add(lbUnitéTemps, c1);	
 
 		JLabel lbBudget = new JLabel("Budget");
 		c1.anchor = GridBagConstraints.LINE_START;
@@ -167,7 +172,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		tfBudget.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfBudget, c1);
 		
-		JLabel lbDevise = new JLabel("€");
+		JLabel lbDevise = new JLabel("€"); // ComboBox euro, livre sterling, couronne etc ?
 		c1.gridx = 2;
 		c1.gridy = 2;
 		lbDevise.setPreferredSize(new Dimension(20,20));
@@ -273,8 +278,7 @@ public class VueFenetreNouvelleCourse extends JFrame {
 				{"Course à pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
 				{"Arriv\u00E9e",distanceArrivee,villeArrivee,cpArrivee}
 		};
-		parcoursTab = new JTable(donneesParcours, titresColonnes);
-		parcoursTab.setRowHeight(20);
+		this.parcoursTab = new JTable(donneesParcours, titresColonnes);
 		JScrollPane tabSP = new JScrollPane(parcoursTab);
 		tabSP.setMinimumSize(new Dimension(250,100)); 
 		c2.gridx = 0;
@@ -299,6 +303,8 @@ public class VueFenetreNouvelleCourse extends JFrame {
 		
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
+		
+
 	}
 	
 	public void setActifComposants(boolean actif){

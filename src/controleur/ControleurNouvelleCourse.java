@@ -46,7 +46,9 @@ public class ControleurNouvelleCourse implements ActionListener {
 
 					*/
 
-				}
+				}else if (b.getText().equals("annuler")) {
+					System.exit(0);
+				} //else if 
 
 			case CONSULTATION :
 
