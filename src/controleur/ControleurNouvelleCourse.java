@@ -1,75 +1,70 @@
 package controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 
-
-import vue.VueNouvelleCourse ;
+import vue.VueFenetreNouvelleCourse;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
 import Database.InputDataBase.InputCourse ;
 
 public class ControleurNouvelleCourse implements ActionListener {
 
-	private enum etats {CONSULTATION, EDITION};
+	private enum Etats {CONSULTATION, EDITION};
+	private Etats etatCourant;
+	private VueFenetreNouvelleCourse vue;
+	private modele.Course modele;
 	
-	private vue.VueNouvelleCourse vue;
-	private modele.Course course;
-	private modele.Course courserentree ;
 	
-	private etats etatCourant;
-	
-	public ControleurNouvelleCourse() throws Exception {
-		
+	public ControleurNouvelleCourse(VueFenetreNouvelleCourse vue) throws Exception {	
 		this.vue = vue ;
-		this.course = new modele.Course("nouveau", false) ;
-		this.etatCourant = etats.EDITION ;
-
+		this.modele = new modele.Course("nouveau") ;
+		this.etatCourant = Etats.EDITION;
 	}
 	
-	public void actionPerformed (ActionEvent arg0) {
-		
-		JButton boutonSource = (JButton) arg0.getSource() ;
+	public void actionPerformed (ActionEvent e) {
+		JButton b = (JButton) e.getSource() ;
+			switch (this.etatCourant) {
+			case EDITION :
+				if (b.getText().equals("valider")) {
+					this.etatCourant = Etats.CONSULTATION ;
+					this.vue.titreFenetreValide(true);
+					this.vue.setActifComposants(false);
+					this.vue.modifierTexteBoutonsPourEdition(false);
+				/*
 
-	
-	switch (this.etatCourant) {
-	
-	case EDITION :
-		
-		
-		if (boutonSource.getText().equals("valider")) {
-			
-		
-			try {
+					try {
+						
+						InputCourse.input() ;
+					} catch (Exception exception) {
+						exception.printStackTrace();
+					}
+					
+					//this.vue.saisieValidee = true;
+
+					*/
+
+				}else if (b.getText().equals("annuler")) {
+					System.exit(0);
+				} //else if 
+
+			case CONSULTATION :
+
+				if (b.getText().equals("retour")) {
+					this.etatCourant = Etats.EDITION ;
+					this.vue.modifierTexteBoutonsPourEdition(true);
+					this.vue.setActifComposants(true);
+					this.vue.titreFenetreValide(false);
+
+				}
 				
-				courserentree = vue.recupererDonnees() ;
-				// ici il faudra adapter Nat
-				InputCourse.input(courserentree) ;
-				
-				this.etatCourant = etats.CONSULTATION ;
-				
-				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 			
-		}
-		
-		
-		
-		
-	case CONSULTATION :
-		
-		if (boutonSource.getText().equals("editer")) {
-			
-			this.etatCourant = etats.EDITION ;
-		}
-		
-	}
+			}
 	
-	}
+	
 }
 	
 	/*

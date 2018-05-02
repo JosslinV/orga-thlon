@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import modele.contacts.Contact;
@@ -18,7 +19,6 @@ public class Course {
 	private String type_epreuve;
 	private int duree;
 	private boolean agrement;
-	private boolean predefini;
 	private String nom_ville_nat ;
 	private String nom_ville_cyc ;
 	private String nom_ville_cou ;
@@ -31,11 +31,11 @@ public class Course {
 	private int distance_cyc ;
 	private int distance_cou ;
 	private int id_course ;
-
+	Calendar calendar = Calendar.getInstance();
 	
-	public Course (String nom, boolean predefini) throws Exception {
+	public Course (String nom) throws Exception {
 		this.nom_course = nom;
-		this.predefini = predefini;
+		
 	}
 	
 	public String getNom()  {
@@ -133,14 +133,6 @@ public class Course {
 
 	public void setAgrement(boolean agrement) {
 		this.agrement = agrement;
-	}
-
-	public boolean isPredefini() {
-		return predefini;
-	}
-
-	public void setPredefini(boolean predefini) {
-		this.predefini = predefini;
 	}
 	
 	public void affecter(Tache t, Contact c) {
@@ -241,6 +233,10 @@ public class Course {
 
 	public int getId_course() {
 		return id_course;
+	}
+	
+	public void setId_Course(int id) {
+		this.id_course = id;
 	}
 
 }

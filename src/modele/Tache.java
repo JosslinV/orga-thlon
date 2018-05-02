@@ -6,6 +6,7 @@ import modele.contacts.Benevole;
 
 public class Tache {
 
+	private int id_Tache;
 	private String libelle;
 	private String commentaire;
 	private Date dateDebut;
@@ -19,6 +20,7 @@ public class Tache {
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
 	
+
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
 	
@@ -135,5 +137,14 @@ public class Tache {
 	public void setPredefinie(boolean predefinie) {
 		this.predefinie = predefinie;
 	}
+	
+	public int getId_Tache() {
+		return id_Tache;
+	}
+
+	public void setId_Tache(int id_Tache) {
+		this.id_Tache = id_Tache;
+	}
+
 	
 }
