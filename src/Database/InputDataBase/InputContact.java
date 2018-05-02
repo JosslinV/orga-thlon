@@ -8,9 +8,9 @@ import modele.contacts.*;
 
 public class InputContact {
 
-    private static PreparedStatement preparedStatement = null;
+    private PreparedStatement preparedStatement = null;
     
-	public static void input(Contact donnees) throws Exception {
+	public void inputContact(Contact donnees) throws Exception {
 		
 		if(donnees instanceof ContactExterne) {
 			try {
@@ -39,7 +39,7 @@ public class InputContact {
 			try {
 				Connection database = DatabaseSettings.connect();
 				
-				preparedStatement = database.prepareStatement("insert into  Orgathlon.Tache values (default,?,?,?,?,?,?,?,?,?)");
+				preparedStatement = database.prepareStatement("insert into  Orgathlon.Benevole values (default,?,?,?,?,?,?,?,?,?)");
 				preparedStatement.setString(1, donnees.getCommentaire());
 				preparedStatement.setString(2, donnees.getCivilite());
 				preparedStatement.setString(3, donnees.getNom_c());

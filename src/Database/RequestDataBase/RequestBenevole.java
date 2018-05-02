@@ -7,19 +7,21 @@ import java.sql.Statement;
 import Database.DatabaseSettings;
 import modele.contacts.Benevole;
 import modele.contacts.Contact;
+
 public class RequestBenevole {
 
-	public Contact request(int id) throws Exception{
+	public Contact requestBenevole(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
 
 			Statement state = database.createStatement();
-			ResultSet result = state.executeQuery("SELECT * FROM contact_ext WHERE id = "+ id +";");
+			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Benevole WHERE id_Personne = "+ id +";");
 			
 			if(result.next()) {
 				Contact contact = new Benevole(result.getString("nom_benevole"));
 				
-				contact.setCivilite(result.getString("civilite"));
+				contact.setId_personne(result.getInt("id_Personne"));
+				contact.setCivilite(result.getString("civilite_benevole"));
 				contact.setCommentaire(result.getString("commentaire_benevole"));
 				contact.setPrenom_c(result.getString("prenom_benevole"));
 				contact.setAdresse(result.getString("adresse_benevole"));

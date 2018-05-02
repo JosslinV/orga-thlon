@@ -19,7 +19,6 @@ public class Course {
 	private String type_epreuve;
 	private int duree;
 	private boolean agrement;
-	private boolean predefini;
 	private String nom_ville_nat ;
 	private String nom_ville_cyc ;
 	private String nom_ville_cou ;
@@ -34,33 +33,9 @@ public class Course {
 	private int id_course ;
 	Calendar calendar = Calendar.getInstance();
 	
-	public Course (String nom, boolean predefini) throws Exception {
+	public Course (String nom) throws Exception {
 		this.nom_course = nom;
-		this.predefini = predefini;
 		
-		this.format = "nvformat" ;
-        this.date_course =  calendar.getTime();
-        this.description_course = "nvdesccourse" ;
-        this.lieu_course = "nvlieu" ;
-        this.nbParticipants = 0 ;
-        this.parcours = "nvparcours";
-        this.commentaire_course = "nvcomcou";
-        this.budget = 0.0F ;
-        this.type_epreuve = "nvtypeepreuve" ;
-        this.duree = 0;
-        this.agrement = false;
-        this.nom_ville_nat = "nvvilnat";
-        this.nom_ville_cyc = "nvvilcyc";
-        this.nom_ville_cou = "nvvilcou";
-        this.nom_ville_arr = "nvvilarr";
-        this.CP_ville_nat = "nvCPVnat" ;
-        this.CP_ville_cyc = "nvCPVcyc" ;
-        this.CP_ville_cou = "nvCPVcou" ;
-        this.CP_ville_arr = "nvCPVarr" ;
-        this.distance_nat = 0 ;
-        this.distance_cyc = 0 ;
-        this.distance_cou = 0 ; 
-        this.id_course = 10000 ;
 	}
 	
 	public String getNom()  {
@@ -158,14 +133,6 @@ public class Course {
 
 	public void setAgrement(boolean agrement) {
 		this.agrement = agrement;
-	}
-
-	public boolean isPredefini() {
-		return predefini;
-	}
-
-	public void setPredefini(boolean predefini) {
-		this.predefini = predefini;
 	}
 	
 	public void affecter(Tache t, Contact c) {
@@ -266,6 +233,10 @@ public class Course {
 
 	public int getId_course() {
 		return id_course;
+	}
+	
+	public void setId_Course(int id) {
+		this.id_course = id;
 	}
 
 }

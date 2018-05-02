@@ -1,17 +1,14 @@
 package Database.InputDataBase;
 
 import java.sql.Connection;
-import java.sql.Date;
-
 import modele.Course;
-import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import Database.DatabaseSettings;
 
 public class InputCourse {
     
-	public static void input(Course donnees) throws Exception {
+	public static void inputCourse(Course donnees) throws Exception {
 		try {
 			Connection database = DatabaseSettings.connect();
 			

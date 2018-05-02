@@ -10,7 +10,7 @@ import modele.contacts.ContactExterne;
 
 public class RequestContactExt {
 
-	public Contact request(int id) throws Exception{
+	public Contact requestContactExt(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
 
@@ -19,6 +19,8 @@ public class RequestContactExt {
 			
 			if(result.next()) {
 				Contact contact = new ContactExterne(result.getString("nom_contact"), result.getString("nom_societe"));
+				
+				contact.setId_personne(result.getInt("id_Contact"));
 				contact.setCivilite(result.getString("civilite"));
 				contact.setCommentaire(result.getString("commentaire_contact"));
 				contact.setPrenom_c(result.getString("prenom_contact"));
