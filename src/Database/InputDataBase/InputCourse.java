@@ -1,43 +1,32 @@
 package Database.InputDataBase;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 import modele.Course;
-import java.sql.Statement;
 
 import Database.DatabaseSettings;
 
 public class InputCourse {
+	
+	private PreparedStatement preparedStatement;
     
-	public static void inputCourse(Course donnees) throws Exception {
+	public void inputCourse(Course donnees) throws Exception {
 		try {
 			Connection database = DatabaseSettings.connect();
 			
-			String requeteCourse = "INSERT into Orgathlon.Tache VALUES (default,"
-																+donnees.getNom()+","
-																+donnees.getFormat()+","
-																+null+","
-																+donnees.getDescriptionCourse()+","
-																+donnees.getLieu()+","
-																+donnees.isAgrement()+","
-																+donnees.getBudget()+","
-																+donnees.getNbParticipants()+","
-																+donnees.getParcours()+","
-																+donnees.getDistance_nat()+","
-																+donnees.getDistance_cyc()+","
-																+donnees.getDistance_cou()+","
-																+donnees.getNom_ville_nat()+","
-																+donnees.getNom_ville_cyc()+","
-																+donnees.getNom_ville_cou()+","
-																+donnees.getNom_ville_arr()+","
-																+donnees.getCP_ville_nat()+","
-																+donnees.getCP_ville_cyc()+","
-																+donnees.getCP_ville_cou()+","
-																+donnees.getCP_ville_arr()+","
-															
-																+donnees.getType_epreuve()+");";
-			
-			Statement stmt = database.createStatement() ;
-			stmt.execute(requeteCourse) ;
+			preparedStatement = database.prepareStatement("INSERT into Orgathlon.Course values (default,?,?,?,?,?,?,?,?,?,?");
+			preparedStatement.setString(1, donnees.getNom());
+			preparedStatement.setString(2, donnees.getFormat());
+			preparedStatement.setDate(3, null);									//TODO date
+			preparedStatement.setString(4, donnees.getDescriptionCourse());
+			preparedStatement.setString(5, donnees.getLieu());
+			preparedStatement.setInt(6, donnees.getNbParticipants());
+			preparedStatement.setString(7, donnees.getParcours());
+			preparedStatement.setFloat(8, donnees.getBudget());
+			preparedStatement.setBoolean(9, donnees.isAgrement());
+			preparedStatement.setString(10, donnees.getType_epreuve());
+			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
 			throw e;
