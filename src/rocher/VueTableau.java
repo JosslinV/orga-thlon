@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
+/*
 public class VueTableau extends JPanel{
 	
 	    public VueTableau() {
@@ -15,6 +15,6 @@ public class VueTableau extends JPanel{
 	        this.add(new JScrollPane(tableau), BorderLayout.CENTER);
 	 
 	    }
-	 
 
 	}
+*/	 

@@ -5,7 +5,7 @@ import java.text.ParseException;
 
 import javax.swing.JButton;
 
-import vue.VueFenetreNouvelleCourse;
+import vue.FenetreNouvelleCourse;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
 import Database.InputDataBase.InputCourse ;
@@ -14,11 +14,11 @@ public class ControleurNouvelleCourse implements ActionListener {
 
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
-	private VueFenetreNouvelleCourse vue;
+	private FenetreNouvelleCourse vue;
 	private modele.Course modele;
 	
 	
-	public ControleurNouvelleCourse(VueFenetreNouvelleCourse vue) throws Exception {	
+	public ControleurNouvelleCourse(FenetreNouvelleCourse vue) throws Exception {	
 		this.vue = vue ;
 		this.modele = new modele.Course("nouveau") ;
 		this.etatCourant = Etats.EDITION;
@@ -30,25 +30,19 @@ public class ControleurNouvelleCourse implements ActionListener {
 			case EDITION :
 				if (b.getText().equals("valider")) {
 					this.etatCourant = Etats.CONSULTATION ;
-					this.vue.titreFenetreValide(true);
+					this.vue.titreFenetreSaisi(true);
 					this.vue.setActifComposants(false);
 					this.vue.modifierTexteBoutonsPourEdition(false);
-				/*
-
+					/*
 					try {
-						
-						InputCourse.input() ;
+						InputCourse.input(modele);
 					} catch (Exception exception) {
 						exception.printStackTrace();
 					}
-					
-					//this.vue.saisieValidee = true;
-
 					*/
-
 				}else if (b.getText().equals("annuler")) {
 					System.exit(0);
-				} //else if 
+				} //else if bouton effacer
 
 			case CONSULTATION :
 
@@ -56,9 +50,11 @@ public class ControleurNouvelleCourse implements ActionListener {
 					this.etatCourant = Etats.EDITION ;
 					this.vue.modifierTexteBoutonsPourEdition(true);
 					this.vue.setActifComposants(true);
-					this.vue.titreFenetreValide(false);
+					this.vue.titreFenetreSaisi(false);
 
 				}
+			
+			
 				
 			}
 			
