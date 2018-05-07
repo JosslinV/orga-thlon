@@ -12,7 +12,6 @@ public class Course {
 	private Date date_debut_course;
 	private Date date_fin_course ;
 	private String description_course;
-	private String lieu_course;
 	private int nbParticipants;
 	private String parcours;
 	private String commentaire_course;
@@ -62,14 +61,6 @@ public class Course {
 
 	public void setDescriptionCourse(String descriptionCourse) {
 		this.description_course = descriptionCourse;
-	}
-
-	public String getLieu() {
-		return lieu_course;
-	}
-
-	public void setLieu(String lieu) {
-		this.lieu_course = lieu;
 	}
 
 	public int getNbParticipants() {
