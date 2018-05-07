@@ -14,7 +14,6 @@ public class Course {
 	private String description_course;
 	private int nbParticipants;
 	private String parcours;
-	private String commentaire_course;
 	private float budget;
 	private String type_epreuve;
 	private int duree;
@@ -79,13 +78,6 @@ public class Course {
 		this.parcours = parcours;
 	}
 
-	public String getCommentaire() {
-		return commentaire_course;
-	}
-
-	public void setCommentaire(String commentaire) {
-		this.commentaire_course = commentaire;
-	}
 
 	public float getBudget() {
 		return budget;
