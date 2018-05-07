@@ -66,8 +66,10 @@ public class ControleurNouvelleCourse implements ActionListener {
         Course nouvelleCourse = new modele.Course("nouveau") ;
 
         nouvelleCourse.setNom( String.valueOf( donneesCourses.get("nom_courseVue"))) ;
-        Date d = new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(donneesCourses.get("date_courseVue")));
-        nouvelleCourse.setDate_debut_course(d) ;
+        Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(donneesCourses.get("date_debut_courseVue")));
+        nouvelleCourse.setDate_debut_course(d1) ;
+        Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(donneesCourses.get("date_fin_courseVue")));
+        nouvelleCourse.setDate_fin_course(d2) ;
         nouvelleCourse.setNbParticipants( Integer.parseInt(String.valueOf( donneesCourses.get("nbParticipantsVue")))) ; 
         nouvelleCourse.setAgrement(Boolean.valueOf(String.valueOf( donneesCourses.get("agrementVue")))) ; 
         nouvelleCourse.setNom( String.valueOf( donneesCourses.get("type_epreuveVue"))) ; 
