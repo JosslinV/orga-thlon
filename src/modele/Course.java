@@ -55,13 +55,6 @@ public class Course {
 		this.format = format;
 	}
 	
-	public Date getDateC() {
-		return date_course;
-	}
-
-	public void setDateC(Date dateC) {
-		this.date_course = dateC;
-	}
 
 	public String getDescriptionCourse() {
 		return description_course;
