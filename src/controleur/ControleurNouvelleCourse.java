@@ -2,9 +2,9 @@ package controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-
+import java.text.SimpleDateFormat ;
 import javax.swing.JButton;
-
+import java.util.Date ;
 import vue.FenetreNouvelleCourse;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
@@ -60,6 +60,32 @@ public class ControleurNouvelleCourse implements ActionListener {
 			
 			}
 	
+
+	public Course convertirMap(HashMap <String, Object> donneesCourses) throws Exception {
+
+        Course nouvelleCourse = new modele.Course("nouveau") ;
+
+        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("nom_courseVue"))) ;
+        Date d = new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(donneesCourses.get("date_courseVue")));
+        nouvelleCourse.setDate_debut_course(d) ;
+        nouvelleCourse.setNbParticipants( Integer.parseInt(String.valueOf( donneesCourses.get("nbParticipantsVue")))) ; 
+        nouvelleCourse.setAgrement(Boolean.valueOf(String.valueOf( donneesCourses.get("agrementVue")))) ; 
+        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("type_epreuveVue"))) ; 
+        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("formatVue"))) ; 
+        nouvelleCourse.setDistance_nat( Integer.parseInt(String.valueOf( donneesCourses.get("distance_natVue")))) ; 
+        nouvelleCourse.setDistance_cyc( Integer.parseInt(String.valueOf( donneesCourses.get("distance_cycVue")))) ;
+        nouvelleCourse.setDistance_cou( Integer.parseInt(String.valueOf( donneesCourses.get("distance_couVue")))) ;
+        nouvelleCourse.setNom_ville_nat( String.valueOf( donneesCourses.get("nom_ville_natVue"))) ; 
+        nouvelleCourse.setNom_ville_cyc( String.valueOf( donneesCourses.get("nom_ville_cycVue"))) ; 
+        nouvelleCourse.setNom_ville_cou( String.valueOf( donneesCourses.get("nom_ville_couVue"))) ; 
+        nouvelleCourse.setNom_ville_arr( String.valueOf( donneesCourses.get("nom_ville_arrVue"))) ; 
+        nouvelleCourse.setCP_ville_nat( String.valueOf( donneesCourses.get("CP_ville_natVue"))) ; 
+        nouvelleCourse.setCP_ville_cyc( String.valueOf( donneesCourses.get("CP_ville_cycVue"))) ; 
+        nouvelleCourse.setCP_ville_cou( String.valueOf( donneesCourses.get("CP_ville_couVue"))) ;
+        nouvelleCourse.setCP_ville_arr( String.valueOf( donneesCourses.get("CP_ville_arrVue"))) ; 
+        nouvelleCourse.setDescriptionCourse( String.valueOf( donneesCourses.get("description_courseVue"))) ; 
+        
+	}
 	
 }
 	
