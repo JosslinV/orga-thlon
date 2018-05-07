@@ -22,10 +22,10 @@ public class Course {
 	private String nom_ville_cyc ;
 	private String nom_ville_cou ;
 	private String nom_ville_arr ;
-	private String CP_ville_nat ;
-	private String CP_ville_cyc ;
-	private String CP_ville_cou ;
-	private String CP_ville_arr ;
+	private int CP_ville_nat ;
+	private int CP_ville_cyc ;
+	private int CP_ville_cou ;
+	private int CP_ville_arr ;
 	private int distance_nat ;
 	private int distance_cyc ;
 	private int distance_cou ;
@@ -152,35 +152,35 @@ public class Course {
 		this.nom_ville_arr = nom_ville_arr;
 	}
 
-	public String getCP_ville_nat() {
+	public int getCP_ville_nat() {
 		return CP_ville_nat;
 	}
 
-	public void setCP_ville_nat(String cP_ville_nat) {
+	public void setCP_ville_nat(int cP_ville_nat) {
 		CP_ville_nat = cP_ville_nat;
 	}
 
-	public String getCP_ville_cyc() {
+	public int getCP_ville_cyc() {
 		return CP_ville_cyc;
 	}
 
-	public void setCP_ville_cyc(String cP_ville_cyc) {
+	public void setCP_ville_cyc(int cP_ville_cyc) {
 		CP_ville_cyc = cP_ville_cyc;
 	}
 
-	public String getCP_ville_cou() {
+	public int getCP_ville_cou() {
 		return CP_ville_cou;
 	}
 
-	public void setCP_ville_cou(String cP_ville_cou) {
+	public void setCP_ville_cou(int cP_ville_cou) {
 		CP_ville_cou = cP_ville_cou;
 	}
 
-	public String getCP_ville_arr() {
+	public int getCP_ville_arr() {
 		return CP_ville_arr;
 	}
 
-	public void setCP_ville_arr(String cP_ville_arr) {
+	public void setCP_ville_arr(int cP_ville_arr) {
 		CP_ville_arr = cP_ville_arr;
 	}
 
