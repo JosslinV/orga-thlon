@@ -9,6 +9,7 @@ import vue.FenetreNouvelleCourse;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
 import Database.InputDataBase.InputCourse ;
+import java.util.HashMap ;
 
 public class ControleurNouvelleCourse implements ActionListener {
 
@@ -87,6 +88,7 @@ public class ControleurNouvelleCourse implements ActionListener {
         nouvelleCourse.setCP_ville_arr( String.valueOf( donneesCourses.get("CP_ville_arrVue"))) ; 
         nouvelleCourse.setDescriptionCourse( String.valueOf( donneesCourses.get("description_courseVue"))) ; 
         
+        return nouvelleCourse ;
 	}
 	
 }
