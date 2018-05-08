@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.time.Period;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Properties;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -31,8 +33,15 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
+
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import controleur.ControleurNouvelleCourse;
 import modele.Etat.Etat;
+import vue.parametre.DateLabelFormatter;
+
 
 public class FenetreNouvelleCourse extends JFrame {
 	
@@ -72,13 +81,6 @@ public class FenetreNouvelleCourse extends JFrame {
 	public FenetreNouvelleCourse() throws Exception {
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
-		this.setTitle( id_Course +" : " + "création d'une nouvelle fiche COURSE");
-		this.setLayout(new GridLayout(1,1));		
-		this.pack();
-		this.setSize(750, 650);
-		this.setResizable(true);
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
 				
 		JPanel pNord = new JPanel();
@@ -98,11 +100,10 @@ public class FenetreNouvelleCourse extends JFrame {
 		JPanel spDroite = new JPanel();
 		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, spGauche, spDroite);
 		pCentre.add(sp);
-		sp.setPreferredSize(new Dimension(650,370)); // édition de la dimension du JSplitPane
+		sp.setPreferredSize(new Dimension(830,370)); // édition de la dimension du JSplitPane
 		sp.setOneTouchExpandable(true); //permet de faire glisser le séparateur avec la souris
-		sp.setDividerLocation(270); //fixe la position du séprarateur
-		sp.setBorder(new EmptyBorder(10,20,10,20));
-
+		sp.setDividerLocation(400); //fixe la position du séprarateur
+		
 		//à Gauche du séparateur
 		spGauche.setLayout(new GridBagLayout());
 		GridBagConstraints c1 = new GridBagConstraints();
@@ -114,38 +115,33 @@ public class FenetreNouvelleCourse extends JFrame {
 		c1.gridy = 0;
 		spGauche.add(lbDateDebutCourse, c1);
 		
+		//properties pour JDatePicker
+		Properties p = new Properties();
+		p.put("text.today", "Aujourd'hui");
 		
-		tfDateDebutCourse = new JTextField();
+		UtilDateModel model1 = new UtilDateModel();
+		JDatePanelImpl datePanel1 = new JDatePanelImpl(model1, p);
+		JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
 		c1.gridx = 1;
 		c1.gridy = 0;
-		c1.insets = new Insets(5, 5, 5, 5);
 		c1.anchor = GridBagConstraints.FIRST_LINE_START;
-		tfDateDebutCourse.setMinimumSize(new Dimension(70,20));
-		tfDateDebutCourse.setColumns(8);
-		spGauche.add(tfDateDebutCourse, c1);
-	
-		this.btDateDebutCourse = new JButton();
-		c1.gridx = 2;
-		c1.gridy = 0;
-		this.btDateDebutCourse.setPreferredSize(new Dimension(20,20));
-		this.btDateDebutCourse.setIcon(new ImageIcon("./src/vue/calendar.png"));
-		spGauche.add(this.btDateDebutCourse, c1);
-
+		spGauche.add(datePicker1);
+		
 		JLabel lbDateFinCourse = new JLabel("Date de Fin");
 		c1.anchor = GridBagConstraints.LINE_START;
 		c1.insets = new Insets(5, 5, 5, 5);
 		c1.gridx = 0;
 		c1.gridy = 1;
 		spGauche.add(lbDateFinCourse, c1);
-		
-		tfDateFinCourse = new JTextField();
+
+		UtilDateModel model2 = new UtilDateModel();
+		JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p);
+		JDatePickerImpl datePicker2 = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
 		c1.insets = new Insets(5, 5, 5, 5);
 		c1.anchor = GridBagConstraints.LINE_START;
 		c1.gridx = 1;
 		c1.gridy = 1;
-		tfDateFinCourse.setColumns(8);
-		tfDateFinCourse.setMinimumSize(new Dimension(70,20));
-		spGauche.add(tfDateFinCourse, c1);
+		spGauche.add(datePicker2, c1);
 
 		JLabel lbBudget = new JLabel("Budget");
 		c1.anchor = GridBagConstraints.LINE_START;
