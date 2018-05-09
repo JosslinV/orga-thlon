@@ -2,23 +2,24 @@ package controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-
+import java.text.SimpleDateFormat ;
 import javax.swing.JButton;
-
-import vue.VueFenetreNouvelleCourse;
+import java.util.Date ;
+import vue.FenetreNouvelleCourse;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
 import Database.InputDataBase.InputCourse ;
+import java.util.HashMap ;
 
 public class ControleurNouvelleCourse implements ActionListener {
 
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
-	private VueFenetreNouvelleCourse vue;
+	private FenetreNouvelleCourse vue;
 	private modele.Course modele;
 	
 	
-	public ControleurNouvelleCourse(VueFenetreNouvelleCourse vue) throws Exception {	
+	public ControleurNouvelleCourse(FenetreNouvelleCourse vue) throws Exception {	
 		this.vue = vue ;
 		this.modele = new modele.Course("nouveau") ;
 		this.etatCourant = Etats.EDITION;
@@ -30,25 +31,19 @@ public class ControleurNouvelleCourse implements ActionListener {
 			case EDITION :
 				if (b.getText().equals("valider")) {
 					this.etatCourant = Etats.CONSULTATION ;
-					this.vue.titreFenetreValide(true);
+					this.vue.titreFenetreSaisi(true);
 					this.vue.setActifComposants(false);
 					this.vue.modifierTexteBoutonsPourEdition(false);
-				/*
-
+					/*
 					try {
-						
-						InputCourse.input() ;
+						InputCourse.input(modele);
 					} catch (Exception exception) {
 						exception.printStackTrace();
 					}
-					
-					//this.vue.saisieValidee = true;
-
 					*/
-
 				}else if (b.getText().equals("annuler")) {
 					System.exit(0);
-				} //else if 
+				} //else if bouton effacer
 
 			case CONSULTATION :
 
@@ -56,14 +51,45 @@ public class ControleurNouvelleCourse implements ActionListener {
 					this.etatCourant = Etats.EDITION ;
 					this.vue.modifierTexteBoutonsPourEdition(true);
 					this.vue.setActifComposants(true);
-					this.vue.titreFenetreValide(false);
+					this.vue.titreFenetreSaisi(false);
 
 				}
+			
+			
 				
 			}
 			
 			}
 	
+
+	public Course convertirMap(HashMap <String, Object> donneesCourses) throws Exception {
+
+        Course nouvelleCourse = new modele.Course("nouveau") ;
+
+        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("nom_courseVue"))) ;
+        Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(donneesCourses.get("date_debut_courseVue")));
+        nouvelleCourse.setDate_debut_course(d1) ;
+        Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(donneesCourses.get("date_fin_courseVue")));
+        nouvelleCourse.setDate_fin_course(d2) ;
+        nouvelleCourse.setNbParticipants( Integer.parseInt(String.valueOf( donneesCourses.get("nbParticipantsVue")))) ; 
+        nouvelleCourse.setAgrement(Boolean.valueOf(String.valueOf( donneesCourses.get("agrementVue")))) ; 
+        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("type_epreuveVue"))) ; 
+        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("formatVue"))) ; 
+        nouvelleCourse.setDistance_nat( Integer.parseInt(String.valueOf( donneesCourses.get("distance_natVue")))) ; 
+        nouvelleCourse.setDistance_cyc( Integer.parseInt(String.valueOf( donneesCourses.get("distance_cycVue")))) ;
+        nouvelleCourse.setDistance_cou( Integer.parseInt(String.valueOf( donneesCourses.get("distance_couVue")))) ;
+        nouvelleCourse.setNom_ville_nat( String.valueOf( donneesCourses.get("nom_ville_natVue"))) ; 
+        nouvelleCourse.setNom_ville_cyc( String.valueOf( donneesCourses.get("nom_ville_cycVue"))) ; 
+        nouvelleCourse.setNom_ville_cou( String.valueOf( donneesCourses.get("nom_ville_couVue"))) ; 
+        nouvelleCourse.setNom_ville_arr( String.valueOf( donneesCourses.get("nom_ville_arrVue"))) ; 
+        nouvelleCourse.setCP_ville_nat( String.valueOf( donneesCourses.get("CP_ville_natVue"))) ; 
+        nouvelleCourse.setCP_ville_cyc( String.valueOf( donneesCourses.get("CP_ville_cycVue"))) ; 
+        nouvelleCourse.setCP_ville_cou( String.valueOf( donneesCourses.get("CP_ville_couVue"))) ;
+        nouvelleCourse.setCP_ville_arr( String.valueOf( donneesCourses.get("CP_ville_arrVue"))) ; 
+        nouvelleCourse.setDescriptionCourse( String.valueOf( donneesCourses.get("description_courseVue"))) ; 
+        
+        return nouvelleCourse ;
+	}
 	
 }
 	

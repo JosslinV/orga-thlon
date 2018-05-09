@@ -19,7 +19,7 @@ public class Tache {
 	private int tempsRestant;
 	private Date dateCreationTache;
 	private String etatAvancementGlobal;
-	
+	//attributs manquants: responsable de la tâche
 
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;

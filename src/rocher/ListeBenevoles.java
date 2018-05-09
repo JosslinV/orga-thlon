@@ -11,9 +11,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import java.awt.FlowLayout;
 
 public class ListeBenevoles extends JPanel {
-
+	private JScrollPane panelPrincipal;
 	/**
 	 * Create the panel.
 	 */
@@ -29,54 +31,59 @@ public class ListeBenevoles extends JPanel {
 		lblBenevoles.setHorizontalAlignment(SwingConstants.LEFT);
 		BandeauHaut_Benevoles.add(lblBenevoles);
 		
-		JPanel panelPrincipal = new JPanel();
+		ControlleurTableauBenevoles controleur = new ControlleurTableauBenevoles(this,ControlleurTableauBenevoles.EtatsVuesListe.MATERIEL);
+		this.panelPrincipal = new VueTableau(controleur.getModele());
 		add(panelPrincipal, BorderLayout.CENTER);
-		panelPrincipal.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panelPrincipal.add(panel, BorderLayout.SOUTH);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
 		
-		JButton btnNewButton = new JButton("Supprimer contact");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 0;
-		panel.add(btnNewButton, gbc_btnNewButton);
 		
-		JButton btnEditer = new JButton("Editer");
-		GridBagConstraints gbc_btnEditer = new GridBagConstraints();
-		gbc_btnEditer.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEditer.gridx = 1;
-		gbc_btnEditer.gridy = 0;
-		panel.add(btnEditer, gbc_btnEditer);
+		JPanel panel_bas_boutons = new JPanel();
+		add(panel_bas_boutons, BorderLayout.SOUTH);
+		GridBagLayout gbl_panel_bas_boutons = new GridBagLayout();
+		gbl_panel_bas_boutons.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_panel_bas_boutons.rowHeights = new int[]{0, 0, 0};
+		gbl_panel_bas_boutons.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_bas_boutons.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel_bas_boutons.setLayout(gbl_panel_bas_boutons);
 		
-		JButton btnAjouterContact = new JButton("Ajouter contact");
-		GridBagConstraints gbc_btnAjouterContact = new GridBagConstraints();
-		gbc_btnAjouterContact.insets = new Insets(0, 0, 5, 0);
-		gbc_btnAjouterContact.gridx = 2;
-		gbc_btnAjouterContact.gridy = 0;
-		panel.add(btnAjouterContact, gbc_btnAjouterContact);
+		JButton bt_supprimer = new JButton("Supprimer");
+		GridBagConstraints gbc_bt_supprimer = new GridBagConstraints();
+		gbc_bt_supprimer.insets = new Insets(0, 0, 5, 5);
+		gbc_bt_supprimer.gridx = 0;
+		gbc_bt_supprimer.gridy = 0;
+		bt_supprimer.addActionListener(controleur);
+		panel_bas_boutons.add(bt_supprimer, gbc_bt_supprimer);
 		
-		JButton btnRetour = new JButton("Retour");
-		GridBagConstraints gbc_btnRetour = new GridBagConstraints();
-		gbc_btnRetour.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRetour.gridx = 0;
-		gbc_btnRetour.gridy = 1;
-		panel.add(btnRetour, gbc_btnRetour);
+		JButton bt_Editer = new JButton("Editer");
+		GridBagConstraints gbc_bt_Editer = new GridBagConstraints();
+		gbc_bt_Editer.insets = new Insets(0, 0, 5, 5);
+		gbc_bt_Editer.gridx = 1;
+		gbc_bt_Editer.gridy = 0;
+		panel_bas_boutons.add(bt_Editer, gbc_bt_Editer);
 		
-		JPanel panel_1 = new JPanel();
-		panelPrincipal.add(panel_1, BorderLayout.CENTER);
+		JButton bt_Ajouter = new JButton("Ajouter");
+		GridBagConstraints gbc_bt_Ajouter = new GridBagConstraints();
+		gbc_bt_Ajouter.insets = new Insets(0, 0, 5, 0);
+		gbc_bt_Ajouter.gridx = 2;
+		gbc_bt_Ajouter.gridy = 0;
+		bt_Ajouter.addActionListener(controleur);
+		panel_bas_boutons.add(bt_Ajouter, gbc_bt_Ajouter);
+		
+		JButton bt_Retour = new JButton("Retour");
+		GridBagConstraints gbc_bt_Retour = new GridBagConstraints();
+		gbc_bt_Retour.insets = new Insets(0, 0, 0, 5);
+		gbc_bt_Retour.gridx = 0;
+		gbc_bt_Retour.gridy = 1;
+		panel_bas_boutons.add(bt_Retour, gbc_bt_Retour);
+		
+		//JPanel panel_1 = new VueTableau();
+		//panelPrincipal.add(panel_1, BorderLayout.CENTER);
+	
 
+	}
+	
+	public VueTableau getPanelPrincipal(){
+		return (VueTableau) this.panelPrincipal;
 	}
 
 }

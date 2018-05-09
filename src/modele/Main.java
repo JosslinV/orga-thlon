@@ -5,14 +5,14 @@ import Database.InputDataBase.InputCourse;
 import Database.InputDataBase.InputTache;
 import Database.RequestDataBase.RequestContactExt;
 import Database.RequestDataBase.RequestCourse;
-import Database.RequestDataBase.UpdateDatabaseContactExt;
+//import Database.RequestDataBase.UpdateDatabaseContactExt;
 import modele.contacts.Contact;
 import modele.contacts.ContactExterne;
 
 public class Main {
 	
     public static void main(String[] args) throws Exception {
-    	RequestContactExt req = new RequestContactExt();
+    	/*RequestContactExt req = new RequestContactExt();
     	Contact test = req.request(1);
     	Contact test2 = new ContactExterne("Roger","Chevalier");
     	InputContact.input(test2);
@@ -24,4 +24,22 @@ public class Main {
     	up.UpdateDatabaseContactExt((ContactExterne)test2);
     }
     
+    
+    
 }
+    	*/
+    
+    	
+    	modele.Course test = new Course("test") ;
+    
+    	InputCourse in = new InputCourse() ;
+    	
+    	in.inputCourse(test) ;
+    	
+    	
+    	
+    }
+    
+}
+    	
+    	

@@ -203,7 +203,7 @@ public class Course2 {
 	        throw e;
 	    } finally {
 	        close();
-	    }
+	    }  
 
 		}
 		
@@ -214,7 +214,7 @@ public class Course2 {
 	}
 
 	public String getLieu(int id) throws Exception {
-		
+		  
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection("jdbc:mysql://infra.info.iut-tlse3.fr:3306/Orgathlon?" + "user=ptutas3&password=Mdp2ptutas3");

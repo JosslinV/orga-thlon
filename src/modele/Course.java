@@ -9,12 +9,11 @@ public class Course {
 	
 	private String nom_course;
 	private String format;
-	private Date date_course;
+	private Date date_debut_course;
+	private Date date_fin_course ;
 	private String description_course;
-	private String lieu_course;
 	private int nbParticipants;
 	private String parcours;
-	private String commentaire_course;
 	private float budget;
 	private String type_epreuve;
 	private int duree;
@@ -54,13 +53,6 @@ public class Course {
 		this.format = format;
 	}
 	
-	public Date getDateC() {
-		return date_course;
-	}
-
-	public void setDateC(Date dateC) {
-		this.date_course = dateC;
-	}
 
 	public String getDescriptionCourse() {
 		return description_course;
@@ -68,14 +60,6 @@ public class Course {
 
 	public void setDescriptionCourse(String descriptionCourse) {
 		this.description_course = descriptionCourse;
-	}
-
-	public String getLieu() {
-		return lieu_course;
-	}
-
-	public void setLieu(String lieu) {
-		this.lieu_course = lieu;
 	}
 
 	public int getNbParticipants() {
@@ -94,13 +78,6 @@ public class Course {
 		this.parcours = parcours;
 	}
 
-	public String getCommentaire() {
-		return commentaire_course;
-	}
-
-	public void setCommentaire(String commentaire) {
-		this.commentaire_course = commentaire;
-	}
 
 	public float getBudget() {
 		return budget;
@@ -239,4 +216,20 @@ public class Course {
 		this.id_course = id;
 	}
 
+	
+	public Date getDate_debut_course() {
+		return date_debut_course;
+	}
+
+	public void setDate_debut_course(Date date_debut_course) {
+		this.date_debut_course = date_debut_course;
+	}
+
+	public Date getDate_fin_course() {
+		return date_fin_course;
+	}
+
+	public void setDate_fin_course(Date date_fin_course) {
+		this.date_fin_course = date_fin_course;
+	}
 }
