@@ -9,12 +9,12 @@ public class AppliTest {
 		//new FenetreNouvelleSousTache();
 		//new FenetreNouveauMateriel();
 		FenetreNouvelleCourse fen = new FenetreNouvelleCourse();
-		fen.setTitle("ok");
+		/*fen.setTitle("ok");
 		fen.pack();
 		fen.setSize(850, 500);
 		fen.setResizable(true);
 		fen.setVisible(true);
-		
+		*/
 		
 		//new FenetreNouvelleTache();
 

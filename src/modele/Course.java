@@ -1,5 +1,6 @@
 package modele;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -9,8 +10,8 @@ public class Course {
 	
 	private String nom_course;
 	private String format;
-	private Date date_debut_course;
-	private Date date_fin_course ;
+	private LocalDate date_debut_course;
+	private LocalDate date_fin_course ;
 	private String description_course;
 	private int nbParticipants;
 	private String parcours;
@@ -217,19 +218,19 @@ public class Course {
 	}
 
 	
-	public Date getDate_debut_course() {
+	public LocalDate getDate_debut_course() {
 		return date_debut_course;
 	}
 
-	public void setDate_debut_course(Date date_debut_course) {
-		this.date_debut_course = date_debut_course;
+	public void setDate_debut_course(LocalDate d1) {
+		this.date_debut_course = d1;
 	}
 
-	public Date getDate_fin_course() {
+	public LocalDate getDate_fin_course() {
 		return date_fin_course;
 	}
 
-	public void setDate_fin_course(Date date_fin_course) {
-		this.date_fin_course = date_fin_course;
+	public void setDate_fin_course(LocalDate d2) {
+		this.date_fin_course = d2;
 	}
 }
