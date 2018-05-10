@@ -110,20 +110,32 @@ public class Vue_nouvelleTache extends JPanel {
 		pNord.add(this.tfLibelle, cNord1);
 		
 		GridBagConstraints cNord2 = new GridBagConstraints();
-		cNord2.insets = new Insets(5, 10, 5, 5);
+		cNord2.insets = new Insets(5, 5, 5, 5);
 		cNord2.anchor = GridBagConstraints.LINE_START;
 		
-		JLabel lbResponsable = new JLabel("Responsable :");
-		lbResponsable.setPreferredSize(new Dimension(200, 14));
 		cNord2.gridx = 0;
 		cNord2.gridy = 2;
+		cNord2.anchor = GridBagConstraints.LINE_START;
+		pNord.add(new JLabel("Tache Complétée"), cNord2 );
+		
+		this.cbTacheCompletee = new JCheckBox();
+		cNord2.gridx = 1;
+		cNord2.gridy = 2;
+		cNord2.anchor = GridBagConstraints.LINE_START;
+		pNord.add(this.cbTacheCompletee, cNord2 );
+		
+		JLabel lbResponsable = new JLabel("Responsable :");
+		lbResponsable.setPreferredSize(new Dimension(80, 14));
+		cNord2.gridx = 2;
+		cNord2.gridy = 2;
+		cNord2.anchor = GridBagConstraints.LINE_END;
 		pNord.add(lbResponsable, cNord2);
 		
 		JPanel pResponsable = new JPanel();
 		pResponsable.setLayout(new FlowLayout());
-		cNord2.gridx = 1;
+		cNord2.gridx = 3;
 		cNord2.gridy = 2;
-		cNord2.gridwidth = 2;
+		cNord2.gridwidth = 3;
 		cNord2.weightx = 50;
 		JLabel lbResponsablenom = new JLabel("Nom");
 		lbResponsablenom.setPreferredSize(new Dimension(30, 14));
