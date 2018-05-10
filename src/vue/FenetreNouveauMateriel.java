@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 public class FenetreNouveauMateriel extends JFrame{
 	public FenetreNouveauMateriel() {
-		this.setTitle("création d'une nouvelle fiche MATERIEL");
+		this.setTitle("crï¿½ation d'une nouvelle fiche MATERIEL");
 		this.setLayout(new GridLayout(1,1));
 		this.add(new VueNouveauMateriel());
 

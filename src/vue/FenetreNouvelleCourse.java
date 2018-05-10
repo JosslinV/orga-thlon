@@ -12,11 +12,9 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -30,11 +28,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
-import controleur.ControleurNouvelleCourse;
-import modele.Etat.Etat;
 
 public class FenetreNouvelleCourse extends JFrame {
 	
@@ -57,10 +52,10 @@ public class FenetreNouvelleCourse extends JFrame {
 	private String villeCourseAPied;
 	private String villeArrivee;
 	private JLabel lbTitreCourse;
-	private int distanceNatation;
-	private int distanceCyclisme;
-	private int distanceCourseAPied;
-	private int distanceArrivee;
+	private float distanceNatation;
+	private float distanceCyclisme;
+	private float distanceCourseAPied;
+	private float distanceArrivee;
 	private int cpNatation;
 	private int cpCyclisme;
 	private int cpCourseAPied;
@@ -72,9 +67,9 @@ public class FenetreNouvelleCourse extends JFrame {
 
 
 	public FenetreNouvelleCourse() throws Exception {
-		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
+		//ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
-		this.setTitle( id_Course +" : " + "création d'une nouvelle fiche COURSE");
+		this.setTitle( id_Course +" : " + "crï¿½ation d'une nouvelle fiche COURSE");
 		this.setLayout(new GridLayout(1,1));		
 		this.pack();
 		this.setSize(750, 650);
@@ -100,12 +95,12 @@ public class FenetreNouvelleCourse extends JFrame {
 		JPanel spDroite = new JPanel();
 		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, spGauche, spDroite);
 		pCentre.add(sp);
-		sp.setPreferredSize(new Dimension(650,370)); // édition de la dimension du JSplitPane
-		sp.setOneTouchExpandable(true); //permet de faire glisser le séparateur avec la souris
-		sp.setDividerLocation(270); //fixe la position du séprarateur
+		sp.setPreferredSize(new Dimension(650,370)); // ï¿½dition de la dimension du JSplitPane
+		sp.setOneTouchExpandable(true); //permet de faire glisser le sï¿½parateur avec la souris
+		sp.setDividerLocation(270); //fixe la position du sï¿½prarateur
 		sp.setBorder(new EmptyBorder(10,20,10,20));
 
-		//à Gauche du séparateur
+		//ï¿½ Gauche du sï¿½parateur
 		spGauche.setLayout(new GridBagLayout());
 		GridBagConstraints c1 = new GridBagConstraints();
 
@@ -115,7 +110,6 @@ public class FenetreNouvelleCourse extends JFrame {
 		c1.gridx = 0;
 		c1.gridy = 0;
 		spGauche.add(lbDateDebutCourse, c1);
-		
 		
 		tfDateDebutCourse = new JTextField();
 		c1.gridx = 1;
@@ -165,7 +159,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		tfBudget.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfBudget, c1);
 		
-		JLabel lbDevise = new JLabel("€"); // ComboBox euro, livre sterling, couronne etc ?
+		JLabel lbDevise = new JLabel("ï¿½"); // ComboBox euro, livre sterling, couronne etc ?
 		c1.gridx = 2;
 		c1.gridy = 2;
 		lbDevise.setPreferredSize(new Dimension(20,20));
@@ -207,7 +201,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		c1.gridwidth = 4;
 		spGauche.add(spCommentaireCourse, c1);
 
-		//à Droite du séparateur
+		//ï¿½ Droite du sï¿½parateur
 		spDroite.setLayout(new GridBagLayout());
 		GridBagConstraints c2 = new GridBagConstraints();
 		
@@ -268,7 +262,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		Object [][] donneesParcours = {
 				{ "Natation",distanceNatation,villeNatation,cpNatation},
 				{"Cyclisme",distanceCyclisme,villeCyclisme,cpCyclisme},
-				{"Course à pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
+				{"Course ï¿½ pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
 				{"Arriv\u00E9e",distanceArrivee,villeArrivee,cpArrivee}
 		};
 		this.parcoursTab = new JTable(donneesParcours, titresColonnes);
@@ -294,8 +288,8 @@ public class FenetreNouvelleCourse extends JFrame {
 		pSud.add(this.btAnnuler);
 		pSud.add(this.btValider);
 		
-		this.btAnnuler.addActionListener(controleur);
-		this.btValider.addActionListener(controleur);
+		//this.btAnnuler.addActionListener(controleur);
+		//this.btValider.addActionListener(controleur);
 		//this.btDateDebutCourse.addActionListener(controleur);
 
 
@@ -309,7 +303,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		this.tfFormatCourse.setEnabled(actif);
 		this.taCommentaireCourse.setEnabled(actif);
 		this.parcoursTab.setEnabled(actif);
-		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'écition du spinner en mode consultation
+		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'ï¿½cition du spinner en mode consultation
 		this.cbAgrement.setEnabled(actif);
 		this.btDateDebutCourse.setEnabled(actif);
 	}
@@ -337,15 +331,13 @@ public class FenetreNouvelleCourse extends JFrame {
 	
 	
 	public HashMap<String, Object> getDonneesCourse() throws ParseException {
-		System.out.println("données récupérées");
+		System.out.println("donnï¿½es rï¿½cupï¿½rï¿½es");
 		HashMap<String,Object> donneesCourse = new HashMap<String, Object>();
 		donneesCourse.put("id_Course", this.id_Course);
 		donneesCourse.put("nom_courseVue", this.tfTitreCourse.getText());
-		//Date dateCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebutCourse.getText());
-		LocalDate dateCourse = LocalDate.parse(this.tfDateDebutCourse.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
+		Date dateCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebutCourse.getText());
 		donneesCourse.put("date_debut_courseVue",dateCourse ); 
-		LocalDate dateFinCourse = LocalDate.parse(this.tfDateFinCourse.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu")) ;
-		//Date dateFinCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateFinCourse.getText());	
+		Date dateFinCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateFinCourse.getText());	
 		donneesCourse.put("date_fin_courseVue",dateFinCourse ); 
 		double budget = Double.parseDouble(this.tfBudget.getText());
 		donneesCourse.put("budgetVue", budget);	

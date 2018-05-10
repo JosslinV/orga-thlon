@@ -6,13 +6,12 @@ import javax.swing.JFrame;
 
 public class FenetreNouveauBenevole extends JFrame{
 	public FenetreNouveauBenevole() {
-		this.setTitle("création d'une nouvelle fiche BENEVOLE");
+		VueNouveauContactBenevole vue = new VueNouveauContactBenevole(); //en paramÃ¨tre du constructeur?
+		this.setTitle(vue.getIdBenevole() + ": " + "crï¿½ation d'une nouvelle fiche BENEVOLE");
 		this.setLayout(new GridLayout(1,1));
-		this.add(new VueNouveauContactBenevole());
-		
-		
+		this.add(vue);
 		this.pack();
-		this.setSize(750, 400);
+		this.setSize(900, 500);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
