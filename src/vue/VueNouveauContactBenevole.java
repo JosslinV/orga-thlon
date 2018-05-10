@@ -40,7 +40,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.setBorder(new EmptyBorder(0,20,0,20));
 		GridBagConstraints c = new GridBagConstraints();
 		
-		//ligne 0 : Nom ((Jlabel + JTextField) + Tï¿½lï¿½phone (Jlabel + JTextField) 
+		//ligne 0 : Nom ((Jlabel + JTextField) + Téléphone (Jlabel + JTextField) 
 		JLabel lbNom = new JLabel("Nom");
 		c.insets = new Insets(5, 0, 5, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -57,7 +57,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		//c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(tfNom, c);
 		
-		JLabel lbTelephone = new JLabel("Tï¿½lï¿½phone");
+		JLabel lbTelephone = new JLabel("Téléphone");
 		lbTelephone.setBorder(new EmptyBorder(0,40,0,0));
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 4;
@@ -73,8 +73,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(tfTelephone, c);
 		
-		//ligne 1 : Prï¿½nom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
-		JLabel lbPrenom = new JLabel("Prï¿½nom");
+		//ligne 1 : Prénom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
+		JLabel lbPrenom = new JLabel("Prénom");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
@@ -107,8 +107,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(tfMail, c);
 		
 		this.add(panneauPrincipal, BorderLayout.CENTER);
-		//ligne 2 : Rï¿½le (JLabel + JComboList) + Adresse (JLabel + JTextField)
-		JLabel lbRole = new JLabel("Rï¿½le");
+		//ligne 2 : Réle (JLabel + JComboList) + Adresse (JLabel + JTextField)
+		JLabel lbRole = new JLabel("Réle");
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
 		c.gridy = 2;
@@ -147,7 +147,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		p.add(tfAdresse2);
 		
 		//ligne 4 : Equipe (JLabel + JTextField) + CodePostal (JLabel + JTextField)
-		lbResponsable = new JLabel("Responsable d'ï¿½quipe");
+		lbResponsable = new JLabel("Responsable d'équipe");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 4;
@@ -209,7 +209,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		panneauPrincipal.add(tfCP, c);
 		
-		//ligne 8 : bouton "Equipe" + tableau Prï¿½t Matï¿½riel
+		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
 		b = new JButton("");
 		c.gridx = 1;
 		c.gridy = 8;
@@ -235,12 +235,12 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(p,c);
 		JPanel np = new JPanel();
 		p.add(np, BorderLayout.NORTH);
-		lb = new JLabel("Prï¿½t de matï¿½riel");
+		lb = new JLabel("Prét de matériel");
 		np.add(lb); 
 		JPanel cp = new JPanel();
 		cp.setBackground(Color.BLUE);
 		p.add(cp, BorderLayout.CENTER);
-		String titresColonnes [] = {"Date", "Description","Tï¿½che"};
+		String titresColonnes [] = {"Date", "Description","Tâche"};
 		Object [][] donneesPretMateriel = {
 				{"","",""},
 				{"","",""},

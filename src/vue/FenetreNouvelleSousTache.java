@@ -9,7 +9,7 @@ public class FenetreNouvelleSousTache extends JFrame{
 
 	public FenetreNouvelleSousTache() {
 		VueNouvelleSousTache vue = new VueNouvelleSousTache();
-		this.setTitle(vue.getId_ssTache() +" : " + "crï¿½ation d'une nouvelle fiche SOUS-TACHE");
+		this.setTitle(vue.getId_ssTache() +" : " + "création d'une nouvelle fiche SOUS-TACHE");
 		this.setLayout(new GridLayout(1,1));
 		this.add(new VueNouvelleSousTache());
 		this.pack();

@@ -48,7 +48,7 @@ public class VueNouvelleSousTache extends JPanel {
 		cNord.gridy = 1;
 		cNord.insets = new Insets(5, 5, 5, 5);
 		cNord.anchor = GridBagConstraints.LINE_START;
-		this.add(new JLabel("Sous-Tache ComplÃ©tÃ©e"), cNord );
+		this.add(new JLabel("Sous-Tache Complétée"), cNord );
 		
 		this.cbSSTacheCompletee = new JCheckBox();
 		cNord.gridx = 1;

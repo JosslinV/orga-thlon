@@ -77,7 +77,7 @@ public class Vue_nouvelleTache extends JPanel {
 		GridBagConstraints cNord1 = new GridBagConstraints();
 		cNord1.insets = new Insets(5, 5, 5, 5);
 		
-		JLabel lbIdTache = new JLabel("T\u00E2che nï¿½" + this.id_Tache);
+		JLabel lbIdTache = new JLabel("T\u00E2che n°" + this.id_Tache);
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_START;
 		cNord1.weightx = 10;
 		cNord1.gridx = 0;
@@ -91,7 +91,7 @@ public class Vue_nouvelleTache extends JPanel {
 		cNord1.gridy = 0;
 		pNord.add(lbCreateur, cNord1);
 		
-		JLabel lbLibelle = new JLabel("Libellï¿½ ");
+		JLabel lbLibelle = new JLabel("Libellé ");
 		cNord1.anchor = GridBagConstraints.LINE_START;
 		cNord1.weightx = 30;
 		cNord1.gridx = 0;
@@ -129,8 +129,8 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfResponsableNom = new JTextField();
 		this.tfResponsableNom.setColumns(10);
 		pResponsable.add(this.tfResponsableNom);		
-		JLabel lbResponsableprenom = new JLabel("PrÃ©nom");
-		lbResponsableprenom.setPreferredSize(new Dimension(50, 14));
+		JLabel lbResponsableprenom = new JLabel("Prénom");
+		lbResponsableprenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsableprenom);		
 		this.tfResponsablePrenom = new JTextField();
 		this.tfResponsablePrenom.setColumns(10);
@@ -251,7 +251,7 @@ public class Vue_nouvelleTache extends JPanel {
 		cEst.gridy = 4;
 		pEst.add(this.btAjouterSousTaches, cEst);
 		
-		this.mapSousTaches = new TreeMap<String, Float>(); //clÃ© : libellÃ© de la sstÃ¢che, valeur : pourcentage (de complÃ©tion)
+		this.mapSousTaches = new TreeMap<String, Float>(); //clé : libellé de la sstâche, valeur : pourcentage (de complétion)
 		String titresColonnesSsTaches [] = {"Libell\u00E9", " % "};
 		Object [][] donneesSousTaches = new Object [100][2];
 		Iterator <String> itLibelles = mapSousTaches.keySet().iterator();

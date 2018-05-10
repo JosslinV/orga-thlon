@@ -69,7 +69,7 @@ public class FenetreNouvelleCourse extends JFrame {
 	public FenetreNouvelleCourse() throws Exception {
 		//ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
-		this.setTitle( id_Course +" : " + "crï¿½ation d'une nouvelle fiche COURSE");
+		this.setTitle( id_Course +" : " + "création d'une nouvelle fiche COURSE");
 		this.setLayout(new GridLayout(1,1));		
 		this.pack();
 		this.setSize(750, 650);
@@ -95,12 +95,12 @@ public class FenetreNouvelleCourse extends JFrame {
 		JPanel spDroite = new JPanel();
 		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, spGauche, spDroite);
 		pCentre.add(sp);
-		sp.setPreferredSize(new Dimension(650,370)); // ï¿½dition de la dimension du JSplitPane
-		sp.setOneTouchExpandable(true); //permet de faire glisser le sï¿½parateur avec la souris
-		sp.setDividerLocation(270); //fixe la position du sï¿½prarateur
+		sp.setPreferredSize(new Dimension(650,370)); // édition de la dimension du JSplitPane
+		sp.setOneTouchExpandable(true); //permet de faire glisser le séparateur avec la souris
+		sp.setDividerLocation(270); //fixe la position du séprarateur
 		sp.setBorder(new EmptyBorder(10,20,10,20));
 
-		//ï¿½ Gauche du sï¿½parateur
+		//é Gauche du séparateur
 		spGauche.setLayout(new GridBagLayout());
 		GridBagConstraints c1 = new GridBagConstraints();
 
@@ -159,7 +159,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		tfBudget.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfBudget, c1);
 		
-		JLabel lbDevise = new JLabel("ï¿½"); // ComboBox euro, livre sterling, couronne etc ?
+		JLabel lbDevise = new JLabel("é"); // ComboBox euro, livre sterling, couronne etc ?
 		c1.gridx = 2;
 		c1.gridy = 2;
 		lbDevise.setPreferredSize(new Dimension(20,20));
@@ -201,7 +201,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		c1.gridwidth = 4;
 		spGauche.add(spCommentaireCourse, c1);
 
-		//ï¿½ Droite du sï¿½parateur
+		//é Droite du séparateur
 		spDroite.setLayout(new GridBagLayout());
 		GridBagConstraints c2 = new GridBagConstraints();
 		
@@ -262,7 +262,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		Object [][] donneesParcours = {
 				{ "Natation",distanceNatation,villeNatation,cpNatation},
 				{"Cyclisme",distanceCyclisme,villeCyclisme,cpCyclisme},
-				{"Course ï¿½ pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
+				{"Course é pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
 				{"Arriv\u00E9e",distanceArrivee,villeArrivee,cpArrivee}
 		};
 		this.parcoursTab = new JTable(donneesParcours, titresColonnes);
@@ -303,7 +303,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		this.tfFormatCourse.setEnabled(actif);
 		this.taCommentaireCourse.setEnabled(actif);
 		this.parcoursTab.setEnabled(actif);
-		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'ï¿½cition du spinner en mode consultation
+		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'écition du spinner en mode consultation
 		this.cbAgrement.setEnabled(actif);
 		this.btDateDebutCourse.setEnabled(actif);
 	}
@@ -331,7 +331,7 @@ public class FenetreNouvelleCourse extends JFrame {
 	
 	
 	public HashMap<String, Object> getDonneesCourse() throws ParseException {
-		System.out.println("donnï¿½es rï¿½cupï¿½rï¿½es");
+		System.out.println("données récupérées");
 		HashMap<String,Object> donneesCourse = new HashMap<String, Object>();
 		donneesCourse.put("id_Course", this.id_Course);
 		donneesCourse.put("nom_courseVue", this.tfTitreCourse.getText());
