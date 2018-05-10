@@ -66,6 +66,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private JButton btContact;
 	private JButton btMateriel;
 	private JTable tabMateriel;
+	private JButton btSupprimerSousTaches;
 
 	public Vue_nouvelleTache()  {
 		//ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
@@ -257,13 +258,19 @@ public class Vue_nouvelleTache extends JPanel {
 		cEst.gridy = 4;
 		pEst.add(lbSsTaches, cEst);
 		
-		this.btAjouterSousTaches = new JButton("+");
-		//this.btAjouterSousTaches.addActionListener(controleur);
-		cEst.insets = new Insets(10, 85, 5, 5);
-		cEst.fill = GridBagConstraints.WEST;
+		JPanel pAjouterSupprimerSSTache = new JPanel();
 		cEst.gridx = 1;
 		cEst.gridy = 4;
-		pEst.add(this.btAjouterSousTaches, cEst);
+		//cEst.gridwidth = 2;
+		cEst.insets = new Insets(10, 85, 5, 5);
+		cEst.fill = GridBagConstraints.WEST;
+		pEst.add(pAjouterSupprimerSSTache, cEst);		
+		this.btAjouterSousTaches = new JButton("+");
+		//this.btAjouterSousTaches.addActionListener(controleur);
+		pAjouterSupprimerSSTache.add(this.btAjouterSousTaches);		
+		this.btSupprimerSousTaches = new JButton("-");
+		//this.btSupprimerSousTaches.addActionListener(controleur);
+		pAjouterSupprimerSSTache.add(this.btSupprimerSousTaches);
 		
 		this.mapSousTaches = new TreeMap<String, Float>(); //clé : libellé de la sstâche, valeur : pourcentage (de complétion)
 		String titresColonnesSsTaches [] = {"Libell\u00E9", " % "};
