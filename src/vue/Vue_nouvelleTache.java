@@ -120,6 +120,8 @@ public class Vue_nouvelleTache extends JPanel {
 		pNord.add(new JLabel("Tache Complétée"), cNord2 );
 		
 		this.cbTacheCompletee = new JCheckBox();
+		this.cbTacheCompletee.setSelected(this.estTacheCompleteeAutomatiquement());
+		this.cbTacheCompletee.setSelected(this.estTacheCompleteeManuellement());
 		cNord2.gridx = 1;
 		cNord2.gridy = 2;
 		cNord2.anchor = GridBagConstraints.LINE_START;
@@ -480,7 +482,9 @@ public class Vue_nouvelleTache extends JPanel {
 		return true;
 	}
 	
-	
+	public boolean estTacheCompleteeManuellement() {
+			return (this.slAvancementTache.getValue() == 100 );	
+	}
 	
 
 
