@@ -39,6 +39,8 @@ public class Vue_nouvelleTache extends JPanel {
 	
 	private static final int PRIORITE_MAX = 5;
 	private static final int NB_MAX_SOUSTACHES = 100;
+	private static final int NB_MAX_EQUIPE = 50;
+	private static final int NB_MAX_MATERIEL = 50;
 	private int id_Tache;
 	private String auteur_Tache;
 	private JTextField tfLibelle;
@@ -287,11 +289,12 @@ public class Vue_nouvelleTache extends JPanel {
 		this.slAvancementTache.setMaximum(200);
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
 		pEtatAvancement.add(this.slAvancementTache);
-		pOuest.add(pEtatAvancement, BorderLayout.NORTH);	
+		pOuest.add(pEtatAvancement, BorderLayout.NORTH);
 		
+		JPanel pEquipeMateriel = new JPanel();
+		pEquipeMateriel.setLayout(new GridLayout(2,1));
+
 		JPanel pEquipe = new JPanel();
-		pEquipe.setBackground(Color.RED);
-		/*
 		pEquipe.setLayout(new BorderLayout());
 		JLabel lbEquipe = new JLabel("Equipe");
 		lbEquipe.setPreferredSize(new Dimension(70, 25));
@@ -306,14 +309,12 @@ public class Vue_nouvelleTache extends JPanel {
 		};	
 		this.tabEquipe = new JTable(donneesEquipe, titresColonnesEquipe);
 		pEquipe.add(new JScrollPane(this.tabEquipe));
-		*/
-		pOuest.add(pEquipe, BorderLayout.CENTER);	
 		
 		JPanel pMateriel = new JPanel();
-		pMateriel.setBackground(Color.BLUE);
-		
-		//pMateriel.setLayout(new BorderLayout());
-		pMateriel.add(new JLabel("Mat\u00E9riel"));
+		pMateriel.setLayout(new BorderLayout());
+		JLabel lbMateriel = new JLabel("Mat\u00E9riel");
+		lbMateriel.setPreferredSize(new Dimension(70, 25));
+		pMateriel.add(lbMateriel, BorderLayout.NORTH);
 		String titresColonnesMateriel [] = {"libelle", "Qt\u00E9", "Nom", "Pr\u00E9nom"};
 		String [][] donneesMateriel = new String [50][4];
 		for (int ligne = 0; ligne < 50  ; ligne++ ) {
@@ -324,9 +325,10 @@ public class Vue_nouvelleTache extends JPanel {
 		};	
 		this.tabMateriel = new JTable(donneesMateriel, titresColonnesMateriel);
 		pMateriel.add(new JScrollPane(this.tabMateriel));
-		
-		pOuest.add(pMateriel, BorderLayout.SOUTH);
-		
+		pEquipeMateriel.add(pEquipe);	
+		pEquipeMateriel.add(pMateriel);
+		pOuest.add(pEquipeMateriel);	
+
 		
 		JPanel pCentre = new JPanel();
 		pCentre.setBorder(new CompoundBorder(null, new EmptyBorder(50, 50, 50, 50)));
@@ -352,6 +354,7 @@ public class Vue_nouvelleTache extends JPanel {
 		cSud.anchor = GridBagConstraints.LINE_START;
 		
 		JLabel lbCommentaire = new JLabel("Commentaire");
+		lbCommentaire.setPreferredSize(new Dimension(100, 25));
 		cSud.anchor = GridBagConstraints.LINE_START;
 		cSud.insets = new Insets(0, 0, 5, 5);
 		cSud.gridx = 0;
