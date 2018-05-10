@@ -327,7 +327,7 @@ public class Vue_nouvelleTache extends JPanel {
 		JLabel lbMateriel = new JLabel("Mat\u00E9riel");
 		lbMateriel.setPreferredSize(new Dimension(70, 25));
 		pMateriel.add(lbMateriel, BorderLayout.NORTH);
-		String titresColonnesMateriel [] = {"libelle", "Qt\u00E9", "Nom", "Pr\u00E9nom"};
+		String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
 		String [][] donneesMateriel = new String [50][4];
 		for (int ligne = 0; ligne < 50  ; ligne++ ) {
 			donneesMateriel[ligne][0]= "";
@@ -456,6 +456,10 @@ public class Vue_nouvelleTache extends JPanel {
 		for (int i = 0; i < priorite; i++) 
 			this.priorites.set(i, true);
 	}
+	
+	private void ajouterSousTacheVue(String libelleSSTache, float tauxCompletion) {
+		this.mapSousTaches.put(libelleSSTache, tauxCompletion);
+	}
 
 
 	public int getId_Tache() {
@@ -476,36 +480,6 @@ public class Vue_nouvelleTache extends JPanel {
 	public void setTfLibelle(JTextField tfLibelle) {
 		this.tfLibelle = tfLibelle;
 	}
-	
-	
-	
-	
-}
 
-class ZModel extends AbstractTableModel{
-    private Object[][] data;
-    private String[] title;
-
-    public ZModel(Object[][] data, String[] title){
-      this.data = data;
-      this.title = title;
-    }
-
-    public int getColumnCount() {
-      return this.title.length;
-    }
-
-    public int getRowCount() {
-      return this.data.length;
-    }
-    public Object getValueAt(int row, int col) {
-      return this.data[row][col];
-    }   
-    
-
-    public void setValueAt(int row, int col, Object valeur) {
-    		this.data[row][col] = valeur;
-    }
-   
     
 }
