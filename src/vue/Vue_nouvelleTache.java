@@ -464,21 +464,22 @@ public class Vue_nouvelleTache extends JPanel {
 			this.priorites.set(i, true);
 	}
 	
-	private void ajouterSousTacheVue(String libelleSSTache, float tauxCompletion) {
+	public void ajouterSousTacheVue(String libelleSSTache, float tauxCompletion) {
 		this.mapSousTaches.put(libelleSSTache, tauxCompletion);
 	}
 	
-	private void supprimerSousTacheVue(String libelleSSTache, float tauxCompletion) {
+	public void supprimerSousTacheVue(String libelleSSTache, float tauxCompletion) {
 		this.mapSousTaches.remove(libelleSSTache, tauxCompletion);
 	}
 	
-	private boolean estTacheCompleteeAutomatiquement() {
+	public boolean estTacheCompleteeAutomatiquement() {
 		for (float tauxcompletion : this.mapSousTaches.values()) {
 			if (tauxcompletion != 1.0F) 
 				return false;
 		}
 		return true;
 	}
+	
 	
 	
 
