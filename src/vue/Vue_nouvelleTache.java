@@ -359,7 +359,7 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		
 		JPanel pSud = new JPanel();
-		pSud.setBorder(new EmptyBorder(0, 0, 0, 20));
+		pSud.setBorder(new EmptyBorder(0, 20, 0, 20));
 		this.add(pSud, BorderLayout.PAGE_END);
 		pSud.setLayout(new GridBagLayout());
 		GridBagConstraints cSud = new GridBagConstraints();
@@ -374,11 +374,10 @@ public class Vue_nouvelleTache extends JPanel {
 		pSud.add(lbCommentaire, cSud);
 		 
 		this.taCommentaire = new JTextArea();
-		this.taCommentaire.setColumns(30);
+		this.taCommentaire.setColumns(60);
 		this.taCommentaire.setRows(5);	
 		JScrollPane spCommentaire = new JScrollPane(this.taCommentaire);
-		spCommentaire.setPreferredSize(new Dimension(750, 100));
-
+		spCommentaire.setPreferredSize(new Dimension(1140, 100));
 		cSud.insets = new Insets(0, 0, 5, 0);
 		cSud.gridheight = 2;
 		cSud.gridwidth = 6;
