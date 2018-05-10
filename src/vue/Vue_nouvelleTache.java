@@ -67,6 +67,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private JButton btMateriel;
 	private JTable tabMateriel;
 	private JButton btSupprimerSousTaches;
+	private JTextField tfEtatAvancement;
 
 	public Vue_nouvelleTache()  {
 		//ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
@@ -120,8 +121,6 @@ public class Vue_nouvelleTache extends JPanel {
 		pNord.add(new JLabel("Tache Complétée"), cNord2 );
 		
 		this.cbTacheCompletee = new JCheckBox();
-		this.cbTacheCompletee.setSelected(this.estTacheCompleteeAutomatiquement());
-		this.cbTacheCompletee.setSelected(this.estTacheCompleteeManuellement());
 		cNord2.gridx = 1;
 		cNord2.gridy = 2;
 		cNord2.anchor = GridBagConstraints.LINE_START;
@@ -301,16 +300,42 @@ public class Vue_nouvelleTache extends JPanel {
 		pOuest.setPreferredSize(new Dimension(500, 50));
 		this.add(pOuest, BorderLayout.WEST);
 		pOuest.setLayout(new BorderLayout());
+		
 		JPanel pEtatAvancement = new JPanel();
-		pEtatAvancement.setLayout(new GridLayout(2,1));
-		pEtatAvancement.setLayout(new BorderLayout());
-		pEtatAvancement.add(new JLabel("Etat d'avancement"), BorderLayout.NORTH);		
+		pEtatAvancement.setLayout(new GridBagLayout());
+		GridBagConstraints cEtatAvancement = new GridBagConstraints();
+		cEtatAvancement.anchor = GridBagConstraints.LINE_START;
+
+		JLabel lbEtatAvancement = new JLabel("Etat d'avancement");
+		lbEtatAvancement.setPreferredSize(new Dimension(150, 25));
+		cEtatAvancement.gridx = 0;
+		cEtatAvancement.gridy = 0;
+		pEtatAvancement.add(lbEtatAvancement, cEtatAvancement);	
+		
 		this.slAvancementTache = new JSlider();
 		this.slAvancementTache.setMinimumSize(new Dimension(190, 26));
 		this.slAvancementTache.setMaximum(200);
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
-		pEtatAvancement.add(this.slAvancementTache);
+		cEtatAvancement.gridx = 0;
+		cEtatAvancement.gridy = 1;
+		pEtatAvancement.add(this.slAvancementTache, cEtatAvancement);
+		
+		this.tfEtatAvancement = new JTextField();
+		this.tfEtatAvancement.setColumns(3);;
+		cEtatAvancement.gridx = 1;
+		cEtatAvancement.gridy = 1;
+		pEtatAvancement.add(this.tfEtatAvancement, cEtatAvancement);	
+		
+		JLabel lbPourcent = new JLabel("%");
+		lbPourcent.setPreferredSize(new Dimension(20, 20));
+		cEtatAvancement.gridx = 2;
+		cEtatAvancement.gridy = 1;
+		pEtatAvancement.add(lbPourcent, cEtatAvancement);
+		
+		
 		pOuest.add(pEtatAvancement, BorderLayout.NORTH);
+		
+		
 		
 		JPanel pEquipeMateriel = new JPanel();
 		pEquipeMateriel.setLayout(new GridLayout(2,1));
