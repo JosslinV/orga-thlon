@@ -523,7 +523,7 @@ public class Vue_nouvelleTache extends JPanel {
 
 
 	public boolean estTacheCompletee() {
-		return cbTacheRecurrente.isSelected();
+		return (this.estTacheCompleteeAutomatiquement() || this.estTacheCompleteeManuellement());
 	}
 
     
