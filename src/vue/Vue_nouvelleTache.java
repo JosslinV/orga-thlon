@@ -60,7 +60,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private JTextArea taCommentaire;
 	private JButton btAnnuler;
 	private JButton btValider;
-	private JCheckBox cbTacheCompletee;
+	private JCheckBox cbTacheRecurrente;
 	private JTable tabEquipe;
 	private JSlider slAvancementTache;
 	private JButton btContact;
@@ -111,20 +111,21 @@ public class Vue_nouvelleTache extends JPanel {
 		cNord1.gridy = 1;
 		pNord.add(this.tfLibelle, cNord1);
 		
+		
+		cNord1.gridx = 5;
+		cNord1.gridy = 1;
+		cNord1.anchor = GridBagConstraints.LINE_END;
+		pNord.add(new JLabel("Tache récurrente"), cNord1 );
+		
+		this.cbTacheRecurrente = new JCheckBox();
+		cNord1.gridx = 6;
+		cNord1.gridy = 1;
+		cNord1.anchor = GridBagConstraints.LINE_START;
+		pNord.add(this.cbTacheRecurrente, cNord1 );
+		
 		GridBagConstraints cNord2 = new GridBagConstraints();
 		cNord2.insets = new Insets(5, 5, 5, 5);
 		cNord2.anchor = GridBagConstraints.LINE_START;
-		
-		cNord2.gridx = 0;
-		cNord2.gridy = 2;
-		cNord2.anchor = GridBagConstraints.LINE_START;
-		pNord.add(new JLabel("Tache Complétée"), cNord2 );
-		
-		this.cbTacheCompletee = new JCheckBox();
-		cNord2.gridx = 1;
-		cNord2.gridy = 2;
-		cNord2.anchor = GridBagConstraints.LINE_START;
-		pNord.add(this.cbTacheCompletee, cNord2 );
 		
 		JLabel lbResponsable = new JLabel("Responsable :");
 		lbResponsable.setPreferredSize(new Dimension(80, 14));
@@ -302,35 +303,21 @@ public class Vue_nouvelleTache extends JPanel {
 		pOuest.setLayout(new BorderLayout());
 		
 		JPanel pEtatAvancement = new JPanel();
-		pEtatAvancement.setLayout(new GridBagLayout());
-		GridBagConstraints cEtatAvancement = new GridBagConstraints();
-		cEtatAvancement.anchor = GridBagConstraints.LINE_START;
-
+		pEtatAvancement.setLayout(new FlowLayout());
 		JLabel lbEtatAvancement = new JLabel("Etat d'avancement");
 		lbEtatAvancement.setPreferredSize(new Dimension(150, 25));
-		cEtatAvancement.gridx = 0;
-		cEtatAvancement.gridy = 0;
-		pEtatAvancement.add(lbEtatAvancement, cEtatAvancement);	
-		
+		pEtatAvancement.add(lbEtatAvancement);			
 		this.slAvancementTache = new JSlider();
 		this.slAvancementTache.setMinimumSize(new Dimension(190, 26));
 		this.slAvancementTache.setMaximum(200);
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
-		cEtatAvancement.gridx = 0;
-		cEtatAvancement.gridy = 1;
-		pEtatAvancement.add(this.slAvancementTache, cEtatAvancement);
-		
+		pEtatAvancement.add(this.slAvancementTache);		
 		this.tfEtatAvancement = new JTextField();
 		this.tfEtatAvancement.setColumns(3);;
-		cEtatAvancement.gridx = 1;
-		cEtatAvancement.gridy = 1;
-		pEtatAvancement.add(this.tfEtatAvancement, cEtatAvancement);	
-		
+		pEtatAvancement.add(this.tfEtatAvancement);			
 		JLabel lbPourcent = new JLabel("%");
 		lbPourcent.setPreferredSize(new Dimension(20, 20));
-		cEtatAvancement.gridx = 2;
-		cEtatAvancement.gridy = 1;
-		pEtatAvancement.add(lbPourcent, cEtatAvancement);
+		pEtatAvancement.add(lbPourcent);
 		
 		
 		pOuest.add(pEtatAvancement, BorderLayout.NORTH);
@@ -339,7 +326,6 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		JPanel pEquipeMateriel = new JPanel();
 		pEquipeMateriel.setLayout(new GridLayout(2,1));
-
 		JPanel pEquipe = new JPanel();
 		pEquipe.setLayout(new BorderLayout());
 		JLabel lbEquipe = new JLabel("Equipe");
@@ -537,7 +523,7 @@ public class Vue_nouvelleTache extends JPanel {
 
 
 	public boolean estTacheCompletee() {
-		return cbTacheCompletee.isSelected();
+		return cbTacheRecurrente.isSelected();
 	}
 
     
