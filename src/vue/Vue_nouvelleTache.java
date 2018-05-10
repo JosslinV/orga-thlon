@@ -485,9 +485,6 @@ public class Vue_nouvelleTache extends JPanel {
 	public boolean estTacheCompleteeManuellement() {
 			return (this.slAvancementTache.getValue() == 100 );	
 	}
-	
-	
-
 
 	public int getId_Tache() {
 		return id_Tache;
@@ -511,6 +508,11 @@ public class Vue_nouvelleTache extends JPanel {
 
 	public int getEtatAvancementTache() {
 		return slAvancementTache.getValue();
+	}
+
+
+	public boolean estTacheCompletee() {
+		return cbTacheCompletee.isSelected();
 	}
 
     
