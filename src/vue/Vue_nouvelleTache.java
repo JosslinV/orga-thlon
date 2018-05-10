@@ -431,16 +431,16 @@ public class Vue_nouvelleTache extends JPanel {
 		int teMoisInt = Integer.parseInt(this.tfMois.getText()) ;
 		int teJourInt = Integer.parseInt(this.tfJour.getText());
 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
-		donneesTache.put("TempsEstime", tempsEstimeJour );
+		donneesTache.put("tempsEstime", tempsEstimeJour );
 		donneesTache.put("priorite", this.priorite);
-		donneesTache.put("ListeSsTache", this.mapSousTaches);
+		donneesTache.put("listeSsTache", this.mapSousTaches);
 
 		
 		return donneesTache;
 
 	}
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, TreeMap<String, Float> ListeSousTaches   ) {
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, TreeMap<String, Float> listeSousTaches   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.tfLibelle.setText(libelle);
@@ -455,7 +455,7 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfMois.setText(String.valueOf(teMoisInt));
 		this.tfJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
-		this.mapSousTaches = ListeSousTaches;
+		this.mapSousTaches = listeSousTaches;
 
 	}
 
@@ -471,6 +471,16 @@ public class Vue_nouvelleTache extends JPanel {
 	private void supprimerSousTacheVue(String libelleSSTache, float tauxCompletion) {
 		this.mapSousTaches.remove(libelleSSTache, tauxCompletion);
 	}
+	
+	private boolean estTacheCompleteeAutomatiquement() {
+		for (float tauxcompletion : this.mapSousTaches.values()) {
+			if (tauxcompletion != 1.0F) 
+				return false;
+		}
+		return true;
+	}
+	
+	
 
 
 	public int getId_Tache() {
