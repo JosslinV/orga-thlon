@@ -486,6 +486,7 @@ public class Vue_nouvelleTache extends JPanel {
 			return (this.slAvancementTache.getValue() == 100 );	
 	}
 	
+	
 
 
 	public int getId_Tache() {
@@ -505,6 +506,11 @@ public class Vue_nouvelleTache extends JPanel {
 
 	public void setTfLibelle(JTextField tfLibelle) {
 		this.tfLibelle = tfLibelle;
+	}
+
+
+	public int getEtatAvancementTache() {
+		return slAvancementTache.getValue();
 	}
 
     
