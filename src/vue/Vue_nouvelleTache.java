@@ -467,6 +467,10 @@ public class Vue_nouvelleTache extends JPanel {
 	private void ajouterSousTacheVue(String libelleSSTache, float tauxCompletion) {
 		this.mapSousTaches.put(libelleSSTache, tauxCompletion);
 	}
+	
+	private void supprimerSousTacheVue(String libelleSSTache, float tauxCompletion) {
+		this.mapSousTaches.remove(libelleSSTache, tauxCompletion);
+	}
 
 
 	public int getId_Tache() {
