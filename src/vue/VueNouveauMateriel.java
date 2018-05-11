@@ -1,5 +1,6 @@
 package vue;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -13,12 +14,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controleur.ControleurMateriel;
+import controleur.ControleurNouveauMateriel;
 import modele.Materiel;
 
 public class VueNouveauMateriel extends JPanel {
 	
-	private JLabel auteur;
+	protected JLabel auteur;
 	private JLabel dateCreation;
 	private JTextField libelle;
 	private JLabel stockInit;
@@ -27,12 +28,11 @@ public class VueNouveauMateriel extends JPanel {
 	private JTextArea description;
 	private JSpinner quantiteAllouee;
 	
-	private ControleurMateriel controleur;
 	
 	
 	public VueNouveauMateriel() {
 		
-		this.controleur = new ControleurMateriel(this);
+		ControleurNouveauMateriel contr = new ControleurNouveauMateriel(this);
 		
 		this.setLayout(new BorderLayout());
 		JPanel northPanel = new JPanel();
@@ -41,7 +41,8 @@ public class VueNouveauMateriel extends JPanel {
 		this.add(northPanel, BorderLayout.NORTH);
 		northPanel.setBorder(new EmptyBorder(10,20,0,20));
 		northPanel.setLayout(new GridLayout(7,2));
-		northPanel.add(this.auteur = new JLabel("Créée par ... "));
+		this.auteur = new JLabel("Créée par ... ");
+		northPanel.add(this.auteur);
 		northPanel.add(this.dateCreation = new JLabel("le ../../...."));
 		northPanel.add(new JLabel("Libellé"));
 		northPanel.add(this.libelle = new JTextField("",JTextField.LEFT));
@@ -110,20 +111,47 @@ public class VueNouveauMateriel extends JPanel {
 		
 		JButton BTannuler = new JButton("Annuler");
 		southPanel.add(BTannuler);
+		BTannuler.addActionListener(contr);
 		
-		BTannuler.addActionListener(this.controleur);
 		JButton BTvalider = new JButton("Valider");
 		southPanel.add(BTvalider);
-		BTvalider.addActionListener(this.controleur);
+		BTvalider.addActionListener(contr);
 	
 	}
 
 	public void afficherDonnees(Materiel modele) {
-		this.description.setText(modele.getDescription());
 		this.libelle.setText(modele.getLibelle());
+		this.description.setText(modele.getDescription());
 		this.stockInit.setText(Double.toString(modele.getStock()));
-		this.stockFin.setText(Double.toString(modele.getStock() + (Double)this.quantite.getValue()));
-				
+		//this.stockFin.setText(Double.toString(modele.getStock() + new Double(this.quantite.getValue()).doubleValue()));
+
 	}
+	
+	public Materiel rassemblerDonnees() {
+		if(!this.libelle.getText().isEmpty()) {
+			Materiel materiel = new Materiel(this.libelle.getText());
+			materiel.setDescription(this.description.getText());
+			//materiel.setStock(Double.parseDouble(this.stockFin.getText()));
+			return materiel;
+		} else {
+			this.libelle.setBackground(Color.RED);
+		}
+		return null;
+	}
+	
+	public void rendreIndisponible() {
+		this.libelle.setEnabled(false);
+		this.quantite.setEnabled(false);
+		this.description.setEnabled(false);
+		this.quantiteAllouee.setEnabled(false);
+	}
+	
+	public void rendreDisponible() {
+		this.libelle.setEnabled(true);
+		this.quantite.setEnabled(true);
+		this.description.setEnabled(true);
+		this.quantiteAllouee.setEnabled(true);
+	}
+
 
 }
