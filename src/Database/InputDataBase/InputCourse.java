@@ -2,7 +2,6 @@ package Database.InputDataBase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
 import modele.Course;
 
 import Database.DatabaseSettings;
@@ -18,8 +17,8 @@ public class InputCourse {
 			preparedStatement = database.prepareStatement("INSERT into Orgathlon.Course values (default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, donnees.getNom());
 			preparedStatement.setString(2, donnees.getFormat());
-			preparedStatement.setDate(3, null);		//TODO date
-			preparedStatement.setDate(4, null);			//TODO date
+			preparedStatement.setObject(3, donnees.getDate_debut_course());
+			preparedStatement.setObject(4, donnees.getDate_fin_course());			
 			preparedStatement.setString(5, donnees.getDescriptionCourse());
 			preparedStatement.setBoolean(6, donnees.isAgrement());
 			preparedStatement.setFloat(7, donnees.getBudget());

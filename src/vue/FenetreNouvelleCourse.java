@@ -57,14 +57,6 @@ public class FenetreNouvelleCourse extends JFrame {
 	private String villeCourseAPied;
 	private String villeArrivee;
 	private JLabel lbTitreCourse;
-	private int distanceNatation;
-	private int distanceCyclisme;
-	private int distanceCourseAPied;
-	private int distanceArrivee;
-	private int cpNatation;
-	private int cpCyclisme;
-	private int cpCourseAPied;
-	private int cpArrivee;
 	private String type_epreuve;
 	private JSpinner spNbParticipants;
 	private JButton btValider;
@@ -72,7 +64,7 @@ public class FenetreNouvelleCourse extends JFrame {
 
 
 	public FenetreNouvelleCourse() throws Exception {
-		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
+		//ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
 		this.setTitle( id_Course +" : " + "création d'une nouvelle fiche COURSE");
 		this.setLayout(new GridLayout(1,1));		
@@ -263,15 +255,15 @@ public class FenetreNouvelleCourse extends JFrame {
 		c2.gridx = 0;
 		c2.gridy = 3;
 		spDroite.add(lbParcoursCourse, c2);
-		
 		String titresColonnes []  = {" ", "Distance","Ville","CP"};
 		Object [][] donneesParcours = {
-				{ "Natation",distanceNatation,villeNatation,cpNatation},
-				{"Cyclisme",distanceCyclisme,villeCyclisme,cpCyclisme},
-				{"Course à pied",distanceCourseAPied,villeCourseAPied,cpCourseAPied},
-				{"Arriv\u00E9e",distanceArrivee,villeArrivee,cpArrivee}
+				{ "Natation",new Integer(0),new Integer(0),new Integer(0)},
+				{"Cyclisme",new Integer(0),new Integer(0),new Integer(0)},
+				{"Course à pied",new Integer(0),new Integer(0),new Integer(0)},
+				{"Arriv\u00E9e",new Integer(0),new Integer(0),new Integer(0)}
 		};
-		this.parcoursTab = new JTable(donneesParcours, titresColonnes);
+		TabModel modelParcours = new TabModel(donneesParcours, titresColonnes);
+		this.parcoursTab = new JTable(modelParcours);
 		JScrollPane tabSP = new JScrollPane(parcoursTab);
 		tabSP.setMinimumSize(new Dimension(250,85)); 
 		c2.gridx = 0;
@@ -294,8 +286,8 @@ public class FenetreNouvelleCourse extends JFrame {
 		pSud.add(this.btAnnuler);
 		pSud.add(this.btValider);
 		
-		this.btAnnuler.addActionListener(controleur);
-		this.btValider.addActionListener(controleur);
+		//this.btAnnuler.addActionListener(controleur);
+		//this.btValider.addActionListener(controleur);
 		//this.btDateDebutCourse.addActionListener(controleur);
 
 
@@ -335,7 +327,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		}
 	}
 	
-	
+	/*
 	public HashMap<String, Object> getDonneesCourse() throws ParseException {
 		System.out.println("données récupérées");
 		HashMap<String,Object> donneesCourse = new HashMap<String, Object>();
@@ -369,7 +361,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		
 		return donneesCourse ;
 	}
-	
+	*/
 	
 	public void afficherDonnees(int id_Course, String nom_course, Date date_course, Date dateFin_course, double budget,  int nb_participants, String description_course, 
 								boolean isAgrement, String type_epreuve, String format_course, 

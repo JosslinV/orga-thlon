@@ -131,6 +131,8 @@ public class VueNouvelleSousTache extends JPanel {
 	public void setId_ssTache(int id_ssTache) {
 		Id_ssTache = id_ssTache;
 	}
+	
+	
 
 
 }

@@ -88,6 +88,8 @@ public class Vue_nouvelleTache extends JPanel {
 		cNord1.gridy = 0;
 		pNord.add(lbIdTache, cNord1);
 		
+		//ajoute label icones supprimer, pause
+		
 		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+this.auteur_Tache );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
@@ -311,7 +313,7 @@ public class Vue_nouvelleTache extends JPanel {
 		this.slAvancementTache.setMinimumSize(new Dimension(190, 26));
 		this.slAvancementTache.setMaximum(200);
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
-		pEtatAvancement.add(this.slAvancementTache);		
+		pEtatAvancement.add(this.slAvancementTache);				
 		this.tfEtatAvancement = new JTextField();
 		this.tfEtatAvancement.setColumns(3);;
 		pEtatAvancement.add(this.tfEtatAvancement);			
@@ -434,7 +436,7 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		donneesTache.put("id_Tache", this.id_Tache);
 		donneesTache.put("auteur_Tache", this.auteur_Tache);
-		donneesTache.put("libelle", this.tfLibelle.getText());
+		donneesTache.put("libelle", this.tfLibelle.getText());  //ok
 		donneesTache.put("nom_responsable", this.tfResponsableNom.getText());
 		donneesTache.put("prenom_responsable", this.tfResponsablePrenom.getText());
 		Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebut.getText());
@@ -447,13 +449,15 @@ public class Vue_nouvelleTache extends JPanel {
 		donneesTache.put("tempsEstime", tempsEstimeJour );
 		donneesTache.put("priorite", this.priorite);
 		donneesTache.put("listeSsTache", this.mapSousTaches);
+		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
+		
 
 		
 		return donneesTache;
 
 	}
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, TreeMap<String, Float> listeSousTaches   ) {
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, TreeMap<String, Float> listeSousTaches, int etatAvancement   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.tfLibelle.setText(libelle);
@@ -469,6 +473,7 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
 		this.mapSousTaches = listeSousTaches;
+		this.slAvancementTache.setValue(etatAvancement);
 
 	}
 
@@ -525,6 +530,13 @@ public class Vue_nouvelleTache extends JPanel {
 	public boolean estTacheCompletee() {
 		return (this.estTacheCompleteeAutomatiquement() || this.estTacheCompleteeManuellement());
 	}
+	
+	public void afficherEtatAvancement() {
+		this.tfEtatAvancement.setText(String.valueOf(this.slAvancementTache.getValue()));
+	}
+	
+	
+
 
     
 }
