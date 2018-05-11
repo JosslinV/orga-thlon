@@ -20,6 +20,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,7 +37,7 @@ import javax.swing.border.EmptyBorder;
 import controleur.ControleurNouvelleCourse;
 import modele.Etat.Etat;
 
-public class FenetreNouvelleCourse extends JFrame {
+public class VueNouvelleCourse extends JPanel {
 	
 	private int id_Course;
 	private JButton btDateDebutCourse;
@@ -52,10 +53,6 @@ public class FenetreNouvelleCourse extends JFrame {
 	private SpinnerNumberModel spmNbParticipants;
 	private JTable parcoursTab;
 	private JCheckBox cbAgrement;
-	private String villeNatation;
-	private String villeCyclisme;
-	private String villeCourseAPied;
-	private String villeArrivee;
 	private JLabel lbTitreCourse;
 	private String type_epreuve;
 	private JSpinner spNbParticipants;
@@ -63,17 +60,9 @@ public class FenetreNouvelleCourse extends JFrame {
 	private JButton btAnnuler;
 
 
-	public FenetreNouvelleCourse() throws Exception {
-		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
+	public VueNouvelleCourse() throws Exception {
+		//ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
-		this.setTitle( id_Course +" : " + "création d'une nouvelle fiche COURSE");
-		this.setLayout(new GridLayout(1,1));		
-		this.pack();
-		this.setSize(750, 650);
-		this.setResizable(true);
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
-		this.setLayout(new BorderLayout());
 				
 		JPanel pNord = new JPanel();
 		this.add(pNord, BorderLayout.NORTH);
@@ -257,10 +246,10 @@ public class FenetreNouvelleCourse extends JFrame {
 		spDroite.add(lbParcoursCourse, c2);
 		String titresColonnes []  = {" ", "Distance","Ville","CP"};
 		Object [][] donneesParcours = {
-				{ "Natation",new Integer(0),new Integer(0),new Integer(0)},
-				{"Cyclisme",new Integer(0),new Integer(0),new Integer(0)},
-				{"Course à pied",new Integer(0),new Integer(0),new Integer(0)},
-				{"Arriv\u00E9e",new Integer(0),new Integer(0),new Integer(0)}
+				{"Natation",new Integer(0),"",new Integer(0)},
+				{"Cyclisme",new Integer(0),"",new Integer(0)},
+				{"Course à pied",new Integer(0),"",new Integer(0)},
+				{"Arriv\u00E9e",new Integer(0),"",new Integer(0)}
 		};
 		TabModel modelParcours = new TabModel(donneesParcours, titresColonnes);
 		this.parcoursTab = new JTable(modelParcours);
@@ -286,8 +275,8 @@ public class FenetreNouvelleCourse extends JFrame {
 		pSud.add(this.btAnnuler);
 		pSud.add(this.btValider);
 		
-		this.btAnnuler.addActionListener(controleur);
-		this.btValider.addActionListener(controleur);
+		//this.btAnnuler.addActionListener(controleur);
+		//this.btValider.addActionListener(controleur);
 		//this.btDateDebutCourse.addActionListener(controleur);
 
 
@@ -306,7 +295,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		this.btDateDebutCourse.setEnabled(actif);
 	}
 	
-
+	/*
 	public void titreFenetreSaisi(boolean b) {
 		this.tfTitreCourse.setVisible(!b);
 		this.lbTitreCourse.setVisible(!b);
@@ -315,7 +304,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		else 
 			this.setTitle(this.id_Course + " : " + this.tfTitreCourse.getText() + " - CONSULTATION");
 	}
-
+	*/
 	  
 	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
 		if (estEditable) {
@@ -327,7 +316,7 @@ public class FenetreNouvelleCourse extends JFrame {
 		}
 	}
 	
-	/*
+	
 	public HashMap<String, Object> getDonneesCourse() throws ParseException {
 		System.out.println("données récupérées");
 		HashMap<String,Object> donneesCourse = new HashMap<String, Object>();
@@ -346,22 +335,22 @@ public class FenetreNouvelleCourse extends JFrame {
 		donneesCourse.put("agrementVue", cbAgrement.isSelected());		
 		donneesCourse.put("type_epreuveVue", type_epreuve);
 		donneesCourse.put("formatVue", tfFormatCourse.getText());		
-		donneesCourse.put("distance_natVue", this.distanceNatation);		
-		donneesCourse.put("distance_cycVue", distanceCyclisme);
-		donneesCourse.put("distance_couVue", distanceCourseAPied);
-		donneesCourse.put("distanceArrivee", distanceArrivee);
-		donneesCourse.put("nom_ville_natVue", villeNatation);
-		donneesCourse.put("nom_ville_cycVue", villeCyclisme);
-		donneesCourse.put("nom_ville_couVue", villeCourseAPied);
-		donneesCourse.put("nom_ville_arrVue", villeArrivee);
-		donneesCourse.put("CP_ville_natVue", cpNatation);
-		donneesCourse.put("CP_ville_cycVue", cpCyclisme);
-		donneesCourse.put("CP_ville_arrVue", cpArrivee);
+		donneesCourse.put("distance_natVue", this.parcoursTab.getValueAt(0, 1));		
+		donneesCourse.put("distance_cycVue", this.parcoursTab.getValueAt(1, 1));
+		donneesCourse.put("distance_couVue", this.parcoursTab.getValueAt(2, 1));
+		donneesCourse.put("distanceArrivee", this.parcoursTab.getValueAt(3, 1));
+		donneesCourse.put("nom_ville_natVue", this.parcoursTab.getValueAt(0, 2));
+		donneesCourse.put("nom_ville_cycVue", this.parcoursTab.getValueAt(1, 2));
+		donneesCourse.put("nom_ville_couVue", this.parcoursTab.getValueAt(2, 2));
+		donneesCourse.put("nom_ville_arrVue", this.parcoursTab.getValueAt(3, 2));
+		donneesCourse.put("CP_ville_natVue", this.parcoursTab.getValueAt(0, 3));
+		donneesCourse.put("CP_ville_cycVue", this.parcoursTab.getValueAt(1, 3));
+		donneesCourse.put("CP_ville_couVue", this.parcoursTab.getValueAt(2, 3));
+		donneesCourse.put("CP_ville_arrVue", this.parcoursTab.getValueAt(3, 3));
 		donneesCourse.put("description_courseVue", taCommentaireCourse.getText());
 		
 		return donneesCourse ;
 	}
-	*/
 	
 	public void afficherDonnees(int id_Course, String nom_course, Date date_course, Date dateFin_course, double budget,  int nb_participants, String description_course, 
 								boolean isAgrement, String type_epreuve, String format_course, 
@@ -401,6 +390,11 @@ public class FenetreNouvelleCourse extends JFrame {
 
 	public void setTfTitreCourse(JTextField tfTitreCourse) {
 		this.tfTitreCourse = tfTitreCourse;
+	}
+
+
+	public int getId_Course() {
+		return id_Course;
 	}
 
 
