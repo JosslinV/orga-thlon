@@ -61,7 +61,7 @@ public class VueNouvelleCourse extends JPanel {
 
 
 	public VueNouvelleCourse() throws Exception {
-		//ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
+		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
 				
 		JPanel pNord = new JPanel();

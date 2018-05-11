@@ -5,10 +5,10 @@ public class AppliTest {
 	public static void main(String[] a) throws Exception {
 
 		new FenetreNouveauMateriel();
-		//new FenetreNouvelleCourse();
+		new FenetreNouvelleCourse();
 		//new FenetreNouveauBenevole();
 		//new FenetreNouveauContactExterne();
-		//new Fenetre_NouvelleTache();
+		new Fenetre_NouvelleTache();
 		
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];

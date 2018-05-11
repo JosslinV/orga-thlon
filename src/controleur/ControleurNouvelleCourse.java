@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import java.util.Date ;
-import vue.FenetreNouvelleCourse;
+import vue.VueNouvelleCourse;
 import Database.InputDataBase.InputCourse;
 import modele.Course ;
 import Database.InputDataBase.InputCourse ;
@@ -18,11 +18,11 @@ public class ControleurNouvelleCourse implements ActionListener {
 
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
-	private FenetreNouvelleCourse vue;
+	private VueNouvelleCourse vue;
 	private modele.Course modele;
 	
 	
-	public ControleurNouvelleCourse(FenetreNouvelleCourse vue) throws Exception {	
+	public ControleurNouvelleCourse(VueNouvelleCourse vue) throws Exception {	
 		this.vue = vue ;
 		this.modele = new modele.Course("nouveau") ;
 		this.etatCourant = Etats.EDITION;
@@ -34,7 +34,7 @@ public class ControleurNouvelleCourse implements ActionListener {
 			case EDITION :
 				if (b.getText().equals("valider")) {
 					this.etatCourant = Etats.CONSULTATION ;
-					this.vue.titreFenetreSaisi(true);
+					//this.vue.titreFenetreSaisi(true);
 					this.vue.setActifComposants(false);
 					this.vue.modifierTexteBoutonsPourEdition(false);
 					try {
@@ -69,7 +69,7 @@ public class ControleurNouvelleCourse implements ActionListener {
 					this.etatCourant = Etats.EDITION ;
 					this.vue.modifierTexteBoutonsPourEdition(true);
 					this.vue.setActifComposants(true);
-					this.vue.titreFenetreSaisi(false);
+					//this.vue.titreFenetreSaisi(false);
 					
 				}
 			
@@ -85,9 +85,7 @@ public class ControleurNouvelleCourse implements ActionListener {
         Course nouvelleCourse = new modele.Course("nouveau") ;
 
         nouvelleCourse.setNom( String.valueOf( donneesCourses.get("nom_courseVue"))) ;
-        
-        
-       // 
+
         //LocalDate d1 = LocalDate.parse(String.valueOf(donneesCourses.get("date_debut_courseVue")), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
        // LocalDate d2 = LocalDate.parse(String.valueOf(donneesCourses.get("date_debut_courseVue")), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
         //String.valueOf(donneesCourses.get("date_debut_courseVue")),
