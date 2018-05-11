@@ -6,15 +6,16 @@ import java.security.PublicKey;
 
 import vue.FenetreNouveauMateriel;
 import vue.FenetreNouvelleCourse;
+import vue.VueNouveauMateriel;
 
 public class ControleurMateriel implements ActionListener {
 	
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
-	private FenetreNouveauMateriel vue;
+	private VueNouveauMateriel vue;
 	private modele.Course modele;
 	
-	public ControleurMateriel(FenetreNouveauMateriel vue) {
+	public ControleurMateriel(VueNouveauMateriel vue){
 		this.vue = vue;
 		this.etatCourant = Etats.EDITION;
 		
