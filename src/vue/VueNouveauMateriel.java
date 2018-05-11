@@ -72,7 +72,7 @@ public class VueNouveauMateriel extends JPanel {
 		//tableau MTB
 		String titresColonnes [] = {"Bénévole","Tâche","Quantité","Date prêt"};
 		
-		Object [][] donneesMTB = {
+		String [][] donneesMTB = {
 				{"","","",""},
 				{"","","",""},
 				{"","","",""}

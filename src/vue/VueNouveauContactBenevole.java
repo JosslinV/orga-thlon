@@ -1,7 +1,6 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,107 +12,115 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class VueNouveauContactBenevole extends JPanel{
-	private JLabel lb;
-	private JCheckBox cb;
-	private JTextField tf;
-	private JComboBox<String> jc;
+	private int IdBenevole;
+	private JTextField tfNom;
+	private JTextField tfTelephone;
+	private JTextField tfPrenom;
+	private JTextField tfMail;
+	private JTextField tfRole;
+	private JTextField tfAdresse1;
+	private JTextField tfAdresse2;
+	private JLabel lbResponsable;
+	private JCheckBox cbEstResponsableEquipe;
+	private JCheckBox cbEstResponsableTache;
+	private JTextField tfCP;
+	private JButton btAjouterEquipe;
 	private JButton b;
-	private JPanel p;
-	private JScrollPane sp;
+
 
 	public VueNouveauContactBenevole() {
 		this.setLayout(new BorderLayout());
 		JPanel panneauPrincipal = new JPanel();
 		this.add(panneauPrincipal, BorderLayout.NORTH);
 		panneauPrincipal.setLayout(new GridBagLayout());
-		panneauPrincipal.setBorder(new EmptyBorder(20,0,0,0));
+		panneauPrincipal.setBorder(new EmptyBorder(0,20,0,20));
 		GridBagConstraints c = new GridBagConstraints();
 		
 		//ligne 0 : Nom ((Jlabel + JTextField) + Téléphone (Jlabel + JTextField) 
 		JLabel lbNom = new JLabel("Nom");
+		c.insets = new Insets(5, 0, 5, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(lbNom,c); 
 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(170,25));
+		tfNom = new JTextField();
+		tfNom.setPreferredSize(new Dimension(170,25));
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 1;
 		c.gridy = 0;
-		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(tf, c);
+		//c.anchor = GridBagConstraints.LINE_START;
+		panneauPrincipal.add(tfNom, c);
 		
-		JLabel lbTel = new JLabel("Téléphone   ");
-		lbTel.setBorder(new EmptyBorder(0,40,0,0));
+		JLabel lbTelephone = new JLabel("Téléphone");
+		lbTelephone.setBorder(new EmptyBorder(0,40,0,0));
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 4;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(lbTel,c); 
+		panneauPrincipal.add(lbTelephone,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(120,25));
+		tfTelephone = new JTextField("");
+		tfTelephone.setPreferredSize(new Dimension(120,25));
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 5;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(tf, c);
+		panneauPrincipal.add(tfTelephone, c);
 		
 		//ligne 1 : Prénom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
 		JLabel lbPrenom = new JLabel("Prénom");
 		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(lbPrenom,c); 
 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(170,25));
+		tfPrenom = new JTextField();
+		tfPrenom.setPreferredSize(new Dimension(170,25));
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 1;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(tf, c);
+		panneauPrincipal.add(tfPrenom, c);
 		
 		JLabel lbMail = new JLabel("E-mail");
 		lbMail.setBorder(new EmptyBorder(0,40,0,0));
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 4;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(lbMail,c); 
 		
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
+		tfMail = new JTextField();
+		tfMail.setPreferredSize(new Dimension(235,25));
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 5;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(tf, c);
+		panneauPrincipal.add(tfMail, c);
 		
 		this.add(panneauPrincipal, BorderLayout.CENTER);
-		//ligne 2 : Rôle (JLabel + JComboList) + Adresse (JLabel + JTextField)
-		JLabel lbRole = new JLabel("Rôle");
+		//ligne 2 : Réle (JLabel + JComboList) + Adresse (JLabel + JTextField)
+		JLabel lbRole = new JLabel("Réle");
+		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(lbRole,c);
-				
-		String [] roleExemple = {
-				"cuisinier",
-				"trésorier",
-				"com'",
-				"..."
-		};
-		jc = new JComboBox<String>(roleExemple);
-		jc.setEditable(true);
-		jc.setPreferredSize(new Dimension(140,25));
+		
+		tfRole = new JTextField();
+		tfRole.setPreferredSize(new Dimension(140,25));
 		c.gridx = 1;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(jc, c);
+		panneauPrincipal.add(tfRole, c);
 		
 		JLabel lbAdresse = new JLabel("Adresse");
 		lbAdresse.setBorder(new EmptyBorder(0,40,0,0));
@@ -130,79 +137,79 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
 		panneauPrincipal.add(p, c);
 		//paragraphe 1 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
-		p.add(tf);
+		tfAdresse1 = new JTextField("");
+		tfAdresse1.setPreferredSize(new Dimension(235,25));
+		p.add(tfAdresse1);
 		//ligne 3 :  + Adresse (JTextField) 
 		//paragraphe 2 (Adresse)
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(235,25));
-		p.add(tf);
+		tfAdresse2 = new JTextField("");
+		tfAdresse2.setPreferredSize(new Dimension(235,25));
+		p.add(tfAdresse2);
 		
 		//ligne 4 : Equipe (JLabel + JTextField) + CodePostal (JLabel + JTextField)
-		JLabel lb = new JLabel("Responsable d'équipe");
+		lbResponsable = new JLabel("Responsable d'équipe");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 4;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(lb,c); 
-		cb = new JCheckBox();
+		panneauPrincipal.add(lbResponsable,c); 
+		this.cbEstResponsableEquipe = new JCheckBox();
 		c.gridx = 1;
 		c.gridy = 4;
 		c.anchor = GridBagConstraints.CENTER;
-		panneauPrincipal.add(cb,c);
+		panneauPrincipal.add(this.cbEstResponsableEquipe,c);
 		
-		lb = new JLabel("Code Postal    ");
+		JLabel lbCP = new JLabel("Code Postal");
 		c.gridx = 4;
 		c.gridy = 4;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		lb.setBorder(new EmptyBorder(0,40,0,0));
-		panneauPrincipal.add(lb,c); 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(50,25));
+		lbCP.setBorder(new EmptyBorder(0,40,0,0));
+		panneauPrincipal.add(lbCP,c); 
+		tfCP = new JTextField("");
+		tfCP.setPreferredSize(new Dimension(50,25));
 		c.gridx = 5;
 		c.gridy = 5;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		panneauPrincipal.add(tf, c);
+		panneauPrincipal.add(tfCP, c);
 		
 		//ligne 5 : Equipe (JLabel + JComboList) + Ville (JLabel + JTextField)
-		lb = new JLabel("Equipe");
+		JLabel lbEquipe = new JLabel("Equipe");
 		c.gridx = 0;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LINE_START;
-		panneauPrincipal.add(lb,c); 
+		panneauPrincipal.add(lbEquipe,c); 
 		String [] EquipeExemple = {
 				"Equipe 1",
 				"Equipe 2",
 				"Equipe 3",
 				"..."
 		};
-		jc = new JComboBox<String>(EquipeExemple);
+		JComboBox<String> jc = new JComboBox<String>(EquipeExemple);
 		jc.setEditable(true);
 		jc.setPreferredSize(new Dimension(140,25));
 		c.gridx = 1;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(jc, c);
-		b = new JButton("+");
+		btAjouterEquipe = new JButton("+");
 		c.gridx = 2;
 		c.gridy = 6;
-		panneauPrincipal.add(b,c);
+		panneauPrincipal.add(btAjouterEquipe,c);
 		
-		lb = new JLabel("Ville");
+		lbCP = new JLabel("Ville");
 		c.gridx = 4;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		lb.setBorder(new EmptyBorder(0,40,0,0));
-		panneauPrincipal.add(lb,c); 
-		tf = new JTextField("");
-		tf.setPreferredSize(new Dimension(50,25));
+		lbCP.setBorder(new EmptyBorder(0,40,0,0));
+		panneauPrincipal.add(lbCP,c); 
+		tfCP = new JTextField("");
+		tfCP.setPreferredSize(new Dimension(50,25));
 		c.gridx = 5;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		panneauPrincipal.add(tf, c);
+		panneauPrincipal.add(tfCP, c);
 		
-		//ligne 8 : bouton "Equipe" + tableau Prêt Matériel
+		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
 		b = new JButton("");
 		c.gridx = 1;
 		c.gridy = 8;
@@ -228,7 +235,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(p,c);
 		JPanel np = new JPanel();
 		p.add(np, BorderLayout.NORTH);
-		lb = new JLabel("Prêt de matériel");
+		lb = new JLabel("Prét de matériel");
 		np.add(lb); 
 		JPanel cp = new JPanel();
 		cp.setBackground(Color.BLUE);
@@ -257,4 +264,26 @@ public class VueNouveauContactBenevole extends JPanel{
 		ps.add(b);
 		
 	}
+
+
+	public int getIdBenevole() {
+		return IdBenevole;
+	}
+
+	public String getTfNom() {
+		return tfNom.getText();
+	}
+
+	public String getTfPrenom() {
+		return tfPrenom.getText();
+	}
+
+	public boolean getEstResponsableEquipe() {
+		return this.cbEstResponsableEquipe.isSelected();
+	}
+
+	public boolean getEstResponsableTache() {
+		return this.cbEstResponsableEquipe.isSelected();
+	}
+	
 }

@@ -8,11 +8,22 @@ public class Contact {
 	private String nom_c;
 	private String prenom_c;
 	private String adresse;
-	private int cp_c;
+	private String cp_c;
 	private String ville_c;
 	private String telephone_c;
 	private String mail_c;
+	private int id_personne ;
 	
+	
+	
+	public void setId_personne(int id_personne) {
+		this.id_personne = id_personne;
+	}
+
+	public int getId_personne() {
+		return id_personne;
+	}
+
 	public Contact (String nom) {
 		this.nom_c = nom;
 	}
@@ -57,11 +68,11 @@ public class Contact {
 		this.adresse = adresse;
 	}
 
-	public int getCp_c() {
+	public String getCp_c() {
 		return cp_c;
 	}
 
-	public void setCp_c(int cp_c) {
+	public void setCp_c(String cp_c) {
 		this.cp_c = cp_c;
 	}
 

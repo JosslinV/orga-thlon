@@ -10,11 +10,12 @@ public class FenetreAccueil extends JFrame{
 	public FenetreAccueil () {
 		this.setTitle("Orgathlon");
 		this.setVisible(true);
-		this.setPreferredSize(new Dimension(800,800));
+		this.setPreferredSize(new Dimension(300,300));
 		//this.setLayout(new BorderLayout());
-		VueOnglets v= new VueOnglets();
+		ListeBenevoles v= new ListeBenevoles();
+		//VueTableau v= new VueTableau();
 		this.setLayout(new BorderLayout());
-		this.add(v,BorderLayout.WEST);
+		this.add(v,BorderLayout.CENTER);
 		this.pack();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		

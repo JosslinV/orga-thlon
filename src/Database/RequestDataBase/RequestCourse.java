@@ -1,313 +1,52 @@
 package Database.RequestDataBase;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import Database.DatabaseSettings;
+import modele.Course;
 
 public class RequestCourse {
-
-	private static PreparedStatement preparedStatement = null;
-	private static ResultSet resultSet = null;
-
-	public static String requestNom(int id) throws Exception {
-		try {
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT nom_course from Orgathlon.Course WHERE id_Course = " + id);
-			resultSet = preparedStatement.executeQuery();
-
-			String nom = "";
-
-			while (resultSet.next()) {
-				nom += resultSet.getString("nom_course");
-			}
-			return nom;
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
-
-	public static String requestFormat(int id) throws Exception {
-		//Au lieu de retourner le nom, retourne un select du nom pour une course donnée 
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT format_course from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String format="" ;
-
-			while(resultSet.next()) {
-
-				format = format + resultSet.getString("format_course");
-
-			}
-
-			return format;
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-
-	}
-
-	public static String requestDateC(int id) throws Exception {
-
-		//Au lieu de retourner le nom, retourne un select du nom pour une course donnée 
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "date_course from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String date_course="" ;
-
-			while(resultSet.next()) {
-
-				date_course = date_course + resultSet.getString("date_course");
-
-			}
-
-			return date_course;
-
-
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
-
-	public String requestDescriptionCourse(int id) throws Exception {
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "description_course from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String description_course="" ;
-
-			while(resultSet.next()) {
-
-				description_course = description_course + resultSet.getString("description_course");
-
-			}
-
-			return description_course;
-
-
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
 	
-	public String requestLieu(int id) throws Exception {
-
+	public Course requestCourse(int id) throws Exception{
 		try {
-
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("SELECT " + "lieu from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String lieu="" ;
-
-			while(resultSet.next()) {
-
-				lieu = lieu + resultSet.getString("lieu");
-
+			Statement state = database.createStatement();
+			ResultSet result = state.executeQuery("SELECT * FROM Course WHERE id_Course = "+ id +";");
+			
+			if(result.next()) {
+				Course course = new Course(result.getString("nom_course"));
+				course.setId_Course(result.getInt("id_Course"));
+				course.setFormat(result.getString("format_course"));
+				course.setDateC(result.getDate("date_course"));
+				course.setDescriptionCourse(result.getString("description_course"));			
+				course.setLieu(result.getString("lieu"));
+				course.setBudget(result.getShort("budget"));
+				course.setNbParticipants(result.getInt("nb_participants"));
+				course.setParcours(result.getString("parcours"));
+				//course.setNom_ville_nat(result.getString("nom_ville_nat"));
+				//course.setNom_ville_cyc(result.getString("nom_ville_cyc"));
+				//course.setNom_ville_cou(result.getString("nom_ville_cou"));
+				//course.setNom_ville_arr(result.getString("nom_ville_arr"));
+				//course.setCP_ville_nat(result.getString("CP_ville_nat"));
+				//course.setCP_ville_cyc(result.getString("CP_ville_cyc"));
+				//course.setCP_ville_cou(result.getString("CP_ville_cou"));
+				//course.setCP_ville_arr(result.getString("CP_ville_arr"));
+				//course.setDistance_nat(result.getInt("distance_nat"));
+				//course.setDistance_cyc(result.getInt("distance_cyc"));
+				//course.setDistance_cou(result.getInt("distance_cou"));
+				course.setType_epreuve(result.getString("type_epreuve"));		
+				return course;
 			}
-
-			return lieu;
-
-
-
+				
 		} catch (Exception e) {
-			throw e;
+			e.printStackTrace();
 		} finally {
 			DatabaseSettings.close();
 		}
+		return null;
 	}
-	public int requestNbParticipants(int id) throws Exception {
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "nb_participants from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String nb_participants="" ;
-
-			while(resultSet.next()) {
-
-				nb_participants = nb_participants + resultSet.getString("nb_participants");
-
-			}
-
-			return Integer.parseInt( nb_participants,10) ;
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
-	public String requestParcours(int id) throws Exception{
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "parcours from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String parcours="" ;
-
-			while(resultSet.next()) {
-
-				parcours = parcours + resultSet.getString("parcours");
-
-			}
-
-			return parcours;
-
-
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
-
-	public double requestBudget(int id) throws Exception {
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "budget from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String budget="" ;
-
-			while(resultSet.next()) {
-
-				budget = budget + resultSet.getString("budget");
-
-			}
-
-			return Double.parseDouble( budget) ;
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
-
-	public String requestNom_ville(int id) throws Exception {
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "nom_ville from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String nom_ville="" ;
-
-			while(resultSet.next()) {
-
-				nom_ville = nom_ville + resultSet.getString("nom_ville");
-
-			}
-
-			return nom_ville;
-
-
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-	}
-
-	public int requestCp_ville(int id) throws Exception{
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "CP_ville from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String CP_ville="" ;
-
-			while(resultSet.next()) {
-
-				CP_ville = CP_ville + resultSet.getString("CP_ville");
-
-			}
-
-			return Integer.parseInt(CP_ville,10);
-
-
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-
-	}	
-
-
-	public String requestType_epreuve(int id) throws Exception{
-
-		try {
-
-			Connection database = DatabaseSettings.connect();
-
-			preparedStatement = database.prepareStatement("SELECT " + "type_epreuve from Orgathlon.course WHERE id_Course = "+id);
-			resultSet = preparedStatement.executeQuery();
-
-			String type_epreuve="" ;
-
-			while(resultSet.next()) {
-
-				type_epreuve = type_epreuve + resultSet.getString("type_epreuve");
-
-			}
-
-			return type_epreuve;
-
-
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			DatabaseSettings.close();
-		}
-
-	}
-
+	;
 }
