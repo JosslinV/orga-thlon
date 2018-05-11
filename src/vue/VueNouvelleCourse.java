@@ -72,7 +72,7 @@ public class VueNouvelleCourse extends JPanel {
 		pNord.add(this.lbTitreCourse);		
 		this.tfTitreCourse = new JTextField("nouveau");
 		this.tfTitreCourse.addKeyListener(new CustomKeyListener());
-		this.tfTitreCourse.setColumns(50);;
+		this.tfTitreCourse.setColumns(45);;
 		pNord.add(tfTitreCourse);		
 		
 		JPanel pCentre = new JPanel();
@@ -269,7 +269,7 @@ public class VueNouvelleCourse extends JPanel {
 		pSud.setLayout(new GridLayout(1,2,150,0));
 		pSud.setBorder(new EmptyBorder(30,100,30,100));
 		this.btAnnuler = new JButton("annuler");
-		this.btAnnuler.setPreferredSize(new Dimension(40,40));
+		this.btAnnuler.setPreferredSize(new Dimension(80,40));
 
 		this.btValider = new JButton("valider");
 		pSud.add(this.btAnnuler);

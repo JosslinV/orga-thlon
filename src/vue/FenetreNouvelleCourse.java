@@ -44,8 +44,8 @@ public class FenetreNouvelleCourse extends JFrame {
 		this.setTitle( vue.getId_Course() +" : " + "création d'une nouvelle fiche COURSE");
 		this.setLayout(new GridLayout(1,1));		
 		this.pack();
-		this.setSize(750, 650);
-		this.setResizable(true);
+		this.setSize(700, 600);
+		this.setResizable(false);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 		this.add(vue);

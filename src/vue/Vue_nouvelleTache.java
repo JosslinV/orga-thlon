@@ -1,7 +1,6 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -13,8 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
@@ -33,7 +32,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.AbstractTableModel;
 
 public class Vue_nouvelleTache extends JPanel {
 	
@@ -276,19 +274,19 @@ public class Vue_nouvelleTache extends JPanel {
 		//this.btSupprimerSousTaches.addActionListener(controleur);
 		pAjouterSupprimerSSTache.add(this.btSupprimerSousTaches);
 		
-		this.mapSousTaches = new TreeMap<String, Float>(); //clé : libellé de la sstâche, valeur : pourcentage (de complétion)
 		String titresColonnesSsTaches [] = {"Libell\u00E9", " % "};
-		Object [][] donneesSousTaches = new Object [100][2];
-		Iterator <String> itLibelles = mapSousTaches.keySet().iterator();
-		int numeroSousTache = 0;
-		while (itLibelles.hasNext() && numeroSousTache < NB_MAX_SOUSTACHES) {
-				String cle = itLibelles.next();
-				donneesSousTaches[numeroSousTache][0]= cle ;
-				donneesSousTaches[numeroSousTache][1]= mapSousTaches.get(cle);
-				numeroSousTache ++;
-		};
-		this.tabssTaches = new JTable(donneesSousTaches, titresColonnesSsTaches);
-		JScrollPane tabSP = new JScrollPane(tabssTaches);
+		Object [][] donneesSousTaches = new Object [NB_MAX_SOUSTACHES][2];
+		
+		for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
+			donneesSousTaches[i][0]= "" ;
+			donneesSousTaches[i][1]= new Float(0.0F);
+			//this.mapSousTaches.put(String.valueOf(donneesSousTaches[i][0]), (Float) donneesSousTaches[i][1]);
+			//System.out.println("numeroSousTache"+ i + "libelle :"+ donneesSousTaches[i][0] + "TauxCompletion :"+ this.mapSousTaches.get(donneesSousTaches[i][0]) );
+		}
+	
+		TabModel modelSsTaches = new TabModel(donneesSousTaches, titresColonnesSsTaches);
+		this.tabssTaches = new JTable(modelSsTaches);
+		JScrollPane tabSP = new JScrollPane(this.tabssTaches);
 		tabSP.setMinimumSize(new Dimension(400,85)); 
 		cEst.gridx = 0;
 		cEst.gridy = 6;
@@ -320,11 +318,7 @@ public class Vue_nouvelleTache extends JPanel {
 		JLabel lbPourcent = new JLabel("%");
 		lbPourcent.setPreferredSize(new Dimension(20, 20));
 		pEtatAvancement.add(lbPourcent);
-		
-		
 		pOuest.add(pEtatAvancement, BorderLayout.NORTH);
-		
-		
 		
 		JPanel pEquipeMateriel = new JPanel();
 		pEquipeMateriel.setLayout(new GridLayout(2,1));
@@ -448,7 +442,10 @@ public class Vue_nouvelleTache extends JPanel {
 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
 		donneesTache.put("tempsEstime", tempsEstimeJour );
 		donneesTache.put("priorite", this.priorite);
-		donneesTache.put("listeSsTache", this.mapSousTaches);
+		for (int l = 0; l < NB_MAX_SOUSTACHES; l++ ) {
+			donneesTache.put("listeSsTache", this.tabssTaches.getValueAt(l, 0));
+			donneesTache.put("listeSsTache", this.tabssTaches.getValueAt(l, 1));
+		}
 		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
 		
 
@@ -457,7 +454,7 @@ public class Vue_nouvelleTache extends JPanel {
 
 	}
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, TreeMap<String, Float> listeSousTaches, int etatAvancement   ) {
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.tfLibelle.setText(libelle);
@@ -472,8 +469,8 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfMois.setText(String.valueOf(teMoisInt));
 		this.tfJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
-		this.mapSousTaches = listeSousTaches;
-		this.slAvancementTache.setValue(etatAvancement);
+		//		this.mapSousTaches = listeSousTaches; ?????
+		this.slAvancementTache.setValue(etatAvancement); ///Tf?
 
 	}
 

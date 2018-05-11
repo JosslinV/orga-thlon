@@ -30,15 +30,17 @@ public class TabModel extends AbstractTableModel{
 	public String getColumnName(int c) {
 		return this.titresColonnes[c];
 	}
-	
+	/*
 	public Class getColumnClass(int c) {
 		return this.donnees[0][c].getClass();
 	}
-	
+	*/
 	public boolean isCellEditable(int l, int c) {
-		if (getValueAt(0, c) instanceof String)
-			return false;
+		//if (getValueAt(0, c) instanceof String)
+			//return false;
 		return true;
 	}
+	
+	
 	
 }
