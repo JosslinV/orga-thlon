@@ -34,6 +34,8 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
+
 import controleur.ControleurNouvelleCourse;
 import modele.Etat.Etat;
 
@@ -71,7 +73,7 @@ public class VueNouvelleCourse extends JPanel {
 		this.lbTitreCourse.setForeground(Color.red);
 		pNord.add(this.lbTitreCourse);		
 		this.tfTitreCourse = new JTextField("nouveau");
-		this.tfTitreCourse.addKeyListener(new CustomKeyListener());
+		//this.tfTitreCourse.addKeyListener(new CustomKeyListener());
 		this.tfTitreCourse.setColumns(45);;
 		pNord.add(tfTitreCourse);		
 		
@@ -244,17 +246,10 @@ public class VueNouvelleCourse extends JPanel {
 		c2.gridx = 0;
 		c2.gridy = 3;
 		spDroite.add(lbParcoursCourse, c2);
-		String titresColonnes []  = {" ", "Distance","Ville","CP"};
-		Object [][] donneesParcours = {
-				{"Natation",new Integer(0),"",new Integer(0)},
-				{"Cyclisme",new Integer(0),"",new Integer(0)},
-				{"Course à pied",new Integer(0),"",new Integer(0)},
-				{"Arriv\u00E9e",new Integer(0),"",new Integer(0)}
-		};
-		TabModel modelParcours = new TabModel(donneesParcours, titresColonnes);
-		this.parcoursTab = new JTable(modelParcours);
+		
+		this.parcoursTab = new JTable(new TabModele());
+		this.parcoursTab.setPreferredScrollableViewportSize(new Dimension(250,85)); 
 		JScrollPane tabSP = new JScrollPane(parcoursTab);
-		tabSP.setMinimumSize(new Dimension(250,85)); 
 		c2.gridx = 0;
 		c2.gridy = 4;
 		c2.gridheight = 3;
@@ -396,8 +391,9 @@ public class VueNouvelleCourse extends JPanel {
 	public int getId_Course() {
 		return id_Course;
 	}
-
-
+	
+}
+/*
 	public class CustomKeyListener implements KeyListener{
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -421,7 +417,102 @@ public class VueNouvelleCourse extends JPanel {
 	
 		
 	}
+	*/	
+	
+	class TabModele extends AbstractTableModel {
+		private boolean DEBUG = false;
 
+		
+		String titresColonnes []  = {" ", "Distance","Ville","CP"};
+		Object [][] donneesParcours = {
+				{"Natation",new Integer(0),"",""},
+				{"Cyclisme",new Integer(0),"",""},
+				{"Course à pied",new Integer(0),"",""},
+				{"Arriv\u00E9e",calculDistanceTotale(),"",""} //griser distance arrivée + créer méthode
+		};
+
+		private Object calculDistanceTotale() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	    public int getColumnCount() {
+	      return titresColonnes.length;
+	    }
+
+		public int getRowCount() {
+	      return donneesParcours.length;
+	    }
+
+	    public String getColumnName(int col) {
+	      return titresColonnes[col];
+	    }
+
+	    public Object getValueAt(int row, int col) {
+	      return donneesParcours[row][col];
+	    }
+
+	    /**
+	     * JTable uses this method to determine the default renderer/ editor for
+	     * each cell. If we didn't implement this method, then the last column
+	     * would contain text ("true"/"false"), rather than a check box.
+	     */
+	    public Class getColumnClass(int c) {
+	      return getValueAt(0, c).getClass();
+	    }
+
+	    /**
+	     * Don't need to implement this method unless your table's editable.
+	     */
+	    public boolean isCellEditable(int row, int col) {
+	      //Note that the data/cell address is constant,
+	      //no matter where the cell appears onscreen.
+	      if (col < 1) 
+	        return false;
+	       else if (col == 1 && row == 3) 
+	        return false;
+	       else 
+		    return true;
+
+	    }
+	    /**
+	     * Don't need to implement this method unless your table's data can
+	     * change.
+	     */
+	    
+	    public void setValueAt(Object value, int row, int col) {
+	      if (DEBUG) {
+	        System.out.println("Setting value at " + row + "," + col
+	            + " to " + value + " (an instance of "
+	            + value.getClass() + ")");
+	      }
+
+	      donneesParcours[row][col] = value;
+	      fireTableCellUpdated(row, col);
+
+	      if (DEBUG) {
+	        System.out.println("New value of data:");
+	        printDebugData();
+	      }
+	    }
+	    
+	    
+
+	    private void printDebugData() {
+	      int numRows = getRowCount();
+	      int numCols = getColumnCount();
+
+	      for (int i = 0; i < numRows; i++) {
+	        System.out.print("    row " + i + ":");
+	        for (int j = 0; j < numCols; j++) {
+	          System.out.print("  " + donneesParcours[i][j]);
+	        }
+	        System.out.println();
+	      }
+	      System.out.println("--------------------------");
+	    }
+
+	}
 
 
 
@@ -429,4 +520,4 @@ public class VueNouvelleCourse extends JPanel {
 
 	
 
-}
+

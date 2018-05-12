@@ -8,7 +8,7 @@ public class AppliTest {
 		new FenetreNouvelleCourse();
 		//new FenetreNouveauBenevole();
 		//new FenetreNouveauContactExterne();
-		new Fenetre_NouvelleTache();
+		//new Fenetre_NouvelleTache();
 		
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
@@ -27,10 +27,14 @@ public class AppliTest {
 				donneesSousTaches[numeroSousTache][1]= mapSousTaches.get(cle);
 				System.out.println("numeroSousTache"+ numeroSousTache + "libelle :"+ donneesSousTaches[numeroSousTache][0] + "TauxCompletion :"+ donneesSousTaches[numeroSousTache][1] );
 				numeroSousTache ++;
-
+	
 		};
 		*/
+		
+		
 
 	}
+	
+	
 
 }
