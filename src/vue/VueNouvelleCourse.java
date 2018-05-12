@@ -83,9 +83,9 @@ public class VueNouvelleCourse extends JPanel {
 		JPanel spDroite = new JPanel();
 		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, spGauche, spDroite);
 		pCentre.add(sp);
-		sp.setPreferredSize(new Dimension(650,370)); // édition de la dimension du JSplitPane
-		sp.setOneTouchExpandable(true); //permet de faire glisser le séparateur avec la souris
-		sp.setDividerLocation(270); //fixe la position du séprarateur
+		sp.setPreferredSize(new Dimension(650,370)); 
+		sp.setOneTouchExpandable(true); 
+		sp.setDividerLocation(270); 
 		sp.setBorder(new EmptyBorder(10,20,10,20));
 
 		//à Gauche du séparateur
@@ -98,7 +98,6 @@ public class VueNouvelleCourse extends JPanel {
 		c1.gridx = 0;
 		c1.gridy = 0;
 		spGauche.add(lbDateDebutCourse, c1);
-		
 		
 		tfDateDebutCourse = new JTextField();
 		c1.gridx = 1;
@@ -148,7 +147,7 @@ public class VueNouvelleCourse extends JPanel {
 		tfBudget.setMinimumSize(new Dimension(70,20));
 		spGauche.add(tfBudget, c1);
 		
-		JLabel lbDevise = new JLabel("€"); // ComboBox euro, livre sterling, couronne etc ?
+		JLabel lbDevise = new JLabel("€"); 
 		c1.gridx = 2;
 		c1.gridy = 2;
 		lbDevise.setPreferredSize(new Dimension(20,20));
@@ -270,11 +269,9 @@ public class VueNouvelleCourse extends JPanel {
 		pSud.add(this.btAnnuler);
 		pSud.add(this.btValider);
 		
-		//this.btAnnuler.addActionListener(controleur);
-		//this.btValider.addActionListener(controleur);
-		//this.btDateDebutCourse.addActionListener(controleur);
-
-
+		this.btAnnuler.addActionListener(controleur);
+		this.btValider.addActionListener(controleur);
+		this.btDateDebutCourse.addActionListener(controleur);
 	}
 	
 	public void setActifComposants(boolean actif){
@@ -285,21 +282,10 @@ public class VueNouvelleCourse extends JPanel {
 		this.tfFormatCourse.setEnabled(actif);
 		this.taCommentaireCourse.setEnabled(actif);
 		this.parcoursTab.setEnabled(actif);
-		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'écition du spinner en mode consultation
+		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'édition du spinner en mode consultation
 		this.cbAgrement.setEnabled(actif);
 		this.btDateDebutCourse.setEnabled(actif);
-	}
-	
-	/*
-	public void titreFenetreSaisi(boolean b) {
-		this.tfTitreCourse.setVisible(!b);
-		this.lbTitreCourse.setVisible(!b);
-		if (!b)
-			this.setTitle(this.id_Course + " : " + this.tfTitreCourse.getText() + " - EDITION");
-		else 
-			this.setTitle(this.id_Course + " : " + this.tfTitreCourse.getText() + " - CONSULTATION");
-	}
-	*/
+	}	
 	  
 	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
 		if (estEditable) {
@@ -395,10 +381,11 @@ public class VueNouvelleCourse extends JPanel {
 }
 /*
 	public class CustomKeyListener implements KeyListener{
+		private VueNouvelleCourse vue = new VueNouvelleCourse();
 		@Override
 		public void keyTyped(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				lbTitreCourse.setForeground(Color.BLACK);
+				vue.lbTitreCourse.setForeground(Color.BLACK);
 
 			}
 		}
@@ -417,8 +404,8 @@ public class VueNouvelleCourse extends JPanel {
 	
 		
 	}
-	*/	
 	
+	*/
 	class TabModele extends AbstractTableModel {
 		private boolean DEBUG = false;
 
@@ -465,8 +452,6 @@ public class VueNouvelleCourse extends JPanel {
 	     * Don't need to implement this method unless your table's editable.
 	     */
 	    public boolean isCellEditable(int row, int col) {
-	      //Note that the data/cell address is constant,
-	      //no matter where the cell appears onscreen.
 	      if (col < 1) 
 	        return false;
 	       else if (col == 1 && row == 3) 
@@ -481,23 +466,12 @@ public class VueNouvelleCourse extends JPanel {
 	     */
 	    
 	    public void setValueAt(Object value, int row, int col) {
-	      if (DEBUG) {
-	        System.out.println("Setting value at " + row + "," + col
-	            + " to " + value + " (an instance of "
-	            + value.getClass() + ")");
-	      }
-
-	      donneesParcours[row][col] = value;
-	      fireTableCellUpdated(row, col);
-
-	      if (DEBUG) {
-	        System.out.println("New value of data:");
-	        printDebugData();
-	      }
+	    	donneesParcours[row][col] = value;
+	        fireTableCellUpdated(row, col);
 	    }
 	    
 	    
-
+/*
 	    private void printDebugData() {
 	      int numRows = getRowCount();
 	      int numCols = getColumnCount();
@@ -511,7 +485,7 @@ public class VueNouvelleCourse extends JPanel {
 	      }
 	      System.out.println("--------------------------");
 	    }
-
+*/
 	}
 
 

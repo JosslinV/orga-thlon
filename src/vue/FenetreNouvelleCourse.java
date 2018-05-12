@@ -50,7 +50,17 @@ public class FenetreNouvelleCourse extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.add(vue);
 				
-		}	
+		}
+	/*
+	public void titreFenetreSaisi(boolean b) {
+		this.vue.tfTitreCourse.setVisible(!b);
+		this.lbTitreCourse.setVisible(!b);
+		if (!b)
+			this.setTitle(this.id_Course + " : " + this.tfTitreCourse.getText() + " - EDITION");
+		else 
+			this.setTitle(this.id_Course + " : " + this.tfTitreCourse.getText() + " - CONSULTATION");
+	}
+	*/
 	}
 
 
