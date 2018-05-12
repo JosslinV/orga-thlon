@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -71,9 +72,11 @@ public class Vue_nouvelleTache extends JPanel {
 	private JTable tabMateriel;
 	private JButton btSupprimerSousTaches;
 	private JTextField tfEtatAvancement;
+	private JButton btAjouterEquipe;
+	private JButton btSupprimerEquipe;
 	
-	String titresColonnesSsTaches [] = {"Libell\u00E9", " Avancement "};
-	Object [][] donneesSousTaches = { 
+	private String titresColonnesSsTaches [] = {"Libell\u00E9", " Avancement "};
+	private Object [][] donneesSousTaches = { 
 			{ "", new JProgressBar()},
 			{ "", new JProgressBar()},
 			{ "", new JProgressBar()},
@@ -84,8 +87,8 @@ public class Vue_nouvelleTache extends JPanel {
 			{ "", new JProgressBar()},
 };
 	
-	String titresColonnesEquipe [] = {"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"};
-	Object [][] donneesEquipe = { 
+	private String titresColonnesEquipe [] = {"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"};
+	private Object [][] donneesEquipe = { 
 			{ new Boolean(false), "", "", ""},
 			{ new Boolean(false), "", "", ""},
 			{ new Boolean(false), "", "", ""},
@@ -97,8 +100,8 @@ public class Vue_nouvelleTache extends JPanel {
 			
 };
 	
-	String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
-	Object [][] donneesMateriel = { 
+	private String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
+	private Object [][] donneesMateriel = { 
 			{ "", "", "", new Integer(0)},
 			{ "", "", "", new Integer(0)},
 			{ "", "", "", new Integer(0)},
@@ -108,6 +111,9 @@ public class Vue_nouvelleTache extends JPanel {
 			{ "", "", "", new Integer(0)},
 			{ "", "", "", new Integer(0)}
 };
+	private JButton btAjouterMateriel;
+	private JButton btSupprimerMateriel;
+
 
 
 	public Vue_nouvelleTache()  {
@@ -296,25 +302,17 @@ public class Vue_nouvelleTache extends JPanel {
 		JRadioButton rbPriorite4 = new JRadioButton("", priorites.get(4));
 		pPriorite.add(rbPriorite4);
 		
-		JLabel lbSsTaches = new JLabel("Sous-t\u00E2ches");
-		cEst.anchor = GridBagConstraints.LINE_START;
-		cEst.insets = new Insets(10, 10, 5, 5);
+		JPanel pAjouterSupprimerSSTache = new JPanel();	
+		pAjouterSupprimerSSTache.setLayout(new FlowLayout());
 		cEst.gridx = 0;
 		cEst.gridy = 4;
-		pEst.add(lbSsTaches, cEst);
-		
-		JPanel pAjouterSupprimerSSTache = new JPanel();
-		cEst.gridx = 1;
-		cEst.gridy = 4;
-		//cEst.gridwidth = 2;
-		cEst.insets = new Insets(10, 85, 5, 5);
-		cEst.fill = GridBagConstraints.WEST;
-		pEst.add(pAjouterSupprimerSSTache, cEst);		
+		cEst.anchor = GridBagConstraints.CENTER;
+		cEst.insets = new Insets(5, 5, 5, 5);
+		pEst.add(pAjouterSupprimerSSTache, cEst);
 		this.btAjouterSousTaches = new JButton("+");
-		//this.btAjouterSousTaches.addActionListener(controleur);
-		pAjouterSupprimerSSTache.add(this.btAjouterSousTaches);		
 		this.btSupprimerSousTaches = new JButton("-");
-		//this.btSupprimerSousTaches.addActionListener(controleur);
+		pAjouterSupprimerSSTache.add(new JLabel("SOUS-TACHES"));
+		pAjouterSupprimerSSTache.add(this.btAjouterSousTaches);		
 		pAjouterSupprimerSSTache.add(this.btSupprimerSousTaches);
 		
 		this.tabssTaches = new JTable(new TabModele(this.titresColonnesSsTaches, this.donneesSousTaches));
@@ -355,24 +353,40 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		JPanel pEquipeMateriel = new JPanel();
 		pEquipeMateriel.setLayout(new GridLayout(2,1));
+		
+		
 		JPanel pEquipe = new JPanel();
-		pEquipe.setLayout(new BorderLayout());
-		JLabel lbEquipe = new JLabel("Equipe");
-		lbEquipe.setPreferredSize(new Dimension(70, 25));
-		pEquipe.add(lbEquipe, BorderLayout.NORTH);
+		pEquipe.setLayout(new BorderLayout());	
+		JPanel pAjouterSupprimerEquipe = new JPanel();
+		pAjouterSupprimerEquipe.add(new JLabel("EQUIPE"));
+		pEquipe.add(pAjouterSupprimerEquipe, BorderLayout.NORTH);		
+		this.btAjouterEquipe = new JButton("+");
+		pAjouterSupprimerEquipe.add(this.btAjouterEquipe);		
+		this.btSupprimerEquipe = new JButton("-");
+		pAjouterSupprimerEquipe.add(this.btSupprimerEquipe);		
 		this.tabEquipe = new JTable(new TabModele(this.titresColonnesEquipe, this.donneesEquipe));
 		this.tabEquipe.setPreferredScrollableViewportSize(new Dimension(250,50)); 
 		pEquipe.add(new JScrollPane(this.tabEquipe));
 		
 		JPanel pMateriel = new JPanel();
 		pMateriel.setLayout(new BorderLayout());
-		JLabel lbMateriel = new JLabel("Mat\u00E9riel");
-		lbMateriel.setPreferredSize(new Dimension(70, 25));
-		pMateriel.add(lbMateriel, BorderLayout.NORTH);
+		JPanel pAjouterSupprimerMateriel = new JPanel();
+		pAjouterSupprimerMateriel.add(new JLabel("MATERIEL"));
+		pMateriel.add(pAjouterSupprimerMateriel, BorderLayout.NORTH);		
+		this.btAjouterMateriel = new JButton("+");
+		pAjouterSupprimerMateriel.add(this.btAjouterMateriel);		
+		this.btSupprimerMateriel = new JButton("-");
+		pAjouterSupprimerMateriel.add(this.btSupprimerMateriel);		
+		this.tabMateriel = new JTable(new TabModele(this.titresColonnesMateriel, this.donneesMateriel));
+		this.tabMateriel.setPreferredScrollableViewportSize(new Dimension(250,50)); 
+		pMateriel.add(new JScrollPane(this.tabMateriel));
+		/*
 		
+		pMateriel.add(new JLabel("Mat\u00E9riel"), BorderLayout.NORTH);
 		this.tabMateriel = new JTable(new TabModele(this.titresColonnesMateriel, this.donneesMateriel));
 		this.tabMateriel.setPreferredScrollableViewportSize(new Dimension(400,50)); 
 		pMateriel.add(new JScrollPane(this.tabMateriel));
+		*/
 		pEquipeMateriel.add(pEquipe);	
 		pEquipeMateriel.add(pMateriel);
 		pOuest.add(pEquipeMateriel);	
@@ -441,6 +455,10 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//this.btAnnuler.addActionListener(controleur);
 		//this.btValider.addActionListener(controleur);
+		//this.btAjouterSousTaches.addActionListener(controleur);
+		//this.btSupprimerSousTaches.addActionListener(controleur);
+		//this.btAjouterEquipe.addActionListener(controleur);
+		//this.btAnnulerEquipe.addActionListener(controleur);
 
 	}
 	
