@@ -107,8 +107,8 @@ public class ControleurNouvelleCourse implements ActionListener {
         //nouvelleCourse.setDate_fin_course(d2) ;
         nouvelleCourse.setNbParticipants( Integer.parseInt(String.valueOf( donneesCourses.get("nbParticipantsVue")))) ; 
         nouvelleCourse.setAgrement(Boolean.valueOf(String.valueOf( donneesCourses.get("agrementVue")))) ; 
-        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("type_epreuveVue"))) ; 
-        nouvelleCourse.setNom( String.valueOf( donneesCourses.get("formatVue"))) ; 
+        nouvelleCourse.setType_epreuve( String.valueOf( donneesCourses.get("type_epreuveVue"))) ; 
+        nouvelleCourse.setFormat( String.valueOf( donneesCourses.get("formatVue"))) ; 
         nouvelleCourse.setDistance_nat( Integer.parseInt(String.valueOf( donneesCourses.get("distance_natVue")))) ; 
         nouvelleCourse.setDistance_cyc( Integer.parseInt(String.valueOf( donneesCourses.get("distance_cycVue")))) ;
         nouvelleCourse.setDistance_cou( Integer.parseInt(String.valueOf( donneesCourses.get("distance_couVue")))) ;
@@ -121,6 +121,9 @@ public class ControleurNouvelleCourse implements ActionListener {
         nouvelleCourse.setCP_ville_cou( String.valueOf( donneesCourses.get("CP_ville_couVue"))) ;
         nouvelleCourse.setCP_ville_arr( String.valueOf( donneesCourses.get("CP_ville_arrVue"))) ; 
         nouvelleCourse.setDescriptionCourse( String.valueOf( donneesCourses.get("description_courseVue"))) ; 
+        nouvelleCourse.setBudget(Float.parseFloat(String.valueOf( donneesCourses.get("budgetVue"))) );
+       
+        
         
         return nouvelleCourse ;
 	}
