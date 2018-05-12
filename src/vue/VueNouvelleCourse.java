@@ -56,7 +56,6 @@ public class VueNouvelleCourse extends JPanel {
 	private JTable parcoursTab;
 	private JCheckBox cbAgrement;
 	private JLabel lbTitreCourse;
-	private String type_epreuve;
 	private JSpinner spNbParticipants;
 	private JButton btValider;
 	private JButton btAnnuler;
@@ -247,14 +246,13 @@ public class VueNouvelleCourse extends JPanel {
 		
 		this.parcoursTab = new JTable(new TabModele());
 		this.parcoursTab.setPreferredScrollableViewportSize(new Dimension(250,85)); 
-		JScrollPane tabSP = new JScrollPane(parcoursTab);
 		c2.gridx = 0;
 		c2.gridy = 4;
 		c2.gridheight = 3;
 		c2.gridwidth = 2;
 		c2.insets = new Insets(5, 5, 5, 5);
 		c2.anchor = GridBagConstraints.LINE_START;
-		spDroite.add(tabSP, c2);
+		spDroite.add(new JScrollPane(this.parcoursTab), c2);
 		
 		//southPanel
 		JPanel pSud = new JPanel();
@@ -412,14 +410,13 @@ public class VueNouvelleCourse extends JPanel {
 				{"Natation",new Integer(0),"",""},
 				{"Cyclisme",new Integer(0),"",""},
 				{"Course à pied",new Integer(0),"",""},
-				{"Arriv\u00E9e",calculDistanceTotale(),"",""} //griser distance arrivée + créer méthode
+				{"Arriv\u00E9e",new Integer(0),"",""} // créer méthode
 		};
-
-		private Object calculDistanceTotale() {
-			// TODO Auto-generated method stub
-			return null;
+		/*calculDistanceTotale()
+		private Integer calculDistanceTotale() {
+			return (Integer)donneesParcours[0][1]; //+ (Integer) getValueAt(1, 1) + (Integer)getValueAt(2, 1);
 		}
-		
+		*/
 	    public int getColumnCount() {
 	      return titresColonnes.length;
 	    }

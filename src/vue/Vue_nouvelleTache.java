@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -19,8 +20,10 @@ import java.util.TreeMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
@@ -32,6 +35,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class Vue_nouvelleTache extends JPanel {
 	
@@ -66,6 +71,44 @@ public class Vue_nouvelleTache extends JPanel {
 	private JTable tabMateriel;
 	private JButton btSupprimerSousTaches;
 	private JTextField tfEtatAvancement;
+	
+	String titresColonnesSsTaches [] = {"Libell\u00E9", " Avancement "};
+	Object [][] donneesSousTaches = { 
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+			{ "", new JProgressBar()},
+};
+	
+	String titresColonnesEquipe [] = {"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"};
+	Object [][] donneesEquipe = { 
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""},
+			{ new Boolean(false), "", "", ""}
+			
+};
+	
+	String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
+	Object [][] donneesMateriel = { 
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)},
+			{ "", "", "", new Integer(0)}
+};
+
 
 	public Vue_nouvelleTache()  {
 		//ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
@@ -274,20 +317,10 @@ public class Vue_nouvelleTache extends JPanel {
 		//this.btSupprimerSousTaches.addActionListener(controleur);
 		pAjouterSupprimerSSTache.add(this.btSupprimerSousTaches);
 		
-		String titresColonnesSsTaches [] = {"Libell\u00E9", " % "};
-		Object [][] donneesSousTaches = new Object [NB_MAX_SOUSTACHES][2];
-		
-		for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
-			donneesSousTaches[i][0]= "" ;
-			donneesSousTaches[i][1]= new Float(0.0F);
-			//this.mapSousTaches.put(String.valueOf(donneesSousTaches[i][0]), (Float) donneesSousTaches[i][1]);
-			//System.out.println("numeroSousTache"+ i + "libelle :"+ donneesSousTaches[i][0] + "TauxCompletion :"+ this.mapSousTaches.get(donneesSousTaches[i][0]) );
-		}
-	
-		TabModel modelSsTaches = new TabModel(donneesSousTaches, titresColonnesSsTaches);
-		this.tabssTaches = new JTable(modelSsTaches);
+		this.tabssTaches = new JTable(new TabModele(this.titresColonnesSsTaches, this.donneesSousTaches));
+		this.tabssTaches.setPreferredScrollableViewportSize(new Dimension(400,65)); 
 		JScrollPane tabSP = new JScrollPane(this.tabssTaches);
-		tabSP.setMinimumSize(new Dimension(400,85)); 
+		this.tabssTaches.setDefaultRenderer(JProgressBar.class, new TableComponent());
 		cEst.gridx = 0;
 		cEst.gridy = 6;
 		cEst.gridheight = 3;
@@ -327,15 +360,8 @@ public class Vue_nouvelleTache extends JPanel {
 		JLabel lbEquipe = new JLabel("Equipe");
 		lbEquipe.setPreferredSize(new Dimension(70, 25));
 		pEquipe.add(lbEquipe, BorderLayout.NORTH);
-		String titresColonnesEquipe [] = {"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"};
-		String [][] donneesEquipe = new String [50][4];
-		for (int ligne = 0; ligne < 50  ; ligne++ ) {
-			donneesEquipe[ligne][0]= "";
-			donneesEquipe[ligne][1]= "";
-			donneesEquipe[ligne][2]= "";
-			donneesEquipe[ligne][3]= "";
-		};	
-		this.tabEquipe = new JTable(donneesEquipe, titresColonnesEquipe);
+		this.tabEquipe = new JTable(new TabModele(this.titresColonnesEquipe, this.donneesEquipe));
+		this.tabEquipe.setPreferredScrollableViewportSize(new Dimension(250,50)); 
 		pEquipe.add(new JScrollPane(this.tabEquipe));
 		
 		JPanel pMateriel = new JPanel();
@@ -343,15 +369,9 @@ public class Vue_nouvelleTache extends JPanel {
 		JLabel lbMateriel = new JLabel("Mat\u00E9riel");
 		lbMateriel.setPreferredSize(new Dimension(70, 25));
 		pMateriel.add(lbMateriel, BorderLayout.NORTH);
-		String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
-		String [][] donneesMateriel = new String [50][4];
-		for (int ligne = 0; ligne < 50  ; ligne++ ) {
-			donneesMateriel[ligne][0]= "";
-			donneesMateriel[ligne][1]= "";
-			donneesMateriel[ligne][2]= "";
-			donneesMateriel[ligne][3]= "";
-		};	
-		this.tabMateriel = new JTable(donneesMateriel, titresColonnesMateriel);
+		
+		this.tabMateriel = new JTable(new TabModele(this.titresColonnesMateriel, this.donneesMateriel));
+		this.tabMateriel.setPreferredScrollableViewportSize(new Dimension(400,50)); 
 		pMateriel.add(new JScrollPane(this.tabMateriel));
 		pEquipeMateriel.add(pEquipe);	
 		pEquipeMateriel.add(pMateriel);
@@ -532,8 +552,78 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfEtatAvancement.setText(String.valueOf(this.slAvancementTache.getValue()));
 	}
 	
-	
+	class TabModele extends AbstractTableModel {
+		private boolean DEBUG = false;
+		private String [] titresColonnes ;
+		private Object [][] donnees;		
 
+		
+		public TabModele(String[] titresColonnes, Object[][] donnees) {
+			this.titresColonnes = titresColonnes;
+			this.donnees = donnees;
+		}
+		
+	    public int getColumnCount() {
+	    	return titresColonnes.length;
+	    }
+
+		public int getRowCount() {
+			return donnees.length;
+	    }
+
+	    public String getColumnName(int col) {
+	    	return titresColonnes[col];
+	    }
+
+	    public Object getValueAt(int row, int col) {
+	    	return donnees[row][col];
+	    }
+
+	    /**
+	     * JTable uses this method to determine the default renderer/ editor for
+	     * each cell. If we didn't implement this method, then the last column
+	     * would contain text ("true"/"false"), rather than a check box.
+	     */
+	    public Class getColumnClass(int c) {
+	      return getValueAt(0, c).getClass();
+	    }
+
+	    /**
+	     * Don't need to implement this method unless your table's editable.
+	     */
+	    public boolean isCellEditable(int row, int col) {
+		    return true;
+	    }
+	    /**
+	     * Don't need to implement this method unless your table's data can
+	     * change.
+	     */
+	    
+	    public void setValueAt(Object value, int row, int col) {
+	    	donnees[row][col] = value;
+	        fireTableCellUpdated(row, col);
+	    }
+	    
+	}
+
+	
+	public class TableComponent extends DefaultTableCellRenderer {
+
+	  public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	    if (value instanceof JProgressBar)
+	      return (JProgressBar) value;
+	    else
+	      return this;
+	  }
+	}
+/*
+ * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
+			donneesSousTaches[i][0]= "" ;
+			donneesSousTaches[i][1]= new Float(0.0F);
+			//this.mapSousTaches.put(String.valueOf(donneesSousTaches[i][0]), (Float) donneesSousTaches[i][1]);
+			//System.out.println("numeroSousTache"+ i + "libelle :"+ donneesSousTaches[i][0] + "TauxCompletion :"+ this.mapSousTaches.get(donneesSousTaches[i][0]) );
+		}
+ */
 
     
 }
