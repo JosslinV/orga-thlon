@@ -61,7 +61,6 @@ public class VueNouvelleCourse extends JPanel {
 	private JButton btValider;
 	private JButton btAnnuler;
 
-
 	public VueNouvelleCourse() throws Exception {
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
@@ -264,11 +263,9 @@ public class VueNouvelleCourse extends JPanel {
 		pSud.setBorder(new EmptyBorder(30,100,30,100));
 		this.btAnnuler = new JButton("annuler");
 		this.btAnnuler.setPreferredSize(new Dimension(80,40));
-
 		this.btValider = new JButton("valider");
 		pSud.add(this.btAnnuler);
-		pSud.add(this.btValider);
-		
+		pSud.add(this.btValider);		
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
 		this.btDateDebutCourse.addActionListener(controleur);
@@ -303,18 +300,16 @@ public class VueNouvelleCourse extends JPanel {
 		HashMap<String,Object> donneesCourse = new HashMap<String, Object>();
 		donneesCourse.put("id_Course", this.id_Course);
 		donneesCourse.put("nom_courseVue", this.tfTitreCourse.getText());
-		//Date dateCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebutCourse.getText());
 		LocalDate dateCourse = LocalDate.parse(this.tfDateDebutCourse.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesCourse.put("date_debut_courseVue",dateCourse ); 
 		LocalDate dateFinCourse = LocalDate.parse(this.tfDateFinCourse.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu")) ;
-		//Date dateFinCourse = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateFinCourse.getText());	
 		donneesCourse.put("date_fin_courseVue",dateFinCourse ); 
 		double budget = Double.parseDouble(this.tfBudget.getText());
 		donneesCourse.put("budgetVue", budget);	
 		int nbParticipantsInt = (Integer) this.spmNbParticipants.getValue();
 		donneesCourse.put("nbParticipantsVue", nbParticipantsInt);		
 		donneesCourse.put("agrementVue", cbAgrement.isSelected());		
-		donneesCourse.put("type_epreuveVue", type_epreuve);
+		donneesCourse.put("type_epreuveVue", this.tfNomEvenement.getText());
 		donneesCourse.put("formatVue", tfFormatCourse.getText());		
 		donneesCourse.put("distance_natVue", this.parcoursTab.getValueAt(0, 1));		
 		donneesCourse.put("distance_cycVue", this.parcoursTab.getValueAt(1, 1));
@@ -377,35 +372,37 @@ public class VueNouvelleCourse extends JPanel {
 	public int getId_Course() {
 		return id_Course;
 	}
+
+	public JButton getBtValider() {
+		return btValider;
+	}
 	
 }
 /*
-	public class CustomKeyListener implements KeyListener{
+	class CustomKeyListener implements KeyListener{
 		private VueNouvelleCourse vue = new VueNouvelleCourse();
+		
 		@Override
 		public void keyTyped(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				vue.lbTitreCourse.setForeground(Color.BLACK);
+				this.vue.getTfTitreCourse().setForeground(Color.BLACK);
 
 			}
 		}
 		@Override
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				lbTitreCourse.setForeground(Color.BLACK);
-				btValider.setEnabled(true);
+				this.vue.getTfTitreCourse().setForeground(Color.BLACK);
+				this.vue.getBtValider().setEnabled(true);
 			}
 
 		}
 		public void keyReleased(KeyEvent arg0) {
 			
 		}
-		
-	
-		
 	}
-	
 	*/
+	
 	class TabModele extends AbstractTableModel {
 		private boolean DEBUG = false;
 
@@ -470,22 +467,6 @@ public class VueNouvelleCourse extends JPanel {
 	        fireTableCellUpdated(row, col);
 	    }
 	    
-	    
-/*
-	    private void printDebugData() {
-	      int numRows = getRowCount();
-	      int numCols = getColumnCount();
-
-	      for (int i = 0; i < numRows; i++) {
-	        System.out.print("    row " + i + ":");
-	        for (int j = 0; j < numCols; j++) {
-	          System.out.print("  " + donneesParcours[i][j]);
-	        }
-	        System.out.println();
-	      }
-	      System.out.println("--------------------------");
-	    }
-*/
 	}
 
 
