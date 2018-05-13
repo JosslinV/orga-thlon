@@ -11,7 +11,7 @@ public class Fenetre_NouvelleTache extends JFrame{
 		this.add(vue);
 		this.setLayout(new GridLayout(1,1));
 		this.pack();
-		this.setSize(1200, 650);
+		this.setSize(1160, 650);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

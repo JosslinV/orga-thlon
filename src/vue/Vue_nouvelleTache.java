@@ -380,13 +380,6 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tabMateriel = new JTable(new TabModele(this.titresColonnesMateriel, this.donneesMateriel));
 		this.tabMateriel.setPreferredScrollableViewportSize(new Dimension(250,50)); 
 		pMateriel.add(new JScrollPane(this.tabMateriel));
-		/*
-		
-		pMateriel.add(new JLabel("Mat\u00E9riel"), BorderLayout.NORTH);
-		this.tabMateriel = new JTable(new TabModele(this.titresColonnesMateriel, this.donneesMateriel));
-		this.tabMateriel.setPreferredScrollableViewportSize(new Dimension(400,50)); 
-		pMateriel.add(new JScrollPane(this.tabMateriel));
-		*/
 		pEquipeMateriel.add(pEquipe);	
 		pEquipeMateriel.add(pMateriel);
 		pOuest.add(pEquipeMateriel);	
@@ -395,16 +388,15 @@ public class Vue_nouvelleTache extends JPanel {
 		JPanel pCentre = new JPanel();
 		pCentre.setBorder(new CompoundBorder(null, new EmptyBorder(50, 50, 50, 50)));
 		this.add(pCentre, BorderLayout.CENTER);
-		pCentre.setLayout(new GridLayout(2, 1, 20, 70));
-		
+		pCentre.setLayout(new GridLayout(2, 1, 20, 70));	
 		this.btContact = new JButton("New button");
 		this.btContact.setMinimumSize(new Dimension(30, 30));
-		this.btContact.setMaximumSize(new Dimension(40, 40));
-		this.btContact.setPreferredSize(new Dimension(40, 40));
-		pCentre.add(this.btContact);
-		
+		this.btContact.setPreferredSize(new Dimension(70, 70));
+		this.btContact.setIcon(new ImageIcon("./src/vue/contact.png"));
+		pCentre.add(this.btContact);		
 		this.btMateriel = new JButton("New button");
-		this.btMateriel.setPreferredSize(new Dimension(40, 40));
+		this.btMateriel.setPreferredSize(new Dimension(70, 70));
+		this.btMateriel.setIcon(new ImageIcon("./src/vue/materiel.png"));
 		pCentre.add(this.btMateriel);
 		
 		
@@ -424,10 +416,10 @@ public class Vue_nouvelleTache extends JPanel {
 		pSud.add(lbCommentaire, cSud);
 		 
 		this.taCommentaire = new JTextArea();
-		this.taCommentaire.setColumns(60);
+		this.taCommentaire.setColumns(35);
 		this.taCommentaire.setRows(5);	
 		JScrollPane spCommentaire = new JScrollPane(this.taCommentaire);
-		spCommentaire.setPreferredSize(new Dimension(1140, 100));
+		spCommentaire.setPreferredSize(new Dimension(1110, 100));
 		cSud.insets = new Insets(0, 0, 5, 0);
 		cSud.gridheight = 2;
 		cSud.gridwidth = 6;
