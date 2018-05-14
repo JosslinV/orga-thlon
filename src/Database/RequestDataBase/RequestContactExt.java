@@ -5,12 +5,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import Database.DatabaseSettings;
-import modele.contacts.Contact;
 import modele.contacts.ContactExterne;
 
 public class RequestContactExt {
 
-	public Contact requestContactExt(int id) throws Exception{
+	public ContactExterne requestContactExt(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
 
@@ -18,7 +17,7 @@ public class RequestContactExt {
 			ResultSet result = state.executeQuery("SELECT * FROM Contact_Ext WHERE id_Contact = "+ id +";");
 			
 			if(result.next()) {
-				Contact contact = new ContactExterne(result.getString("nom_contact"), result.getString("nom_societe"));
+				ContactExterne contact = new ContactExterne(result.getString("nom_contact"), result.getString("nom_societe"));
 				
 				contact.setId_personne(result.getInt("id_Contact"));
 				contact.setCivilite(result.getString("civilite"));
