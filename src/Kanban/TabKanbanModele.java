@@ -6,25 +6,11 @@ public class TabKanbanModele extends AbstractTableModel {
 	
 	private String titreColonne [] = {"A FAIRE", "EN COURS", "TERMINE", "EN ATTENTE"}; //chaque colonne est associée à l'état d'une tache
 	private JPanel nombreCartes [][] = { 
-			
-				/*
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-						{new Carte (String libelle), new Carte( String libelle), new Carte (String libelle), new Carte (String libelle))},
-				*/
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-			{new JPanel(), new JPanel(), new JPanel(), new JPanel()},
-
+				
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 	};
 	@Override
 	public int getColumnCount() {
