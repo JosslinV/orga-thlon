@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 import modele.Etat.AFaire;
@@ -11,24 +11,24 @@ public class Tache {
 
 	private String libelle;
 	private String commentaire;
-	private Date dateDebut;
-	private Date dateEcheance;
+	private LocalDate dateDebut;
+	private LocalDate dateEcheance;
 	private float etatAvancement;
-	private Date dateRappel;
+	private LocalDate dateRappel;
 	private String frequenceRappel;
 	private int priorite;
 	private int tempsRestant;
-	private Date dateCreationTache;
+	private LocalDate dateCreationTache;
 	private String etatAvancementGlobal;
 	private Etat etat;
 	
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
 	
-	public Tache(String libelle, Date dateDebut) {
+	public Tache(String libelle, LocalDate dateDebut) {
 		this.libelle = libelle;
 		this.dateDebut = dateDebut;
-		this.dateCreationTache = new Date();
+		this.dateCreationTache = dateDebut ;
 		this.etat = new AFaire(this);
 		
 		this.materiel = new LinkedList<Materiel>();
@@ -60,19 +60,19 @@ public class Tache {
 		this.commentaire = commentaire;
 	}
 
-	public Date getDateDebut() {
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Date getDateEcheance() {
+	public LocalDate getDateEcheance() {
 		return dateEcheance;
 	}
 
-	public void setDateEcheance(Date dateEcheance) {
+	public void setDateEcheance(LocalDate dateEcheance) {
 		this.dateEcheance = dateEcheance;
 	}
 
@@ -84,11 +84,11 @@ public class Tache {
 		this.etatAvancement = etatAvancement;
 	}
 
-	public Date getDateRappel() {
+	public LocalDate getDateRappel() {
 		return dateRappel;
 	}
 
-	public void setDateRappel(Date dateRappel) {
+	public void setDateRappel(LocalDate dateRappel) {
 		this.dateRappel = dateRappel;
 	}
 
@@ -116,11 +116,11 @@ public class Tache {
 		this.tempsRestant = tempsRestant;
 	}
 
-	public Date getDateCreationTache() {
+	public LocalDate getDateCreationTache() {
 		return dateCreationTache;
 	}
 
-	public void setDateCreationTache(Date dateCreationTache) {
+	public void setDateCreationTache(LocalDate dateCreationTache) {
 		this.dateCreationTache = dateCreationTache;
 	}
 
