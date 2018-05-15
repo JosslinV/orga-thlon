@@ -4,7 +4,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class TabKanbanModele extends AbstractTableModel {
 	
-	private String titreColonne [] = {"A FAIRE", "EN COURS", "TERMINE", "EN ATTENTE"}; //chaque colonne est associée à l'état d'une tache
+	private String titresColonnes [] = {"A FAIRE", "EN COURS", "TERMINE", "EN ATTENTE"}; //chaque colonne est associée à l'état d'une tache
 	private JPanel nombreCartes [][] = { 
 				
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
@@ -14,7 +14,7 @@ public class TabKanbanModele extends AbstractTableModel {
 	};
 	@Override
 	public int getColumnCount() {
-		return this.titreColonne.length;
+		return this.titresColonnes.length;
 	}
 
 	@Override
@@ -30,5 +30,18 @@ public class TabKanbanModele extends AbstractTableModel {
 	public Class getColumnClass(int col) {
 		return getValueAt(0,col).getClass();
 	}
+	
+	 public String getColumnName(int col) {
+	    	return this.titresColonnes[col];
+	 }
+	 
+	 public boolean isCellEditable(int row, int col) {
+		    return true;
+     }
+	 
+	 public void setValueAt(JPanel value, int row, int col) {
+	    	this.nombreCartes[row][col] = value;
+	        fireTableCellUpdated(row, col);
+	    }
 
 }
