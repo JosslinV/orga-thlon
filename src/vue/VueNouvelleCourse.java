@@ -1,6 +1,7 @@
 package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -59,21 +60,45 @@ public class VueNouvelleCourse extends JPanel {
 	private JSpinner spNbParticipants;
 	private JButton btValider;
 	private JButton btAnnuler;
+	private JTextField tfAuteurCourse;
 
 	public VueNouvelleCourse() throws Exception {
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
-				
+		this.setLayout(new BorderLayout());	
 		JPanel pNord = new JPanel();
 		this.add(pNord, BorderLayout.NORTH);
+		pNord.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		pNord.setBorder(new EmptyBorder(10,20,10,20));
-		this.lbTitreCourse = new JLabel("Titre de la course * : ");
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(5, 5, 5, 5);
+		c.anchor = GridBagConstraints.LINE_START;
+		this.lbTitreCourse = new JLabel("Titre de la course *  ");
 		this.lbTitreCourse.setForeground(Color.red);
-		pNord.add(this.lbTitreCourse);		
+		pNord.add(this.lbTitreCourse, c);
+		c.gridx = 1;
+		c.gridy = 0;
+		c.insets = new Insets(5, 5, 5, 5);
 		this.tfTitreCourse = new JTextField("nouveau");
+		this.tfTitreCourse.setColumns(30);
+		c.fill = GridBagConstraints.HORIZONTAL;
 		//this.tfTitreCourse.addKeyListener(new CustomKeyListener());
-		this.tfTitreCourse.setColumns(45);;
-		pNord.add(tfTitreCourse);		
+		pNord.add(this.tfTitreCourse, c);
+		c.gridx = 0;
+		c.gridy = 1;
+		c.insets = new Insets(5, 5, 5, 5);
+		JLabel lbAuteurCourse = new JLabel("Auteur ");
+		pNord.add(lbAuteurCourse, c);
+		c.gridx = 1;
+		c.gridy = 1;
+		c.insets = new Insets(5, 5, 5, 5);
+		this.tfAuteurCourse = new JTextField();
+		this.tfAuteurCourse.setColumns(15);
+		//this.tfTitreCourse.addKeyListener(new CustomKeyListener());
+		pNord.add(this.tfAuteurCourse, c);						
 		
 		JPanel pCentre = new JPanel();
 		this.add(pCentre,BorderLayout.CENTER);

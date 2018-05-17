@@ -145,7 +145,7 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//ajoute label icones supprimer, pause
 		
-		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+this.auteur_Tache );
+		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "  );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 1;
