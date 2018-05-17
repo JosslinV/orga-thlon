@@ -5,12 +5,12 @@ import javax.swing.table.AbstractTableModel;
 public class TabKanbanModele extends AbstractTableModel {
 	
 	private String titresColonnes [] = {"A FAIRE", "EN COURS", "TERMINE", "EN ATTENTE"}; //chaque colonne est associée à l'état d'une tache
-	private JPanel nombreCartes [][] = { 
+	private JPanel nombreTableauKanbanComposantTâches [][] = { 
 				
-						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
-						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
-						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
-						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche(""), new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche ("")},
+						{new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche(""), new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche ("")},
+						{new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche(""), new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche ("")},
+						{new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche(""), new TableauKanbanComposantTâche (""), new TableauKanbanComposantTâche ("")},
 	};
 	@Override
 	public int getColumnCount() {
@@ -19,12 +19,12 @@ public class TabKanbanModele extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return this.nombreCartes.length;
+		return this.nombreTableauKanbanComposantTâches.length;
 	}
 
 	@Override
 	public Object getValueAt(int row, int col) {
-		return this.nombreCartes[row][col];
+		return this.nombreTableauKanbanComposantTâches[row][col];
 	}
 	
 	public Class getColumnClass(int col) {
@@ -40,7 +40,7 @@ public class TabKanbanModele extends AbstractTableModel {
      }
 	 
 	 public void setValueAt(JPanel value, int row, int col) {
-	    	this.nombreCartes[row][col] = value;
+	    	this.nombreTableauKanbanComposantTâches[row][col] = value;
 	        fireTableCellUpdated(row, col);
 	    }
 
