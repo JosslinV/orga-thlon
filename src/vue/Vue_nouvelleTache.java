@@ -113,6 +113,11 @@ public class Vue_nouvelleTache extends JPanel {
 };
 	private JButton btAjouterMateriel;
 	private JButton btSupprimerMateriel;
+	private JRadioButton rbPriorite0;
+	private JRadioButton rbPriorite1;
+	private JRadioButton rbPriorite2;
+	private JRadioButton rbPriorite3;
+	private JRadioButton rbPriorite4;
 
 
 
@@ -291,15 +296,15 @@ public class Vue_nouvelleTache extends JPanel {
 		for (int i = 0; i < PRIORITE_MAX; i++) 
 			this.priorites.add(false);
 		activerBtRadioPriorite(this.priorite);
-		JRadioButton rbPriorite0 = new JRadioButton("", priorites.get(0));
+		this.rbPriorite0 = new JRadioButton("", priorites.get(0));
 		pPriorite.add(rbPriorite0);
-		JRadioButton rbPriorite1 = new JRadioButton("", priorites.get(1));
+		this.rbPriorite1 = new JRadioButton("", priorites.get(1));
 		pPriorite.add(rbPriorite1);
-		JRadioButton rbPriorite2 = new JRadioButton("", priorites.get(2));
+		this.rbPriorite2 = new JRadioButton("", priorites.get(2));
 		pPriorite.add(rbPriorite2);
-		JRadioButton rbPriorite3 = new JRadioButton("", priorites.get(3));
+		this.rbPriorite3 = new JRadioButton("", priorites.get(3));
 		pPriorite.add(rbPriorite3);
-		JRadioButton rbPriorite4 = new JRadioButton("", priorites.get(4));
+		this.rbPriorite4 = new JRadioButton("", priorites.get(4));
 		pPriorite.add(rbPriorite4);
 		
 		JPanel pAjouterSupprimerSSTache = new JPanel();	
@@ -344,7 +349,8 @@ public class Vue_nouvelleTache extends JPanel {
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
 		pEtatAvancement.add(this.slAvancementTache);				
 		this.tfEtatAvancement = new JTextField();
-		this.tfEtatAvancement.setColumns(3);;
+		this.tfEtatAvancement.setColumns(3);
+		this.tfEtatAvancement.setEditable(false);
 		pEtatAvancement.add(this.tfEtatAvancement);			
 		JLabel lbPourcent = new JLabel("%");
 		lbPourcent.setPreferredSize(new Dimension(20, 20));
@@ -506,6 +512,36 @@ public class Vue_nouvelleTache extends JPanel {
 		}
 	 */
 
+	public void setActifComposants(boolean actif){
+		this.tfLibelle.setEditable(actif);
+		this.tfResponsableNom.setEditable(actif);
+		this.tfResponsablePrenom.setEditable(actif);
+		this.tfDateDebut.setEditable(actif);
+		this.tfDateEcheance.setEditable(actif);
+		this.tfMois.setEditable(actif);
+		this.tfJour.setEditable(actif);
+		this.rbPriorite0.setEnabled(actif);
+		this.rbPriorite1.setEnabled(actif);
+		this.rbPriorite2.setEnabled(actif);
+		this.rbPriorite3.setEnabled(actif);
+		this.rbPriorite4.setEnabled(actif);
+		this.btAjouterSousTaches.setEnabled(actif);
+		this.btSupprimerSousTaches.setEnabled(actif);
+		this.tabssTaches.setEnabled(actif); //à modifier : utiliser isCellEditable
+		this.slAvancementTache.setEnabled(actif);
+		this.tabEquipe.setEnabled(actif);    //à modifier : utiliser isCellEditable
+		this.btAjouterEquipe.setEnabled(actif);
+		this.btSupprimerEquipe.setEnabled(actif);
+		this.btAjouterMateriel.setEnabled(actif);
+		this.btContact.setEnabled(actif);
+		this.btMateriel.setEnabled(actif);
+		this.tabMateriel.setEnabled(actif);
+		this.btSupprimerMateriel.setEnabled(actif);
+		this.taCommentaire.setEditable(actif);
+		this.btDateDebut.setEnabled(actif);
+		this.btDateEcheance.setEnabled(actif);
+	}
+	
 	private void activerBtRadioPriorite(int priorite) {
 		for (int i = 0; i < priorite; i++) 
 			this.priorites.set(i, true);

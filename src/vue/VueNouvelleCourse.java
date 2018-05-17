@@ -270,12 +270,12 @@ public class VueNouvelleCourse extends JPanel {
 	}
 	
 	public void setActifComposants(boolean actif){
-		this.tfDateDebutCourse.setEnabled(actif);
-		this.tfDateFinCourse.setEnabled(actif);
-		this.tfBudget.setEnabled(actif);
-		this.tfNomEvenement.setEnabled(actif);
-		this.tfFormatCourse.setEnabled(actif);
-		this.taCommentaireCourse.setEnabled(actif);
+		this.tfDateDebutCourse.setEditable(actif);
+		this.tfDateFinCourse.setEditable(actif);
+		this.tfBudget.setEditable(actif);
+		this.tfNomEvenement.setEditable(actif);
+		this.tfFormatCourse.setEditable(actif);
+		this.taCommentaireCourse.setEditable(actif);
 		this.parcoursTab.setEnabled(actif);
 		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'édition du spinner en mode consultation
 		this.cbAgrement.setEnabled(actif);
