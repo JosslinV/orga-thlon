@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controleur.ControleurNouveauBenevole;
+import controleur.ControleurNouveauContactExt;
+
 public class VueNouveauContactBenevole extends JPanel{
 	private int IdBenevole;
 	private JTextField tfNom;
@@ -29,15 +32,18 @@ public class VueNouveauContactBenevole extends JPanel{
 	private JCheckBox cbEstResponsableTache;
 	private JTextField tfCP;
 	private JButton btAjouterEquipe;
-	private JButton b;
+	private JButton bpEquipe;
 
 
 	public VueNouveauContactBenevole() {
+		
+		ControleurNouveauBenevole contr = new ControleurNouveauBenevole();
+		
 		this.setLayout(new BorderLayout());
 		JPanel panneauPrincipal = new JPanel();
 		this.add(panneauPrincipal, BorderLayout.NORTH);
 		panneauPrincipal.setLayout(new GridBagLayout());
-		panneauPrincipal.setBorder(new EmptyBorder(0,20,0,20));
+		panneauPrincipal.setBorder(new EmptyBorder(0,0,0,0));
 		GridBagConstraints c = new GridBagConstraints();
 		
 		//ligne 0 : Nom ((Jlabel + JTextField) + Téléphone (Jlabel + JTextField) 
@@ -210,14 +216,14 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(tfCP, c);
 		
 		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
-		b = new JButton("");
+		this.bpEquipe = new JButton();
 		c.gridx = 1;
 		c.gridy = 8;
 		c.gridheight = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(0,0,0,115);
 		c.ipady = 40;
-		panneauPrincipal.add(b,c);
+		panneauPrincipal.add(bpEquipe,c);
 		
 		p = new JPanel();
 		
@@ -256,12 +262,16 @@ public class VueNouveauContactBenevole extends JPanel{
 		this.add(ps, BorderLayout.SOUTH);
 		ps.setLayout(new GridLayout(1,2,150,0));
 		ps.setBorder(new EmptyBorder(0,80,30,80));
-		b = new JButton("Annuler");
-		b.setPreferredSize(new Dimension(40,40));
-		ps.add(b);
-		b = new JButton("Valider");
-		b.setPreferredSize(new Dimension(40,40));
-		ps.add(b);
+		
+		JButton bpAnnuler = new JButton("Annuler");
+		bpAnnuler.setPreferredSize(new Dimension(40,40));
+		ps.add(bpAnnuler);
+		bpAnnuler.addActionListener(contr);
+		
+		JButton bpValider = new JButton("Valider");
+		bpValider.setPreferredSize(new Dimension(40,40));
+		ps.add(bpValider);
+		bpValider.addActionListener(contr);
 		
 	}
 
