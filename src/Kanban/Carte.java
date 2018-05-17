@@ -32,7 +32,7 @@ public class Carte extends JPanel{
 		/*File a = new File("");
 		System.out.println(a.getAbsolutePath()+"\\Kanban\\Data-Edit-128.png");*/
 		JButton btnSupprimer = new JButton();
-		btnSupprimer.setSelectedIcon(new ImageIcon(Carte.class.getResource("/Kanban/Garbage-Full-128.png")));
+		btnSupprimer.setIcon(new ResizableImageIcon("./src/Kanban/Garbage-Full-128.png").resize());
 		GridBagConstraints gbc_btnSupprimer = new GridBagConstraints();
 		gbc_btnSupprimer.anchor = GridBagConstraints.WEST;
 		gbc_btnSupprimer.insets = new Insets(0, 0, 5, 5);
@@ -49,10 +49,7 @@ public class Carte extends JPanel{
 		add(btnPause, gbc_btnPause);
 		
 		JButton btnEditer = new JButton("Editer");
-		btnEditer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnEditer.setIcon(new ResizableImageIcon("./src/Kanban/Data-Edit-128.png").resize());
 		GridBagConstraints gbc_btnEditer = new GridBagConstraints();
 		gbc_btnEditer.insets = new Insets(0, 0, 5, 0);
 		gbc_btnEditer.anchor = GridBagConstraints.EAST;
