@@ -511,6 +511,16 @@ public class Vue_nouvelleTache extends JPanel {
 			this.priorites.set(i, true);
 	}
 	
+	public List<Boolean> getPriorites() {
+		return priorites;
+	}
+
+
+	public void setPriorites(List<Boolean> priorites) {
+		this.priorites = priorites;
+	}
+
+
 	public void ajouterSousTacheVue(String libelleSSTache, float tauxCompletion) {
 		this.mapSousTaches.put(libelleSSTache, tauxCompletion);
 	}
