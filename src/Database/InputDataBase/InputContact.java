@@ -23,7 +23,7 @@ public class InputContact {
 				preparedStatement.setString(4, donnees.getNom_c());
 				preparedStatement.setString(5, donnees.getPrenom_c());
 				preparedStatement.setString(6, donnees.getAdresse());
-				preparedStatement.setString(7, donnees.getCp_c());									//Remplacer par Int
+				preparedStatement.setString(7, donnees.getCp_c());
 				preparedStatement.setString(8, donnees.getVille_c());
 				preparedStatement.setString(9, donnees.getTelephone_c());
 				preparedStatement.setString(10, donnees.getMail_c());
@@ -45,7 +45,7 @@ public class InputContact {
 				preparedStatement.setString(3, donnees.getNom_c());
 				preparedStatement.setString(4, donnees.getPrenom_c());
 				preparedStatement.setString(5, donnees.getAdresse());
-				preparedStatement.setString(6, donnees.getCp_c());									//Remplacer par Int
+				preparedStatement.setString(6, donnees.getCp_c());
 				preparedStatement.setString(7, donnees.getVille_c());
 				preparedStatement.setString(8, donnees.getMail_c());
 				preparedStatement.setString(9, donnees.getTelephone_c());

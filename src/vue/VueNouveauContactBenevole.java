@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,11 +13,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controleur.ControleurNouveauBenevole;
-import controleur.ControleurNouveauContactExt;
+import modele.contacts.Benevole;
+import modele.contacts.ContactExterne;
 
 public class VueNouveauContactBenevole extends JPanel{
 	private int IdBenevole;
@@ -33,11 +37,13 @@ public class VueNouveauContactBenevole extends JPanel{
 	private JTextField tfCP;
 	private JButton btAjouterEquipe;
 	private JButton bpEquipe;
+	private JTextArea taNote;
+	private JTextField tfVille;
 
 
 	public VueNouveauContactBenevole() {
 		
-		ControleurNouveauBenevole contr = new ControleurNouveauBenevole();
+		ControleurNouveauBenevole contr = new ControleurNouveauBenevole(this);
 		
 		this.setLayout(new BorderLayout());
 		JPanel panneauPrincipal = new JPanel();
@@ -170,8 +176,9 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.gridy = 4;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		lbCP.setBorder(new EmptyBorder(0,40,0,0));
-		panneauPrincipal.add(lbCP,c); 
-		tfCP = new JTextField("");
+		panneauPrincipal.add(lbCP,c);
+		
+		tfCP = new JTextField();
 		tfCP.setPreferredSize(new Dimension(50,25));
 		c.gridx = 5;
 		c.gridy = 5;
@@ -208,12 +215,13 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		lbCP.setBorder(new EmptyBorder(0,40,0,0));
 		panneauPrincipal.add(lbCP,c); 
-		tfCP = new JTextField("");
-		tfCP.setPreferredSize(new Dimension(50,25));
+		
+		this.tfVille = new JTextField();
+		this.tfVille.setPreferredSize(new Dimension(50,25));
 		c.gridx = 5;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		panneauPrincipal.add(tfCP, c);
+		panneauPrincipal.add(tfVille, c);
 		
 		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
 		this.bpEquipe = new JButton();
@@ -225,7 +233,25 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.ipady = 40;
 		panneauPrincipal.add(bpEquipe,c);
 		
+		JLabel lbNote = new JLabel("Note");
+		c.gridx = 4;
+		c.gridy = 8;
+		c.anchor = GridBagConstraints.LAST_LINE_START;
+		lbNote.setBorder(new EmptyBorder(0,40,0,0));
+		panneauPrincipal.add(lbNote,c); 
+		
 		p = new JPanel();
+		p.setLayout(new GridLayout(1,1));
+		p.setBorder(new EmptyBorder(20,0,0,0));
+		this.taNote = new JTextArea(10,5);
+		JScrollPane textSP = new JScrollPane(this.taNote);
+		textSP.setPreferredSize(new Dimension(250,125));
+		p.add(textSP);
+		c.gridheight = 5;
+		c.gridx = 5;
+		c.gridy = 8;
+		c.anchor = GridBagConstraints.LINE_START;
+		panneauPrincipal.add(p,c);
 		
 		
 		/**
@@ -295,5 +321,69 @@ public class VueNouveauContactBenevole extends JPanel{
 	public boolean getEstResponsableTache() {
 		return this.cbEstResponsableEquipe.isSelected();
 	}
+
+
+	public void rendreDisponible() {
+		this.tfNom.setEnabled(true);
+		this.tfTelephone.setEnabled(true);
+		this.tfPrenom.setEnabled(true);
+		this.tfMail.setEnabled(true);
+		this.tfRole.setEnabled(true);
+		this.tfAdresse1.setEnabled(true);
+		this.tfAdresse2.setEnabled(true);
+		this.tfCP.setEnabled(true);
+		this.tfVille.setEnabled(true);
+		this.taNote.setEnabled(true);
+		this.cbEstResponsableEquipe.setEnabled(true);
+		this.btAjouterEquipe.setEnabled(true);
+		this.bpEquipe.setEnabled(true);
+	}
+
+
+	public void rendreIndisponible() {
+		this.tfNom.setEnabled(false);
+		this.tfTelephone.setEnabled(false);
+		this.tfPrenom.setEnabled(false);
+		this.tfMail.setEnabled(false);
+		this.tfRole.setEnabled(false);
+		this.tfAdresse1.setEnabled(false);
+		this.tfAdresse2.setEnabled(false);
+		this.tfCP.setEnabled(false);
+		this.tfVille.setEnabled(false);
+		this.taNote.setEnabled(false);
+		this.cbEstResponsableEquipe.setEnabled(false);
+		this.btAjouterEquipe.setEnabled(false);
+		this.bpEquipe.setEnabled(false);
+	}
+
+
+	public Benevole rassemblerDonnees() {
+		if(!this.tfNom.getText().isEmpty()) {
+			Benevole benevole = new Benevole(this.tfNom.getText());
+			benevole.setPrenom_c(this.tfPrenom.getText());
+			benevole.setAdresse(this.tfAdresse1.getText());
+			benevole.setCp_c(this.tfCP.getText());
+			benevole.setVille_c(this.tfVille.getText());
+			benevole.setTelephone_c(this.tfTelephone.getText());
+			benevole.setMail_c(this.tfMail.getText());
+			benevole.setCommentaire(this.taNote.getText());
+			return benevole;
+			
+		}else {
+			if(this.tfNom.getText().isEmpty())
+				this.tfNom.setBackground(Color.red);
+		}
+		return null;
+	}
 	
+	public void afficherDonnees(Benevole modele) {
+		this.tfNom.setText(modele.getNom_c());
+		this.tfPrenom.setText(modele.getPrenom_c());
+		this.tfAdresse1.setText(modele.getAdresse());
+		this.tfCP.setText(modele.getCp_c());
+		this.tfVille.setText(modele.getVille_c());
+		this.tfTelephone.setText(modele.getTelephone_c());
+		this.tfMail.setText(modele.getMail_c());
+		this.taNote.setText(modele.getCommentaire());
+	}
 }
