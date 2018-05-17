@@ -89,17 +89,16 @@ public class Vue_nouvelleTache extends JPanel {
 			{ "", new JProgressBar()},
 };
 	
-	private String titresColonnesEquipe [] = {"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"};
+	private String titresColonnesEquipe [] = { "Nom", "Pr\u00E9nom", "R\u00F4le"};
 	private Object [][] donneesEquipe = { 
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""}
-			
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""}	
 };
 	
 	private String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
