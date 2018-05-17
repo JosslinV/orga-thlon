@@ -50,13 +50,9 @@ public class Vue_nouvelleTache extends JPanel {
 	private int id_Tache;
 	private String auteur_Tache;
 	private JTextField tfLibelle;
-	private JTextField tfResponsableNom; 
-	private JTextField tfResponsablePrenom; 
 	private int priorite;
 	private List<Boolean> priorites;
 	private TreeMap<String, Float> mapSousTaches;
-	private JTextField tfMois;
-	private JTextField tfJour;
 	private JTextField tfDateDebut;
 	private JTextField tfDateEcheance;
 	private JButton btDateDebut;
@@ -76,6 +72,18 @@ public class Vue_nouvelleTache extends JPanel {
 	private JTextField tfEtatAvancement;
 	private JButton btAjouterEquipe;
 	private JButton btSupprimerEquipe;
+	private JButton btAjouterMateriel;
+	private JButton btSupprimerMateriel;
+	private JRadioButton rbPriorite0;
+	private JRadioButton rbPriorite1;
+	private JRadioButton rbPriorite2;
+	private JRadioButton rbPriorite3;
+	private JRadioButton rbPriorite4;
+	private JButton btChoisirResponsable;
+	private JLabel lbMois;
+	private JLabel lbJour;
+	private JLabel lbResponsableNom;
+	private JLabel lbResponsablePrenom; 
 	
 	private String titresColonnesSsTaches [] = {"Libell\u00E9", " Avancement "};
 	private Object [][] donneesSousTaches = { 
@@ -112,14 +120,7 @@ public class Vue_nouvelleTache extends JPanel {
 			{ "", "", "", new Integer(0)},
 			{ "", "", "", new Integer(0)}
 };
-	private JButton btAjouterMateriel;
-	private JButton btSupprimerMateriel;
-	private JRadioButton rbPriorite0;
-	private JRadioButton rbPriorite1;
-	private JRadioButton rbPriorite2;
-	private JRadioButton rbPriorite3;
-	private JRadioButton rbPriorite4;
-	private JButton btChoisirResponsable;
+
 
 
 
@@ -199,17 +200,15 @@ public class Vue_nouvelleTache extends JPanel {
 		JLabel lbResponsablenom = new JLabel("Nom");
 		lbResponsablenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsablenom);	
-		this.tfResponsableNom = new JTextField();
-		this.tfResponsableNom.setColumns(7);
-		this.tfResponsableNom.setEditable(false);
-		pResponsable.add(this.tfResponsableNom);		
+		this.lbResponsableNom = new JLabel(".........");
+		this.lbResponsableNom.setPreferredSize(new Dimension(60, 14));
+		pResponsable.add(this.lbResponsableNom);		
 		JLabel lbResponsableprenom = new JLabel("Prénom");
 		lbResponsableprenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsableprenom);		
-		this.tfResponsablePrenom = new JTextField();
-		this.tfResponsablePrenom.setColumns(7);
-		this.tfResponsablePrenom.setEditable(false);
-		pResponsable.add(this.tfResponsablePrenom);
+		this.lbResponsablePrenom = new JLabel(".........");
+		this.lbResponsablePrenom.setPreferredSize(new Dimension(60, 14));
+		pResponsable.add(this.lbResponsablePrenom);
 		this.btChoisirResponsable = new JButton();
 		this.btChoisirResponsable.setPreferredSize(new Dimension(30, 20));
 		//this.btDateDebut.setIcon(new ImageIcon("./src/vue/calendar.png"));
@@ -277,14 +276,16 @@ public class Vue_nouvelleTache extends JPanel {
 		cEst.gridy = 2;
 		pEst.add(pTempsEstime, cEst);
 		pTempsEstime.setLayout(new FlowLayout(FlowLayout.CENTER));	
-		this.tfMois = new JTextField();
-		pTempsEstime.add(this.tfMois);
-		this.tfMois.setColumns(2);		
+		this.lbMois = new JLabel("00");
+		this.lbMois.setForeground(Color.gray);
+		this.lbMois.setPreferredSize(new Dimension (30,20));
+		pTempsEstime.add(this.lbMois);
 		JLabel lbMois = new JLabel("Mois");
 		pTempsEstime.add(lbMois);	
-		this.tfJour = new JTextField();
-		pTempsEstime.add(this.tfJour);
-		this.tfJour.setColumns(2);
+		this.lbJour = new JLabel("00");
+		this.lbJour.setForeground(Color.gray);
+		pTempsEstime.add(this.lbJour);
+		this.lbJour.setPreferredSize(new Dimension (30,20));
 		JLabel lbJour = new JLabel("Jours");
 		pTempsEstime.add(lbJour);
 		
@@ -479,10 +480,8 @@ public class Vue_nouvelleTache extends JPanel {
 		donneesTache.put("dateDebut", dateDebut);
 		LocalDate dateEcheance = LocalDate.parse(this.tfDateEcheance.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateEcheance", dateEcheance);
-		int teMoisInt = Integer.parseInt(this.tfMois.getText()) ;
-		int teJourInt = Integer.parseInt(this.tfJour.getText());
-		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
-		donneesTache.put("tempsEstime", tempsEstimeJour );
+		int teMoisInt = Integer.parseInt(this.lbMois.getText()) ;
+		int teJourInt = Integer.parseInt(this.lbJour.getText());
 		donneesTache.put("priorite", this.priorite);
 		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
 		donneesTache.put("commentaire", this.taCommentaire);
@@ -490,22 +489,26 @@ public class Vue_nouvelleTache extends JPanel {
 		return donneesTache;
 
 	}
+	/*
+	 * 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
+		donneesTache.put("tempsEstime", tempsEstimeJour );
+	 */
 	
 	
 	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.tfLibelle.setText(libelle);
-		this.tfResponsableNom.setText(responsableNom);
-		this.tfResponsablePrenom.setText(responsablePrenom);
+		this.lbResponsableNom.setText(responsableNom);
+		this.lbResponsablePrenom.setText(responsablePrenom);
 		String dateDebutStr = dateDebut.toString();
 		this.tfDateDebut.setText(dateDebutStr);
 		String dateEcheanceStr = dateEcheance.toString();
 		this.tfDateEcheance.setText(dateEcheanceStr);
 		int teJourInt = tempsEstimeJourInt % 30 ;
 		int teMoisInt = (tempsEstimeJourInt - teJourInt)/30;
-		this.tfMois.setText(String.valueOf(teMoisInt));
-		this.tfJour.setText(String.valueOf(teJourInt));
+		this.lbMois.setText(String.valueOf(teMoisInt));
+		this.lbJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
 		this.slAvancementTache.setValue(etatAvancement); 
 		this.taCommentaire.setText(commentaire);
@@ -520,12 +523,8 @@ public class Vue_nouvelleTache extends JPanel {
 
 	public void setActifComposants(boolean actif){
 		this.tfLibelle.setEditable(actif);
-		this.tfResponsableNom.setEditable(actif);
-		this.tfResponsablePrenom.setEditable(actif);
 		this.tfDateDebut.setEditable(actif);
 		this.tfDateEcheance.setEditable(actif);
-		this.tfMois.setEditable(actif);
-		this.tfJour.setEditable(actif);
 		this.rbPriorite0.setEnabled(actif);
 		this.rbPriorite1.setEnabled(actif);
 		this.rbPriorite2.setEnabled(actif);
