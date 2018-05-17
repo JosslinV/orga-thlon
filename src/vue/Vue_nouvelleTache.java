@@ -472,19 +472,15 @@ public class Vue_nouvelleTache extends JPanel {
 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
 		donneesTache.put("tempsEstime", tempsEstimeJour );
 		donneesTache.put("priorite", this.priorite);
-		for (int l = 0; l < NB_MAX_SOUSTACHES; l++ ) {
-			donneesTache.put("listeSsTache", this.tabssTaches.getValueAt(l, 0));
-			donneesTache.put("listeSsTache", this.tabssTaches.getValueAt(l, 1));
-		}
 		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
-		
-
+		donneesTache.put("commentaire", this.taCommentaire);
 		
 		return donneesTache;
 
 	}
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement   ) {
+	
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.tfLibelle.setText(libelle);
@@ -499,10 +495,16 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfMois.setText(String.valueOf(teMoisInt));
 		this.tfJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
-		//		this.mapSousTaches = listeSousTaches; ?????
-		this.slAvancementTache.setValue(etatAvancement); ///Tf?
+		this.slAvancementTache.setValue(etatAvancement); 
+		this.taCommentaire.setText(commentaire);
 
 	}
+	/*
+	 * for (int l = 0; l < NB_MAX_SOUSTACHES; l++ ) {
+			donneesTache.put("listeSsTache", this.tabssTaches.getValueAt(l, 0));
+			donneesTache.put("listeSsTache", this.tabssTaches.getValueAt(l, 1));
+		}
+	 */
 
 	private void activerBtRadioPriorite(int priorite) {
 		for (int i = 0; i < priorite; i++) 
