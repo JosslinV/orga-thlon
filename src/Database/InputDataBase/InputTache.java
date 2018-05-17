@@ -15,7 +15,7 @@ public class InputTache{
 			
 			Connection database = DatabaseSettings.connect();
 			
-			preparedStatement = database.prepareStatement("insert into  Orgathlon.Tache values (default,?,?,?,?,?,?,?,?,?,?,?)");
+			preparedStatement = database.prepareStatement("insert into  Orgathlon.Tache values (default,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, donnees.getLibelle());
 			preparedStatement.setString(2, donnees.getCommentaire());
 			preparedStatement.setDate(3, null);								//date
@@ -26,7 +26,6 @@ public class InputTache{
 			preparedStatement.setDate(8, null);								//date
 			preparedStatement.setString(9, null);
 			preparedStatement.setString(10, null);							//createur ?
-			preparedStatement.setBoolean(11, donnees.isPredefinie());
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
