@@ -9,6 +9,7 @@ import modele.contacts.Benevole;
 
 public class Tache {
 
+	private int id_tache ;
 	private String libelle;
 	private String commentaire;
 	private LocalDate dateDebut;
@@ -138,6 +139,14 @@ public class Tache {
 	
 	public void ajouterBenevole(Benevole personnel) {
 		this.benevole.add(personnel);
+	}
+	
+	public int getId_tache() {
+		return id_tache;
+	}
+
+	public void setId_tache(int id_tache) {
+		this.id_tache = id_tache;
 	}
 	
 }
