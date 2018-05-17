@@ -544,6 +544,16 @@ public class Vue_nouvelleTache extends JPanel {
 		this.btDateEcheance.setEnabled(actif);
 	}
 	
+	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
+		if (estEditable) {
+			this.btValider.setText("valider");
+			this.btAnnuler.setText("annuler");
+		}else {
+			this.btValider.setText("imprimer");
+			this.btAnnuler.setText("retour");
+		}
+	}
+	
 	private void activerBtRadioPriorite(int priorite) {
 		for (int i = 0; i < priorite; i++) 
 			this.priorites.set(i, true);
