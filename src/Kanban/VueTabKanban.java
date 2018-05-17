@@ -1,28 +1,23 @@
 package Kanban;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class VueTabKanban extends JFrame{
+public class VueTabKanban extends JPanel{
 	
 	private JTable tabKanban;
 
 	public VueTabKanban  () {
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("TABLEAU KANBAN");
-		this.setSize(1160, 800);
-		this.setResizable(true);
-		this.setVisible(true);
-		this.pack();
-		this.setLayout(new GridLayout(1,1));
-
+		this.setLayout(new BorderLayout());
+		
 		this.tabKanban = new JTable(new TabKanbanModele());
-		this.getContentPane().add(new JScrollPane(this.tabKanban));
+		this.add(this.tabKanban.getTableHeader(), BorderLayout.PAGE_START);
+		this.add(new JScrollPane(this.tabKanban), BorderLayout.CENTER);
+		this.tabKanban.setFillsViewportHeight(true);
+
 		this.tabKanban.setDefaultRenderer(JPanel.class, new TableComponent());
 	}
 	
