@@ -119,6 +119,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private JRadioButton rbPriorite2;
 	private JRadioButton rbPriorite3;
 	private JRadioButton rbPriorite4;
+	private JButton btChoisirResponsable;
 
 
 
@@ -196,17 +197,23 @@ public class Vue_nouvelleTache extends JPanel {
 		cNord2.gridwidth = 3;
 		cNord2.weightx = 50;
 		JLabel lbResponsablenom = new JLabel("Nom");
-		lbResponsablenom.setPreferredSize(new Dimension(30, 14));
+		lbResponsablenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsablenom);	
 		this.tfResponsableNom = new JTextField();
-		this.tfResponsableNom.setColumns(10);
+		this.tfResponsableNom.setColumns(7);
+		this.tfResponsableNom.setEditable(false);
 		pResponsable.add(this.tfResponsableNom);		
 		JLabel lbResponsableprenom = new JLabel("Prénom");
 		lbResponsableprenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsableprenom);		
 		this.tfResponsablePrenom = new JTextField();
-		this.tfResponsablePrenom.setColumns(10);
+		this.tfResponsablePrenom.setColumns(7);
+		this.tfResponsablePrenom.setEditable(false);
 		pResponsable.add(this.tfResponsablePrenom);
+		this.btChoisirResponsable = new JButton();
+		this.btChoisirResponsable.setPreferredSize(new Dimension(30, 20));
+		//this.btDateDebut.setIcon(new ImageIcon("./src/vue/calendar.png"));
+		pResponsable.add(btChoisirResponsable);
 		pNord.add(pResponsable, cNord2);
 		
 		JPanel pEst = new JPanel();
@@ -467,9 +474,7 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		donneesTache.put("id_Tache", this.id_Tache);
 		donneesTache.put("auteur_Tache", this.auteur_Tache);
-		donneesTache.put("libelle", this.tfLibelle.getText());  //ok
-		donneesTache.put("nom_responsable", this.tfResponsableNom.getText());
-		donneesTache.put("prenom_responsable", this.tfResponsablePrenom.getText());
+		donneesTache.put("libelle", this.tfLibelle.getText()); 
 		LocalDate dateDebut = LocalDate.parse(this.tfDateDebut.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateDebut", dateDebut);
 		LocalDate dateEcheance = LocalDate.parse(this.tfDateEcheance.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));

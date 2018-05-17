@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-public class TableauKanbanComposantTâche extends JPanel{
+public class Carte extends JPanel{
 	private JLabel lblTitre;
 	
-	public TableauKanbanComposantTâche(String texte) {
+	public Carte(String texte) {
 	
 		setBackground(SystemColor.activeCaptionBorder);
 		GridBagLayout gridBagLayout = new GridBagLayout();
