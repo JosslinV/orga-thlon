@@ -11,7 +11,7 @@ public class FenetreNouveauBenevole extends JFrame{
 		this.setLayout(new GridLayout(1,1));
 		this.add(vue);
 		this.pack();
-		this.setSize(900, 500);
+		this.setSize(900, 550);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

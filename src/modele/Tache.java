@@ -22,7 +22,11 @@ public class Tache {
 	private LocalDate dateCreationTache;
 	private String etatAvancementGlobal;
 	private Etat etat;
+	private String nomAuteurTache ;
+	private String nomResponsableTache ;
+	private String prenomResponsableTache ;
 	
+
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
 	
@@ -148,5 +152,32 @@ public class Tache {
 	public void setId_tache(int id_tache) {
 		this.id_tache = id_tache;
 	}
+	
+	public String getNomAuteurTache() {
+		return nomAuteurTache;
+	}
+
+	public void setNomAuteurTache(String nomAuteurTache) {
+		this.nomAuteurTache = nomAuteurTache;
+	}
+
+	
+	public String getNomResponsableTache() {
+		return nomResponsableTache;
+	}
+
+	public void setNomResponsableTache(String nomResponsableTache) {
+		this.nomResponsableTache = nomResponsableTache;
+	}
+
+	public String getPrenomResponsableTache() {
+		return prenomResponsableTache;
+	}
+
+	public void setPrenomResponsableTache(String prenomResponsableTache) {
+		this.prenomResponsableTache = prenomResponsableTache;
+	}
+
+	
 	
 }
