@@ -23,9 +23,8 @@ public class Tache {
 	private String etatAvancementGlobal;
 	private Etat etat;
 	private String nomAuteurTache ;
-	private String prenomAuteurTache ;
-
-	
+	private String nomResponsableTache ;
+	private String prenomResponsableTache ;
 	
 
 	private LinkedList<Materiel> materiel;
@@ -162,12 +161,23 @@ public class Tache {
 		this.nomAuteurTache = nomAuteurTache;
 	}
 
-	public String getPrenomAuteurTache() {
-		return prenomAuteurTache;
+	
+	public String getNomResponsableTache() {
+		return nomResponsableTache;
 	}
 
-	public void setPrenomAuteurTache(String prenomAuteurTache) {
-		this.prenomAuteurTache = prenomAuteurTache;
+	public void setNomResponsableTache(String nomResponsableTache) {
+		this.nomResponsableTache = nomResponsableTache;
 	}
+
+	public String getPrenomResponsableTache() {
+		return prenomResponsableTache;
+	}
+
+	public void setPrenomResponsableTache(String prenomResponsableTache) {
+		this.prenomResponsableTache = prenomResponsableTache;
+	}
+
+	
 	
 }
