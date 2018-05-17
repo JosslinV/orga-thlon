@@ -11,6 +11,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -469,10 +471,10 @@ public class Vue_nouvelleTache extends JPanel {
 		donneesTache.put("libelle", this.tfLibelle.getText());  //ok
 		donneesTache.put("nom_responsable", this.tfResponsableNom.getText());
 		donneesTache.put("prenom_responsable", this.tfResponsablePrenom.getText());
-		Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebut.getText());
+		LocalDate dateDebut = LocalDate.parse(this.tfDateDebut.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateDebut", dateDebut);
-		Date dateEcheance = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateEcheance.getText());
-		donneesTache.put("dateDebut", dateEcheance);
+		LocalDate dateEcheance = LocalDate.parse(this.tfDateEcheance.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
+		donneesTache.put("dateEcheance", dateEcheance);
 		int teMoisInt = Integer.parseInt(this.tfMois.getText()) ;
 		int teJourInt = Integer.parseInt(this.tfJour.getText());
 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
