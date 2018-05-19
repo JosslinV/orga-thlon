@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import Database.InputDataBase.InputCourse;
 import Database.InputDataBase.InputTache;
@@ -15,7 +18,7 @@ import modele.Course;
 import modele.Tache;
 import vue.Vue_nouvelleTache;
 
-public class ControleurNouvelleTache implements ActionListener{
+public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
@@ -52,7 +55,7 @@ public class ControleurNouvelleTache implements ActionListener{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-						
+					
 					
 					try {
 					//	InputCourse.input(modele);
@@ -64,6 +67,8 @@ public class ControleurNouvelleTache implements ActionListener{
 					System.exit(0);
 				} //else if bouton effacer
 
+				break ;
+				
 			case CONSULTATION :
 
 				if (b.getText().equals("retour")) {
@@ -71,11 +76,39 @@ public class ControleurNouvelleTache implements ActionListener{
 				this.vue.modifierTexteBoutonsPourEdition(true);
 				this.vue.setActifComposants(true);
 					//this.vue.titreFenetreSaisi(false);
-					
+				break ;
 				}
 			}
 	}
-			
+		
+	
+	public void stateChanged(ChangeEvent e) {
+	    JSlider source = (JSlider)e.getSource();
+	    switch (this.etatCourant) {
+	    
+		    case EDITION :
+		    	
+		    	if (source.getValueIsAdjusting()) {
+			      
+			        
+			       this.vue.afficherEtatAvancement() ;
+			        } else {
+			          
+			     
+			        }
+		    	
+		    break ;
+		    
+			case CONSULTATION :
+				{}
+				break ;
+		}
+	}
+
+	    
+	    
+	
+	
 			public Tache convertirMap_principale(HashMap <String, Object> donneesTache) throws Exception {
 
 		        Tache nouvelleTache = new modele.Tache("nouvelle_tache", ajd) ;

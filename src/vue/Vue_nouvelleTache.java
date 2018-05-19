@@ -362,7 +362,7 @@ public class Vue_nouvelleTache extends JPanel {
 		pEtatAvancement.add(lbEtatAvancement);			
 		this.slAvancementTache = new JSlider();
 		this.slAvancementTache.setMinimumSize(new Dimension(190, 26));
-		this.slAvancementTache.setMaximum(200);
+		this.slAvancementTache.setMaximum(100);
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
 		pEtatAvancement.add(this.slAvancementTache);				
 		this.tfEtatAvancement = new JTextField();
@@ -470,6 +470,7 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
+		this.slAvancementTache.addChangeListener(controleur);
 		//this.btAjouterSousTaches.addActionListener(controleur);
 		//this.btSupprimerSousTaches.addActionListener(controleur);
 		//this.btAjouterEquipe.addActionListener(controleur);
@@ -506,7 +507,7 @@ public class Vue_nouvelleTache extends JPanel {
 	 */
 	
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie   ) {
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie, int Avancement   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.date_Creation = date_Creation;
@@ -522,10 +523,10 @@ public class Vue_nouvelleTache extends JPanel {
 		this.lbMois.setText(String.valueOf(teMoisInt));
 		this.lbJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
-		this.slAvancementTache.setValue(etatAvancement); 
+		this.slAvancementTache.setValue(Avancement); 
 		this.taCommentaire.setText(commentaire);
 		this.cbTacheRecurrente.setSelected(estPredefinie);
-
+		
 	}
 	/*
 	 * for (int l = 0; l < NB_MAX_SOUSTACHES; l++ ) {
@@ -703,6 +704,9 @@ public class Vue_nouvelleTache extends JPanel {
 	      return this;
 	  }
 	}
+	
+
+	
 /*
  * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
 			donneesSousTaches[i][0]= "" ;
