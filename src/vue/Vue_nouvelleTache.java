@@ -470,7 +470,7 @@ public class Vue_nouvelleTache extends JPanel {
 	}
 	
 
-	public HashMap<String, Object> getDonneesCourse() throws ParseException {
+	public HashMap<String, Object> getDonneesTache() throws ParseException {
 		HashMap<String,Object> donneesTache = new HashMap<String, Object>();
 		
 		donneesTache.put("id_Tache", this.id_Tache);
