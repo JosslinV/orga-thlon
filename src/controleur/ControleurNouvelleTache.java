@@ -4,16 +4,18 @@ import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 
 import Database.InputDataBase.InputCourse;
+import Database.InputDataBase.InputTache;
 import modele.Course;
 import modele.Tache;
 import vue.Vue_nouvelleTache;
 
-public class ControleurNouvelleTache {
+public class ControleurNouvelleTache implements ActionListener{
 
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
@@ -31,20 +33,20 @@ public class ControleurNouvelleTache {
 		JButton b = (JButton) e.getSource() ;
 			switch (this.etatCourant) {
 			case EDITION :
-				if (b.getText().equals("valider")) {
+				if (b.getText().equals("Valider")) {
 					this.etatCourant = Etats.CONSULTATION ;
 					//this.vue.titreFenetreSaisi(true);
-				//	this.vue.setActifComposants(false);
-				//	this.vue.modifierTexteBoutonsPourEdition(false);
+					this.vue.setActifComposants(false);
+					this.vue.modifierTexteBoutonsPourEdition(false);
 					try {
 						Tache nouvelleTache = new modele.Tache("nouvelle tache", ajd);
-						//nouvelleCourse = convertirMap(this.vue.getDonneesCourse()) ;
+						nouvelleTache = convertirMap_principale(this.vue.getDonneesTache()) ;
 						
-						InputCourse in = new InputCourse() ;
+						InputTache in = new InputTache() ;
 				    	
-				    	//in.inputCourse(nouvelleCourse) ;
-						
-						
+				    	in.inputTache(nouvelleTache) ;
+				
+					
 						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
@@ -66,8 +68,8 @@ public class ControleurNouvelleTache {
 
 				if (b.getText().equals("retour")) {
 					this.etatCourant = Etats.EDITION ;
-				//	this.vue.modifierTexteBoutonsPourEdition(true);
-				//	this.vue.setActifComposants(true);
+				this.vue.modifierTexteBoutonsPourEdition(true);
+				this.vue.setActifComposants(true);
 					//this.vue.titreFenetreSaisi(false);
 					
 				}

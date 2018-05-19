@@ -30,7 +30,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-//import controleur.ControleurNouvelleTache;
+import controleur.ControleurNouvelleTache;
 
 import javax.swing.JSlider;
 import javax.swing.JTable;
@@ -48,7 +48,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private static final int NB_MAX_EQUIPE = 50;
 	private static final int NB_MAX_MATERIEL = 50;
 	private int id_Tache;
-	private String auteur_Course;
+	private String auteur_Tache;
 	private String date_Creation;
 	private JTextField tfLibelle;
 	private int priorite;
@@ -125,8 +125,8 @@ public class Vue_nouvelleTache extends JPanel {
 
 
 
-	public Vue_nouvelleTache()  {
-		//ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
+	public Vue_nouvelleTache() throws Exception {
+		ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
 		this.setLayout(new BorderLayout());
 		
 		JPanel pNord = new JPanel();
@@ -146,12 +146,19 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//ajoute label icones supprimer, pause
 		
-		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Course +" le "+ this.date_Creation  );
+		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Tache  );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 1;
 		cNord1.gridy = 0;
 		pNord.add(lbCreateur, cNord1);
+		
+		JLabel lbDateCreation = new JLabel("le "+ this.date_Creation );
+		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
+		cNord1.weightx = 10;
+		cNord1.gridx = 2;
+		cNord1.gridy = 0;
+		pNord.add(lbDateCreation, cNord1);
 		
 		JLabel lbLibelle = new JLabel("Libellé ");
 		cNord1.anchor = GridBagConstraints.LINE_START;
@@ -461,8 +468,8 @@ public class Vue_nouvelleTache extends JPanel {
 		this.btValider = new JButton("Valider");
 		pbtES.add(this.btValider, cSud);
 		
-		//this.btAnnuler.addActionListener(controleur);
-		//this.btValider.addActionListener(controleur);
+		this.btAnnuler.addActionListener(controleur);
+		this.btValider.addActionListener(controleur);
 		//this.btAjouterSousTaches.addActionListener(controleur);
 		//this.btSupprimerSousTaches.addActionListener(controleur);
 		//this.btAjouterEquipe.addActionListener(controleur);
@@ -475,7 +482,7 @@ public class Vue_nouvelleTache extends JPanel {
 		HashMap<String,Object> donneesTache = new HashMap<String, Object>();
 		
 		donneesTache.put("id_Tache", this.id_Tache);
-		donneesTache.put("auteur_Tache", this.auteur_Course);
+		donneesTache.put("auteur_Tache", this.auteur_Tache);
 		donneesTache.put("Date Creation", this.date_Creation);
 		donneesTache.put("libelle", this.tfLibelle.getText()); 
 		LocalDate dateDebut = LocalDate.parse(this.tfDateDebut.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
@@ -501,7 +508,7 @@ public class Vue_nouvelleTache extends JPanel {
 	
 	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie   ) {
 		this.id_Tache = id_Tache;
-		this.auteur_Course = auteur_Tache;
+		this.auteur_Tache = auteur_Tache;
 		this.date_Creation = date_Creation;
 		this.tfLibelle.setText(libelle);
 		this.lbResponsableNom.setText(responsableNom);
@@ -556,8 +563,8 @@ public class Vue_nouvelleTache extends JPanel {
 	
 	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
 		if (estEditable) {
-			this.btValider.setText("valider");
-			this.btAnnuler.setText("annuler");
+			this.btValider.setText("Valider");
+			this.btAnnuler.setText("Annuler");
 		}else {
 			this.btValider.setText("imprimer");
 			this.btAnnuler.setText("retour");
