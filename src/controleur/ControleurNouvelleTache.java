@@ -50,7 +50,7 @@ public class ControleurNouvelleTache {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-							
+						
 					
 					try {
 					//	InputCourse.input(modele);
@@ -74,7 +74,7 @@ public class ControleurNouvelleTache {
 			}
 	}
 			
-			public Course convertirMap_principale(HashMap <String, Object> donneesTache) throws Exception {
+			public Tache convertirMap_principale(HashMap <String, Object> donneesTache) throws Exception {
 
 		        Tache nouvelleTache = new modele.Tache("nouvelle_tache", ajd) ;
 		        
@@ -87,13 +87,15 @@ public class ControleurNouvelleTache {
 		        String s1mod = "" + s1.charAt(8) + s1.charAt(9)+"/"+ s1.charAt(5)+ s1.charAt(6) + "/" + s1.charAt(0)+ s1.charAt(1)+ s1.charAt(2)+ s1.charAt(3);
 		        nouvelleTache.setDateDebut(LocalDate.parse( s1mod, DateTimeFormatter.ofPattern("dd/MM/uuuu"))) ;
 		        String s2 = String.valueOf(donneesTache.get("dateEcheance")) ;
-		        String s2mod = "" + s1.charAt(8) + s1.charAt(9)+"/"+ s1.charAt(5)+ s1.charAt(6) + "/" + s1.charAt(0)+ s1.charAt(1)+ s1.charAt(2)+ s1.charAt(3);
+		        String s2mod = "" + s2.charAt(8) + s2.charAt(9)+"/"+ s2.charAt(5)+ s2.charAt(6) + "/" + s2.charAt(0)+ s2.charAt(1)+ s2.charAt(2)+ s2.charAt(3);
 		        nouvelleTache.setDateEcheance(LocalDate.parse( s2mod, DateTimeFormatter.ofPattern("dd/MM/uuuu"))) ;
 		        nouvelleTache.setPriorite(Integer.parseInt(String.valueOf(donneesTache.get("priorite"))));
 		        nouvelleTache.setEtatAvancement(Float.parseFloat(String.valueOf(donneesTache.get("Etat Avancement"))));
 		        nouvelleTache.setCommentaire(String.valueOf(donneesTache.get("auteur_Tache"))) ;
 		        
 			
+		        
+		        return nouvelleTache ;
 			}
 	}
 
@@ -138,18 +140,17 @@ public class ControleurNouvelleTache {
 					return donneesTache;
 					*/
 		        
-		        /*
+		        
 		       
 				
-				}
+				
 			
 				
-			}
 			
-			}
+			
+			
 	
 	
-}
 
 
 
