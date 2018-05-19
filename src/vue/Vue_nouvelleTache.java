@@ -49,6 +49,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private static final int NB_MAX_MATERIEL = 50;
 	private int id_Tache;
 	private String auteur_Tache;
+	private String date_Creation;
 	private JTextField tfLibelle;
 	private int priorite;
 	private List<Boolean> priorites;
@@ -145,12 +146,19 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//ajoute label icones supprimer, pause
 		
-		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "  );
+		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Tache  );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 1;
 		cNord1.gridy = 0;
 		pNord.add(lbCreateur, cNord1);
+		
+		JLabel lbDateCreation = new JLabel("le "+ this.date_Creation );
+		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
+		cNord1.weightx = 10;
+		cNord1.gridx = 2;
+		cNord1.gridy = 0;
+		pNord.add(lbDateCreation, cNord1);
 		
 		JLabel lbLibelle = new JLabel("Libellé ");
 		cNord1.anchor = GridBagConstraints.LINE_START;
@@ -475,29 +483,33 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		donneesTache.put("id_Tache", this.id_Tache);
 		donneesTache.put("auteur_Tache", this.auteur_Tache);
+		donneesTache.put("Date Creation", this.date_Creation);
 		donneesTache.put("libelle", this.tfLibelle.getText()); 
 		LocalDate dateDebut = LocalDate.parse(this.tfDateDebut.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateDebut", dateDebut);
 		LocalDate dateEcheance = LocalDate.parse(this.tfDateEcheance.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateEcheance", dateEcheance);
-		int teMoisInt = Integer.parseInt(this.lbMois.getText()) ;
-		int teJourInt = Integer.parseInt(this.lbJour.getText());
 		donneesTache.put("priorite", this.priorite);
 		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
 		donneesTache.put("commentaire", this.taCommentaire);
+		donneesTache.put("estTachePredfinie", this.cbTacheRecurrente.isSelected());
 		
 		return donneesTache;
 
 	}
 	/*
+	 * 		int teMoisInt = Integer.parseInt(this.lbMois.getText()) ;
+		int teJourInt = Integer.parseInt(this.lbJour.getText());
+		
 	 * 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
 		donneesTache.put("tempsEstime", tempsEstimeJour );
 	 */
 	
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire   ) {
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
+		this.date_Creation = date_Creation;
 		this.tfLibelle.setText(libelle);
 		this.lbResponsableNom.setText(responsableNom);
 		this.lbResponsablePrenom.setText(responsablePrenom);
@@ -512,6 +524,7 @@ public class Vue_nouvelleTache extends JPanel {
 		this.priorite = priorite;
 		this.slAvancementTache.setValue(etatAvancement); 
 		this.taCommentaire.setText(commentaire);
+		this.cbTacheRecurrente.setSelected(estPredefinie);
 
 	}
 	/*
@@ -545,6 +558,7 @@ public class Vue_nouvelleTache extends JPanel {
 		this.taCommentaire.setEditable(actif);
 		this.btDateDebut.setEnabled(actif);
 		this.btDateEcheance.setEnabled(actif);
+		this.cbTacheRecurrente.setEnabled(actif);
 	}
 	
 	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
