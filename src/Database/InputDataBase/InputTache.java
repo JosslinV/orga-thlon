@@ -26,6 +26,8 @@ public class InputTache{
 			preparedStatement.setDate(8, null);								//date
 			preparedStatement.setString(9, null);
 			preparedStatement.setString(10, null);							//createur ?
+			preparedStatement.setString(11, donnees.getNomResponsableTache());
+			preparedStatement.setString(12, donnees.getPrenomResponsableTache());
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
