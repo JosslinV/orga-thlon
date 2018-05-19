@@ -43,6 +43,7 @@ import modele.Etat.Etat;
 public class VueNouvelleCourse extends JPanel {
 	
 	private int id_Course;
+	private LocalDate date_creation; 
 	private JButton btDateDebutCourse;
 	private JTextField tfTitreCourse;
 	private JTextField tfNomEvenement;

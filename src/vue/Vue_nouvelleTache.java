@@ -48,7 +48,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private static final int NB_MAX_EQUIPE = 50;
 	private static final int NB_MAX_MATERIEL = 50;
 	private int id_Tache;
-	private String auteur_Tache;
+	private String auteur_Course;
 	private String date_Creation;
 	private JTextField tfLibelle;
 	private int priorite;
@@ -146,19 +146,12 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//ajoute label icones supprimer, pause
 		
-		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Tache  );
+		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Course +" le "+ this.date_Creation  );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 1;
 		cNord1.gridy = 0;
 		pNord.add(lbCreateur, cNord1);
-		
-		JLabel lbDateCreation = new JLabel("le "+ this.date_Creation );
-		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
-		cNord1.weightx = 10;
-		cNord1.gridx = 2;
-		cNord1.gridy = 0;
-		pNord.add(lbDateCreation, cNord1);
 		
 		JLabel lbLibelle = new JLabel("Libellé ");
 		cNord1.anchor = GridBagConstraints.LINE_START;
@@ -482,7 +475,7 @@ public class Vue_nouvelleTache extends JPanel {
 		HashMap<String,Object> donneesTache = new HashMap<String, Object>();
 		
 		donneesTache.put("id_Tache", this.id_Tache);
-		donneesTache.put("auteur_Tache", this.auteur_Tache);
+		donneesTache.put("auteur_Tache", this.auteur_Course);
 		donneesTache.put("Date Creation", this.date_Creation);
 		donneesTache.put("libelle", this.tfLibelle.getText()); 
 		LocalDate dateDebut = LocalDate.parse(this.tfDateDebut.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
@@ -508,7 +501,7 @@ public class Vue_nouvelleTache extends JPanel {
 	
 	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie   ) {
 		this.id_Tache = id_Tache;
-		this.auteur_Tache = auteur_Tache;
+		this.auteur_Course = auteur_Tache;
 		this.date_Creation = date_Creation;
 		this.tfLibelle.setText(libelle);
 		this.lbResponsableNom.setText(responsableNom);

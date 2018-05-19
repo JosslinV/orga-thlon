@@ -1,5 +1,6 @@
 package Kanban;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
@@ -15,9 +16,11 @@ public class VueTabKanban extends JPanel{
 		
 		this.tabKanban = new JTable(new TabKanbanModele());
 		this.add(this.tabKanban.getTableHeader(), BorderLayout.PAGE_START);
-		this.add(new JScrollPane(this.tabKanban), BorderLayout.CENTER);
+		JScrollPane spKanban = new JScrollPane(this.tabKanban);
+		this.tabKanban.setPreferredScrollableViewportSize(new Dimension(1150,1150)); 
+		
+		this.add(spKanban, BorderLayout.CENTER);
 		this.tabKanban.setFillsViewportHeight(true);
-
 		this.tabKanban.setDefaultRenderer(JPanel.class, new TableComponent());
 	}
 	

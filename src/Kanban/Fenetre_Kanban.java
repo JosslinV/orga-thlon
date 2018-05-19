@@ -12,7 +12,7 @@ public class Fenetre_Kanban extends JFrame{
 		this.setLayout(new GridLayout(1,1));
 		this.pack();
 		this.setSize(1160, 650);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 	}

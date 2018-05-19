@@ -11,6 +11,10 @@ public class TabKanbanModele extends AbstractTableModel {
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 	};
 	@Override
 	public int getColumnCount() {
@@ -42,6 +46,6 @@ public class TabKanbanModele extends AbstractTableModel {
 	 public void setValueAt(JPanel value, int row, int col) {
 	    	this.nombreTableauKanbanComposantTâches[row][col] = value;
 	        fireTableCellUpdated(row, col);
-	    }
+	 }
 
 }
