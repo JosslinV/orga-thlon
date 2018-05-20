@@ -114,7 +114,7 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 		        Tache nouvelleTache = new modele.Tache("nouvelle_tache", ajd) ;
 		        
 		        nouvelleTache.setLibelle(String.valueOf(donneesTache.get("libelle"))) ;
-		        nouvelleTache.setId_tache(Integer.parseInt(String.valueOf(donneesTache.get("id_tache"))));
+		        //nouvelleTache.setId_tache(Integer.parseInt(String.valueOf(donneesTache.get("id_tache"))));
 		        nouvelleTache.setNomResponsableTache(String.valueOf(donneesTache.get("nom_responsable"))) ;
 		        nouvelleTache.setPrenomResponsableTache(String.valueOf(donneesTache.get("prenom_responsable"))) ;
 		        nouvelleTache.setNomAuteurTache(String.valueOf(donneesTache.get("auteur_Tache"))) ;

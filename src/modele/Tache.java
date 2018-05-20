@@ -25,6 +25,8 @@ public class Tache {
 	private String nomAuteurTache ;
 	private String nomResponsableTache ;
 	private String prenomResponsableTache ;
+	private int idResponsable ;
+	private boolean predefinie; 
 	
 
 	private LinkedList<Materiel> materiel;
@@ -35,6 +37,7 @@ public class Tache {
 		this.dateDebut = dateDebut;
 		this.dateCreationTache = dateDebut ;
 		this.etat = new AFaire(this);
+		this.id_tache = 0 ;
 		
 		this.materiel = new LinkedList<Materiel>();
 		this.benevole = new LinkedList<Benevole>();
@@ -178,6 +181,21 @@ public class Tache {
 		this.prenomResponsableTache = prenomResponsableTache;
 	}
 
-	
+	public int getIdResponsable() {
+		return idResponsable;
+	}
+
+	public void setIdResponsable(int idResponsable) {
+		this.idResponsable = idResponsable;
+	}
+
+
+	public boolean isPredefinie() {
+		return predefinie;
+	}
+
+	public void setPredefinie(boolean predefinie) {
+		this.predefinie = predefinie;
+	}
 	
 }
