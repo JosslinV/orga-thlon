@@ -5,10 +5,12 @@ public class SousTache {
 	private String titre;
 	private String description;
 	private float partAvancement;
+	private int id_Tache;
 	
-	public SousTache(String titre, float partAvancement) {
+	public SousTache(String titre, float partAvancement, int id_Tache) {
 		this.titre = titre;
 		this.partAvancement = partAvancement;
+		this.setId_Tache(id_Tache);
 	}
 	
 	public String getTitre() {
@@ -37,6 +39,14 @@ public class SousTache {
 	
 	public void contribuerAvancement() {
 		
+	}
+
+	public int getId_Tache() {
+		return id_Tache;
+	}
+
+	public void setId_Tache(int id_Tache) {
+		this.id_Tache = id_Tache;
 	}
 	
 }

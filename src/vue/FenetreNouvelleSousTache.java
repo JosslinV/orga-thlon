@@ -13,8 +13,8 @@ public class FenetreNouvelleSousTache extends JFrame{
 		this.setLayout(new GridLayout(1,1));
 		this.add(new VueNouvelleSousTache());
 		this.pack();
-		this.setSize(1000, 350);
-		this.setResizable(false);
+		this.setSize(775, 350);
+		this.setResizable(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 		
