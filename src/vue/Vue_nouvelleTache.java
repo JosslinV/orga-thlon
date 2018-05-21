@@ -572,7 +572,7 @@ public class Vue_nouvelleTache extends JPanel {
 		}
 	}
 	
-	private void activerBtRadioPriorite(int priorite) {
+	public void activerBtRadioPriorite(int priorite) {
 		for (int i = 0; i < priorite; i++) 
 			this.priorites.set(i, true);
 	}
@@ -580,6 +580,8 @@ public class Vue_nouvelleTache extends JPanel {
 	public List<Boolean> getPriorites() {
 		return priorites;
 	}
+	
+	
 
 
 	public void setPriorites(List<Boolean> priorites) {
@@ -639,6 +641,8 @@ public class Vue_nouvelleTache extends JPanel {
 	public void afficherEtatAvancement() {
 		this.tfEtatAvancement.setText(String.valueOf(this.slAvancementTache.getValue()));
 	}
+	
+	public 
 	
 	class TabModele extends AbstractTableModel {
 		private boolean DEBUG = false;

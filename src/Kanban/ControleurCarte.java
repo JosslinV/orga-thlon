@@ -30,13 +30,13 @@ public class ControleurCarte implements ActionListener{
 		this.nbMoisRestant = 12; //exemple pour tester
 		
 	}
-/*
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton b = (JButton) e.getSource();
 			switch (this.etatCarte) {
 			case AFAIRE:
-				if (this.vue.)
+				//if (this.vue.)
 				
 				break;
 			case EN_COURS:
@@ -57,13 +57,9 @@ public class ControleurCarte implements ActionListener{
 			
 			}
 	}
-				*/
+				
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 	

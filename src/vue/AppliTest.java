@@ -3,13 +3,15 @@ package vue;
 public class AppliTest {
 
 	public static void main(String[] a) throws Exception {
-
+		
 		new FenetreNouveauMateriel();
 		new FenetreNouvelleCourse();
 		new FenetreNouveauBenevole();
 		new FenetreNouveauContactExterne();
 		new Fenetre_NouvelleTache();
 		new FenetreNouvelleSousTache();
+		
+		
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();
@@ -30,7 +32,8 @@ public class AppliTest {
 	
 		};
 		*/
-		
+
+
 		
 
 	}
