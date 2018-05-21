@@ -62,8 +62,14 @@ public class VueNouvelleCourse extends JPanel {
 	private JButton btValider;
 	private JButton btAnnuler;
 	private JTextField tfAuteurCourse;
+	private JFrame fen;
 
 	public VueNouvelleCourse() throws Exception {
+		this.fen = new JFrame();
+		
+		this.fen.setTitle(" : " + "création d'une nouvelle fiche COURSE");
+		this.fen.setLayout(new GridLayout(1,1));	
+			
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
 		this.setLayout(new BorderLayout());	
@@ -293,6 +299,14 @@ public class VueNouvelleCourse extends JPanel {
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
 		this.btDateDebutCourse.addActionListener(controleur);
+		
+		//génération fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(750, 600);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	}
 	
 	public void setActifComposants(boolean actif){

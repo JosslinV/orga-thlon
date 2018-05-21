@@ -11,6 +11,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +25,9 @@ import modele.contacts.ContactExterne;
 
 public class VueNouveauContactBenevole extends JPanel{
 	private int IdBenevole;
+	private JFrame fen;
+
+
 	private JTextField tfNom;
 	private JTextField tfTelephone;
 	private JTextField tfPrenom;
@@ -42,6 +46,11 @@ public class VueNouveauContactBenevole extends JPanel{
 
 
 	public VueNouveauContactBenevole() {
+		
+		this.fen = new JFrame();
+		this.fen.setTitle(": " + "création d'une nouvelle fiche BENEVOLE");
+		this.fen.setLayout(new GridLayout(1,1));
+
 		
 		ControleurNouveauBenevole contr = new ControleurNouveauBenevole(this);
 		
@@ -252,37 +261,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.gridy = 8;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(p,c);
-		
-		
-		/**
-		p = new JPanel();
-		p.setBackground(Color.RED);
-		p.setLayout(new BorderLayout());
-		p.setBorder(new EmptyBorder(0,40,0,0));
-		c.gridx = 4;
-		c.gridy = 8;
-		c.gridheight = 4;
-		c.gridwidth = 2;
-		//c.fill = GridBagConstraints.HORIZONTAL;
-		panneauPrincipal.add(p,c);
-		JPanel np = new JPanel();
-		p.add(np, BorderLayout.NORTH);
-		lb = new JLabel("Prét de matériel");
-		np.add(lb); 
-		JPanel cp = new JPanel();
-		cp.setBackground(Color.BLUE);
-		p.add(cp, BorderLayout.CENTER);
-		String titresColonnes [] = {"Date", "Description","Tâche"};
-		Object [][] donneesPretMateriel = {
-				{"","",""},
-				{"","",""},
-				{"","",""},
-		};
-		JTable materielTab = new JTable(donneesPretMateriel, titresColonnes);
-		JScrollPane tabSP = new JScrollPane(materielTab);
-		tabSP.setPreferredSize(new Dimension(250,170));
-		cp.add(tabSP); 
-		*/
+
 		//p : SUD
 		JPanel ps = new JPanel();
 		this.add(ps, BorderLayout.SOUTH);
@@ -299,6 +278,13 @@ public class VueNouveauContactBenevole extends JPanel{
 		ps.add(bpValider);
 		bpValider.addActionListener(contr);
 		
+		//génération de la fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(900, 550);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	}
 
 
@@ -321,7 +307,10 @@ public class VueNouveauContactBenevole extends JPanel{
 	public boolean getEstResponsableTache() {
 		return this.cbEstResponsableEquipe.isSelected();
 	}
-
+	
+	public JFrame getFen() {
+		return fen;
+	}
 
 	public void rendreDisponible() {
 		this.tfNom.setEnabled(true);
