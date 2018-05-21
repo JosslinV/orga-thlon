@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -33,8 +34,11 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 	}
 	
 	public void actionPerformed (ActionEvent e) {
-		JButton b = (JButton) e.getSource() ;
-			switch (this.etatCourant) {
+		
+		if (e.getSource() instanceof JButton) {
+			JButton b = (JButton) e.getSource() ;
+		
+				switch (this.etatCourant) {
 			case EDITION :
 				if (b.getText().equals("Valider")) {
 					this.etatCourant = Etats.CONSULTATION ;
@@ -48,6 +52,10 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 						InputTache in = new InputTache() ;
 				    	
 				    	in.inputTache(nouvelleTache) ;
+				
+			
+					
+					
 				
 					
 						
@@ -79,6 +87,41 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 				break ;
 				}
 			}
+				
+		} else {
+			JRadioButton b = (JRadioButton) e.getSource();
+			
+			switch (this.etatCourant) {
+			case EDITION :
+					
+					try {
+				b.setSelected(true);
+				vue.majRadio();
+			
+				    	break ;
+					
+					
+				
+					
+						
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					
+					
+					}
+					
+			
+
+				
+				
+			case CONSULTATION :
+
+			{
+				}
+			}
+		}
+				
 	}
 		
 	
@@ -124,10 +167,11 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 		        String s2 = String.valueOf(donneesTache.get("dateEcheance")) ;
 		        String s2mod = "" + s2.charAt(8) + s2.charAt(9)+"/"+ s2.charAt(5)+ s2.charAt(6) + "/" + s2.charAt(0)+ s2.charAt(1)+ s2.charAt(2)+ s2.charAt(3);
 		        nouvelleTache.setDateEcheance(LocalDate.parse( s2mod, DateTimeFormatter.ofPattern("dd/MM/uuuu"))) ;
+		        
 		        nouvelleTache.setPriorite(Integer.parseInt(String.valueOf(donneesTache.get("priorite"))));
 		        nouvelleTache.setEtatAvancement(Float.parseFloat(String.valueOf(donneesTache.get("Etat Avancement"))));
 		        nouvelleTache.setCommentaire(String.valueOf(donneesTache.get("auteur_Tache"))) ;
-		        
+		        nouvelleTache.setPredefinie(Boolean.valueOf(String.valueOf( donneesTache.get("estTachePredfinie")))) ; 
 			
 		        
 		        return nouvelleTache ;

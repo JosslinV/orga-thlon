@@ -13,19 +13,20 @@ public class UpdateDatabaseTache {
 		try {
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE Orgathlon.Tache SET libelle=?, commentaire=?, dateDebut=?, dateEcheance=?, etatAvancement=?, dateRappel=?, priorite=?, date_creation_tache=?, nom_createur=?, id_personne=?, predefinie=? WHERE id_Tache=?");
+			preparedStatement = database.prepareStatement("UPDATE Orgathlon.Tache SET libelle=?, commentaire=?, dateDebut=?, dateEcheance=?, etatAvancement=?, dateRappel=?, priorite=?, date_creation_tache=?, nom_createur=?, id_personne=?, predefinie=?, nomResponsable=?, prenomResponsable=? WHERE id_Tache=?");
 			preparedStatement.setString(1, donnees.getLibelle());
 			preparedStatement.setString(2, donnees.getCommentaire());
-			preparedStatement.setDate(3, null);									//date
-			preparedStatement.setDate(4, null);								//date
+			preparedStatement.setObject(3, donnees.getDateDebut());
+			preparedStatement.setObject(4, donnees.getDateEcheance());
 			preparedStatement.setDouble(5, donnees.getEtatAvancement());
-			preparedStatement.setDate(6, null);								//date
+			preparedStatement.setObject(6, donnees.getDateRappel());
 			preparedStatement.setInt(7, donnees.getPriorite());
-			preparedStatement.setDate(8, null);								//date
-			preparedStatement.setString(9, null);								//id_personne?
-			preparedStatement.setString(10, null);							//createur ?
+			preparedStatement.setObject(8, donnees.getDateCreationTache());
+			preparedStatement.setString(9, donnees.getNomAuteurTache());
+			preparedStatement.setInt(10, donnees.getIdResponsable());
 			preparedStatement.setBoolean(11, donnees.isPredefinie());
-			preparedStatement.setInt(12, donnees.getId_Tache());
+			preparedStatement.setString(12, donnees.getNomResponsableTache());
+			preparedStatement.setString(13, donnees.getPrenomResponsableTache());
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {

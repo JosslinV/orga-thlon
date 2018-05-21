@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -27,10 +28,15 @@ public class VueNouveauMateriel extends JPanel {
 	private JLabel stockFin;
 	private JTextArea description;
 	private JSpinner quantiteAllouee;
+	private JFrame fen;
 	
 	
 	
 	public VueNouveauMateriel() {
+		
+		this.fen = new JFrame();
+		this.fen.setTitle("création d'une nouvelle fiche MATERIEL");
+		this.fen.setLayout(new GridLayout(1,1));
 		
 		ControleurNouveauMateriel contr = new ControleurNouveauMateriel(this);
 		
@@ -116,6 +122,14 @@ public class VueNouveauMateriel extends JPanel {
 		JButton BTvalider = new JButton("Valider");
 		southPanel.add(BTvalider);
 		BTvalider.addActionListener(contr);
+		
+		//génération de la fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(320, 510);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);	
 	
 	}
 

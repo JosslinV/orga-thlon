@@ -17,15 +17,14 @@ public class RequestTache {
 			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Tache WHERE id_Tache = "+ id +";");
 			
 			if(result.next()) {
-				Tache tache = new Tache(result.getString("libelle"), result.getDate("dateDebut"));
-				tache.setId_Tache(result.getInt("id_Tache"));
+				Tache tache = new Tache(result.getString("libelle"), result.getDate("dateDebut").toLocalDate());
+				tache.setId_tache(result.getInt("id_Tache"));
 				tache.setCommentaire(result.getString("commentaire"));
-				tache.setDateEcheance(result.getDate("dateEcheance"));
+				tache.setDateEcheance(result.getDate("dateEcheance").toLocalDate());
 				tache.setEtatAvancement(result.getShort("etatAvancement"));
-				tache.setDateRappel(result.getDate("dateRappel"));
+				tache.setDateRappel(result.getDate("dateRappel").toLocalDate());
 				tache.setPriorite(result.getInt("priorite"));
-				tache.setPredefinie(result.getBoolean("predefinie"));
-				tache.setDateCreationTache(result.getDate("date_creation_tache"));
+				tache.setDateCreationTache(result.getDate("date_creation_tache").toLocalDate());
 	
 				return tache;
 			}

@@ -10,6 +10,7 @@ import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,7 +19,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controleur.ControleurNouvelleSousTache;
 import controleur.ControleurNouvelleTache;
 
 public class VueNouvelleSousTache extends JPanel {
@@ -30,9 +30,14 @@ public class VueNouvelleSousTache extends JPanel {
 	private JButton BTvalider;
 	private JSlider slAvancementSousTache;
 	private JTextField tfEtatAvancement;
+	private JFrame fen;
 
 	public VueNouvelleSousTache() {
-		ControleurNouvelleSousTache controleur = new ControleurNouvelleSousTache(this);
+		this.fen = new JFrame();
+		this.fen.setTitle(" : " + "création d'une nouvelle fiche SOUS-TACHE");
+		this.fen.setLayout(new GridLayout(1,1));
+
+		
 		this.setBorder(new EmptyBorder(5,20,5,20));
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints cNord = new GridBagConstraints();
@@ -130,6 +135,13 @@ public class VueNouvelleSousTache extends JPanel {
 		//BTannuler.addActionListener(controleur);
 		//BTvalider.addActionListener(controleur);
 	
+		//génération fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(775, 350);
+		this.fen.setResizable(true);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	}
 	
 	

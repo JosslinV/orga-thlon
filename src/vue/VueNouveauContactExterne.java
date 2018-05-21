@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,6 +24,7 @@ import modele.contacts.ContactExterne;
 
 public class VueNouveauContactExterne extends JPanel {
 	
+	private JFrame fen;
 	private JPanel northPanel;
 	private JPanel p;
 	private JScrollPane textSP;
@@ -40,6 +42,11 @@ public class VueNouveauContactExterne extends JPanel {
 
 		
 	public VueNouveauContactExterne() {
+		
+		this.fen = new JFrame();
+		this.fen.setTitle("création d'une nouvelle fiche CONTACT EXTERNE");
+		this.fen.setLayout(new GridLayout(1,1));
+
 		
 		ControleurNouveauContactExt contr = new ControleurNouveauContactExt(this);
 		
@@ -238,6 +245,13 @@ public class VueNouveauContactExterne extends JPanel {
 		southPanel.add(bpValider);
 		bpValider.addActionListener(contr);
 		
+		//génération de la fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(750, 360);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	}
 	
 	public void afficherDonnees(ContactExterne modele) {
