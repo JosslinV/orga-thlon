@@ -127,7 +127,7 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 		        nouvelleTache.setPriorite(Integer.parseInt(String.valueOf(donneesTache.get("priorite"))));
 		        nouvelleTache.setEtatAvancement(Float.parseFloat(String.valueOf(donneesTache.get("Etat Avancement"))));
 		        nouvelleTache.setCommentaire(String.valueOf(donneesTache.get("auteur_Tache"))) ;
-		        
+		        nouvelleTache.setPredefinie(Boolean.valueOf(String.valueOf( donneesTache.get("estTachePredfinie")))) ; 
 			
 		        
 		        return nouvelleTache ;
