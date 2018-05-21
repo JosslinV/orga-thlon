@@ -10,7 +10,7 @@ import modele.Tache;
 import modele.Etat.AFaire;
 import modele.Etat.Etat;
 
-
+//ref machine à Etats p.30 du dossier de Conception
 
 public class ControleurCarte implements ActionListener{
 	
