@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 
 public class Fenetre_Kanban extends JFrame{
 	public Fenetre_Kanban() {
-		VueTabKanban vue = new VueTabKanban();
-		//VueGridKanban vue = new VueGridKanban();
+		//VueTabKanban vue = new VueTabKanban();
+		VueGridKanban vue = new VueGridKanban();
 
 		this.add(vue);
 		this.setTitle("TABLEAU KANBAN");
