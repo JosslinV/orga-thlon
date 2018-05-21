@@ -705,7 +705,14 @@ public class Vue_nouvelleTache extends JPanel {
 	  }
 	}
 	
-
+	public int prioriteInt() {
+        int compteurPriorite = 0;
+        for ( boolean isSelected : this.priorites) {
+            if (isSelected) 
+                compteurPriorite++;
+        }
+        return compteurPriorite;
+    }
 	
 /*
  * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
