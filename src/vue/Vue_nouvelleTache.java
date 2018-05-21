@@ -80,6 +80,7 @@ public class Vue_nouvelleTache extends JPanel {
 	private JRadioButton rbPriorite2;
 	private JRadioButton rbPriorite3;
 	private JRadioButton rbPriorite4;
+	private JRadioButton[] rbpriorites ;
 	private JButton btChoisirResponsable;
 	private JLabel lbMois;
 	private JLabel lbJour;
@@ -323,6 +324,13 @@ public class Vue_nouvelleTache extends JPanel {
 		pPriorite.add(rbPriorite3);
 		this.rbPriorite4 = new JRadioButton("", priorites.get(4));
 		pPriorite.add(rbPriorite4);
+		this.rbpriorites = new JRadioButton[5] ;
+		this.rbpriorites[0] = this.rbPriorite0 ;
+		this.rbpriorites[1] = this.rbPriorite1 ;
+		this.rbpriorites[2] = this.rbPriorite2 ;
+		this.rbpriorites[3] = this.rbPriorite3 ;
+		this.rbpriorites[4] = this.rbPriorite4 ;
+		
 		
 		JPanel pAjouterSupprimerSSTache = new JPanel();	
 		pAjouterSupprimerSSTache.setLayout(new FlowLayout());
@@ -471,11 +479,17 @@ public class Vue_nouvelleTache extends JPanel {
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
 		this.slAvancementTache.addChangeListener(controleur);
+		this.rbPriorite0.addActionListener(controleur) ;
+		this.rbPriorite1.addActionListener(controleur) ;
+		this.rbPriorite2.addActionListener(controleur) ;
+		this.rbPriorite3.addActionListener(controleur) ;
+		this.rbPriorite4.addActionListener(controleur) ;
 		//this.btAjouterSousTaches.addActionListener(controleur);
 		//this.btSupprimerSousTaches.addActionListener(controleur);
 		//this.btAjouterEquipe.addActionListener(controleur);
 		//this.btAnnulerEquipe.addActionListener(controleur);
 
+		
 	}
 	
 
@@ -490,7 +504,8 @@ public class Vue_nouvelleTache extends JPanel {
 		donneesTache.put("dateDebut", dateDebut);
 		LocalDate dateEcheance = LocalDate.parse(this.tfDateEcheance.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateEcheance", dateEcheance);
-		donneesTache.put("priorite", this.priorite);
+		int p = this.prioriteInt();
+		donneesTache.put("priorite", p);
 		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
 		donneesTache.put("commentaire", this.taCommentaire);
 		donneesTache.put("estTachePredfinie", this.cbTacheRecurrente.isSelected());
@@ -572,7 +587,7 @@ public class Vue_nouvelleTache extends JPanel {
 		}
 	}
 	
-	private void activerBtRadioPriorite(int priorite) {
+	public void activerBtRadioPriorite(int priorite) {
 		for (int i = 0; i < priorite; i++) 
 			this.priorites.set(i, true);
 	}
@@ -706,13 +721,55 @@ public class Vue_nouvelleTache extends JPanel {
 	}
 	
 	public int prioriteInt() {
-        int compteurPriorite = 0;
-        for ( boolean isSelected : this.priorites) {
-            if (isSelected) 
-                compteurPriorite++;
+		int p = 0 ;
+        for (int i=0 ; i<5; i++) {
+        	if (rbpriorites[i].isSelected()) {
+        		p = i +1 ;
+        	}
         }
-        return compteurPriorite;
+        return p;
     }
+	
+	public void majRadio() {
+		int p = prioriteInt() ;
+		//activerBtRadioPriorite(p);
+		switch (p) {
+		case 1 : 
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(false);
+			this.rbPriorite2.setSelected(false);
+			this.rbPriorite3.setSelected(false);
+			this.rbPriorite4.setSelected(false);
+		case 2 : 
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(true);
+			this.rbPriorite2.setSelected(false);
+			this.rbPriorite3.setSelected(false);
+			this.rbPriorite4.setSelected(false);
+		case 3 : 
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(true);
+			this.rbPriorite2.setSelected(true);
+			this.rbPriorite3.setSelected(false);
+			this.rbPriorite4.setSelected(false);
+		case 4 : 
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(true);
+			this.rbPriorite2.setSelected(true);
+			this.rbPriorite3.setSelected(true);
+			this.rbPriorite4.setSelected(false);
+			
+		case 5 : 
+			rbPriorite0.setSelected(true);
+			rbPriorite1.setSelected(true);
+			rbPriorite2.setSelected(true);
+			rbPriorite3.setSelected(true);
+			rbPriorite4.setSelected(true);
+			
+			
+		}
+		
+	}
 	
 /*
  * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
