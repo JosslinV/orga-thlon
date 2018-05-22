@@ -15,7 +15,6 @@ public class ControleurNouveauBenevole implements ActionListener {
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
 	private VueNouveauContactBenevole vue;
-	private VueNouveauContactBenevole fen;
 	private Benevole modele;
 	
 	public ControleurNouveauBenevole(VueNouveauContactBenevole vue) {
