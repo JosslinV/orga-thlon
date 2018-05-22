@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import Database.InputDataBase.InputContact;
 import Database.RequestDataBase.RequestBenevole;
 import modele.contacts.Benevole;
-import vue.FenetreNouveauBenevole;
 import vue.VueNouveauContactBenevole;
 
 public class ControleurNouveauBenevole implements ActionListener {
@@ -16,7 +15,7 @@ public class ControleurNouveauBenevole implements ActionListener {
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
 	private VueNouveauContactBenevole vue;
-	private FenetreNouveauBenevole fen;
+	private VueNouveauContactBenevole fen;
 	private Benevole modele;
 	
 	public ControleurNouveauBenevole(VueNouveauContactBenevole vue) {
