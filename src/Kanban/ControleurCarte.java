@@ -36,7 +36,7 @@ public class ControleurCarte implements ActionListener{
 		JButton b = (JButton) e.getSource();
 			switch (this.etatCarte) {
 			case AFAIRE:
-				//if (this.vue.)
+				if (b this.vue.getActionBouton(b);)
 				
 				break;
 			case EN_COURS:
