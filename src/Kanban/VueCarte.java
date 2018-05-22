@@ -11,12 +11,14 @@ import javax.swing.JPanel;
 
 public class VueCarte extends JPanel{
 	private JLabel lblibelle;
-	private Icon icProloop;
-	private Icon icEditer;
-	private Icon icPause;
-	private Icon icSupprimer;
+
 	private JButton btnEditer;
-	
+
+	private JButton btnSupprimer;
+
+	private JButton btnPause;
+
+	private JButton btnProloop;
 	
 	public VueCarte(String texte, boolean predefinie) {
 		
@@ -25,19 +27,16 @@ public class VueCarte extends JPanel{
 		pNord.setLayout(new FlowLayout());
 		this.add(pNord, BorderLayout.PAGE_START);
 		
-		JButton btnSupprimer = new JButton();
-		this.icSupprimer = new ImageIcon("./src/Kanban/delete.png", "supprimer" );
-		btnSupprimer.setIcon(icSupprimer);		
+		this.btnSupprimer = new JButton();
+		btnSupprimer.setIcon(new ImageIcon("./src/Kanban/delete.png", "supprimer" ));		
 		pNord.add(btnSupprimer);
 		
-		JButton btnPause = new JButton();
-		this.icPause = new ImageIcon("./src/Kanban/pause.png", "pause");
-		btnPause.setIcon(icPause);
+		this.btnPause = new JButton();
+		btnPause.setIcon(new ImageIcon("./src/Kanban/pause.png", "pause"));
 		pNord.add(btnPause);
 		
 		this.btnEditer = new JButton();
-		this.icEditer = new ImageIcon("./src/Kanban/edit.png", "editer");
-		btnEditer.setIcon(icEditer);
+		btnEditer.setIcon(new ImageIcon("./src/Kanban/edit.png", "editer"));
 		pNord.add(btnEditer);
 		
 		this.lblibelle= new JLabel("Libellé ");
@@ -45,24 +44,18 @@ public class VueCarte extends JPanel{
 		
 		JPanel pSud = new JPanel();
 		this.add(pSud, BorderLayout.PAGE_END);
-		JButton btnProloop = new JButton();
-		this.icProloop = new ImageIcon("./src/Kanban/miniproloop.png", "proloop");
-		btnProloop.setIcon(icProloop);
-		if ()
-		btnProloop.setVisible(true);
+		this.btnProloop = new JButton();
+		btnProloop.setIcon(new ImageIcon("./src/Kanban/miniproloop.png", "proloop"));
 		pSud.add(btnProloop);
 	}
 	
 	public void setTitre(String titre) {
 		lblibelle.setText(titre);
 	}
-	/*
-	public boolean getActionBouton(JButton b) {
-		//String action ="";
-
-		System.out.println(b.equals(this.btnEditer));
-		
-		
+	
+	public void afficherBoutonProloop(boolean estAffiche) {
+		this.btnProloop.setVisible(estAffiche);
 	}
-	*/
+	
+
 }
