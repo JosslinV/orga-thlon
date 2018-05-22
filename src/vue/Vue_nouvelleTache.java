@@ -734,42 +734,59 @@ public class Vue_nouvelleTache extends JPanel {
         return p;
     }
 	
+	public void resetBtRadio() {
+		this.rbPriorite0.setSelected(false);
+		this.rbPriorite1.setSelected(false);
+		this.rbPriorite2.setSelected(false);
+		this.rbPriorite3.setSelected(false);
+		this.rbPriorite4.setSelected(false);
+	}
+	
 	public void majRadio() {
 		int p = prioriteInt() ;
 		//activerBtRadioPriorite(p);
 		switch (p) {
 		case 1 : 
+			
 			this.rbPriorite0.setSelected(true);
 			this.rbPriorite1.setSelected(false);
 			this.rbPriorite2.setSelected(false);
 			this.rbPriorite3.setSelected(false);
 			this.rbPriorite4.setSelected(false);
+			break;
 		case 2 : 
+			
 			this.rbPriorite0.setSelected(true);
 			this.rbPriorite1.setSelected(true);
 			this.rbPriorite2.setSelected(false);
 			this.rbPriorite3.setSelected(false);
 			this.rbPriorite4.setSelected(false);
+			break ;
 		case 3 : 
+		
 			this.rbPriorite0.setSelected(true);
 			this.rbPriorite1.setSelected(true);
 			this.rbPriorite2.setSelected(true);
 			this.rbPriorite3.setSelected(false);
 			this.rbPriorite4.setSelected(false);
+			break ;
 		case 4 : 
+			
 			this.rbPriorite0.setSelected(true);
 			this.rbPriorite1.setSelected(true);
 			this.rbPriorite2.setSelected(true);
 			this.rbPriorite3.setSelected(true);
 			this.rbPriorite4.setSelected(false);
+			break;
 			
 		case 5 : 
+			
 			rbPriorite0.setSelected(true);
 			rbPriorite1.setSelected(true);
 			rbPriorite2.setSelected(true);
 			rbPriorite3.setSelected(true);
 			rbPriorite4.setSelected(true);
-			
+			break;
 			
 		}
 		
