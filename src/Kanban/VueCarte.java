@@ -18,7 +18,7 @@ public class VueCarte extends JPanel{
 	private JButton btnEditer;
 	
 	
-	public VueCarte(String texte) {
+	public VueCarte(String texte, boolean predefinie) {
 		
 		this.setLayout(new BorderLayout());
 		JPanel pNord = new JPanel();
@@ -26,17 +26,17 @@ public class VueCarte extends JPanel{
 		this.add(pNord, BorderLayout.PAGE_START);
 		
 		JButton btnSupprimer = new JButton();
-		this.icSupprimer = new ImageIcon("./src/Kanban/delete.png");
+		this.icSupprimer = new ImageIcon("./src/Kanban/delete.png", "supprimer" );
 		btnSupprimer.setIcon(icSupprimer);		
 		pNord.add(btnSupprimer);
 		
 		JButton btnPause = new JButton();
-		this.icPause = new ImageIcon("./src/Kanban/pause.png");
+		this.icPause = new ImageIcon("./src/Kanban/pause.png", "pause");
 		btnPause.setIcon(icPause);
 		pNord.add(btnPause);
 		
 		this.btnEditer = new JButton();
-		this.icEditer = new ImageIcon("./src/Kanban/edit.png");
+		this.icEditer = new ImageIcon("./src/Kanban/edit.png", "editer");
 		btnEditer.setIcon(icEditer);
 		pNord.add(btnEditer);
 		
@@ -46,8 +46,9 @@ public class VueCarte extends JPanel{
 		JPanel pSud = new JPanel();
 		this.add(pSud, BorderLayout.PAGE_END);
 		JButton btnProloop = new JButton();
-		this.icProloop = new ImageIcon("./src/Kanban/miniproloop.png");
+		this.icProloop = new ImageIcon("./src/Kanban/miniproloop.png", "proloop");
 		btnProloop.setIcon(icProloop);
+		if ()
 		btnProloop.setVisible(true);
 		pSud.add(btnProloop);
 	}
@@ -55,13 +56,13 @@ public class VueCarte extends JPanel{
 	public void setTitre(String titre) {
 		lblibelle.setText(titre);
 	}
-	
-	public void getActionBouton(JButton b) {
+	/*
+	public boolean getActionBouton(JButton b) {
 		//String action ="";
 
 		System.out.println(b.equals(this.btnEditer));
 		
 		
 	}
-	
+	*/
 }
