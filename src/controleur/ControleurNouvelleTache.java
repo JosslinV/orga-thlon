@@ -95,6 +95,7 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 			case EDITION :
 					
 					try {
+				vue.resetBtRadio() ;
 				b.setSelected(true);
 				vue.majRadio();
 			
