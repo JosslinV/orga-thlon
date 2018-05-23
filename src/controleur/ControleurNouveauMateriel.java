@@ -29,7 +29,7 @@ public class ControleurNouveauMateriel implements ActionListener {
 		JButton button = (JButton)e.getSource();
 		switch(etatCourant) {
 		case EDITION:
-			vue.rendreDisponible();
+			vue.rendreDisponible(true);
 			if(button.getText() == "Valider") {
 				try {
 					Materiel materiel = vue.rassemblerDonnees();
@@ -49,7 +49,7 @@ public class ControleurNouveauMateriel implements ActionListener {
 			}
 			break;
 		case CONSULTATION:
-			vue.rendreIndisponible();
+			vue.rendreDisponible(false);
 			break;
 		}
 	}

@@ -29,7 +29,7 @@ public class ControleurNouveauContactExt implements ActionListener{
 		JButton button = (JButton)e.getSource();
 		switch(etatCourant) {
 		case EDITION:
-			vue.rendreDisponible();
+			vue.rendreDisponible(true);
 			if(button.getText() == "Valider") {
 				try {
 					ContactExterne contact = vue.rassemblerDonnees();
@@ -56,7 +56,7 @@ public class ControleurNouveauContactExt implements ActionListener{
 			break;
 		case CONSULTATION:
 			System.out.println("ok");
-			vue.rendreIndisponible();
+			vue.rendreDisponible(false);
 			break;
 		}
 		

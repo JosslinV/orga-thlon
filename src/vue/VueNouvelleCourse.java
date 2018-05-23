@@ -277,7 +277,7 @@ public class VueNouvelleCourse extends JPanel {
 		this.tfFormatCourse.setEnabled(actif);
 		this.taCommentaireCourse.setEnabled(actif);
 		this.parcoursTab.setEnabled(actif);
-		//this.spNbParticipants.setEnabled(actif); //lever un avertissement en cas d'édition du spinner en mode consultation
+		this.spNbParticipants.setEnabled(actif);
 		this.cbAgrement.setEnabled(actif);
 		this.btDateDebutCourse.setEnabled(actif);
 	}	

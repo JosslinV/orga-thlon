@@ -1,21 +1,26 @@
 package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import controleur.ControleurNouveauMateriel;
 import modele.Materiel;
+import vue.Vue_nouvelleTache.TabModele;
 
 public class VueNouveauMateriel extends JPanel {
 	
@@ -27,7 +32,15 @@ public class VueNouveauMateriel extends JPanel {
 	private JLabel stockFin;
 	private JTextArea description;
 	private JSpinner quantiteAllouee;
+	private JTable tabMTB;
 	
+	private String titresColonnes [] = {"Bénévole","Tâche","Quantité","Date prêt"};
+	
+	private String [][] donneesMTB = {
+			{"","","",""},
+			{"","","",""},
+			{"","","",""}
+	};	
 	
 	
 	public VueNouveauMateriel() {
@@ -92,18 +105,11 @@ public class VueNouveauMateriel extends JPanel {
 		pquantiteAllouee.add(this.quantiteAllouee = new JSpinner());
 		
 		//tableau MTB
-		String titresColonnes [] = {"Bénévole","Tâche","Quantité","Date prêt"};
 		
-		String [][] donneesMTB = {
-				{"","","",""},
-				{"","","",""},
-				{"","","",""}
-		};
-		JTable tabMTB = new JTable(donneesMTB, titresColonnes);
-		JScrollPane tabMTBSP = new JScrollPane(tabMTB);
-		tabMTBSP.setPreferredSize(new Dimension(100,70));
-		p2.add(tabMTBSP, BorderLayout.SOUTH);		
-
+		
+		this.tabMTB = new JTable(new TabModele(this.titresColonnes, this.donneesMTB));
+		this.tabMTB.setPreferredScrollableViewportSize(new Dimension(100,70)); 
+		p2.add(new JScrollPane(this.tabMTB), BorderLayout.SOUTH);
 
 		this.add(southPanel, BorderLayout.SOUTH);
 		southPanel.setBorder(new EmptyBorder(10,15,10,15));
@@ -139,19 +145,85 @@ public class VueNouveauMateriel extends JPanel {
 		return null;
 	}
 	
-	public void rendreIndisponible() {
-		this.libelle.setEnabled(false);
-		this.quantite.setEnabled(false);
-		this.description.setEnabled(false);
-		this.quantiteAllouee.setEnabled(false);
+	public void rendreDisponible(boolean active) {
+		this.libelle.setEditable(active);
+		this.quantite.setEnabled(active);
+		this.description.setEditable(active);
+		this.quantiteAllouee.setEnabled(active);
 	}
 	
-	public void rendreDisponible() {
-		this.libelle.setEnabled(true);
-		this.quantite.setEnabled(true);
-		this.description.setEnabled(true);
-		this.quantiteAllouee.setEnabled(true);
+	class TabModele extends AbstractTableModel {
+		private boolean DEBUG = false;
+		private String [] titresColonnes ;
+		private Object [][] donnees;		
+
+		
+		public TabModele(String[] titresColonnes, Object[][] donnees) {
+			this.titresColonnes = titresColonnes;
+			this.donnees = donnees;
+		}
+		
+	    public int getColumnCount() {
+	    	return titresColonnes.length;
+	    }
+
+		public int getRowCount() {
+			return donnees.length;
+	    }
+
+	    public String getColumnName(int col) {
+	    	return titresColonnes[col];
+	    }
+
+	    public Object getValueAt(int row, int col) {
+	    	return donnees[row][col];
+	    }
+
+	    /**
+	     * JTable uses this method to determine the default renderer/ editor for
+	     * each cell. If we didn't implement this method, then the last column
+	     * would contain text ("true"/"false"), rather than a check box.
+	     */
+	    public Class getColumnClass(int c) {
+	      return getValueAt(0, c).getClass();
+	    }
+
+	    /**
+	     * Don't need to implement this method unless your table's editable.
+	     */
+	    public boolean isCellEditable(int row, int col) {
+		    return true;
+	    }
+	    /**
+	     * Don't need to implement this method unless your table's data can
+	     * change.
+	     */
+	    
+	    public void setValueAt(Object value, int row, int col) {
+	    	donnees[row][col] = value;
+	        fireTableCellUpdated(row, col);
+	    }
+	    
 	}
+
+	
+	public class TableComponent extends DefaultTableCellRenderer {
+
+	  public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	    if (value instanceof JProgressBar)
+	      return (JProgressBar) value;
+	    else
+	      return this;
+	  }
+	}
+/*
+ * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
+			donneesSousTaches[i][0]= "" ;
+			donneesSousTaches[i][1]= new Float(0.0F);
+			//this.mapSousTaches.put(String.valueOf(donneesSousTaches[i][0]), (Float) donneesSousTaches[i][1]);
+			//System.out.println("numeroSousTache"+ i + "libelle :"+ donneesSousTaches[i][0] + "TauxCompletion :"+ this.mapSousTaches.get(donneesSousTaches[i][0]) );
+		}
+ */
 
 
 }

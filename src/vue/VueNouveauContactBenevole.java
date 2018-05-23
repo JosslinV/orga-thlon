@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,11 +13,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controleur.ControleurNouveauBenevole;
-import controleur.ControleurNouveauContactExt;
+import modele.contacts.Benevole;
+import modele.contacts.ContactExterne;
 
 public class VueNouveauContactBenevole extends JPanel{
 	private int IdBenevole;
@@ -33,11 +37,13 @@ public class VueNouveauContactBenevole extends JPanel{
 	private JTextField tfCP;
 	private JButton btAjouterEquipe;
 	private JButton bpEquipe;
+	private JTextArea taNote;
+	private JTextField tfVille;
 
 
 	public VueNouveauContactBenevole() {
 		
-		ControleurNouveauBenevole contr = new ControleurNouveauBenevole();
+		ControleurNouveauBenevole contr = new ControleurNouveauBenevole(this);
 		
 		this.setLayout(new BorderLayout());
 		JPanel panneauPrincipal = new JPanel();
@@ -46,7 +52,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.setBorder(new EmptyBorder(0,0,0,0));
 		GridBagConstraints c = new GridBagConstraints();
 		
-		//ligne 0 : Nom ((Jlabel + JTextField) + Téléphone (Jlabel + JTextField) 
+		//ligne 0 : Nom ((Jlabel + JTextField) + TÃ©lÃ©phone (Jlabel + JTextField) 
 		JLabel lbNom = new JLabel("Nom");
 		c.insets = new Insets(5, 0, 5, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -63,7 +69,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		//c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(tfNom, c);
 		
-		JLabel lbTelephone = new JLabel("Téléphone");
+		JLabel lbTelephone = new JLabel("Tï¿½lï¿½phone");
 		lbTelephone.setBorder(new EmptyBorder(0,40,0,0));
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 4;
@@ -79,8 +85,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(tfTelephone, c);
 		
-		//ligne 1 : Prénom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
-		JLabel lbPrenom = new JLabel("Prénom");
+		//ligne 1 : PrÃ©nom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
+		JLabel lbPrenom = new JLabel("PrÃ©nom");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
@@ -113,8 +119,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(tfMail, c);
 		
 		this.add(panneauPrincipal, BorderLayout.CENTER);
-		//ligne 2 : Réle (JLabel + JComboList) + Adresse (JLabel + JTextField)
-		JLabel lbRole = new JLabel("Réle");
+		//ligne 2 : Rï¿½le (JLabel + JComboList) + Adresse (JLabel + JTextField)
+		JLabel lbRole = new JLabel("RÃ´le");
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
 		c.gridy = 2;
@@ -153,7 +159,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		p.add(tfAdresse2);
 		
 		//ligne 4 : Equipe (JLabel + JTextField) + CodePostal (JLabel + JTextField)
-		lbResponsable = new JLabel("Responsable d'équipe");
+		lbResponsable = new JLabel("Responsable d'Ã©quipe");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 4;
@@ -170,8 +176,9 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.gridy = 4;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		lbCP.setBorder(new EmptyBorder(0,40,0,0));
-		panneauPrincipal.add(lbCP,c); 
-		tfCP = new JTextField("");
+		panneauPrincipal.add(lbCP,c);
+		
+		tfCP = new JTextField();
 		tfCP.setPreferredSize(new Dimension(50,25));
 		c.gridx = 5;
 		c.gridy = 5;
@@ -208,14 +215,15 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		lbCP.setBorder(new EmptyBorder(0,40,0,0));
 		panneauPrincipal.add(lbCP,c); 
-		tfCP = new JTextField("");
-		tfCP.setPreferredSize(new Dimension(50,25));
+		
+		this.tfVille = new JTextField();
+		this.tfVille.setPreferredSize(new Dimension(50,25));
 		c.gridx = 5;
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LAST_LINE_START;
-		panneauPrincipal.add(tfCP, c);
+		panneauPrincipal.add(tfVille, c);
 		
-		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
+		//ligne 8 : bouton "Equipe" + tableau Prï¿½t Matï¿½riel
 		this.bpEquipe = new JButton();
 		c.gridx = 1;
 		c.gridy = 8;
@@ -225,7 +233,25 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.ipady = 40;
 		panneauPrincipal.add(bpEquipe,c);
 		
+		JLabel lbNote = new JLabel("Note");
+		c.gridx = 4;
+		c.gridy = 8;
+		c.anchor = GridBagConstraints.LAST_LINE_START;
+		lbNote.setBorder(new EmptyBorder(0,40,0,0));
+		panneauPrincipal.add(lbNote,c); 
+		
 		p = new JPanel();
+		p.setLayout(new GridLayout(1,1));
+		p.setBorder(new EmptyBorder(20,0,0,0));
+		this.taNote = new JTextArea(10,5);
+		JScrollPane textSP = new JScrollPane(this.taNote);
+		textSP.setPreferredSize(new Dimension(250,125));
+		p.add(textSP);
+		c.gridheight = 5;
+		c.gridx = 5;
+		c.gridy = 8;
+		c.anchor = GridBagConstraints.LINE_START;
+		panneauPrincipal.add(p,c);
 		
 		
 		/**
@@ -241,12 +267,12 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(p,c);
 		JPanel np = new JPanel();
 		p.add(np, BorderLayout.NORTH);
-		lb = new JLabel("Prét de matériel");
+		lb = new JLabel("Prï¿½t de matï¿½riel");
 		np.add(lb); 
 		JPanel cp = new JPanel();
 		cp.setBackground(Color.BLUE);
 		p.add(cp, BorderLayout.CENTER);
-		String titresColonnes [] = {"Date", "Description","Tâche"};
+		String titresColonnes [] = {"Date", "Description","Tï¿½che"};
 		Object [][] donneesPretMateriel = {
 				{"","",""},
 				{"","",""},
@@ -295,5 +321,52 @@ public class VueNouveauContactBenevole extends JPanel{
 	public boolean getEstResponsableTache() {
 		return this.cbEstResponsableEquipe.isSelected();
 	}
+
+
+	public void rendreDisponible(boolean active) {
+		this.tfNom.setEditable(active);
+		this.tfTelephone.setEditable(active);
+		this.tfPrenom.setEditable(active);
+		this.tfMail.setEditable(active);
+		this.tfRole.setEditable(active);
+		this.tfAdresse1.setEditable(active);
+		this.tfAdresse2.setEditable(active);
+		this.tfCP.setEditable(active);
+		this.tfVille.setEditable(active);
+		this.taNote.setEditable(active);
+		this.cbEstResponsableEquipe.setEnabled(active);
+		this.btAjouterEquipe.setEnabled(active);
+		this.bpEquipe.setEnabled(active);
+	}
+
+
+	public Benevole rassemblerDonnees() {
+		if(!this.tfNom.getText().isEmpty()) {
+			Benevole benevole = new Benevole(this.tfNom.getText());
+			benevole.setPrenom_c(this.tfPrenom.getText());
+			benevole.setAdresse(this.tfAdresse1.getText());
+			benevole.setCp_c(this.tfCP.getText());
+			benevole.setVille_c(this.tfVille.getText());
+			benevole.setTelephone_c(this.tfTelephone.getText());
+			benevole.setMail_c(this.tfMail.getText());
+			benevole.setCommentaire(this.taNote.getText());
+			return benevole;
+			
+		}else {
+			if(this.tfNom.getText().isEmpty())
+				this.tfNom.setBackground(Color.red);
+		}
+		return null;
+	}
 	
+	public void afficherDonnees(Benevole modele) {
+		this.tfNom.setText(modele.getNom_c());
+		this.tfPrenom.setText(modele.getPrenom_c());
+		this.tfAdresse1.setText(modele.getAdresse());
+		this.tfCP.setText(modele.getCp_c());
+		this.tfVille.setText(modele.getVille_c());
+		this.tfTelephone.setText(modele.getTelephone_c());
+		this.tfMail.setText(modele.getMail_c());
+		this.taNote.setText(modele.getCommentaire());
+	}
 }
