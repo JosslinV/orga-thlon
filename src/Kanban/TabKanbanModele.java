@@ -5,8 +5,12 @@ import javax.swing.table.AbstractTableModel;
 public class TabKanbanModele extends AbstractTableModel {
 	
 	private String titresColonnes [] = {"A FAIRE", "EN COURS", "TERMINE", "EN ATTENTE"}; //chaque colonne est associée à l'état d'une tache
-	private JPanel nombreCartes [][] = { 
+	public Carte nombreCartes [][] = { 
 				
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
+						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
 						{new Carte (""), new Carte(""), new Carte (""), new Carte ("")},
@@ -36,12 +40,13 @@ public class TabKanbanModele extends AbstractTableModel {
 	 }
 	 
 	 public boolean isCellEditable(int row, int col) {
-		    return true;
+		    if ( col == 1) return true;
+		    return false;
      }
 	 
 	 public void setValueAt(JPanel value, int row, int col) {
-	    	this.nombreCartes[row][col] = value;
+	    	this.nombreCartes[row][col] = (Carte) value;
 	        fireTableCellUpdated(row, col);
-	    }
+	 }
 
 }

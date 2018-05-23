@@ -15,18 +15,20 @@ public class InputTache{
 			
 			Connection database = DatabaseSettings.connect();
 			
-			preparedStatement = database.prepareStatement("insert into  Orgathlon.Tache values (default,?,?,?,?,?,?,?,?,?,?,?)");
+			preparedStatement = database.prepareStatement("insert into  Orgathlon.Tache values (default,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, donnees.getLibelle());
 			preparedStatement.setString(2, donnees.getCommentaire());
-			preparedStatement.setDate(3, null);								//date
-			preparedStatement.setDate(4, null);								//date
+			preparedStatement.setObject(3, donnees.getDateDebut());
+			preparedStatement.setObject(4, donnees.getDateEcheance());
 			preparedStatement.setDouble(5, donnees.getEtatAvancement());
-			preparedStatement.setDate(6, null);								//date
+			preparedStatement.setObject(6, donnees.getDateRappel());
 			preparedStatement.setInt(7, donnees.getPriorite());
-			preparedStatement.setDate(8, null);								//date
-			preparedStatement.setString(9, null);
-			preparedStatement.setString(10, null);							//createur ?
+			preparedStatement.setObject(8, donnees.getDateCreationTache());
+			preparedStatement.setString(9, donnees.getNomAuteurTache());
+			preparedStatement.setInt(10, donnees.getIdResponsable());
 			preparedStatement.setBoolean(11, donnees.isPredefinie());
+			preparedStatement.setString(12, donnees.getNomResponsableTache());
+			preparedStatement.setString(13, donnees.getPrenomResponsableTache());
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {

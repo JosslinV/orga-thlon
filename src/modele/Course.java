@@ -32,9 +32,15 @@ public class Course {
 	private int distance_cou ;
 	private int id_course ;
 	Calendar calendar = Calendar.getInstance();
+	private String AuteurCourse;
 	
 	public Course (String nom) throws Exception {
 		this.nom_course = nom;
+		
+	}
+	
+	public String getAuteurCourse() {
+		return this.AuteurCourse;
 		
 	}
 	

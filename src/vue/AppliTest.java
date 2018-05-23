@@ -3,12 +3,14 @@ package vue;
 public class AppliTest {
 
 	public static void main(String[] a) throws Exception {
-
-		new FenetreNouveauMateriel();
-		new FenetreNouvelleCourse();
-		new FenetreNouveauBenevole();
-		new FenetreNouveauContactExterne();
+		
+		new VueNouveauMateriel();
+		new VueNouvelleCourse();
+		new VueNouveauContactBenevole();
+		new VueNouveauContactExterne();
 		new Fenetre_NouvelleTache();
+		new VueNouvelleSousTache();
+		
 		
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
@@ -30,7 +32,8 @@ public class AppliTest {
 	
 		};
 		*/
-		
+
+
 		
 
 	}

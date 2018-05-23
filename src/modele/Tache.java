@@ -9,6 +9,7 @@ import modele.contacts.Benevole;
 
 public class Tache {
 
+	private int id_tache ;
 	private String libelle;
 	private String commentaire;
 	private LocalDate dateDebut;
@@ -21,7 +22,13 @@ public class Tache {
 	private LocalDate dateCreationTache;
 	private String etatAvancementGlobal;
 	private Etat etat;
+	private String nomAuteurTache ;
+	private String nomResponsableTache ;
+	private String prenomResponsableTache ;
+	private int idResponsable ;
+	private boolean predefinie; 
 	
+
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
 	
@@ -30,6 +37,7 @@ public class Tache {
 		this.dateDebut = dateDebut;
 		this.dateCreationTache = dateDebut ;
 		this.etat = new AFaire(this);
+		this.id_tache = 0 ;
 		
 		this.materiel = new LinkedList<Materiel>();
 		this.benevole = new LinkedList<Benevole>();
@@ -138,6 +146,56 @@ public class Tache {
 	
 	public void ajouterBenevole(Benevole personnel) {
 		this.benevole.add(personnel);
+	}
+	
+	public int getId_tache() {
+		return id_tache;
+	}
+
+	public void setId_tache(int id_tache) {
+		this.id_tache = id_tache;
+	}
+	
+	public String getNomAuteurTache() {
+		return nomAuteurTache;
+	}
+
+	public void setNomAuteurTache(String nomAuteurTache) {
+		this.nomAuteurTache = nomAuteurTache;
+	}
+
+	
+	public String getNomResponsableTache() {
+		return nomResponsableTache;
+	}
+
+	public void setNomResponsableTache(String nomResponsableTache) {
+		this.nomResponsableTache = nomResponsableTache;
+	}
+
+	public String getPrenomResponsableTache() {
+		return prenomResponsableTache;
+	}
+
+	public void setPrenomResponsableTache(String prenomResponsableTache) {
+		this.prenomResponsableTache = prenomResponsableTache;
+	}
+
+	public int getIdResponsable() {
+		return idResponsable;
+	}
+
+	public void setIdResponsable(int idResponsable) {
+		this.idResponsable = idResponsable;
+	}
+
+
+	public boolean isPredefinie() {
+		return predefinie;
+	}
+
+	public void setPredefinie(boolean predefinie) {
+		this.predefinie = predefinie;
 	}
 	
 }

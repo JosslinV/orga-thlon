@@ -11,6 +11,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,7 +30,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-//import controleur.ControleurNouvelleTache;
+import controleur.ControleurNouvelleTache;
 
 import javax.swing.JSlider;
 import javax.swing.JTable;
@@ -47,14 +49,11 @@ public class Vue_nouvelleTache extends JPanel {
 	private static final int NB_MAX_MATERIEL = 50;
 	private int id_Tache;
 	private String auteur_Tache;
+	private String date_Creation;
 	private JTextField tfLibelle;
-	private JTextField tfResponsableNom; 
-	private JTextField tfResponsablePrenom; 
 	private int priorite;
 	private List<Boolean> priorites;
 	private TreeMap<String, Float> mapSousTaches;
-	private JTextField tfMois;
-	private JTextField tfJour;
 	private JTextField tfDateDebut;
 	private JTextField tfDateEcheance;
 	private JButton btDateDebut;
@@ -74,6 +73,19 @@ public class Vue_nouvelleTache extends JPanel {
 	private JTextField tfEtatAvancement;
 	private JButton btAjouterEquipe;
 	private JButton btSupprimerEquipe;
+	private JButton btAjouterMateriel;
+	private JButton btSupprimerMateriel;
+	private JRadioButton rbPriorite0;
+	private JRadioButton rbPriorite1;
+	private JRadioButton rbPriorite2;
+	private JRadioButton rbPriorite3;
+	private JRadioButton rbPriorite4;
+	private JRadioButton[] rbpriorites ;
+	private JButton btChoisirResponsable;
+	private JLabel lbMois;
+	private JLabel lbJour;
+	private JLabel lbResponsableNom;
+	private JLabel lbResponsablePrenom; 
 	
 	private String titresColonnesSsTaches [] = {"Libell\u00E9", " Avancement "};
 	private Object [][] donneesSousTaches = { 
@@ -87,17 +99,16 @@ public class Vue_nouvelleTache extends JPanel {
 			{ "", new JProgressBar()},
 };
 	
-	private String titresColonnesEquipe [] = {"Responsable", "Nom", "Pr\u00E9nom", "R\u00F4le"};
+	private String titresColonnesEquipe [] = { "Nom", "Pr\u00E9nom", "R\u00F4le"};
 	private Object [][] donneesEquipe = { 
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""},
-			{ new Boolean(false), "", "", ""}
-			
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""},
+			{ "", "", ""}	
 };
 	
 	private String titresColonnesMateriel [] = {"Libelle", "Nom", "Pr\u00E9nom", "Qt\u00E9"};
@@ -111,13 +122,12 @@ public class Vue_nouvelleTache extends JPanel {
 			{ "", "", "", new Integer(0)},
 			{ "", "", "", new Integer(0)}
 };
-	private JButton btAjouterMateriel;
-	private JButton btSupprimerMateriel;
 
 
 
-	public Vue_nouvelleTache()  {
-		//ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
+
+	public Vue_nouvelleTache() throws Exception {
+		ControleurNouvelleTache controleur = new ControleurNouvelleTache(this);
 		this.setLayout(new BorderLayout());
 		
 		JPanel pNord = new JPanel();
@@ -137,12 +147,19 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//ajoute label icones supprimer, pause
 		
-		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+this.auteur_Tache );
+		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Tache  );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 1;
 		cNord1.gridy = 0;
 		pNord.add(lbCreateur, cNord1);
+		
+		JLabel lbDateCreation = new JLabel("le "+ this.date_Creation );
+		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
+		cNord1.weightx = 10;
+		cNord1.gridx = 2;
+		cNord1.gridy = 0;
+		pNord.add(lbDateCreation, cNord1);
 		
 		JLabel lbLibelle = new JLabel("Libellé ");
 		cNord1.anchor = GridBagConstraints.LINE_START;
@@ -190,17 +207,21 @@ public class Vue_nouvelleTache extends JPanel {
 		cNord2.gridwidth = 3;
 		cNord2.weightx = 50;
 		JLabel lbResponsablenom = new JLabel("Nom");
-		lbResponsablenom.setPreferredSize(new Dimension(30, 14));
+		lbResponsablenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsablenom);	
-		this.tfResponsableNom = new JTextField();
-		this.tfResponsableNom.setColumns(10);
-		pResponsable.add(this.tfResponsableNom);		
+		this.lbResponsableNom = new JLabel(".........");
+		this.lbResponsableNom.setPreferredSize(new Dimension(60, 14));
+		pResponsable.add(this.lbResponsableNom);		
 		JLabel lbResponsableprenom = new JLabel("Prénom");
 		lbResponsableprenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsableprenom);		
-		this.tfResponsablePrenom = new JTextField();
-		this.tfResponsablePrenom.setColumns(10);
-		pResponsable.add(this.tfResponsablePrenom);
+		this.lbResponsablePrenom = new JLabel(".........");
+		this.lbResponsablePrenom.setPreferredSize(new Dimension(60, 14));
+		pResponsable.add(this.lbResponsablePrenom);
+		this.btChoisirResponsable = new JButton();
+		this.btChoisirResponsable.setPreferredSize(new Dimension(30, 20));
+		//this.btDateDebut.setIcon(new ImageIcon("./src/vue/calendar.png"));
+		pResponsable.add(btChoisirResponsable);
 		pNord.add(pResponsable, cNord2);
 		
 		JPanel pEst = new JPanel();
@@ -264,14 +285,16 @@ public class Vue_nouvelleTache extends JPanel {
 		cEst.gridy = 2;
 		pEst.add(pTempsEstime, cEst);
 		pTempsEstime.setLayout(new FlowLayout(FlowLayout.CENTER));	
-		this.tfMois = new JTextField();
-		pTempsEstime.add(this.tfMois);
-		this.tfMois.setColumns(2);		
+		this.lbMois = new JLabel("00");
+		this.lbMois.setForeground(Color.gray);
+		this.lbMois.setPreferredSize(new Dimension (30,20));
+		pTempsEstime.add(this.lbMois);
 		JLabel lbMois = new JLabel("Mois");
 		pTempsEstime.add(lbMois);	
-		this.tfJour = new JTextField();
-		pTempsEstime.add(this.tfJour);
-		this.tfJour.setColumns(2);
+		this.lbJour = new JLabel("00");
+		this.lbJour.setForeground(Color.gray);
+		pTempsEstime.add(this.lbJour);
+		this.lbJour.setPreferredSize(new Dimension (30,20));
 		JLabel lbJour = new JLabel("Jours");
 		pTempsEstime.add(lbJour);
 		
@@ -291,16 +314,23 @@ public class Vue_nouvelleTache extends JPanel {
 		for (int i = 0; i < PRIORITE_MAX; i++) 
 			this.priorites.add(false);
 		activerBtRadioPriorite(this.priorite);
-		JRadioButton rbPriorite0 = new JRadioButton("", priorites.get(0));
+		this.rbPriorite0 = new JRadioButton("", priorites.get(0));
 		pPriorite.add(rbPriorite0);
-		JRadioButton rbPriorite1 = new JRadioButton("", priorites.get(1));
+		this.rbPriorite1 = new JRadioButton("", priorites.get(1));
 		pPriorite.add(rbPriorite1);
-		JRadioButton rbPriorite2 = new JRadioButton("", priorites.get(2));
+		this.rbPriorite2 = new JRadioButton("", priorites.get(2));
 		pPriorite.add(rbPriorite2);
-		JRadioButton rbPriorite3 = new JRadioButton("", priorites.get(3));
+		this.rbPriorite3 = new JRadioButton("", priorites.get(3));
 		pPriorite.add(rbPriorite3);
-		JRadioButton rbPriorite4 = new JRadioButton("", priorites.get(4));
+		this.rbPriorite4 = new JRadioButton("", priorites.get(4));
 		pPriorite.add(rbPriorite4);
+		this.rbpriorites = new JRadioButton[5] ;
+		this.rbpriorites[0] = this.rbPriorite0 ;
+		this.rbpriorites[1] = this.rbPriorite1 ;
+		this.rbpriorites[2] = this.rbPriorite2 ;
+		this.rbpriorites[3] = this.rbPriorite3 ;
+		this.rbpriorites[4] = this.rbPriorite4 ;
+		
 		
 		JPanel pAjouterSupprimerSSTache = new JPanel();	
 		pAjouterSupprimerSSTache.setLayout(new FlowLayout());
@@ -340,11 +370,12 @@ public class Vue_nouvelleTache extends JPanel {
 		pEtatAvancement.add(lbEtatAvancement);			
 		this.slAvancementTache = new JSlider();
 		this.slAvancementTache.setMinimumSize(new Dimension(190, 26));
-		this.slAvancementTache.setMaximum(200);
+		this.slAvancementTache.setMaximum(100);
 		this.slAvancementTache.setMaximumSize(new Dimension(200, 26));
 		pEtatAvancement.add(this.slAvancementTache);				
 		this.tfEtatAvancement = new JTextField();
-		this.tfEtatAvancement.setColumns(3);;
+		this.tfEtatAvancement.setColumns(3);
+		this.tfEtatAvancement.setEditable(false);
 		pEtatAvancement.add(this.tfEtatAvancement);			
 		JLabel lbPourcent = new JLabel("%");
 		lbPourcent.setPreferredSize(new Dimension(20, 20));
@@ -445,59 +476,72 @@ public class Vue_nouvelleTache extends JPanel {
 		this.btValider = new JButton("Valider");
 		pbtES.add(this.btValider, cSud);
 		
-		//this.btAnnuler.addActionListener(controleur);
-		//this.btValider.addActionListener(controleur);
+		this.btAnnuler.addActionListener(controleur);
+		this.btValider.addActionListener(controleur);
+		this.slAvancementTache.addChangeListener(controleur);
+		this.rbPriorite0.addActionListener(controleur) ;
+		this.rbPriorite1.addActionListener(controleur) ;
+		this.rbPriorite2.addActionListener(controleur) ;
+		this.rbPriorite3.addActionListener(controleur) ;
+		this.rbPriorite4.addActionListener(controleur) ;
 		//this.btAjouterSousTaches.addActionListener(controleur);
 		//this.btSupprimerSousTaches.addActionListener(controleur);
 		//this.btAjouterEquipe.addActionListener(controleur);
 		//this.btAnnulerEquipe.addActionListener(controleur);
 
+		
 	}
 	
 
-	public HashMap<String, Object> getDonneesCourse() throws ParseException {
+	public HashMap<String, Object> getDonneesTache() throws ParseException {
 		HashMap<String,Object> donneesTache = new HashMap<String, Object>();
 		
 		donneesTache.put("id_Tache", this.id_Tache);
 		donneesTache.put("auteur_Tache", this.auteur_Tache);
-		donneesTache.put("libelle", this.tfLibelle.getText());  //ok
-		donneesTache.put("nom_responsable", this.tfResponsableNom.getText());
-		donneesTache.put("prenom_responsable", this.tfResponsablePrenom.getText());
-		Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateDebut.getText());
+		donneesTache.put("Date Creation", this.date_Creation);
+		donneesTache.put("libelle", this.tfLibelle.getText()); 
+		LocalDate dateDebut = LocalDate.parse(this.tfDateDebut.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
 		donneesTache.put("dateDebut", dateDebut);
-		Date dateEcheance = new SimpleDateFormat("dd/MM/yyyy").parse(this.tfDateEcheance.getText());
-		donneesTache.put("dateDebut", dateEcheance);
-		int teMoisInt = Integer.parseInt(this.tfMois.getText()) ;
-		int teJourInt = Integer.parseInt(this.tfJour.getText());
-		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
-		donneesTache.put("tempsEstime", tempsEstimeJour );
-		donneesTache.put("priorite", this.priorite);
+		LocalDate dateEcheance = LocalDate.parse(this.tfDateEcheance.getText(), DateTimeFormatter.ofPattern("dd/MM/uuuu"));
+		donneesTache.put("dateEcheance", dateEcheance);
+		int p = this.prioriteInt();
+		donneesTache.put("priorite", p);
 		donneesTache.put("Etat Avancement", this.slAvancementTache.getValue());
 		donneesTache.put("commentaire", this.taCommentaire);
+		donneesTache.put("estTachePredfinie", this.cbTacheRecurrente.isSelected());
 		
 		return donneesTache;
 
 	}
+	/*
+	 * 		int teMoisInt = Integer.parseInt(this.lbMois.getText()) ;
+		int teJourInt = Integer.parseInt(this.lbJour.getText());
+		
+	 * 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
+		donneesTache.put("tempsEstime", tempsEstimeJour );
+	 */
 	
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire   ) {
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie, int Avancement   ) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
+		this.date_Creation = date_Creation;
 		this.tfLibelle.setText(libelle);
-		this.tfResponsableNom.setText(responsableNom);
-		this.tfResponsablePrenom.setText(responsablePrenom);
+		this.lbResponsableNom.setText(responsableNom);
+		this.lbResponsablePrenom.setText(responsablePrenom);
 		String dateDebutStr = dateDebut.toString();
 		this.tfDateDebut.setText(dateDebutStr);
 		String dateEcheanceStr = dateEcheance.toString();
 		this.tfDateEcheance.setText(dateEcheanceStr);
 		int teJourInt = tempsEstimeJourInt % 30 ;
 		int teMoisInt = (tempsEstimeJourInt - teJourInt)/30;
-		this.tfMois.setText(String.valueOf(teMoisInt));
-		this.tfJour.setText(String.valueOf(teJourInt));
+		this.lbMois.setText(String.valueOf(teMoisInt));
+		this.lbJour.setText(String.valueOf(teJourInt));
 		this.priorite = priorite;
-		this.slAvancementTache.setValue(etatAvancement); 
+		this.slAvancementTache.setValue(Avancement); 
 		this.taCommentaire.setText(commentaire);
-
+		this.cbTacheRecurrente.setSelected(estPredefinie);
+		
 	}
 	/*
 	 * for (int l = 0; l < NB_MAX_SOUSTACHES; l++ ) {
@@ -506,7 +550,44 @@ public class Vue_nouvelleTache extends JPanel {
 		}
 	 */
 
-	private void activerBtRadioPriorite(int priorite) {
+	public void setActifComposants(boolean actif){
+		this.tfLibelle.setEditable(actif);
+		this.tfDateDebut.setEditable(actif);
+		this.tfDateEcheance.setEditable(actif);
+		this.rbPriorite0.setEnabled(actif);
+		this.rbPriorite1.setEnabled(actif);
+		this.rbPriorite2.setEnabled(actif);
+		this.rbPriorite3.setEnabled(actif);
+		this.rbPriorite4.setEnabled(actif);
+		this.btAjouterSousTaches.setEnabled(actif);
+		this.btSupprimerSousTaches.setEnabled(actif);
+		this.tabssTaches.setEnabled(actif); //à modifier : utiliser isCellEditable
+		this.slAvancementTache.setEnabled(actif);
+		this.tabEquipe.setEnabled(actif);    //à modifier : utiliser isCellEditable
+		this.btAjouterEquipe.setEnabled(actif);
+		this.btSupprimerEquipe.setEnabled(actif);
+		this.btAjouterMateriel.setEnabled(actif);
+		this.btContact.setEnabled(actif);
+		this.btMateriel.setEnabled(actif);
+		this.tabMateriel.setEnabled(actif);
+		this.btSupprimerMateriel.setEnabled(actif);
+		this.taCommentaire.setEditable(actif);
+		this.btDateDebut.setEnabled(actif);
+		this.btDateEcheance.setEnabled(actif);
+		this.cbTacheRecurrente.setEnabled(actif);
+	}
+	
+	public void modifierTexteBoutonsPourEdition(boolean estEditable) {
+		if (estEditable) {
+			this.btValider.setText("Valider");
+			this.btAnnuler.setText("Annuler");
+		}else {
+			this.btValider.setText("imprimer");
+			this.btAnnuler.setText("retour");
+		}
+	}
+	
+	public void activerBtRadioPriorite(int priorite) {
 		for (int i = 0; i < priorite; i++) 
 			this.priorites.set(i, true);
 	}
@@ -514,6 +595,8 @@ public class Vue_nouvelleTache extends JPanel {
 	public List<Boolean> getPriorites() {
 		return priorites;
 	}
+	
+	
 
 
 	public void setPriorites(List<Boolean> priorites) {
@@ -573,6 +656,8 @@ public class Vue_nouvelleTache extends JPanel {
 	public void afficherEtatAvancement() {
 		this.tfEtatAvancement.setText(String.valueOf(this.slAvancementTache.getValue()));
 	}
+	
+	public 
 	
 	class TabModele extends AbstractTableModel {
 		private boolean DEBUG = false;
@@ -638,6 +723,75 @@ public class Vue_nouvelleTache extends JPanel {
 	      return this;
 	  }
 	}
+	
+	public int prioriteInt() {
+		int p = 0 ;
+        for (int i=0 ; i<5; i++) {
+        	if (rbpriorites[i].isSelected()) {
+        		p = i +1 ;
+        	}
+        }
+        return p;
+    }
+	
+	public void resetBtRadio() {
+		this.rbPriorite0.setSelected(false);
+		this.rbPriorite1.setSelected(false);
+		this.rbPriorite2.setSelected(false);
+		this.rbPriorite3.setSelected(false);
+		this.rbPriorite4.setSelected(false);
+	}
+	
+	public void majRadio() {
+		int p = prioriteInt() ;
+		//activerBtRadioPriorite(p);
+		switch (p) {
+		case 1 : 
+			
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(false);
+			this.rbPriorite2.setSelected(false);
+			this.rbPriorite3.setSelected(false);
+			this.rbPriorite4.setSelected(false);
+			break;
+		case 2 : 
+			
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(true);
+			this.rbPriorite2.setSelected(false);
+			this.rbPriorite3.setSelected(false);
+			this.rbPriorite4.setSelected(false);
+			break ;
+		case 3 : 
+		
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(true);
+			this.rbPriorite2.setSelected(true);
+			this.rbPriorite3.setSelected(false);
+			this.rbPriorite4.setSelected(false);
+			break ;
+		case 4 : 
+			
+			this.rbPriorite0.setSelected(true);
+			this.rbPriorite1.setSelected(true);
+			this.rbPriorite2.setSelected(true);
+			this.rbPriorite3.setSelected(true);
+			this.rbPriorite4.setSelected(false);
+			break;
+			
+		case 5 : 
+			
+			rbPriorite0.setSelected(true);
+			rbPriorite1.setSelected(true);
+			rbPriorite2.setSelected(true);
+			rbPriorite3.setSelected(true);
+			rbPriorite4.setSelected(true);
+			break;
+			
+		}
+		
+	}
+	
 /*
  * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
 			donneesSousTaches[i][0]= "" ;

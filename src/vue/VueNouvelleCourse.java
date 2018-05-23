@@ -1,6 +1,7 @@
 package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -42,6 +43,7 @@ import modele.Etat.Etat;
 public class VueNouvelleCourse extends JPanel {
 	
 	private int id_Course;
+	private LocalDate date_creation; 
 	private JButton btDateDebutCourse;
 	private JTextField tfTitreCourse;
 	private JTextField tfNomEvenement;
@@ -59,21 +61,51 @@ public class VueNouvelleCourse extends JPanel {
 	private JSpinner spNbParticipants;
 	private JButton btValider;
 	private JButton btAnnuler;
+	private JTextField tfAuteurCourse;
+	private JFrame fen;
 
 	public VueNouvelleCourse() throws Exception {
+		this.fen = new JFrame();
+		
+		this.fen.setTitle(" : " + "création d'une nouvelle fiche COURSE");
+		this.fen.setLayout(new GridLayout(1,1));	
+			
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
 		
-				
+		this.setLayout(new BorderLayout());	
 		JPanel pNord = new JPanel();
 		this.add(pNord, BorderLayout.NORTH);
+		pNord.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		pNord.setBorder(new EmptyBorder(10,20,10,20));
-		this.lbTitreCourse = new JLabel("Titre de la course * : ");
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(5, 5, 5, 5);
+		c.anchor = GridBagConstraints.LINE_START;
+		this.lbTitreCourse = new JLabel("Titre de la course *  ");
 		this.lbTitreCourse.setForeground(Color.red);
-		pNord.add(this.lbTitreCourse);		
+		pNord.add(this.lbTitreCourse, c);
+		c.gridx = 1;
+		c.gridy = 0;
+		c.insets = new Insets(5, 5, 5, 5);
 		this.tfTitreCourse = new JTextField("nouveau");
+		this.tfTitreCourse.setColumns(30);
+		c.fill = GridBagConstraints.HORIZONTAL;
 		//this.tfTitreCourse.addKeyListener(new CustomKeyListener());
-		this.tfTitreCourse.setColumns(45);;
-		pNord.add(tfTitreCourse);		
+		pNord.add(this.tfTitreCourse, c);
+		c.gridx = 0;
+		c.gridy = 1;
+		c.insets = new Insets(5, 5, 5, 5);
+		JLabel lbAuteurCourse = new JLabel("Auteur ");
+		pNord.add(lbAuteurCourse, c);
+		c.gridx = 1;
+		c.gridy = 1;
+		c.insets = new Insets(5, 5, 5, 5);
+		this.tfAuteurCourse = new JTextField();
+		this.tfAuteurCourse.setColumns(15);
+		//this.tfTitreCourse.addKeyListener(new CustomKeyListener());
+		pNord.add(this.tfAuteurCourse, c);						
 		
 		JPanel pCentre = new JPanel();
 		this.add(pCentre,BorderLayout.CENTER);
@@ -267,15 +299,23 @@ public class VueNouvelleCourse extends JPanel {
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
 		this.btDateDebutCourse.addActionListener(controleur);
+		
+		//génération fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(750, 600);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	}
 	
 	public void setActifComposants(boolean actif){
-		this.tfDateDebutCourse.setEnabled(actif);
-		this.tfDateFinCourse.setEnabled(actif);
-		this.tfBudget.setEnabled(actif);
-		this.tfNomEvenement.setEnabled(actif);
-		this.tfFormatCourse.setEnabled(actif);
-		this.taCommentaireCourse.setEnabled(actif);
+		this.tfDateDebutCourse.setEditable(actif);
+		this.tfDateFinCourse.setEditable(actif);
+		this.tfBudget.setEditable(actif);
+		this.tfNomEvenement.setEditable(actif);
+		this.tfFormatCourse.setEditable(actif);
+		this.taCommentaireCourse.setEditable(actif);
 		this.parcoursTab.setEnabled(actif);
 		this.spNbParticipants.setEnabled(actif);
 		this.cbAgrement.setEnabled(actif);

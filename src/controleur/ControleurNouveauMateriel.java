@@ -7,7 +7,7 @@ import javax.swing.JButton;
 
 import Database.InputDataBase.InputMateriel;
 import modele.Materiel;
-import vue.FenetreNouveauMateriel;
+
 import vue.VueNouveauMateriel;
 
 public class ControleurNouveauMateriel implements ActionListener {
@@ -15,7 +15,7 @@ public class ControleurNouveauMateriel implements ActionListener {
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
 	private VueNouveauMateriel vue;
-	private FenetreNouveauMateriel fen;
+	private VueNouveauMateriel fen;
 	private Materiel modele;
 	
 	public ControleurNouveauMateriel(VueNouveauMateriel vue){
