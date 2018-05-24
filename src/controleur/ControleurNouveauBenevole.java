@@ -27,7 +27,7 @@ public class ControleurNouveauBenevole implements ActionListener {
 		JButton button = (JButton)e.getSource();
 		switch(etatCourant) {
 		case EDITION:
-			vue.rendreDisponible();
+			vue.rendreDisponible(true);
 			if(button.getText() == "Valider") {
 				try {
 					Benevole benevole = vue.rassemblerDonnees();
@@ -52,7 +52,7 @@ public class ControleurNouveauBenevole implements ActionListener {
 			}
 			break;
 		case CONSULTATION:
-			vue.rendreIndisponible();
+			vue.rendreDisponible(false);
 			break;
 		}
 	}

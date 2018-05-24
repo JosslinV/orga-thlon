@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controleur.ControleurFenetreContactExterne;
 import controleur.ControleurNouveauContactExt;
 import modele.Materiel;
 import modele.contacts.ContactExterne;
@@ -47,6 +48,7 @@ public class VueNouveauContactExterne extends JPanel {
 		this.fen.setTitle("création d'une nouvelle fiche CONTACT EXTERNE");
 		this.fen.setLayout(new GridLayout(1,1));
 
+		this.fen.addWindowListener(new ControleurFenetreContactExterne(this));
 		
 		ControleurNouveauContactExt contr = new ControleurNouveauContactExt(this);
 		
@@ -254,6 +256,18 @@ public class VueNouveauContactExterne extends JPanel {
 		this.fen.setLocationRelativeTo(null);
 	}
 	
+	public void rendreDisponible(boolean active) {
+		this.tfSociete.setEditable(active);
+		this.tfNom.setEditable(active);
+		this.tfPrenom.setEditable(active);
+		this.tfAdresse.setEditable(active);
+		this.tfCp.setEditable(active);
+		this.tfVille.setEditable(active);
+		this.tfTelephone.setEditable(active);
+		this.tfEmail.setEditable(active);
+		this.taNote.setEditable(active);
+	}
+	
 	public void afficherDonnees(ContactExterne modele) {
 		this.tfSociete.setText(modele.getNomSociete());
 		this.tfNom.setText(modele.getNom_c());
@@ -264,45 +278,6 @@ public class VueNouveauContactExterne extends JPanel {
 		this.tfTelephone.setText(modele.getTelephone_c());
 		this.tfEmail.setText(modele.getMail_c());
 		this.taNote.setText(modele.getCommentaire());
-	}
-	/**
-	public String formatTelephone (String tel) {
-		if (tel.length() == 10) 
-			return ""+tel.codePointAt(1)+tel.codePointAt(2)+" "
-				  +tel.codePointAt(3)+tel.codePointAt(4)+" "
-				  +tel.codePointAt(5)+tel.codePointAt(6)+" "
-				  +tel.codePointAt(7)+tel.codePointAt(8)+" "
-				  +tel.codePointAt(9)+tel.codePointAt(10)+" ";
-		return "format invalide";
-		
-	}
-	*/
-
-	public void rendreDisponible() {
-		this.tfSociete.setEnabled(true);
-		this.tfNom.setEnabled(true);
-		this.tfPrenom.setEnabled(true);;
-		this.tfAdresse.setEnabled(true);
-		this.tfCp.setEnabled(true);
-		this.tfVille.setEnabled(true);
-		this.tfTelephone.setEnabled(true);
-		this.tfEmail.setEnabled(true);
-		this.taNote.setEnabled(true);
-		
-	}
-
-	public void rendreIndisponible() {
-		this.tfSociete.setEnabled(false);
-		this.tfNom.setEnabled(false);
-		this.tfPrenom.setEnabled(false);;
-		this.tfAdresse.setEnabled(false);
-		this.tfCp.setEnabled(false);
-		this.tfVille.setEnabled(false);
-		this.tfTelephone.setEnabled(false);
-		this.tfEmail.setEnabled(false);
-		this.taNote.setEnabled(false);
-		
-		
 	}
 
 	public ContactExterne rassemblerDonnees() {
