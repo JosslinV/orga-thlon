@@ -20,7 +20,7 @@ public class VueCarte extends JPanel{
 
 	private JButton btnProloop;
 	
-	public VueCarte(String texte, boolean predefinie) {
+	public VueCarte(String texte) {
 		
 		this.setLayout(new BorderLayout());
 		JPanel pNord = new JPanel();
