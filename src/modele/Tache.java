@@ -140,11 +140,11 @@ public class Tache {
 		this.etatAvancementGlobal = etatAvancementGlobal;
 	}
 	
-	public void ajouterMateriel(Materiel item) {
+	public void affecterMateriel(Materiel item) {
 		this.materiel.add(item);
 	}
 	
-	public void ajouterBenevole(Benevole personnel) {
+	public void affecterBenevole(Benevole personnel) {
 		this.benevole.add(personnel);
 	}
 	

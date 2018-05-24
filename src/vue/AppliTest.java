@@ -1,5 +1,8 @@
 package vue;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 public class AppliTest {
 
 	public static void main(String[] a) throws Exception {

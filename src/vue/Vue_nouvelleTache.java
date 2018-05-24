@@ -10,7 +10,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,20 +17,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-
-import controleur.ControleurNouvelleTache;
-
 import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -40,6 +36,11 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import controleur.ControleurNouvelleTache;
+import modele.Materiel;
+import modele.SousTache;
+import modele.contacts.Benevole;
 
 public class Vue_nouvelleTache extends JPanel {
 	
@@ -53,7 +54,6 @@ public class Vue_nouvelleTache extends JPanel {
 	private JTextField tfLibelle;
 	private int priorite;
 	private List<Boolean> priorites;
-	private TreeMap<String, Float> mapSousTaches;
 	private JTextField tfDateDebut;
 	private JTextField tfDateEcheance;
 	private JButton btDateDebut;
@@ -513,16 +513,46 @@ public class Vue_nouvelleTache extends JPanel {
 		return donneesTache;
 
 	}
-	/*
-	 * 		int teMoisInt = Integer.parseInt(this.lbMois.getText()) ;
-		int teJourInt = Integer.parseInt(this.lbJour.getText());
-		
-	 * 		int tempsEstimeJour = teMoisInt * 30 + teJourInt; // attention : 1mois = 30 j
-		donneesTache.put("tempsEstime", tempsEstimeJour );
-	 */
 	
+	public SortedSet<Benevole> getEquipePourCetteTache() {
+		SortedSet <Benevole> ensembleBenevole = new TreeSet<Benevole>();
+		Benevole benevole = null;
+		for (int ligne = 0; ligne < this.tabEquipe.getRowCount(); ligne ++) {
+			benevole = new Benevole((String)this.tabEquipe.getValueAt(ligne, 0 ),
+												 (String)this.tabEquipe.getValueAt(ligne, 1 ),
+												 (String)this.tabEquipe.getValueAt(ligne, 2 ));
+			ensembleBenevole.add(benevole);
+		}
+		return ensembleBenevole;
+	}
 	
-	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie, int Avancement   ) {
+	public List<Materiel> getListeMaterielPourcetteTache(){
+		List <Materiel> listeMateriel = new ArrayList<Materiel>();
+		Materiel materiel = null;
+		for (int ligne = 0; ligne < this.tabMateriel.getRowCount(); ligne ++) {
+			materiel = new Materiel((String) this.tabMateriel.getValueAt(ligne, 0),
+									 (String) this.tabMateriel.getValueAt(ligne, 1),
+									 (String) this.tabMateriel.getValueAt(ligne, 2),
+									 (Integer) this.tabMateriel.getValueAt(ligne, 3));
+			listeMateriel.add(materiel);
+		}
+		return listeMateriel;
+	}
+	
+	public List<SousTache> getListeSousTaches(){
+		List<SousTache> listeSousTaches = new ArrayList<SousTache>();
+		SousTache sousTache = null;
+		for (int ligne = 0; ligne < this.tabssTaches.getRowCount(); ligne ++) {
+			sousTache = new SousTache((String) this.tabssTaches.getValueAt(ligne, 0),
+									   (Float) this.tabssTaches.getValueAt(ligne, 1));
+			listeSousTaches.add(sousTache);
+		}
+		return listeSousTaches;
+
+
+	}
+	
+	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie, int Avancement) {
 		this.id_Tache = id_Tache;
 		this.auteur_Tache = auteur_Tache;
 		this.date_Creation = date_Creation;
@@ -597,13 +627,11 @@ public class Vue_nouvelleTache extends JPanel {
 	}
 	
 	
-
-
 	public void setPriorites(List<Boolean> priorites) {
 		this.priorites = priorites;
 	}
 
-
+/*
 	public void ajouterSousTacheVue(String libelleSSTache, float tauxCompletion) {
 		this.mapSousTaches.put(libelleSSTache, tauxCompletion);
 	}
@@ -619,7 +647,7 @@ public class Vue_nouvelleTache extends JPanel {
 		}
 		return true;
 	}
-	
+	*/
 	public boolean estTacheCompleteeManuellement() {
 			return (this.slAvancementTache.getValue() == 100 );	
 	}
@@ -648,7 +676,7 @@ public class Vue_nouvelleTache extends JPanel {
 		return slAvancementTache.getValue();
 	}
 
-
+	/*
 	public boolean estTacheCompletee() {
 		return (this.estTacheCompleteeAutomatiquement() || this.estTacheCompleteeManuellement());
 	}
@@ -656,8 +684,9 @@ public class Vue_nouvelleTache extends JPanel {
 	public void afficherEtatAvancement() {
 		this.tfEtatAvancement.setText(String.valueOf(this.slAvancementTache.getValue()));
 	}
+	*/
 	
-	public 
+	
 	
 	class TabModele extends AbstractTableModel {
 		private boolean DEBUG = false;
