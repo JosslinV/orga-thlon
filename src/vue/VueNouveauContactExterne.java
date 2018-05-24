@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controleur.ControleurFenetreContactExterne;
 import controleur.ControleurNouveauContactExt;
 import modele.Materiel;
 import modele.contacts.ContactExterne;
@@ -47,6 +48,7 @@ public class VueNouveauContactExterne extends JPanel {
 		this.fen.setTitle("création d'une nouvelle fiche CONTACT EXTERNE");
 		this.fen.setLayout(new GridLayout(1,1));
 
+		this.fen.addWindowListener(new ControleurFenetreContactExterne(this));
 		
 		ControleurNouveauContactExt contr = new ControleurNouveauContactExt(this);
 		

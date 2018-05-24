@@ -11,6 +11,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +25,9 @@ import modele.contacts.ContactExterne;
 
 public class VueNouveauContactBenevole extends JPanel{
 	private int IdBenevole;
+	private JFrame fen;
+
+
 	private JTextField tfNom;
 	private JTextField tfTelephone;
 	private JTextField tfPrenom;
@@ -43,6 +47,11 @@ public class VueNouveauContactBenevole extends JPanel{
 
 	public VueNouveauContactBenevole() {
 		
+		this.fen = new JFrame();
+		this.fen.setTitle(": " + "création d'une nouvelle fiche BENEVOLE");
+		this.fen.setLayout(new GridLayout(1,1));
+
+		
 		ControleurNouveauBenevole contr = new ControleurNouveauBenevole(this);
 		
 		this.setLayout(new BorderLayout());
@@ -52,7 +61,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.setBorder(new EmptyBorder(0,0,0,0));
 		GridBagConstraints c = new GridBagConstraints();
 		
-		//ligne 0 : Nom ((Jlabel + JTextField) + TÃ©lÃ©phone (Jlabel + JTextField) 
+		//ligne 0 : Nom ((Jlabel + JTextField) + Téléphone (Jlabel + JTextField) 
 		JLabel lbNom = new JLabel("Nom");
 		c.insets = new Insets(5, 0, 5, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -69,7 +78,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		//c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(tfNom, c);
 		
-		JLabel lbTelephone = new JLabel("Tï¿½lï¿½phone");
+		JLabel lbTelephone = new JLabel("Téléphone");
 		lbTelephone.setBorder(new EmptyBorder(0,40,0,0));
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 4;
@@ -85,8 +94,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(tfTelephone, c);
 		
-		//ligne 1 : PrÃ©nom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
-		JLabel lbPrenom = new JLabel("PrÃ©nom");
+		//ligne 1 : Prénom (JLabel + JTextField) + E-mail (Jlabel + JTextField)
+		JLabel lbPrenom = new JLabel("Prénom");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
@@ -119,8 +128,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(tfMail, c);
 		
 		this.add(panneauPrincipal, BorderLayout.CENTER);
-		//ligne 2 : Rï¿½le (JLabel + JComboList) + Adresse (JLabel + JTextField)
-		JLabel lbRole = new JLabel("RÃ´le");
+		//ligne 2 : Réle (JLabel + JComboList) + Adresse (JLabel + JTextField)
+		JLabel lbRole = new JLabel("Réle");
 		c.insets = new Insets(5, 0, 5, 0);
 		c.gridx = 0;
 		c.gridy = 2;
@@ -159,7 +168,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		p.add(tfAdresse2);
 		
 		//ligne 4 : Equipe (JLabel + JTextField) + CodePostal (JLabel + JTextField)
-		lbResponsable = new JLabel("Responsable d'Ã©quipe");
+		lbResponsable = new JLabel("Responsable d'équipe");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 4;
@@ -223,7 +232,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		panneauPrincipal.add(tfVille, c);
 		
-		//ligne 8 : bouton "Equipe" + tableau Prï¿½t Matï¿½riel
+		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
 		this.bpEquipe = new JButton();
 		c.gridx = 1;
 		c.gridy = 8;
@@ -252,37 +261,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.gridy = 8;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(p,c);
-		
-		
-		/**
-		p = new JPanel();
-		p.setBackground(Color.RED);
-		p.setLayout(new BorderLayout());
-		p.setBorder(new EmptyBorder(0,40,0,0));
-		c.gridx = 4;
-		c.gridy = 8;
-		c.gridheight = 4;
-		c.gridwidth = 2;
-		//c.fill = GridBagConstraints.HORIZONTAL;
-		panneauPrincipal.add(p,c);
-		JPanel np = new JPanel();
-		p.add(np, BorderLayout.NORTH);
-		lb = new JLabel("Prï¿½t de matï¿½riel");
-		np.add(lb); 
-		JPanel cp = new JPanel();
-		cp.setBackground(Color.BLUE);
-		p.add(cp, BorderLayout.CENTER);
-		String titresColonnes [] = {"Date", "Description","Tï¿½che"};
-		Object [][] donneesPretMateriel = {
-				{"","",""},
-				{"","",""},
-				{"","",""},
-		};
-		JTable materielTab = new JTable(donneesPretMateriel, titresColonnes);
-		JScrollPane tabSP = new JScrollPane(materielTab);
-		tabSP.setPreferredSize(new Dimension(250,170));
-		cp.add(tabSP); 
-		*/
+
 		//p : SUD
 		JPanel ps = new JPanel();
 		this.add(ps, BorderLayout.SOUTH);
@@ -299,6 +278,13 @@ public class VueNouveauContactBenevole extends JPanel{
 		ps.add(bpValider);
 		bpValider.addActionListener(contr);
 		
+		//génération de la fenêtre
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(900, 550);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	}
 
 
@@ -321,22 +307,42 @@ public class VueNouveauContactBenevole extends JPanel{
 	public boolean getEstResponsableTache() {
 		return this.cbEstResponsableEquipe.isSelected();
 	}
+	
+	public JFrame getFen() {
+		return fen;
+	}
+
+	public void rendreDisponible() {
+		this.tfNom.setEnabled(true);
+		this.tfTelephone.setEnabled(true);
+		this.tfPrenom.setEnabled(true);
+		this.tfMail.setEnabled(true);
+		this.tfRole.setEnabled(true);
+		this.tfAdresse1.setEnabled(true);
+		this.tfAdresse2.setEnabled(true);
+		this.tfCP.setEnabled(true);
+		this.tfVille.setEnabled(true);
+		this.taNote.setEnabled(true);
+		this.cbEstResponsableEquipe.setEnabled(true);
+		this.btAjouterEquipe.setEnabled(true);
+		this.bpEquipe.setEnabled(true);
+	}
 
 
-	public void rendreDisponible(boolean active) {
-		this.tfNom.setEditable(active);
-		this.tfTelephone.setEditable(active);
-		this.tfPrenom.setEditable(active);
-		this.tfMail.setEditable(active);
-		this.tfRole.setEditable(active);
-		this.tfAdresse1.setEditable(active);
-		this.tfAdresse2.setEditable(active);
-		this.tfCP.setEditable(active);
-		this.tfVille.setEditable(active);
-		this.taNote.setEditable(active);
-		this.cbEstResponsableEquipe.setEnabled(active);
-		this.btAjouterEquipe.setEnabled(active);
-		this.bpEquipe.setEnabled(active);
+	public void rendreIndisponible() {
+		this.tfNom.setEnabled(false);
+		this.tfTelephone.setEnabled(false);
+		this.tfPrenom.setEnabled(false);
+		this.tfMail.setEnabled(false);
+		this.tfRole.setEnabled(false);
+		this.tfAdresse1.setEnabled(false);
+		this.tfAdresse2.setEnabled(false);
+		this.tfCP.setEnabled(false);
+		this.tfVille.setEnabled(false);
+		this.taNote.setEnabled(false);
+		this.cbEstResponsableEquipe.setEnabled(false);
+		this.btAjouterEquipe.setEnabled(false);
+		this.bpEquipe.setEnabled(false);
 	}
 
 

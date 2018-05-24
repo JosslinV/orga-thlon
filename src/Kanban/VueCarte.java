@@ -11,14 +11,12 @@ import javax.swing.JPanel;
 
 public class VueCarte extends JPanel{
 	private JLabel lblibelle;
-
+	private Icon icProloop;
+	private Icon icEditer;
+	private Icon icPause;
+	private Icon icSupprimer;
 	private JButton btnEditer;
-
-	private JButton btnSupprimer;
-
-	private JButton btnPause;
-
-	private JButton btnProloop;
+	
 	
 	public VueCarte(String texte) {
 		
@@ -27,16 +25,19 @@ public class VueCarte extends JPanel{
 		pNord.setLayout(new FlowLayout());
 		this.add(pNord, BorderLayout.PAGE_START);
 		
-		this.btnSupprimer = new JButton();
-		btnSupprimer.setIcon(new ImageIcon("./src/Kanban/delete.png", "supprimer" ));		
+		JButton btnSupprimer = new JButton();
+		this.icSupprimer = new ImageIcon("./src/Kanban/delete.png", "supprimer" );
+		btnSupprimer.setIcon(icSupprimer);		
 		pNord.add(btnSupprimer);
 		
-		this.btnPause = new JButton();
-		btnPause.setIcon(new ImageIcon("./src/Kanban/pause.png", "pause"));
+		JButton btnPause = new JButton();
+		this.icPause = new ImageIcon("./src/Kanban/pause.png", "pause");
+		btnPause.setIcon(icPause);
 		pNord.add(btnPause);
 		
 		this.btnEditer = new JButton();
-		btnEditer.setIcon(new ImageIcon("./src/Kanban/edit.png", "editer"));
+		this.icEditer = new ImageIcon("./src/Kanban/edit.png", "editer");
+		btnEditer.setIcon(icEditer);
 		pNord.add(btnEditer);
 		
 		this.lblibelle= new JLabel("Libellé ");
@@ -44,18 +45,24 @@ public class VueCarte extends JPanel{
 		
 		JPanel pSud = new JPanel();
 		this.add(pSud, BorderLayout.PAGE_END);
-		this.btnProloop = new JButton();
-		btnProloop.setIcon(new ImageIcon("./src/Kanban/miniproloop.png", "proloop"));
+		JButton btnProloop = new JButton();
+		this.icProloop = new ImageIcon("./src/Kanban/miniproloop.png", "proloop");
+		btnProloop.setIcon(icProloop);
+		if ()
+		btnProloop.setVisible(true);
 		pSud.add(btnProloop);
 	}
 	
 	public void setTitre(String titre) {
 		lblibelle.setText(titre);
 	}
-	
-	public void afficherBoutonProloop(boolean estAffiche) {
-		this.btnProloop.setVisible(estAffiche);
-	}
-	
+	/*
+	public boolean getActionBouton(JButton b) {
+		//String action ="";
 
+		System.out.println(b.equals(this.btnEditer));
+		
+		
+	}
+	*/
 }

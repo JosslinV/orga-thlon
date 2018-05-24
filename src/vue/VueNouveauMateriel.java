@@ -18,6 +18,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import controleur.ControleurFenetreBenevole;
+import controleur.ControleurFenetreMateriel;
 import controleur.ControleurNouveauMateriel;
 import modele.Materiel;
 import vue.Vue_nouvelleTache.TabModele;
@@ -44,6 +46,8 @@ public class VueNouveauMateriel extends JPanel {
 	
 	
 	public VueNouveauMateriel() {
+		
+		this.fen.addWindowListener(new ControleurFenetreMateriel(this));
 		
 		ControleurNouveauMateriel contr = new ControleurNouveauMateriel(this);
 		

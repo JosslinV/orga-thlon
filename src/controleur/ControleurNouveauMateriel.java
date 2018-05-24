@@ -15,7 +15,6 @@ public class ControleurNouveauMateriel implements ActionListener {
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
 	private VueNouveauMateriel vue;
-	private VueNouveauMateriel fen;
 	private Materiel modele;
 	
 	public ControleurNouveauMateriel(VueNouveauMateriel vue){
