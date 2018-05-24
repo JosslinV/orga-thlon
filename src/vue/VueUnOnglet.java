@@ -1,4 +1,4 @@
-package rocher;
+package vue;
 
 import java.awt.Component;
 import java.awt.Graphics;
