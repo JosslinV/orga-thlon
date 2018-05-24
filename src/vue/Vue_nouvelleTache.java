@@ -549,7 +549,6 @@ public class Vue_nouvelleTache extends JPanel {
 		}
 		return listeSousTaches;
 
-
 	}
 	
 	public void afficherDonnees(int id_Tache, String auteur_Tache, String libelle, String responsableNom, String responsablePrenom, Date dateDebut, Date dateEcheance, int tempsEstimeJourInt, int priorite, Map<String, Float> listeSousTaches, int etatAvancement, String commentaire, String date_Creation, boolean estPredefinie, int Avancement) {
