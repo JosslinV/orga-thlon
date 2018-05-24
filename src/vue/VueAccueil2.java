@@ -1,4 +1,4 @@
-package rocher;
+package vue;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import rocher.ListeBenevoles;
+import rocher.VueOnglets;
+
 import java.awt.GridBagLayout;
 
 import javax.swing.ImageIcon;

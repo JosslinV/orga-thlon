@@ -1,4 +1,4 @@
-package rocher;
+package vue;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;

@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import vue.VueUnOnglet;
+
 public class TabbedPaneEx {
 
 	public static void createAndShowGUI() {
