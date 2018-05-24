@@ -1,20 +1,32 @@
 package vue;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppliTest {
 
 	public static void main(String[] a) throws Exception {
 		
-		new VueNouveauMateriel();
+	//	new VueNouveauMateriel();
 		new VueNouvelleCourse();
-		new VueNouveauContactBenevole();
-		new VueNouveauContactExterne();
-		new Fenetre_NouvelleTache();
-		new VueNouvelleSousTache();
+		//new VueNouveauContactBenevole();
+	//	new VueNouveauContactExterne();
+	//	new Fenetre_NouvelleTache();
+	//	new VueNouvelleSousTache();
 		
+		List<String> listeMat = new ArrayList<String>();
+		listeMat.add("plots");
+		listeMat.add("tee-shirts");
+		listeMat.add("ballons");
+		listeMat.add("stylos");
+		new VueNouvelleListeMateriel(listeMat);
 		
+		List<String> listeBenevoles = new ArrayList<String>();
+		listeBenevoles.add("Jules Utilise");
+		listeBenevoles.add("Bernard Coquille");
+		listeBenevoles.add("Super Man");
+		listeBenevoles.add("Super Faignant");
+		new VueNouvelleEquipe(listeBenevoles);
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();
