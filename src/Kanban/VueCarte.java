@@ -48,8 +48,8 @@ public class VueCarte extends JPanel{
 		JButton btnProloop = new JButton();
 		this.icProloop = new ImageIcon("./src/Kanban/miniproloop.png", "proloop");
 		btnProloop.setIcon(icProloop);
-		if ()
-		btnProloop.setVisible(true);
+		//if ()
+		//btnProloop.setVisible(true);
 		pSud.add(btnProloop);
 	}
 	
