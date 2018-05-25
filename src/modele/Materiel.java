@@ -7,13 +7,12 @@ public class Materiel {
 	private double budget;
 	private String description;
 	private int id_materiel ;
-	
-	
 
 	public Materiel(String libelle) {
 		this.libelle = libelle;
 	}
 	
+
 	public String getLibelle() {
 		return libelle;
 	}
@@ -53,5 +52,9 @@ public class Materiel {
 
 	public void setId_materiel(int id_materiel) {
 		this.id_materiel = id_materiel;
+	}
+	
+	public String toString() {
+		return " Matériel - libellé : " + this.getLibelle() + " stock : " + this.getStock(); 
 	}
 }

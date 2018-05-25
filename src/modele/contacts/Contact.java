@@ -1,6 +1,6 @@
 package modele.contacts;
 
-public class Contact {
+public abstract class Contact {
 
 
 	private String commentaire;
@@ -14,7 +14,10 @@ public class Contact {
 	private String mail_c;
 	private int id_personne ;
 	
-	
+	public Contact (String nom, String prenom) {
+		this.nom_c = nom;
+		this.prenom_c = prenom;
+	}
 	
 	public void setId_personne(int id_personne) {
 		this.id_personne = id_personne;
@@ -24,9 +27,6 @@ public class Contact {
 		return id_personne;
 	}
 
-	public Contact (String nom) {
-		this.nom_c = nom;
-	}
 	
 	public String getCommentaire() {
 		return commentaire;
@@ -100,5 +100,10 @@ public class Contact {
 		this.mail_c = mail_c;
 	}
 	
+	public abstract String toString(); 
+	
 	
 }
+	
+	
+

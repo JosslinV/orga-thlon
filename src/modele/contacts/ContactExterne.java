@@ -4,9 +4,8 @@ public class ContactExterne extends Contact {
 	
 	private String nomSociete;
 
-	public ContactExterne(String nom, String nomSociete) {
-		super(nom);
-		this.nomSociete = nomSociete;
+	public ContactExterne(String nom, String prenom) {
+		super(nom, prenom);
 	}
 	
 	public String getNomSociete() {
@@ -15,6 +14,11 @@ public class ContactExterne extends Contact {
 
 	public void setNomSociete(String nomSociete) {
 		this.nomSociete = nomSociete;
+	}
+	
+	@Override
+	public String toString() {		
+		return "Contact externe - Société : " + this.nomSociete + " nom : " + super.getNom_c() + " prénom : " + super.getPrenom_c() ;
 	}
 
 }

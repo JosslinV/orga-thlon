@@ -18,7 +18,7 @@ public class RequestBenevole {
 			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Benevole WHERE id_Personne = "+ id +";");
 			
 			if(result.next()) {
-				Contact contact = new Benevole(result.getString("nom_benevole"));
+				Contact contact = new Benevole(result.getString("nom_benevole"), result.getString("prenom_benevole"));
 				
 				contact.setId_personne(result.getInt("id_Personne"));
 				contact.setCivilite(result.getString("civilite_benevole"));
