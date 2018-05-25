@@ -12,6 +12,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
+
+import controleur.ControleurAutourTableauKanban;
+import controleur.ControleurNouvelleTache;
+import vue.VueAccueil2;
+
 import java.awt.Insets;
 
 public class VueAutourTabKanban extends JPanel {
@@ -19,12 +24,15 @@ public class VueAutourTabKanban extends JPanel {
 	private JPanel bandeauHaut= new JPanel();
 	private JButton nouvelleCourse=new JButton("Nouvelle Course");
 	
-	public VueAutourTabKanban() {
+	
+	public VueAutourTabKanban() throws Exception{
+		ControleurAutourTableauKanban controleur = new ControleurAutourTableauKanban(this);
 		setLayout(new BorderLayout(0, 0));
 		this.add(bandeauHaut,BorderLayout.NORTH);
 		bandeauHaut.setLayout(new GridLayout(1,2));
 		bandeauHaut.add(new JScrollPane(panelLabel));
 		bandeauHaut.add(nouvelleCourse);
+		this.nouvelleCourse.addActionListener(controleur);
 		nouvelleCourse.setPreferredSize(new Dimension(50,50));
 		//this.add(new JScrollPane(panelLabel),BorderLayout.NORTH);
 		//panelLabel.setPreferredSize(new Dimension(50,250));

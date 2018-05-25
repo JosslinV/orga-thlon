@@ -30,7 +30,7 @@ import Kanban.VueAutourTabKanban;
 			this.addTab("tab2", image, p2);
 		}
 		*/
-		public VueOnglets() {
+		public VueOnglets() throws Exception {
 			JTabbedPane onglets = new JTabbedPane();
 		
 			//JTabbedPane onglets2 = new JTabbedPane();
