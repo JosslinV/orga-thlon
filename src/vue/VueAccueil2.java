@@ -47,7 +47,7 @@ public class VueAccueil2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VueAccueil2() {
+	public VueAccueil2() throws Exception{
 		ControleurGeneral controleur = new ControleurGeneral(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
