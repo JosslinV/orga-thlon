@@ -7,6 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,13 +23,10 @@ import javax.swing.border.EmptyBorder;
 
 import controleur.ControleurNouveauBenevole;
 import modele.contacts.Benevole;
-import modele.contacts.ContactExterne;
 
 public class VueNouveauContactBenevole extends JPanel{
 	private int IdBenevole;
 	private JFrame fen;
-
-
 	private JTextField tfNom;
 	private JTextField tfTelephone;
 	private JTextField tfPrenom;
@@ -43,6 +42,7 @@ public class VueNouveauContactBenevole extends JPanel{
 	private JButton bpEquipe;
 	private JTextArea taNote;
 	private JTextField tfVille;
+	private int idContactExt;
 
 
 	public VueNouveauContactBenevole() {
@@ -308,56 +308,34 @@ public class VueNouveauContactBenevole extends JPanel{
 		return this.cbEstResponsableEquipe.isSelected();
 	}
 	
-	public JFrame getFen() {
-		return fen;
+	public void rendreDisponible(boolean active) {
+		this.tfNom.setEditable(active);
+		this.tfTelephone.setEditable(active);
+		this.tfPrenom.setEditable(active);
+		this.tfMail.setEditable(active);
+		this.tfRole.setEditable(active);
+		this.tfAdresse1.setEditable(active);
+		this.tfAdresse2.setEditable(active);
+		this.tfCP.setEditable(active);
+		this.tfVille.setEditable(active);
+		this.taNote.setEditable(active);
+		this.cbEstResponsableEquipe.setEnabled(active);
+		this.btAjouterEquipe.setEnabled(active);
+		this.bpEquipe.setEnabled(active);
 	}
 
-	public void rendreDisponible() {
-		this.tfNom.setEnabled(true);
-		this.tfTelephone.setEnabled(true);
-		this.tfPrenom.setEnabled(true);
-		this.tfMail.setEnabled(true);
-		this.tfRole.setEnabled(true);
-		this.tfAdresse1.setEnabled(true);
-		this.tfAdresse2.setEnabled(true);
-		this.tfCP.setEnabled(true);
-		this.tfVille.setEnabled(true);
-		this.taNote.setEnabled(true);
-		this.cbEstResponsableEquipe.setEnabled(true);
-		this.btAjouterEquipe.setEnabled(true);
-		this.bpEquipe.setEnabled(true);
-	}
-
-
-	public void rendreIndisponible() {
-		this.tfNom.setEnabled(false);
-		this.tfTelephone.setEnabled(false);
-		this.tfPrenom.setEnabled(false);
-		this.tfMail.setEnabled(false);
-		this.tfRole.setEnabled(false);
-		this.tfAdresse1.setEnabled(false);
-		this.tfAdresse2.setEnabled(false);
-		this.tfCP.setEnabled(false);
-		this.tfVille.setEnabled(false);
-		this.taNote.setEnabled(false);
-		this.cbEstResponsableEquipe.setEnabled(false);
-		this.btAjouterEquipe.setEnabled(false);
-		this.bpEquipe.setEnabled(false);
-	}
-
-
-	public Benevole rassemblerDonnees() {
+	public Map<String,Object> rassemblerDonnees() {
 		if(!this.tfNom.getText().isEmpty()) {
-			Benevole benevole = new Benevole(this.tfNom.getText());
-			benevole.setPrenom_c(this.tfPrenom.getText());
-			benevole.setAdresse(this.tfAdresse1.getText());
-			benevole.setCp_c(this.tfCP.getText());
-			benevole.setVille_c(this.tfVille.getText());
-			benevole.setTelephone_c(this.tfTelephone.getText());
-			benevole.setMail_c(this.tfMail.getText());
-			benevole.setCommentaire(this.taNote.getText());
-			return benevole;
-			
+			HashMap<String,Object> donnees = new HashMap<String, Object>();
+			donnees.put("nom_benevole", this.tfNom.getText());
+			donnees.put("prenom_benevole",this.tfPrenom.getText());
+			donnees.put("adresse_benevole",this.tfAdresse1.getText());
+			donnees.put("codePostal_benevole",this.tfCP.getText());
+			donnees.put("ville_benevole",this.tfVille.getText());
+			donnees.put("telephone_benevole",this.tfTelephone.getText());
+			donnees.put("mail_personnel",this.tfMail.getText());
+			donnees.put("commentaire_benevole",this.taNote.getText());
+			return donnees;
 		}else {
 			if(this.tfNom.getText().isEmpty())
 				this.tfNom.setBackground(Color.red);
@@ -365,14 +343,19 @@ public class VueNouveauContactBenevole extends JPanel{
 		return null;
 	}
 	
-	public void afficherDonnees(Benevole modele) {
-		this.tfNom.setText(modele.getNom_c());
-		this.tfPrenom.setText(modele.getPrenom_c());
-		this.tfAdresse1.setText(modele.getAdresse());
-		this.tfCP.setText(modele.getCp_c());
-		this.tfVille.setText(modele.getVille_c());
-		this.tfTelephone.setText(modele.getTelephone_c());
-		this.tfMail.setText(modele.getMail_c());
-		this.taNote.setText(modele.getCommentaire());
+	public void afficherDonnees(int id, String nom, String prenom, String adresse, String cp, String ville, String telephone, String mail, String commentaire) {
+		this.idContactExt = id;
+		this.tfNom.setText(nom);
+		this.tfPrenom.setText(prenom);
+		this.tfAdresse1.setText(adresse);
+		this.tfCP.setText(cp);
+		this.tfVille.setText(ville);
+		this.tfTelephone.setText(telephone);
+		this.tfMail.setText(mail);
+		this.taNote.setText(commentaire);
+	}
+	
+	public JFrame getFen() {
+		return fen;
 	}
 }

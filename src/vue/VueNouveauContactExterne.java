@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -40,6 +42,7 @@ public class VueNouveauContactExterne extends JPanel {
 	private JTextArea taNote;
 	private JTextField tfCp;
 	private JTextField tfVille;
+	private int idContactExt;
 
 		
 	public VueNouveauContactExterne() {
@@ -268,31 +271,34 @@ public class VueNouveauContactExterne extends JPanel {
 		this.taNote.setEditable(active);
 	}
 	
-	public void afficherDonnees(ContactExterne modele) {
-		this.tfSociete.setText(modele.getNomSociete());
-		this.tfNom.setText(modele.getNom_c());
-		this.tfPrenom.setText(modele.getPrenom_c());
-		this.tfAdresse.setText(modele.getAdresse());
-		this.tfCp.setText(modele.getCp_c());
-		this.tfVille.setText(modele.getVille_c());
-		this.tfTelephone.setText(modele.getTelephone_c());
-		this.tfEmail.setText(modele.getMail_c());
-		this.taNote.setText(modele.getCommentaire());
+	public void afficherDonnees(int id, String nomSociete, String nom, String prenom, String adresse, String cp, String ville, String telephone, String mail, String commentaire) {
+		this.idContactExt = id;
+		this.tfSociete.setText(nomSociete);
+		this.tfNom.setText(nom);
+		this.tfPrenom.setText(prenom);
+		this.tfAdresse.setText(adresse);
+		this.tfCp.setText(cp);
+		this.tfVille.setText(ville);
+		this.tfTelephone.setText(telephone);
+		this.tfEmail.setText(mail);
+		this.taNote.setText(commentaire);
 	}
 
-	public ContactExterne rassemblerDonnees() {
-		if(!this.tfNom.getText().isEmpty() && !this.tfSociete.getText().isEmpty()) {
-			ContactExterne contactExterne = new ContactExterne(this.tfNom.getText(), this.tfSociete.getText());
-			contactExterne.setPrenom_c(this.tfPrenom.getText());
-			contactExterne.setAdresse(this.tfAdresse.getText());
-			contactExterne.setCp_c(this.tfCp.getText());
-			contactExterne.setVille_c(this.tfVille.getText());
-			contactExterne.setTelephone_c(this.tfTelephone.getText());
-			contactExterne.setMail_c(this.tfEmail.getText());
-			contactExterne.setCommentaire(this.taNote.getText());
+	public Map<String,Object> rassemblerDonnees() {
+		if(!this.tfNom.getText().isEmpty()) {
+			HashMap<String,Object> donnees = new HashMap<String, Object>();
+			donnees.put("id_Contact", this.idContactExt);
+			donnees.put("nom_contact", this.tfNom.getText());
+			donnees.put("nom_societe",this.tfSociete.getText());
+			donnees.put("prenom_contact",this.tfPrenom.getText());
+			donnees.put("adresse1_contact",this.tfAdresse.getText());
+			donnees.put("code_Postal_contact",this.tfCp.getText());
+			donnees.put("ville_contact",this.tfVille.getText());
+			donnees.put("telephone_contact",this.tfTelephone.getText());
+			donnees.put("mail_contact",this.tfEmail.getText());
+			donnees.put("commentaire_contact",this.taNote.getText());
 			
-			return contactExterne;
-			
+			return donnees;
 		}else {
 			System.out.println("Champs vide");
 			if(this.tfNom.getText().isEmpty())
@@ -301,6 +307,10 @@ public class VueNouveauContactExterne extends JPanel {
 				this.tfSociete.setBackground(Color.red);
 		}
 		return null;
+	}
+	
+	public JFrame getFen() {
+		return fen;
 	}
 
 }

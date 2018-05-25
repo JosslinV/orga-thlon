@@ -309,7 +309,7 @@ public class VueNouvelleCourse extends JPanel {
 		this.fen.setLocationRelativeTo(null);
 	}
 	
-	public void setActifComposants(boolean actif){
+	public void rendreDisponible(boolean actif){
 		this.tfDateDebutCourse.setEditable(actif);
 		this.tfDateFinCourse.setEditable(actif);
 		this.tfBudget.setEditable(actif);
@@ -415,6 +415,9 @@ public class VueNouvelleCourse extends JPanel {
 		return btValider;
 	}
 	
+	public JFrame getFen() {
+		return this.fen;
+	}
 }
 /*
 	class CustomKeyListener implements KeyListener{

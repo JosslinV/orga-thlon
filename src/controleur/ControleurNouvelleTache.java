@@ -8,10 +8,13 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import com.sun.glass.ui.TouchInputSupport;
 
 import Database.InputDataBase.InputCourse;
 import Database.InputDataBase.InputTache;
@@ -24,13 +27,15 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 	private enum Etats {CONSULTATION, EDITION};
 	private Etats etatCourant;
 	private Vue_nouvelleTache vue;
-	private modele.Tache modele;
+	private Tache modele;
 	private LocalDate ajd = LocalDate.now();
+	private JFrame fen;
 	
 	public ControleurNouvelleTache(Vue_nouvelleTache vue) throws Exception {	
 		this.vue = vue ;
 		this.modele = new modele.Tache("nouvelle tache", ajd) ;
 		this.etatCourant = Etats.EDITION;
+		this.fen = vue.getFen();
 	}
 	
 	public void actionPerformed (ActionEvent e) {
@@ -40,24 +45,17 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 		
 				switch (this.etatCourant) {
 			case EDITION :
-				if (b.getText().equals("Valider")) {
+				if (b.getText() == "Valider") {
 					this.etatCourant = Etats.CONSULTATION ;
 					//this.vue.titreFenetreSaisi(true);
 					this.vue.setActifComposants(false);
 					this.vue.modifierTexteBoutonsPourEdition(false);
 					try {
-						Tache nouvelleTache = new modele.Tache("nouvelle tache", ajd);
-						nouvelleTache = convertirMap_principale(this.vue.getDonneesTache()) ;
+						Tache tache = vue.rassembler
 						
 						InputTache in = new InputTache() ;
 				    	
 				    	in.inputTache(nouvelleTache) ;
-				
-			
-					
-					
-				
-					
 						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
@@ -71,9 +69,9 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 						exception.printStackTrace();
 					}
 					
-				}else if (b.getText().equals("annuler")) {
-					System.exit(0);
-				} //else if bouton effacer
+				}else if (b.getText() == "Annuler") {
+					this.fen.dispose();
+				}
 
 				break ;
 				

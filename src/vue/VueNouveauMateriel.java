@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -35,6 +38,7 @@ public class VueNouveauMateriel extends JPanel {
 	private JTextArea description;
 	private JSpinner quantiteAllouee;
 	private JTable tabMTB;
+	private JFrame fen;	
 	
 	private String titresColonnes [] = {"Bénévole","Tâche","Quantité","Date prêt"};
 	
@@ -42,12 +46,17 @@ public class VueNouveauMateriel extends JPanel {
 			{"","","",""},
 			{"","","",""},
 			{"","","",""}
-	};	
+	};
+	private int idMateriel;
+	
 	
 	
 	public VueNouveauMateriel() {
+		this.fen = new JFrame();
+		this.fen.setTitle("Ajout d'un matériel");
+		this.fen.setLayout(new GridLayout(1,1));
 		
-		this.fen.addWindowListener(new ControleurFenetreMateriel(this));
+		//this.fen.addWindowListener(new ControleurFenetreMateriel(this));
 		
 		ControleurNouveauMateriel contr = new ControleurNouveauMateriel(this);
 		
@@ -126,23 +135,33 @@ public class VueNouveauMateriel extends JPanel {
 		JButton BTvalider = new JButton("Valider");
 		southPanel.add(BTvalider);
 		BTvalider.addActionListener(contr);
+		
+		this.fen.add(this);
+		this.fen.pack();
+		this.fen.setSize(500, 400);
+		this.fen.setResizable(false);
+		this.fen.setVisible(true);
+		this.fen.setLocationRelativeTo(null);
 	
 	}
 
-	public void afficherDonnees(Materiel modele) {
-		this.libelle.setText(modele.getLibelle());
-		this.description.setText(modele.getDescription());
-		this.stockInit.setText(Double.toString(modele.getStock()));
+	public void afficherDonnees(int id, String libelle, String description, Double stockInit) {
+		this.idMateriel = id;
+		this.libelle.setText(libelle);
+		this.description.setText(description);
+		this.stockInit.setText(Double.toString(stockInit));
 		//this.stockFin.setText(Double.toString(modele.getStock() + new Double(this.quantite.getValue()).doubleValue()));
 
 	}
 	
-	public Materiel rassemblerDonnees() {
+	public Map<String,Object> rassemblerDonnees() {
 		if(!this.libelle.getText().isEmpty()) {
-			Materiel materiel = new Materiel(this.libelle.getText());
-			materiel.setDescription(this.description.getText());
-			//materiel.setStock(Double.parseDouble(this.stockFin.getText()));
-			return materiel;
+			HashMap<String,Object> donnees = new HashMap<String, Object>();
+			donnees.put("id_Materiel", this.idMateriel);
+			donnees.put("libelle_mat", this.libelle.getText());
+			donnees.put("stock",this.stockInit.getText());
+			donnees.put("description_mat",this.description.getText());
+			return donnees;
 		} else {
 			this.libelle.setBackground(Color.RED);
 		}
@@ -154,6 +173,10 @@ public class VueNouveauMateriel extends JPanel {
 		this.quantite.setEnabled(active);
 		this.description.setEditable(active);
 		this.quantiteAllouee.setEnabled(active);
+	}
+	
+	public JFrame getFen() {
+		return fen;
 	}
 	
 	class TabModele extends AbstractTableModel {
