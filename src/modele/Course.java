@@ -34,7 +34,7 @@ public class Course {
 	Calendar calendar = Calendar.getInstance();
 	private String AuteurCourse;
 	
-	public Course (String nom) throws Exception {
+	public Course (String nom) {
 		this.nom_course = nom;
 		
 	}

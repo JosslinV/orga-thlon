@@ -57,7 +57,7 @@ public class ControleurNouveauBenevole implements ActionListener {
 	}
 	
 	public Benevole extraireDonnees(Map<String, Object> donnees) {
-		Benevole benevole = new Benevole(null);
+		Benevole benevole = new Benevole(null, null);
 		benevole.setId_personne(Integer.parseInt(String.valueOf(donnees.get("id_Personne"))));
 		benevole.setNom_c(String.valueOf(donnees.get("nom_benevole")));
 		benevole.setPrenom_c(String.valueOf(donnees.get("prenom_benevole")));

@@ -1,4 +1,4 @@
-package rocher;
+package vue;
 import vue.*;
 
 import java.awt.FlowLayout;

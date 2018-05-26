@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 import controleur.ControleurGeneral;
 import rocher.ListeBenevoles;
-import rocher.VueOnglets;
 
 import java.awt.GridBagLayout;
 
@@ -17,9 +16,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.net.URL;
-import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 
 public class VueAccueil2 extends JFrame {

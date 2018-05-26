@@ -32,6 +32,7 @@ public class VueNouvelleSousTache extends JPanel {
 	private JTextField tfEtatAvancement;
 	private JFrame fen;
 
+
 	public VueNouvelleSousTache() {
 		this.fen = new JFrame();
 		this.fen.setTitle(" : " + "création d'une nouvelle fiche SOUS-TACHE");
@@ -144,6 +145,9 @@ public class VueNouvelleSousTache extends JPanel {
 		this.fen.setLocationRelativeTo(null);
 	}
 	
+	public JFrame getFen() {
+		return fen;
+	}
 	
 	public boolean estTacheCompleteeManuellement() {
 			return (this.slAvancementSousTache.getValue() == 100 );	
