@@ -2,12 +2,16 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -22,8 +26,7 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 		private JList<String> ltMaterielDisponible;
 		private DefaultListModel<String> ltMaterielDisponibleModel;
 		private JList<String> ltMaterielAssigne;
-		private DefaultListModel<String> ltMaterielAssigneModel;
-		
+		private DefaultListModel<String> ltMaterielAssigneModel;		
 		private JButton btDegaucheVersDroite;
 		private JButton btDeDroiteVersGauche;
 		private JButton btAnnuler;
@@ -37,8 +40,9 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			this.setLayout(new BorderLayout());	
 			//ControleurNouvelleListeMateriel controleur = new ControleurNouvelleListeMateriel(this);
 			JPanel pMaterielDisponible = new JPanel();
+			pMaterielDisponible.setLayout(new BorderLayout());
 			this.add(pMaterielDisponible, BorderLayout.WEST);
-			
+			pMaterielDisponible.add(new JLabel("Matériel Disponible", JLabel.CENTER), BorderLayout.NORTH);
 			this.ltMaterielDisponibleModel = new DefaultListModel<String>();
 			for (String libelleMateriel : listeMaterielDisponible) {
 				this.ltMaterielDisponibleModel.addElement(libelleMateriel);
@@ -46,33 +50,45 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			
 			this.ltMaterielDisponible = new JList<String>(this.ltMaterielDisponibleModel);
 			this.ltMaterielDisponible.setSelectedIndex(0); //sélectionne le premier item
+			this.ltMaterielDisponible.setPreferredSize(new Dimension(150,820));
 			//this.listeMaterielDisponible.addListSelectionListener(this);
-			pMaterielDisponible.add( new JScrollPane(this.ltMaterielDisponible));
+			JScrollPane spMaterielDisponible = new JScrollPane(this.ltMaterielDisponible);
+			spMaterielDisponible.setPreferredSize(new Dimension(220, 550));
+			pMaterielDisponible.add(spMaterielDisponible);
 			
 			JPanel pboutonsAssignation = new JPanel();
 			this.add(pboutonsAssignation, BorderLayout.CENTER);
-			pboutonsAssignation.setLayout(new GridLayout(2, 1, 70, 170));	
+			pboutonsAssignation.setLayout(new GridBagLayout());	
+			GridBagConstraints c = new GridBagConstraints();
+			c.insets =  new Insets(10,10,10,10);
+			c.gridx = 0;
+			c.gridy = 0;
 			this.btDegaucheVersDroite = new JButton(">>");
-			this.btDegaucheVersDroite.setPreferredSize(new Dimension(10, 15));
-			this.btDegaucheVersDroite.setMaximumSize(new Dimension(30, 30));
 			//this.btMatDispoVersAssigne.setIcon(new ImageIcon("./src/vue/contact.png"));
-			pboutonsAssignation.add(this.btDegaucheVersDroite);		
+			pboutonsAssignation.add(this.btDegaucheVersDroite, c);	
+			c.gridx = 0;
+			c.gridy = 1;
 			this.btDeDroiteVersGauche = new JButton("<<");
-			this.btDeDroiteVersGauche.setPreferredSize(new Dimension(10, 15));
 			//this.btMatAssigneVersDispo.setIcon(new ImageIcon("./src/vue/materiel.png"));
-			pboutonsAssignation.add(this.btDeDroiteVersGauche);
+			pboutonsAssignation.add(this.btDeDroiteVersGauche, c);
 			
 			this.ltMaterielDisponibleModel = new DefaultListModel<String>();
 			for (String libelleMateriel : listeMaterielDisponible) {
 				this.ltMaterielDisponibleModel.addElement(libelleMateriel);
 			}
 			
-			JPanel pMaterielAssigne = new JPanel();
+			JPanel pMaterielAssigne = new JPanel();  
+			pMaterielAssigne.setLayout(new BorderLayout());
 			this.add(pMaterielAssigne, BorderLayout.EAST);
-			this.ltMaterielAssigne = new JList<String>(this.ltMaterielAssigneModel);
+			pMaterielAssigne.add(new JLabel("Matériel Assigné", JLabel.CENTER), BorderLayout.NORTH);
+			this.ltMaterielAssigneModel = new DefaultListModel<String>();
+			this.ltMaterielAssigne = new JList<String>(this.ltMaterielAssigneModel); // controleur récupérer liste de droite si elle est pas vide 
 			this.ltMaterielAssigne.setSelectedIndex(0); //sélectionne le premier item
+			this.ltMaterielAssigne.setPreferredSize(new Dimension(150,820));
 			//this.listeMaterielDisponible.addListSelectionListener(this);
-			pMaterielAssigne.add(new JScrollPane(this.ltMaterielAssigne));
+			JScrollPane spMaterielAssigne = new JScrollPane(this.ltMaterielAssigne);
+			spMaterielAssigne.setPreferredSize(new Dimension(220, 550));
+			pMaterielAssigne.add(spMaterielAssigne);
 			
 			JPanel pboutonsAnnulerValider = new JPanel();
 			this.add(pboutonsAnnulerValider, BorderLayout.SOUTH);
@@ -89,7 +105,7 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			//génération de la fenêtre
 			this.fen.add(this);
 			this.fen.pack();
-			this.fen.setSize(700, 800);
+			this.fen.setSize(600, 750);
 			this.fen.setResizable(true);
 			this.fen.setVisible(true);
 			this.fen.setLocationRelativeTo(null);
