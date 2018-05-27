@@ -21,9 +21,6 @@ public class VueGridKanban extends JPanel {
 		ptitres.add(new JLabel("TERMINE", JLabel.CENTER));
 		ptitres.add(new JLabel("EN ATTENTE", JLabel.CENTER));
 
-
-
-
 		JPanel pCartes = new JPanel();
 		pCartes.setLayout(new GridLayout(1,4));
 		this.add(ptitres, BorderLayout.NORTH);

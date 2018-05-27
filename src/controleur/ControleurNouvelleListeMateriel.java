@@ -2,12 +2,15 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import modele.AffectationMateriel;
+import modele.Materiel;
 import vue.VueNouvelleListeMateriel;
 
 public class ControleurNouvelleListeMateriel implements ActionListener, DocumentListener{
@@ -60,7 +63,17 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 		// TODO Auto-generated method stub
 		
 	}
-	    }
+	
+	public ArrayList<String> materielEnString(ArrayList<Materiel> listematerielDisponible){
+		ArrayList<String> listematerielDisponibleStr = new ArrayList<String>();
+		for(Materiel m: listematerielDisponible) {
+			listematerielDisponibleStr.add(m.toString());
+		}
+		return listematerielDisponibleStr;
+	 }
+	
+	
+}
 	
 
 
