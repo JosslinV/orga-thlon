@@ -51,7 +51,7 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			this.ltMaterielDisponible = new JList<String>(this.ltMaterielDisponibleModel);
 			this.ltMaterielDisponible.setSelectedIndex(0); //sélectionne le premier item
 			this.ltMaterielDisponible.setPreferredSize(new Dimension(150,820));
-			//this.listeMaterielDisponible.addListSelectionListener(this);
+			//this.ltMaterielDisponible.addListSelectionListener(this);
 			JScrollPane spMaterielDisponible = new JScrollPane(this.ltMaterielDisponible);
 			spMaterielDisponible.setPreferredSize(new Dimension(220, 550));
 			pMaterielDisponible.add(spMaterielDisponible);
@@ -113,6 +113,21 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 	}
 		
 		
+		
+
+		public JList<String> getLtMaterielDisponible() {
+			return ltMaterielDisponible;
+		}
+
+
+
+
+		public void setLtMaterielDisponible(JList<String> ltMaterielDisponible) {
+			this.ltMaterielDisponible = ltMaterielDisponible;
+		}
+
+
+
 
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {

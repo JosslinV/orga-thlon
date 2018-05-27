@@ -3,6 +3,7 @@ package controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -23,6 +24,23 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		JButton b = (JButton) e.getSource();
+		
+		switch(this.etat) {
+		case MATERIEL_DISPO:
+			
+			this.vue.getLtMaterielDisponible().getSelectedIndex();
+
+			break;
+		case MATERIEL_EMPRUNTE:
+			
+			break;
+		case MATERIEL_ASSIGNE:
+			break;
+		case MATERIEL_RENDU:
+			break;
+		}
+		if
 	}
 
 	@Override

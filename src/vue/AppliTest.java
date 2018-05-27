@@ -33,8 +33,8 @@ public class AppliTest {
 		listeBenevoles.add("Super Man");
 		listeBenevoles.add("Super Faignant");
 		new VueNouvelleEquipe(listeBenevoles);
+		
 		/*
-
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();
 		mapSousTaches.put("faire1", 0.8F);
