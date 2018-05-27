@@ -12,7 +12,6 @@ public class Materiel {
 		this.libelle = libelle;
 	}
 	
-
 	public String getLibelle() {
 		return libelle;
 	}
@@ -55,6 +54,6 @@ public class Materiel {
 	}
 	
 	public String toString() {
-		return " Matériel - libellé : " + this.getLibelle() + " stock : " + this.getStock(); 
+		return " " + this.getLibelle() + " (Qté : " + this.getStock() + ")"; 
 	}
 }

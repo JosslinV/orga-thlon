@@ -3,24 +3,30 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.RequestDataBase.RequestMateriel;
+import modele.Materiel;
+
 public class AppliTest {
 
 	public static void main(String[] a) throws Exception {
 		
 	//	new VueNouveauMateriel();
-		new VueNouvelleCourse();
+		//new VueNouvelleCourse();
 		//new VueNouveauContactBenevole();
 	//	new VueNouveauContactExterne();
 	//	new Fenetre_NouvelleTache();
 	//	new VueNouvelleSousTache();
+
+		RequestMateriel reqMat = new RequestMateriel();
+		ArrayList<Materiel> materiels = reqMat.requestAll();
+		ArrayList<String> nom = new ArrayList<String>();
+		for(Materiel m: materiels) {
+		    nom.add(m.toString());
+		}
 		
-		List<String> listeMat = new ArrayList<String>();
-		listeMat.add("plots");
-		listeMat.add("tee-shirts");
-		listeMat.add("ballons");
-		listeMat.add("stylos");
-		new VueNouvelleListeMateriel(listeMat);
-		
+		new VueNouvelleListeMateriel(nom);
+		new VueQuantiteMateriel();
+
 		List<String> listeBenevoles = new ArrayList<String>();
 		listeBenevoles.add("Jules Utilise");
 		listeBenevoles.add("Bernard Coquille");
@@ -28,6 +34,7 @@ public class AppliTest {
 		listeBenevoles.add("Super Faignant");
 		new VueNouvelleEquipe(listeBenevoles);
 		/*
+
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();
 		mapSousTaches.put("faire1", 0.8F);

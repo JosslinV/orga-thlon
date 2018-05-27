@@ -111,6 +111,8 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			this.fen.setLocationRelativeTo(null);
 	
 	}
+		
+		
 
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {

@@ -37,8 +37,6 @@ public class VueNouvelleSousTache extends JPanel {
 		this.fen = new JFrame();
 		this.fen.setTitle(" : " + "création d'une nouvelle fiche SOUS-TACHE");
 		this.fen.setLayout(new GridLayout(1,1));
-
-		
 		this.setBorder(new EmptyBorder(5,20,5,20));
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints cNord = new GridBagConstraints();
