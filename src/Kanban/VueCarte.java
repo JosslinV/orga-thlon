@@ -1,6 +1,7 @@
 package Kanban;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -18,22 +19,25 @@ public class VueCarte extends JPanel{
 	private JLabel  lblibelle;
 	private JButton btnEditer;
 	private JButton btnFlecheArriere;
-	private JButton btnProloop;
-	private JButton btnFlecheAvant;	
+	private JButton btnFlecheAvant;
+	private JLabel lbProloop;
+	private JButton btnSupprimer;
+	private JButton btnPause;
 	
 	public VueCarte(String texte) {
+		ControleurKanban controleur = new ControleurKanban();
 		
 		this.setLayout(new BorderLayout());
 		JPanel pNord = new JPanel();
 		pNord.setLayout(new FlowLayout());
 		this.add(pNord, BorderLayout.PAGE_START);
 		
-		JButton btnSupprimer = new JButton();
-		btnSupprimer.setIcon(new ImageIcon("./src/Kanban/delete.png", "supprimer" ));		
+		this.btnSupprimer = new JButton();
+		btnSupprimer.setIcon(new ImageIcon("./src/Kanban/delete.png", "supprimer" ));
 		pNord.add(btnSupprimer);
 		
-		JButton btnPause = new JButton();
-		btnPause.setIcon(new ImageIcon("./src/Kanban/pause.png", "pause"));
+		this.btnPause = new JButton();
+		btnPause.setIcon(new ImageIcon("./src/Kanban/pause.png", "suspendre"));
 		pNord.add(btnPause);
 		
 		this.btnEditer = new JButton();
@@ -45,14 +49,17 @@ public class VueCarte extends JPanel{
 		
 		JPanel pSud = new JPanel();
 		this.add(pSud, BorderLayout.SOUTH);
-		pSud.setLayout(new GridLayout(1,3));
-		this.btnFlecheAvant = new JButton(">>");	
-		this.btnProloop = new JButton();
+		pSud.setLayout(new GridLayout(1,3, 20,10));
+		this.btnFlecheAvant = new JButton(">>");
+		this.lbProloop = new JLabel();
 		this.btnFlecheArriere = new JButton("<<");
-		this.btnProloop.setIcon(new ImageIcon("./src/Kanban/miniproloop.png", "proloop"));
+		lbProloop.setIcon(new ImageIcon("./src/Kanban/miniproloop.png", "proloop"));
 		pSud.add(btnFlecheArriere);
-		pSud.add(btnProloop);
+		pSud.add(lbProloop);
 		pSud.add(btnFlecheAvant);
+		
+		this.btnEditer.addActionListener(controleur);
+
 
 	}
 	
@@ -68,4 +75,58 @@ public class VueCarte extends JPanel{
 		
 	}
 	*/
+	
+	
+	public void afficherEtatBoutonsCarte(VueCarte carte, Etat etat) {
+		switch(etat) {
+		case A_FAIRE:
+			this.btnFlecheArriere.setEnabled(false);
+			this.btnPause.setEnabled(false);
+			this.btnFlecheAvant.setEnabled(true);
+			this.btnEditer.setEnabled(true);
+			this.btnSupprimer.setEnabled(true);
+			break;
+		case EN_COURS:
+			
+			break;
+		case EN_ATTENTE:
+			this.btnFlecheAvant.setEnabled(false);
+			this.btnFlecheArriere.setEnabled(false);
+			this.btnEditer.setEnabled(false);
+			this.btnPause.setEnabled(true);
+			this.btnSupprimer.setEnabled(true);
+			break;
+		case TERMINEE:
+			this.btnFlecheAvant.setEnabled(false);
+			this.btnPause.setEnabled(false);
+			this.btnEditer.setEnabled(false);
+			this.btnFlecheArriere.setEnabled(true);
+			this.btnSupprimer.setEnabled(true);
+			break;
+		case SUPPRIME:
+			this.setEnabled(false);
+			break;
+		}
+	}
+	
+	
+	public void afficherTacheRecurrente(boolean estRecurrente) {
+		this.btnFlecheArriere.setVisible(!estRecurrente);
+		this.btnFlecheAvant.setVisible(!estRecurrente);
+		this.lbProloop.setVisible(estRecurrente); // !!! Label (récupérer le clic)
+	}
+	
+
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
 }

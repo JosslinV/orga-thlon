@@ -15,9 +15,8 @@ import modele.Etat.Etat;
 public class ControleurCarte implements ActionListener{
 	
 	private enum Etats {AFAIRE, EN_COURS, TERMINE, EN_ATTENTE, SUPPRIME};
-	public Etats etatCarte;
+	public Etat etat;
 	private VueCarte vue;
-	private Etat modele;
 	private Tache tache;
 	private Date dateDebut;
 	private int nbMoisRestant;
@@ -36,6 +35,8 @@ public class ControleurCarte implements ActionListener{
 		JButton b = (JButton) e.getSource();
 			switch (this.etatCarte) {
 			case AFAIRE:
+				this.vue.afficherEtatBoutonsCarte(carte, Etat.A_FAIRE);
+
 				if (b this.vue.getActionBouton(b);)
 				
 				break;
