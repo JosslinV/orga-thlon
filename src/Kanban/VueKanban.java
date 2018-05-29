@@ -18,7 +18,7 @@ public class VueKanban extends JPanel {
 	private JPanel pEnAttente;
 	private JPanel pTermine;
 	private Map<String, LinkedList<VueCarte>> cartes;
-	//private List<VueCarte> cartesRecurrentes;
+	////private List<VueCarte> cartesRecurrentes;
 	private LinkedList<VueCarte> cartesAfaire;
 	private LinkedList<VueCarte> cartesEnCours;
 	private LinkedList<VueCarte> cartesTerminees;
