@@ -19,6 +19,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controleur.ControleurNouvelleListeMateriel;
+
 public class VueNouvelleListeMateriel extends JPanel implements ListSelectionListener {
 	
 		private JFrame fen;
@@ -32,13 +34,14 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 		private JButton btAnnuler;
 		private JButton btValider;
 		
-		public VueNouvelleListeMateriel(List<String> listeMaterielDisponible) {
+		public VueNouvelleListeMateriel(List<String> listeMaterielDisponible) throws Exception {
+			ControleurNouvelleListeMateriel controleur = new ControleurNouvelleListeMateriel(this);
 			this.fen = new JFrame();
 			this.fen.setTitle("Affectation de matériel à une tache");
 			this.fen.setLayout(new GridLayout(1,1));
 			this.setBorder(new EmptyBorder(5,5,5,5));
 			this.setLayout(new BorderLayout());	
-			//ControleurNouvelleListeMateriel controleur = new ControleurNouvelleListeMateriel(this);
+			
 			JPanel pMaterielDisponible = new JPanel();
 			pMaterielDisponible.setLayout(new BorderLayout());
 			this.add(pMaterielDisponible, BorderLayout.WEST);
@@ -64,6 +67,7 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			c.gridx = 0;
 			c.gridy = 0;
 			this.btDegaucheVersDroite = new JButton(">>");
+			this.btDegaucheVersDroite.addActionListener(controleur);
 			//this.btMatDispoVersAssigne.setIcon(new ImageIcon("./src/vue/contact.png"));
 			pboutonsAssignation.add(this.btDegaucheVersDroite, c);	
 			c.gridx = 0;
@@ -134,4 +138,11 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 			// TODO Auto-generated method stub
 			
 		}
+		
+		public void ajouterLigne(String s) {
+			
+			this.ltMaterielAssigneModel.addElement(s);
+			this.ltMaterielAssigne = new JList<String>(this.ltMaterielAssigneModel);
+		}
+		
 }

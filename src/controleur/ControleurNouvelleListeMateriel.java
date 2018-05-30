@@ -2,6 +2,7 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,20 +10,38 @@ import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import Database.RequestDataBase.RequestMateriel;
+import Database.RequestDataBase.RequestTache;
 import modele.AffectationMateriel;
 import modele.Materiel;
+import modele.Tache;
 import vue.VueNouvelleListeMateriel;
+import Database.InputDataBase.InputUtiliser ;
 
 public class ControleurNouvelleListeMateriel implements ActionListener, DocumentListener{
-	private enum Etats {MATERIEL_DISPO, MATERIEL_EMPRUNTE, MATERIEL_ASSIGNE, MATERIEL_RENDU};
+	private enum Etats {MATERIEL_DISPO, MATERIEL_EMPRUNTE, MATERIEL_ASSIGNE};
 	private Etats etat;
 	private VueNouvelleListeMateriel vue;
 	private AffectationMateriel modele;
+	private Tache tachetest ;
+	private ArrayList<Materiel> materiels ;
+	private float quantiteAffectee ;
 
-	public ControleurNouvelleListeMateriel(VueNouvelleListeMateriel vueNouvelleListeMateriel) {
+	public ControleurNouvelleListeMateriel(VueNouvelleListeMateriel vueNouvelleListeMateriel) throws Exception {
 	        this.vue = vueNouvelleListeMateriel;
 	        this.modele = new AffectationMateriel();
 	        this.etat = Etats.MATERIEL_DISPO;
+	        //RequestTache rt = new  RequestTache();
+	        //this.tachetest = rt.requestTache(8); TODO requête qui fonctionne
+	        this.tachetest = new Tache ("panem", LocalDate.now()) ;
+	        this.tachetest.setId_tache(8);
+	        RequestMateriel reqMat = new RequestMateriel();
+			this.materiels = reqMat.requestAll();
+			ArrayList<String> nom = new ArrayList<String>();
+			for(Materiel m: this.materiels) {
+			    nom.add(m.toString());
+			quantiteAffectee = 1 ;
+	}
 	}
 
 	@Override
@@ -32,18 +51,37 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 		switch(this.etat) {
 		case MATERIEL_DISPO:
 			
-			this.vue.getLtMaterielDisponible().getSelectedIndex();
-
-			break;
-		case MATERIEL_EMPRUNTE:
+			if (b.getText()  == ">>" ) {
+				
+				vue.ajouterLigne(this.vue.getLtMaterielDisponible().getSelectedValue()) ;
+			}
+			
+			
 			
 			break;
+			
+		case MATERIEL_EMPRUNTE: 
+			
+			if (b.getText()  == "Valider" ) {
+				
+				
+				//this.vue.getLtMaterielDisponible().getSelectedIndex();
+				 modele.AffecterMateriel(tachetest, materiels.get(this.vue.getLtMaterielDisponible().getSelectedIndex()) , quantiteAffectee);
+				 InputUtiliser iu = new InputUtiliser() ;
+				 try {
+					iu.inputUtiliser( this.materiels.get(this.vue.getLtMaterielDisponible().getSelectedIndex()), tachetest, quantiteAffectee) ;
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+			}	 
+			break;
+			
 		case MATERIEL_ASSIGNE:
 			break;
-		case MATERIEL_RENDU:
-			break;
+		
 		}
-		if
 	}
 
 	@Override
@@ -72,7 +110,9 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 		return listematerielDisponibleStr;
 	 }
 	
-	
+	public List<Materiel> getListe() {
+		return this.materiels ;
+	}
 }
 	
 

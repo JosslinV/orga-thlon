@@ -14,7 +14,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import com.sun.glass.ui.TouchInputSupport;
+//import com.sun.glass.ui.TouchInputSupport;
 
 import Database.InputDataBase.InputCourse;
 import Database.InputDataBase.InputTache;
@@ -35,7 +35,7 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 		this.vue = vue ;
 		this.modele = new modele.Tache("nouvelle tache", ajd) ;
 		this.etatCourant = Etats.EDITION;
-		this.fen = vue.getFen();
+//		this.fen = vue.getFen();
 	}
 	
 	public void actionPerformed (ActionEvent e) {
@@ -51,11 +51,13 @@ public class ControleurNouvelleTache implements ActionListener, ChangeListener{
 					this.vue.setActifComposants(false);
 					this.vue.modifierTexteBoutonsPourEdition(false);
 					try {
-						Tache tache = vue.rassembler
+///					Tache tache = vue.rassembler
+						
+						Tache tacheaajouter = convertirMap_principale(vue.getDonneesTache()) ;
 						
 						InputTache in = new InputTache() ;
 				    	
-				    	in.inputTache(nouvelleTache) ;
+				    	in.inputTache(tacheaajouter) ;
 						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block

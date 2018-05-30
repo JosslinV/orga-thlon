@@ -14,16 +14,18 @@ public class AppliTest {
 		//new VueNouvelleCourse();
 		//new VueNouveauContactBenevole();
 	//	new VueNouveauContactExterne();
-	//	new Fenetre_NouvelleTache();
+	
 	//	new VueNouvelleSousTache();
 
+		
 		RequestMateriel reqMat = new RequestMateriel();
 		ArrayList<Materiel> materiels = reqMat.requestAll();
 		ArrayList<String> nom = new ArrayList<String>();
 		for(Materiel m: materiels) {
 		    nom.add(m.toString());
+		  
 		}
-		
+		//new Fenetre_NouvelleTache();
 		new VueNouvelleListeMateriel(nom);
 		new VueQuantiteMateriel();
 

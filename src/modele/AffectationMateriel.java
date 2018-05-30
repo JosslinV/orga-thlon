@@ -14,7 +14,7 @@ public class AffectationMateriel {
 	private int qteDisponible;
 	private int quantiteAssignee;
 	private Materiel materielvide;
-	private HashMap<String,Integer> correspondance ;
+	private HashMap<String,Float> correspondance ;
 	
 	public AffectationMateriel() {
 		this.listeMaterielDisponible = new ArrayList<Materiel>();
@@ -78,7 +78,7 @@ public class AffectationMateriel {
 		return Integer.parseInt(s.substring(n+1, s.length())) ;
 	}
 	
-	public void AffecterMateriel (Tache t, Materiel m, int quantiteAffectee ) {
+	public void AffecterMateriel (Tache t, Materiel m, float quantiteAffectee ) {
 		
 		if(quantiteAffectee<m.getStock()) {
 			
@@ -99,7 +99,7 @@ public class AffectationMateriel {
 	
 	
 
-	public void DesaffacterMateriel (Tache t, Materiel m, int quantiteDesaffectee) {
+	public void DesaffacterMateriel (Tache t, Materiel m, float quantiteDesaffectee) {
 		
 		String s = constituerString(t,m) ;
 		

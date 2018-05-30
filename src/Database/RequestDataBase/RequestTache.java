@@ -18,7 +18,8 @@ public class RequestTache {
 			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Tache WHERE id_Tache = "+ id +";");
 			
 			if(result.next()) {
-				Tache tache = new Tache(result.getString("libelle"), result.getDate("dateDebut").toLocalDate());
+				Tache tache = new Tache(result.getString("libelle"),
+				result.getDate("dateDebut").toLocalDate());
 				tache.setId_tache(result.getInt("id_Tache"));
 				tache.setCommentaire(result.getString("commentaire"));
 				tache.setDateEcheance(result.getDate("dateEcheance").toLocalDate());

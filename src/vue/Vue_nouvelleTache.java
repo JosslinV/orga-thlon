@@ -679,11 +679,11 @@ public class Vue_nouvelleTache extends JPanel {
 	public boolean estTacheCompletee() {
 		return (this.estTacheCompleteeAutomatiquement() || this.estTacheCompleteeManuellement());
 	}
-	
+	*/
 	public void afficherEtatAvancement() {
 		this.tfEtatAvancement.setText(String.valueOf(this.slAvancementTache.getValue()));
 	}
-	*/
+	
 	
 	
 	

@@ -74,7 +74,7 @@ public class VueAutourTabKanban extends JPanel {
 		gbc_lblAuteur.gridy = 1;
 		panelLabel.add(lblAuteur, gbc_lblAuteur);
 		
-		this.add(new JScrollPane(new VueGridKanban()),BorderLayout.CENTER);
+	//	this.add(new JScrollPane(new VueGridKanban()),BorderLayout.CENTER);
 	}
 
 	
