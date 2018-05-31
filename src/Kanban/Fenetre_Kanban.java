@@ -9,8 +9,9 @@ import java.util.Map;
 import javax.swing.JFrame;
 
 public class Fenetre_Kanban extends JFrame{
+	Map<String, LinkedList<VueCarte>> cartes;
 	public Fenetre_Kanban() {
-		Map<String, LinkedList<VueCarte>> cartes = new 	HashMap<String, LinkedList<VueCarte>>();
+		cartes = new HashMap<String, LinkedList<VueCarte>>();
 
 		VueKanban kanban = null;
 		VueCarte carteAFaire1 = new VueCarte("acheterPain1", kanban);
@@ -45,6 +46,9 @@ public class Fenetre_Kanban extends JFrame{
 		this.setResizable(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
+	}
+	public Map<String, LinkedList<VueCarte>> getCartes() {
+		return cartes;
 	}
 }
 

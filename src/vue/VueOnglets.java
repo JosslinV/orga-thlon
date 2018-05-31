@@ -36,7 +36,7 @@ import Kanban.VueAutourTabKanban;
 			//JTabbedPane onglets2 = new JTabbedPane();
 			VueAutourTabKanban p = new VueAutourTabKanban();
 			VueAutourTabKanban p2 = new VueAutourTabKanban();
-		
+			
 			
 			this.setLayout(new GridLayout(1,2));
 			
