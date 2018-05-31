@@ -33,6 +33,7 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 		private JButton btDeDroiteVersGauche;
 		private JButton btAnnuler;
 		private JButton btValider;
+		private String elementajoute ;
 		
 		public VueNouvelleListeMateriel(List<String> listeMaterielDisponible) throws Exception {
 			ControleurNouvelleListeMateriel controleur = new ControleurNouvelleListeMateriel(this);
@@ -142,7 +143,44 @@ public class VueNouvelleListeMateriel extends JPanel implements ListSelectionLis
 		public void ajouterLigne(String s) {
 			
 			this.ltMaterielAssigneModel.addElement(s);
+			this.elementajoute = s ;
 			this.ltMaterielAssigne = new JList<String>(this.ltMaterielAssigneModel);
+		}
+
+
+
+
+		public void miseAjourLigne(float quantite) {
+		
+			ajouterLigne(modifierQuantité(this.ltMaterielAssigneModel.get(0), quantite));
+			this.ltMaterielAssigneModel.removeElementAt(0);
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+
+		private String modifierQuantité(String s, float quantite) {
+			
+				
+				int n=0 ;
+				for (int i = 0 ; i<s.length(); i++) {
+					if (s.charAt(i)==':') {
+						n=i ;
+					}
+				}
+			
+			s = " " + s.substring(0, n-1) + " (Qté : " + quantite + ")"; 
+			return s ;
+		}
+
+
+
+
+		public JList<String> getLtMaterielAssigne() {
+			// TODO Auto-generated method stub
+			return this.ltMaterielAssigne ;
 		}
 		
 }

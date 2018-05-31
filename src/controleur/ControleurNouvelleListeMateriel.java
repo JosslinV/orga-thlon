@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import vue.VueQuantiteMateriel;
 import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -22,6 +22,7 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 	private enum Etats {MATERIEL_DISPO, MATERIEL_EMPRUNTE, MATERIEL_ASSIGNE};
 	private Etats etat;
 	private VueNouvelleListeMateriel vue;
+	private VueQuantiteMateriel vueQuantite ;
 	private AffectationMateriel modele;
 	private Tache tachetest ;
 	private ArrayList<Materiel> materiels ;
@@ -53,14 +54,23 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 			
 			if (b.getText()  == ">>" ) {
 				
-				vue.ajouterLigne(this.vue.getLtMaterielDisponible().getSelectedValue()) ;
+				try {
+					this.vueQuantite = new VueQuantiteMateriel(this.modele, this.vue) ;
+					this.vue.ajouterLigne(this.vue.getLtMaterielDisponible().getSelectedValue());
+					//TODO rendre la fenêtre dessous inactive
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 			
 			
 			
 			break;
 			
-		case MATERIEL_EMPRUNTE: 
+		case MATERIEL_ASSIGNE:
 			
 			if (b.getText()  == "Valider" ) {
 				
@@ -78,7 +88,7 @@ public class ControleurNouvelleListeMateriel implements ActionListener, Document
 			}	 
 			break;
 			
-		case MATERIEL_ASSIGNE:
+		case MATERIEL_EMPRUNTE:
 			break;
 		
 		}

@@ -15,6 +15,7 @@ public class AffectationMateriel {
 	private int quantiteAssignee;
 	private Materiel materielvide;
 	private HashMap<String,Float> correspondance ;
+	private float QuantiteEnMemoire;
 	
 	public AffectationMateriel() {
 		this.listeMaterielDisponible = new ArrayList<Materiel>();
@@ -108,6 +109,10 @@ public class AffectationMateriel {
 			this.correspondance.put(s, this.correspondance.get(s)- quantiteDesaffectee) ;
 			
 		}
+	}
+	
+	public void setQuantiteEnMemoire (float f) {
+		this.QuantiteEnMemoire = f;
 	}
 	
 }

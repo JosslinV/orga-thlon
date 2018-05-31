@@ -27,14 +27,14 @@ public class AppliTest {
 		}
 		//new Fenetre_NouvelleTache();
 		new VueNouvelleListeMateriel(nom);
-		new VueQuantiteMateriel();
+		//new VueQuantiteMateriel();
 
 		List<String> listeBenevoles = new ArrayList<String>();
 		listeBenevoles.add("Jules Utilise");
 		listeBenevoles.add("Bernard Coquille");
 		listeBenevoles.add("Super Man");
 		listeBenevoles.add("Super Faignant");
-		new VueNouvelleEquipe(listeBenevoles);
+		//new VueNouvelleEquipe(listeBenevoles);
 		
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
