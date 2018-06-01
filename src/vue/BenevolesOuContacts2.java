@@ -1,6 +1,8 @@
 package vue;
 
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import java.awt.GridBagLayout;
 import javax.swing.BoxLayout;
 import com.jgoodies.forms.layout.FormLayout;
@@ -11,6 +13,7 @@ import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Insets;
+import javax.swing.ImageIcon;
 
 public class BenevolesOuContacts2 extends JPanel {
 
@@ -21,11 +24,14 @@ public class BenevolesOuContacts2 extends JPanel {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JButton btnNewButton = new JButton("Contacts externes");
+		btnNewButton.setIcon(new ImageIcon("./src/RessourcesImages/User-Profile-128.png"));
+		btnNewButton.setVerticalTextPosition   ( SwingConstants.BOTTOM ) ;
+		btnNewButton.setVerticalAlignment(SwingConstants.TOP );
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -39,6 +45,8 @@ public class BenevolesOuContacts2 extends JPanel {
 		add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnBenevoles = new JButton("Benevoles");
+		btnBenevoles.setIcon(new ImageIcon("./src/RessourcesImages/User-Profile-128.png"));
+	//	btnBenevoles.setHorizontalAlignment(SwingConstants.BOTTOM);
 		GridBagConstraints gbc_btnBenevoles = new GridBagConstraints();
 		gbc_btnBenevoles.weightx = 1.0;
 		gbc_btnBenevoles.insets = new Insets(0, 0, 5, 0);
