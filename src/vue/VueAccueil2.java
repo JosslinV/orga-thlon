@@ -47,7 +47,7 @@ public class VueAccueil2 extends JFrame {
 		ControleurGeneral controleur = new ControleurGeneral(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 628, 580);
+		setBounds(100, 100, 1500, 1000);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.contentPane.setLayout(new BorderLayout(0, 0));
