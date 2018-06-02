@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import modele.Tache;
+
 public class VueCarte extends JPanel{
 	private VueKanban vueKanban;
 	private JLabel  lblibelle;
@@ -25,9 +27,12 @@ public class VueCarte extends JPanel{
 	private JLabel  lbProloop;
 	private JButton btnSupprimer;
 	private JButton btnPause;
+	private Tache tache;
 	
-	public VueCarte(String texte, VueKanban vueKanban) {
+	public VueCarte(Tache tache, VueKanban vueKanban) {
 		ControleurCarte controleur = new ControleurCarte(this);
+		
+		this.tache = tache;
 		
 		this.setLayout(new BorderLayout());
 		JPanel pNord = new JPanel();
@@ -43,7 +48,7 @@ public class VueCarte extends JPanel{
 		this.btnEditer = new JButton();
 		btnEditer.setIcon(new ImageIcon("./src/Kanban/edit.png", "editer"));
 		pNord.add(btnEditer);		
-		this.lblibelle= new JLabel("Libellé ");
+		this.lblibelle= new JLabel(tache.getLibelle());
 		this.add(lblibelle, BorderLayout.CENTER);
 		
 		JPanel pSud = new JPanel();
