@@ -27,6 +27,8 @@ public class Tache {
 	private String prenomResponsableTache ;
 	private int idResponsable ;
 	private boolean predefinie; 
+	private boolean enPause; 
+
 	
 
 	private LinkedList<Materiel> materiel;
@@ -198,4 +200,12 @@ public class Tache {
 		this.predefinie = predefinie;
 	}
 	
+	
+	public boolean isEnPause() {
+		return enPause;
+	}
+
+	public void setEnPause(boolean enPause) {
+		this.enPause = enPause;
+	}
 }

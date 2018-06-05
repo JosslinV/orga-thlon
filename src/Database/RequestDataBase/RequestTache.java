@@ -20,6 +20,7 @@ public class RequestTache {
 			if(result.next()) {
 				Tache tache = new Tache(result.getString("libelle"),
 				result.getDate("dateDebut").toLocalDate());
+					
 				tache.setId_tache(result.getInt("id_Tache"));
 				tache.setCommentaire(result.getString("commentaire"));
 				tache.setDateEcheance(result.getDate("dateEcheance").toLocalDate());
@@ -27,7 +28,15 @@ public class RequestTache {
 				tache.setDateRappel(result.getDate("dateRappel").toLocalDate());
 				tache.setPriorite(result.getInt("priorite"));
 				tache.setDateCreationTache(result.getDate("date_creation_tache").toLocalDate());
-	
+				tache.setNomAuteurTache(result.getString("nom_createur"));
+				tache.setIdResponsable(result.getInt("id_Personne"));
+				tache.setPredefinie(result.getBoolean("predefinie"));
+				tache.setNomResponsableTache(result.getString("nomReponsable"));
+				tache.setPrenomResponsableTache(result.getString("prenomResponsable"));
+				tache.setEnPause(result.getBoolean("enPause"));
+				
+				
+				
 				return tache;
 			}
 			
@@ -51,13 +60,30 @@ public class RequestTache {
 			if(result.next()) {
 				Tache tache = new Tache(result.getString("libelle"), result.getDate("dateDebut").toLocalDate());
 				tache.setId_tache(result.getInt("id_Tache"));
+				
+				/*
 				tache.setCommentaire(result.getString("commentaire"));
 				tache.setDateEcheance(result.getDate("dateEcheance").toLocalDate());
 				tache.setEtatAvancement(result.getShort("etatAvancement"));
 				tache.setDateRappel(result.getDate("dateRappel").toLocalDate());
 				tache.setPriorite(result.getInt("priorite"));
 				tache.setDateCreationTache(result.getDate("date_creation_tache").toLocalDate());
-	
+				 */
+				tache.setId_tache(result.getInt("id_Tache"));
+				tache.setCommentaire(result.getString("commentaire"));
+				tache.setDateEcheance(result.getDate("dateEcheance").toLocalDate());
+				tache.setEtatAvancement(result.getShort("etatAvancement"));
+				tache.setDateRappel(result.getDate("dateRappel").toLocalDate());
+				tache.setPriorite(result.getInt("priorite"));
+				tache.setDateCreationTache(result.getDate("date_creation_tache").toLocalDate());
+				tache.setNomAuteurTache(result.getString("nom_createur"));
+				tache.setIdResponsable(result.getInt("id_Personne"));
+				tache.setPredefinie(result.getBoolean("predefinie"));
+				tache.setNomResponsableTache(result.getString("nomReponsable"));
+				tache.setPrenomResponsableTache(result.getString("prenomResponsable"));
+				tache.setEnPause(result.getBoolean("enPause"));
+				
+				
 				list.add(tache);
 			}
 			return list;

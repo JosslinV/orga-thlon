@@ -13,7 +13,7 @@ public class UpdateDatabaseTache {
 		try {
 			Connection database = DatabaseSettings.connect();
 
-			preparedStatement = database.prepareStatement("UPDATE Orgathlon.Tache SET libelle=?, commentaire=?, dateDebut=?, dateEcheance=?, etatAvancement=?, dateRappel=?, priorite=?, date_creation_tache=?, nom_createur=?, id_personne=?, predefinie=?, nomResponsable=?, prenomResponsable=? WHERE id_Tache=?");
+			preparedStatement = database.prepareStatement("UPDATE Orgathlon.Tache SET libelle=?, commentaire=?, dateDebut=?, dateEcheance=?, etatAvancement=?, dateRappel=?, priorite=?, date_creation_tache=?, nom_createur=?, id_personne=?, predefinie=?, nomResponsable=?, prenomResponsable=?, enPause=? WHERE id_Tache=?");
 			preparedStatement.setString(1, donnees.getLibelle());
 			preparedStatement.setString(2, donnees.getCommentaire());
 			preparedStatement.setObject(3, donnees.getDateDebut());
@@ -27,6 +27,7 @@ public class UpdateDatabaseTache {
 			preparedStatement.setBoolean(11, donnees.isPredefinie());
 			preparedStatement.setString(12, donnees.getNomResponsableTache());
 			preparedStatement.setString(13, donnees.getPrenomResponsableTache());
+			preparedStatement.setBoolean(14, donnees.isEnPause());
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
