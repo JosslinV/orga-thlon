@@ -19,7 +19,7 @@ public class Benevole extends Contact {
 
 	@Override
 	public String toString() {		
-		return "Contact bénévole - nom : " + super.getNom_c() + " prénom : " + super.getPrenom_c() + " rôle : " + this.getRole();
+		return " " + super.getNom_c() + " - " + super.getPrenom_c() + " ( " + this.getRole()+ " ) ";
 	}
 }
 

@@ -277,7 +277,7 @@ public class VueNouvelleCourse extends JPanel {
 		spDroite.add(lbParcoursCourse, c2);
 		
 		this.parcoursTab = new JTable(new TabModele());
-		this.parcoursTab.setPreferredScrollableViewportSize(new Dimension(250,85)); 
+		this.parcoursTab.setPreferredScrollableViewportSize(new Dimension(250,63)); 
 		c2.gridx = 0;
 		c2.gridy = 4;
 		c2.gridheight = 3;

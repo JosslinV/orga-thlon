@@ -3,17 +3,22 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.UIManager;
+
+import Database.RequestDataBase.RequestBenevole;
 import Database.RequestDataBase.RequestMateriel;
 import modele.Materiel;
+import modele.contacts.Benevole;
 
 public class AppliTest {
 
 	public static void main(String[] a) throws Exception {
 		
-	//	new VueNouveauMateriel();
+
+		//new VueNouveauMateriel();
 		//new VueNouvelleCourse();
 		//new VueNouveauContactBenevole();
-	//	new VueNouveauContactExterne();
+		//new VueNouveauContactExterne();
 	
 	//	new VueNouvelleSousTache();
 
@@ -26,16 +31,17 @@ public class AppliTest {
 		  
 		}
 		//new Fenetre_NouvelleTache();
-		new VueNouvelleListeMateriel(nom);
-		//new VueQuantiteMateriel();
+		//new VueNouvelleListeMateriel(nom);
+		//new VueQuantiteMateriel(null, null);
 
-		List<String> listeBenevoles = new ArrayList<String>();
-		listeBenevoles.add("Jules Utilise");
-		listeBenevoles.add("Bernard Coquille");
-		listeBenevoles.add("Super Man");
-		listeBenevoles.add("Super Faignant");
-		//new VueNouvelleEquipe(listeBenevoles);
-		
+
+		RequestBenevole reqBen = new RequestBenevole();
+		ArrayList<Benevole> benevoles = reqBen.requestAll();
+		ArrayList<String> nomBen = new ArrayList<String>();
+		for(Benevole m: benevoles) {
+			nomBen.add(m.toString());
+		new VueNouvelleEquipe(nomBen);
+		}
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();
@@ -63,5 +69,5 @@ public class AppliTest {
 	}
 	
 	
-
+	
 }

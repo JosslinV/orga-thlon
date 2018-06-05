@@ -56,8 +56,8 @@ public class Vue_nouvelleTache extends JPanel {
 	private List<Boolean> priorites;
 	private JTextField tfDateDebut;
 	private JTextField tfDateEcheance;
-	private JButton btDateDebut;
-	private JButton btDateEcheance;
+	//private JButton btDateDebut;
+	//private JButton btDateEcheance;
 	private JButton btAjouterSousTaches;
 	private JTable tabssTaches;
 	private JTextArea taCommentaire;
@@ -138,7 +138,9 @@ public class Vue_nouvelleTache extends JPanel {
 		GridBagConstraints cNord1 = new GridBagConstraints();
 		cNord1.insets = new Insets(5, 5, 5, 5);
 		
-		JLabel lbIdTache = new JLabel("T\u00E2che n°" + this.id_Tache);
+		//JLabel lbIdTache = new JLabel("T\u00E2che n°" + this.id_Tache);
+		JLabel lbIdTache = new JLabel("T\u00E2che n°" + 85);
+
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_START;
 		cNord1.weightx = 10;
 		cNord1.gridx = 0;
@@ -147,14 +149,17 @@ public class Vue_nouvelleTache extends JPanel {
 		
 		//ajoute label icones supprimer, pause
 		
-		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Tache  );
+		//JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ this.auteur_Tache  );
+		JLabel lbCreateur = new JLabel("Cr\u00E9\u00E9 par "+ "Thierry Beltrand"  );
+
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 1;
 		cNord1.gridy = 0;
 		pNord.add(lbCreateur, cNord1);
 		
-		JLabel lbDateCreation = new JLabel("le "+ this.date_Creation );
+		//JLabel lbDateCreation = new JLabel("le "+ this.date_Creation );
+		JLabel lbDateCreation = new JLabel("le "+ "06/06/2018" );
 		cNord1.anchor = GridBagConstraints.FIRST_LINE_END;
 		cNord1.weightx = 10;
 		cNord1.gridx = 2;
@@ -206,16 +211,16 @@ public class Vue_nouvelleTache extends JPanel {
 		cNord2.gridy = 2;
 		cNord2.gridwidth = 3;
 		cNord2.weightx = 50;
-		JLabel lbResponsablenom = new JLabel("Nom");
+		JLabel lbResponsablenom = new JLabel("Nom:");
 		lbResponsablenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsablenom);	
-		this.lbResponsableNom = new JLabel(".........");
+		this.lbResponsableNom = new JLabel("Julien");
 		this.lbResponsableNom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(this.lbResponsableNom);		
-		JLabel lbResponsableprenom = new JLabel("Prénom");
+		JLabel lbResponsableprenom = new JLabel("Prénom:");
 		lbResponsableprenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(lbResponsableprenom);		
-		this.lbResponsablePrenom = new JLabel(".........");
+		this.lbResponsablePrenom = new JLabel("Margot");
 		this.lbResponsablePrenom.setPreferredSize(new Dimension(60, 14));
 		pResponsable.add(this.lbResponsablePrenom);
 		this.btChoisirResponsable = new JButton();
@@ -247,10 +252,10 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfDateDebut = new JTextField();
 		this.tfDateDebut.setColumns(8);
 		pDateDebut.add(this.tfDateDebut);		
-		this.btDateDebut = new JButton();
-		this.btDateDebut.setPreferredSize(new Dimension(20, 20));
-		this.btDateDebut.setIcon(new ImageIcon("./src/vue/calendar.png"));
-		pDateDebut.add(this.btDateDebut);
+		//this.btDateDebut = new JButton();
+		//this.btDateDebut.setPreferredSize(new Dimension(20, 20));
+		//this.btDateDebut.setIcon(new ImageIcon("./src/vue/calendar.png"));
+		//pDateDebut.add(this.btDateDebut);
 		
 		JLabel lbEchance = new JLabel("Date d'\u00E9ch\u00E9ance");
 		cEst.insets = new Insets(5, 10, 5, 5);
@@ -268,10 +273,10 @@ public class Vue_nouvelleTache extends JPanel {
 		this.tfDateEcheance = new JTextField();
 		this.tfDateEcheance.setColumns(8);
 		pEcheance.add(this.tfDateEcheance);		
-		this.btDateEcheance = new JButton();
-		this.btDateEcheance.setPreferredSize(new Dimension(20, 20));
-		this.btDateEcheance.setIcon(new ImageIcon("./src/vue/calendar.png"));
-		pEcheance.add(this.btDateEcheance);
+		//this.btDateEcheance = new JButton();
+		//this.btDateEcheance.setPreferredSize(new Dimension(20, 20));
+		//this.btDateEcheance.setIcon(new ImageIcon("./src/vue/calendar.png"));
+		//pEcheance.add(this.btDateEcheance);
 		
 		JLabel lbTempsEstim = new JLabel("Temps estim\u00E9");
 		cEst.insets = new Insets(5, 10, 5, 5);

@@ -45,6 +45,9 @@ public class VueNouveauMateriel extends JPanel {
 	private String [][] donneesMTB = {
 			{"","","",""},
 			{"","","",""},
+			{"","","",""},
+			{"","","",""},
+			{"","","",""},
 			{"","","",""}
 	};
 	private int idMateriel;
@@ -53,7 +56,7 @@ public class VueNouveauMateriel extends JPanel {
 	
 	public VueNouveauMateriel() {
 		this.fen = new JFrame();
-		this.fen.setTitle("Ajout d'un matériel");
+		this.fen.setTitle("Nouvelle Fiche Matériel");
 		this.fen.setLayout(new GridLayout(1,1));
 		
 		//this.fen.addWindowListener(new ControleurFenetreMateriel(this));
@@ -138,7 +141,7 @@ public class VueNouveauMateriel extends JPanel {
 		
 		this.fen.add(this);
 		this.fen.pack();
-		this.fen.setSize(500, 400);
+		this.fen.setSize(500, 600);
 		this.fen.setResizable(false);
 		this.fen.setVisible(true);
 		this.fen.setLocationRelativeTo(null);
