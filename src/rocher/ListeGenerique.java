@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import modele.contacts.Contact;
 import rocher.ControlleurGeneriqueTableaux.EtatsVuesListe;
 
 import java.awt.Font;
@@ -13,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
@@ -24,7 +26,7 @@ public class ListeGenerique extends JPanel {
 	 */
 	private JLabel lblTitre;
 		//ControlleurGeneriqueTableaux.EtatsVuesListe
-	public ListeGenerique(EtatsVuesListe etat) {
+	public ListeGenerique(ArrayList<Object> list) {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel BandeauHaut_Benevoles = new JPanel();
@@ -36,7 +38,7 @@ public class ListeGenerique extends JPanel {
 		lblTitre.setHorizontalAlignment(SwingConstants.LEFT);
 		BandeauHaut_Benevoles.add(lblTitre);
 		
-		ControlleurGeneriqueTableaux controleur = new ControlleurGeneriqueTableaux(this,etat);
+		ControlleurGeneriqueTableaux controleur = new ControlleurGeneriqueTableaux(this,list);
 		this.panelPrincipal = new VueTableau(controleur.getModele());
 		add(panelPrincipal, BorderLayout.CENTER);
 		

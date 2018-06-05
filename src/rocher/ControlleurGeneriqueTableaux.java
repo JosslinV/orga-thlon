@@ -2,6 +2,7 @@ package rocher;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -22,23 +23,25 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public ControlleurGeneriqueTableaux(ListeGenerique listeGenerique,EtatsVuesListe etat) {
+	public ControlleurGeneriqueTableaux(ListeGenerique listeGenerique,ArrayList<Object> list) {
 		this.ls=listeGenerique;
-		this.etat=etat;
-		switch (etat) {
-		case BENEVOLE:
+		
+		if(list.get(0) instanceof Benevole) {
 			this.modele = new ModeleDynamiqueTableBenevole();
+			this.etat=EtatsVuesListe.BENEVOLE;
 			//this.ls.setTitle("Benevole");
-			break;
-		case MATERIEL:
-			this.modele = new ModeleDynamiqueTableMateriel();
-			//this.ls.setTitle("Materiel");
-			break;
-		case CONTACT:
-			this.modele = new ModeleDynamiqueTableContact();
-			//this.ls.setTitle("Contact");
-			break;
 		}
+		if(list.get(0) instanceof Materiel) {
+			this.modele = new ModeleDynamiqueTableMateriel();
+			this.etat=EtatsVuesListe.MATERIEL;
+			//this.ls.setTitle("Materiel");
+		}	
+		if(list.get(0) instanceof ContactExterne) {
+			this.modele = new ModeleDynamiqueTableContact();
+			this.etat=EtatsVuesListe.CONTACT;
+			//this.ls.setTitle("Contact");
+		}
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
