@@ -1,9 +1,12 @@
-package rocher;
+/*package rocher;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import rocher.ControlleurTableauBenevoles.EtatsVuesListe;
+
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -18,20 +21,21 @@ public class ListeBenevoles extends JPanel {
 	private JScrollPane panelPrincipal;
 	/**
 	 * Create the panel.
-	 */
-	public ListeBenevoles() {
+	 *//*
+	private JLabel lblTitre;
+	public ListeBenevoles(EtatsVuesListe etat) {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel BandeauHaut_Benevoles = new JPanel();
 		add(BandeauHaut_Benevoles, BorderLayout.NORTH);
 		BandeauHaut_Benevoles.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblBenevoles = new JLabel("Benevoles");
-		lblBenevoles.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblBenevoles.setHorizontalAlignment(SwingConstants.LEFT);
-		BandeauHaut_Benevoles.add(lblBenevoles);
+		JLabel lblTitre = new JLabel();
+		lblTitre.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblTitre.setHorizontalAlignment(SwingConstants.LEFT);
+		BandeauHaut_Benevoles.add(lblTitre);
 		
-		ControlleurTableauBenevoles controleur = new ControlleurTableauBenevoles(this,ControlleurTableauBenevoles.EtatsVuesListe.MATERIEL);
+		ControlleurTableauBenevoles controleur = new ControlleurTableauBenevoles(this,etat);
 		this.panelPrincipal = new VueTableau(controleur.getModele());
 		add(panelPrincipal, BorderLayout.CENTER);
 		
@@ -85,5 +89,8 @@ public class ListeBenevoles extends JPanel {
 	public VueTableau getPanelPrincipal(){
 		return (VueTableau) this.panelPrincipal;
 	}
+	public void setTitle(String title) {
+		lblTitre.setText(title);
+	}
 
-}
+}*/

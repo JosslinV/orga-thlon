@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import modele.contacts.Contact;
+import modele.contacts.ContactExterne;
 
 public class ModeleDynamiqueTableContact extends ModeleDynamiqueTable {
     private final List<Contact> contacts = new ArrayList<Contact>();
@@ -15,13 +16,13 @@ public class ModeleDynamiqueTableContact extends ModeleDynamiqueTable {
     public ModeleDynamiqueTableContact() {
         super();
  
-        contacts.add(new Contact("Johnathan"));
-        contacts.add(new Contact("Nicolas"));
-        contacts.add(new Contact("Damien"));
-        contacts.add(new Contact("Corinne"));
-        contacts.add(new Contact("Emilie"));
-        contacts.add(new Contact("Delphine"));
-        contacts.add(new Contact("Eric"));
+        contacts.add(new ContactExterne("Johnathan","Contact"));
+        contacts.add(new ContactExterne("Nicolas","Contact"));
+        contacts.add(new ContactExterne("Damien","Contact"));
+        contacts.add(new ContactExterne("Corinne","Contact"));
+        contacts.add(new ContactExterne("Emilie","Contact"));
+        contacts.add(new ContactExterne("Delphine","Contact"));
+        contacts.add(new ContactExterne("Eric","Contact"));
     }
  
     public int getRowCount() {

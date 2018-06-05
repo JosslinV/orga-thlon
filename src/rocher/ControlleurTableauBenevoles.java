@@ -1,4 +1,4 @@
-package rocher;
+/*package rocher;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,21 +15,27 @@ import modele.contacts.Contact;
 public class ControlleurTableauBenevoles implements ActionListener {
 	public enum EtatsVuesListe{BENEVOLE,MATERIEL,CONTACT};
 	private ModeleDynamiqueTable modele;
-	private ListeBenevoles ls;
+	private ListeGenerique ls;
 	private EtatsVuesListe etat;
 	
-	public ControlleurTableauBenevoles(ListeBenevoles ls,EtatsVuesListe etat) {
-		this.ls=ls;
+	/**
+	 * @wbp.parser.entryPoint
+	 *//*
+	public ControlleurTableauBenevoles(ListeGenerique listeGenerique,EtatsVuesListe etat) {
+		this.ls=listeGenerique;
 		this.etat=etat;
 		switch (etat) {
 		case BENEVOLE:
 			this.modele = new ModeleDynamiqueTableBenevole();
+			this.ls.setTitle("Benevole");
 			break;
 		case MATERIEL:
 			this.modele = new ModeleDynamiqueTableMateriel();
+			this.ls.setTitle("Materiel");
 			break;
 		case CONTACT:
 			this.modele = new ModeleDynamiqueTableContact();
+			this.ls.setTitle("Contact");
 			break;
 		}
 	}
@@ -83,7 +89,7 @@ public class ControlleurTableauBenevoles implements ActionListener {
 	    }
 	    
 	    
-Here be dragon	 	
+Here be dragons	 	
 ___________________________________________________
 @@@@@@@@@@@@@@@@@@@@@**^^""~~~"^@@^*@*@@**@@@@@@@@@
 @@@@@@@@@@@@@*^^'"~   , - ' '; ,@@b. '  -e@@@@@@@@@
@@ -117,7 +123,8 @@ ___________________________________________________
 	            }
 	        }
 	    }
-	    */
+	    
 	
 
 }
+*/

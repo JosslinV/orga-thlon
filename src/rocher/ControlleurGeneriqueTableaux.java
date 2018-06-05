@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import modele.Materiel;
 import modele.contacts.Benevole;
 import modele.contacts.Contact;
+import modele.contacts.ContactExterne;
 
 
 public class ControlleurGeneriqueTableaux implements ActionListener {
@@ -46,7 +47,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 		switch (etat) {
 		case BENEVOLE:
 			if(a.getText()=="Ajouter")
-				modele.add(new Benevole("Bene"));
+				modele.add(new Benevole("Bene","Bene"));
 			else {
 				int[] selection = ls.getPanelPrincipal().getJTable().getSelectedRows();
 				modele.remove(selection);
@@ -62,7 +63,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 			break;
 		case CONTACT:
 			if(a.getText()=="Ajouter")
-				modele.add(new Contact("Megan"));
+				modele.add(new ContactExterne("Megan","contact"));
 			else {
 				int[] selection = ls.getPanelPrincipal().getJTable().getSelectedRows();
 				modele.remove(selection);

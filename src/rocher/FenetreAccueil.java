@@ -12,7 +12,7 @@ public class FenetreAccueil extends JFrame{
 		this.setVisible(true);
 		this.setPreferredSize(new Dimension(300,300));
 		//this.setLayout(new BorderLayout());
-		ListeBenevoles v= new ListeBenevoles();
+		ListeGenerique v= new ListeGenerique(ControlleurGeneriqueTableaux.EtatsVuesListe.BENEVOLE);
 		//VueTableau v= new VueTableau();
 		this.setLayout(new BorderLayout());
 		this.add(v,BorderLayout.CENTER);

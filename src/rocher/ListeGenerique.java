@@ -23,6 +23,7 @@ public class ListeGenerique extends JPanel {
 	 * Create the panel.
 	 */
 	private JLabel lblTitre;
+		//ControlleurGeneriqueTableaux.EtatsVuesListe
 	public ListeGenerique(EtatsVuesListe etat) {
 		setLayout(new BorderLayout(0, 0));
 		

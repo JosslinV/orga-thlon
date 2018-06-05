@@ -15,13 +15,13 @@ public class ModeleDynamiqueTableBenevole extends ModeleDynamiqueTable   {
     public ModeleDynamiqueTableBenevole() {
         super();
  
-        benevoles.add(new Benevole("Benevole1"));
-        benevoles.add(new Benevole("Benevole2"));
-        benevoles.add(new Benevole("Damien"));
-        benevoles.add(new Benevole("Corinne"));
-        benevoles.add(new Benevole("Emilie"));
-        benevoles.add(new Benevole("Delphine"));
-        benevoles.add(new Benevole("Eric"));
+        benevoles.add(new Benevole("Be","nevole"));
+        benevoles.add(new Benevole("Benevole2","Benevole2"));
+        benevoles.add(new Benevole("Damien","Benevole2"));
+        benevoles.add(new Benevole("Corinne","Benevole2"));
+        benevoles.add(new Benevole("Emilie","Benevole2"));
+        benevoles.add(new Benevole("Delphine","Benevole2"));
+        benevoles.add(new Benevole("Eric","Benevole2"));
     }
  
     public int getRowCount() {
