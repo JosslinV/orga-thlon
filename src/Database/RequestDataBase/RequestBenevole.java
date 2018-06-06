@@ -50,7 +50,7 @@ public class RequestBenevole {
 			ArrayList<Benevole> list = new ArrayList<Benevole>();
 			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Benevole;");
 			
-			if(result.next()) {
+			while(result.next()) {
 				Benevole contact = new Benevole(result.getString("nom_benevole"), result.getString("prenom_benevole"));
 				
 				contact.setId_personne(result.getInt("id_Personne"));

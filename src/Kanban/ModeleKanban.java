@@ -27,7 +27,7 @@ public class ModeleKanban extends JFrame{
 	
 	public ModeleKanban() {
 		cartes = new HashMap<String, LinkedList<VueCarte>>();
-		VueKanban kanban = null;
+		
 
 		this.A_FAIRE = new LinkedList<VueCarte>();
 		this.EN_COURS = new LinkedList<VueCarte>();
@@ -44,24 +44,32 @@ public class ModeleKanban extends JFrame{
 			e.printStackTrace();
 		}
 		
+		
 		for(Tache tache:list) {
 			System.out.println(tache.getLibelle());
+		}
+		
+		for(Tache tache:list) {
+			
+			System.out.println(tache.getLibelle());
 			if (!tache.isEnPause()) {
+				
 				if (tache.getEtat() instanceof AFaire) {	//si etat Tache = afaire (etat avancement = 0)
-					VueCarte carteAFaire = new VueCarte(tache, kanban, this);
-					A_FAIRE.add(carteAFaire);
+					VueCarte carte = new VueCarte(tache, this);
+					this.A_FAIRE.add(carte);
 				}
 				if (tache.getEtat() instanceof EnCours) {   // etat Tache = enCours (etat avancement 0< <100)
-					VueCarte carteEnCours = new VueCarte(tache,kanban, this);
-					EN_COURS.add(carteEnCours);
+					VueCarte carte = new VueCarte(tache, this);
+					this.EN_COURS.add(carte);
 				}
 				if (tache.getEtat() instanceof Termine) {   //etat Tache = terminé (etat avancement =100)
-					VueCarte carteTerminee = new VueCarte(tache,kanban, this);
-					TERMINEE.add(carteTerminee);
+					VueCarte carte = new VueCarte(tache, this);
+					this.TERMINEE.add(carte);
 				}
+			}
 			else if (tache.getEtat() instanceof Suspendu) {
-					VueCarte carteSuspendue = new VueCarte(tache,kanban, this);
-					EN_ATTENTE.add(carteSuspendue);
+					VueCarte carte = new VueCarte(tache, this);
+					this.EN_ATTENTE.add(carte);
 			}
 		}
 		
@@ -70,7 +78,7 @@ public class ModeleKanban extends JFrame{
 		cartes.put("Terminee", EN_ATTENTE);
 		cartes.put("enAttente", TERMINEE);
 		
-		kanban = new VueKanban(cartes);
+		VueKanban kanban = new VueKanban(cartes);
 
 		this.add(kanban);
 		this.setTitle("TABLEAU KANBAN");
@@ -80,7 +88,6 @@ public class ModeleKanban extends JFrame{
 		this.setResizable(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
-		}	
 			
 	}
 	

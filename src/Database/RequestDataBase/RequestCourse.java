@@ -55,7 +55,7 @@ public class RequestCourse {
 			ArrayList<Course> list = new ArrayList<Course>();
 			ResultSet result = state.executeQuery("SELECT * FROM Course;");
 			
-			if(result.next()) {
+			while(result.next()) {
 				Course course = new Course(result.getString("nom_course"));
 				course.setId_Course(result.getInt("id_Course"));
 				course.setFormat(result.getString("format_course"));

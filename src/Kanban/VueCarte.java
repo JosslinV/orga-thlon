@@ -30,7 +30,7 @@ public class VueCarte extends JPanel{
 	private Tache tache;
 	private ModeleKanban modele ;
 	
-	public VueCarte(Tache tache, VueKanban vueKanban, ModeleKanban modele) {
+	public VueCarte(Tache tache, ModeleKanban modele) {
 		ControleurCarte controleur = new ControleurCarte(this);
 		
 		this.tache = tache;
@@ -118,7 +118,7 @@ public class VueCarte extends JPanel{
 	public void afficherTacheRecurrente(boolean estRecurrente) {
 		this.btnFlecheArriere.setVisible(!estRecurrente);
 		this.btnFlecheAvant.setVisible(!estRecurrente);
-		this.lbProloop.setVisible(estRecurrente); // !!! Label (récupérer le clic)
+		this.lbProloop.setVisible(estRecurrente); // !!! Label (rï¿½cupï¿½rer le clic)
 	}
 	*/
 	
@@ -153,7 +153,7 @@ public class VueCarte extends JPanel{
 				System.out.println("VueCarte : etat A_FAIRE");
 				//this.vueCarte.afficherTacheRecurrente(false);
 				if (b.getText().equals(">>")) {
-					System.out.println("Passage à l'état enCours");
+					System.out.println("Passage ï¿½ l'ï¿½tat enCours");
 					this.modele.afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {
