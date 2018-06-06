@@ -22,7 +22,7 @@ public class FenetreAccueil extends JFrame{
 		this.setLayout(new BorderLayout());
 		this.add(v,BorderLayout.CENTER);
 		this.pack();
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	}
 

@@ -59,24 +59,25 @@ public class ControleurBenevolesOuContacts2 implements ActionListener {
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			if (b.getText()  == "Contacts externes" ) {
+		}else {
+				if (b.getText()  == "Contacts" ) {
+			}
 				RequestContactExt reqCont = new RequestContactExt();
 				ArrayList<ContactExterne> ContactsExternes;
+				System.out.println("test");
 				try {
 					ContactsExternes = reqCont.requestAll();
-					//ArrayList<ContactExterne> test =  ContactsExternes ;
-					ArrayList<String> nomCont = new ArrayList<String>();
-					for(ContactExterne c: ContactsExternes) {
-						nomCont.add(c.toString());
-					//new VueNouvelleEquipe(nomCont);
-						new ListeString(nomCont) ;
+					ArrayList<Object> aoc = new ArrayList<Object>() ;
+					for (ContactExterne ce : ContactsExternes) {
+						aoc.add(ce);
 					}
+					new FenetreAccueil(aoc);
+					//ArrayList<String> nomCont = new ArrayList<String>();
+					//for(ContactExterne c: ContactsExternes) {
+					//	nomCont.add(c.toString());
+					//new VueNouvelleEquipe(nomCont);
+						
+					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -87,5 +88,5 @@ public class ControleurBenevolesOuContacts2 implements ActionListener {
 			
 		}
 	}
-}
+
 	

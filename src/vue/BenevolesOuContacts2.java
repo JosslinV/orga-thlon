@@ -34,13 +34,13 @@ public class BenevolesOuContacts2 extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton btnNewButton = new JButton("Contacts externes");
-		btnNewButton.setIcon(new ImageIcon("./src/RessourcesImages/User-Profile-128.png"));
-		btnNewButton.setVerticalTextPosition   ( SwingConstants.BOTTOM ) ;
-		btnNewButton.setVerticalAlignment(SwingConstants.TOP );
+		JButton btnNewButton = new JButton("Contacts");
 		btnNewButton.addActionListener(controleur);
-		//	public void actionPerformed(ActionEvent arg0) {
-		//	}
+		btnNewButton.setIcon(new ImageIcon("./src/RessourcesImages/User-Profile-128.png"));
+		//btnNewButton.setVerticalTextPosition   ( SwingConstants.BOTTOM ) ;
+		//btnNewButton.setVerticalAlignment(SwingConstants.TOP );
+		
+
 		
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.weightx = 1.0;
