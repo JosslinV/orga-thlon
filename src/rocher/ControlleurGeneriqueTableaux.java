@@ -32,7 +32,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 			//this.ls.setTitle("Benevole");
 		}
 		if(list.get(0) instanceof Materiel) {
-			this.modele = new ModeleDynamiqueTableMateriel();
+			this.modele = new ModeleDynamiqueTableMateriel(list);
 			this.etat=EtatsVuesListe.MATERIEL;
 			//this.ls.setTitle("Materiel");
 		}	

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import modele.Materiel;
+import modele.contacts.Benevole;
 
 
 public class ModeleDynamiqueTableMateriel extends ModeleDynamiqueTable {
@@ -13,16 +14,23 @@ public class ModeleDynamiqueTableMateriel extends ModeleDynamiqueTable {
  
     private final String[] entetes = {"Libele", "Stock", "Budget","Description"};
  
-    public ModeleDynamiqueTableMateriel() {
+    public ModeleDynamiqueTableMateriel(ArrayList<Object> al) {
         super();
  
-        materiels.add(new Materiel("Johnathan"));
+        
+        for ( Object b : al) {
+       	 materiels.add( (Materiel) b);
+        }
+       /* materiels.add(new Materiel("Johnathan"));
         materiels.add(new Materiel("Nicolas"));
         materiels.add(new Materiel("Damien"));
         materiels.add(new Materiel("Corinne"));
         materiels.add(new Materiel("Emilie"));
         materiels.add(new Materiel("Delphine"));
         materiels.add(new Materiel("Eric"));
+        
+        */
+        
     }
  
     public int getRowCount() {
