@@ -8,6 +8,10 @@ import javax.swing.BoxLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import controleur.ControleurBenevolesOuContacts2;
+import controleur.ControleurNouvelleCourse;
+
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
@@ -19,8 +23,10 @@ public class BenevolesOuContacts2 extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public BenevolesOuContacts2() {
+	public BenevolesOuContacts2() throws Exception {
+		ControleurBenevolesOuContacts2 controleur = new ControleurBenevolesOuContacts2(this);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
@@ -32,10 +38,10 @@ public class BenevolesOuContacts2 extends JPanel {
 		btnNewButton.setIcon(new ImageIcon("./src/RessourcesImages/User-Profile-128.png"));
 		btnNewButton.setVerticalTextPosition   ( SwingConstants.BOTTOM ) ;
 		btnNewButton.setVerticalAlignment(SwingConstants.TOP );
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnNewButton.addActionListener(controleur);
+		//	public void actionPerformed(ActionEvent arg0) {
+		//	}
+		
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.weightx = 1.0;
 		gbc_btnNewButton.weighty = 1.0;
@@ -45,7 +51,9 @@ public class BenevolesOuContacts2 extends JPanel {
 		add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnBenevoles = new JButton("Benevoles");
+		btnBenevoles.addActionListener(controleur);
 		btnBenevoles.setIcon(new ImageIcon("./src/RessourcesImages/User-Profile-128.png"));
+		
 	//	btnBenevoles.setHorizontalAlignment(SwingConstants.BOTTOM);
 		GridBagConstraints gbc_btnBenevoles = new GridBagConstraints();
 		gbc_btnBenevoles.weightx = 1.0;

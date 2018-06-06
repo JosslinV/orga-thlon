@@ -79,8 +79,8 @@ public class RequestTache {
 				tache.setNomAuteurTache(result.getString("nom_createur"));
 				tache.setIdResponsable(result.getInt("id_Personne"));
 				tache.setPredefinie(result.getBoolean("predefinie"));
-				tache.setNomResponsableTache(result.getString("nomReponsable"));
-				tache.setPrenomResponsableTache(result.getString("prenomResponsable"));
+				//tache.setNomResponsableTache(result.getString("nomReponsable"));
+				//tache.setPrenomResponsableTache(result.getString("prenomResponsable"));
 				tache.setEnPause(result.getBoolean("enPause"));
 				
 				

@@ -30,6 +30,7 @@ public class VueNouvelleEquipe extends JPanel {
 		private JButton btValider;
 		
 		public VueNouvelleEquipe(List<String> listeBenevoles) {
+			
 			this.fen = new JFrame();
 			this.fen.setTitle("Constitution d'une équipe");
 			this.fen.setLayout(new GridLayout(1,1));
