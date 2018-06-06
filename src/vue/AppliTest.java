@@ -42,6 +42,9 @@ public class AppliTest {
 			nomBen.add(m.toString());
 		new VueNouvelleEquipe(nomBen);
 		}
+		
+		new VueNouvelleSousTache() ;
+		new Fenetre_NouvelleTache() ;
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();

@@ -7,7 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Database.RequestDataBase.RequestMateriel;
 import controleur.ControleurGeneral;
+import modele.Materiel;
+import rocher.FenetreAccueil;
+import rocher.ListeGenerique;
 
 import java.awt.GridBagLayout;
 
@@ -15,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.ArrayList;
 import java.awt.CardLayout;
 
 public class VueAccueil2 extends JFrame {
@@ -23,6 +28,7 @@ public class VueAccueil2 extends JFrame {
 	private JPanel panneauPrincipal;
 	private CardLayout cardLayout;
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -30,19 +36,33 @@ public class VueAccueil2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueAccueil2 frame = new VueAccueil2();
+					RequestMateriel reqMat = new RequestMateriel();
+					ArrayList<Materiel> materiels;
+				
+						materiels = reqMat.requestAll();
+						ArrayList<Object>aom = new ArrayList<Object>() ;
+						for (Materiel mat : materiels) {
+							aom.add(mat);
+						}
+					
+					VueAccueil2 frame = new VueAccueil2(aom);
 					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}  
-			}
+					
+					}catch (Exception e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();	
+					
+					
+					}
+				
+				}
 		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public VueAccueil2() throws Exception{
+	public VueAccueil2(ArrayList<Object> aom) throws Exception{
 		ControleurGeneral controleur = new ControleurGeneral(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,8 +118,8 @@ public class VueAccueil2 extends JFrame {
 		JPanel panelContacts = new BenevolesOuContacts2();
 		this.panneauPrincipal.add(panelContacts, "BenevolesOuContacts");
 		
-	//	JPanel panelMateriel = new ListeBenevoles();
-		//this.panneauPrincipal.add(panelMateriel, "listeMateriel");
+		JPanel panelMateriel = new ListeGenerique(aom);
+		this.panneauPrincipal.add(panelMateriel, "listeMateriel");
 	}
 	
 	public JPanel getContentPane() {

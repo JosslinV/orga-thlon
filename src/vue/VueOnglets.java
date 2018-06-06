@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import Kanban.VueAutourTabKanban;
+//import Kanban.VueAutourTabKanban;
 
 
 	
@@ -34,8 +34,8 @@ import Kanban.VueAutourTabKanban;
 			JTabbedPane onglets = new JTabbedPane();
 		
 			//JTabbedPane onglets2 = new JTabbedPane();
-			VueAutourTabKanban p = new VueAutourTabKanban();
-			VueAutourTabKanban p2 = new VueAutourTabKanban();
+			//VueAutourTabKanban p = new VueAutourTabKanban();
+		//	VueAutourTabKanban p2 = new VueAutourTabKanban();
 			
 			
 			this.setLayout(new GridLayout(1,2));
@@ -43,10 +43,10 @@ import Kanban.VueAutourTabKanban;
 			
 			onglets.setTabPlacement(JTabbedPane.TOP);
 			//onglets.setOpaque(true);
-			onglets.addTab("tab1", p);
+		//	onglets.addTab("tab1", p);
 			//onglets.setMnemonicAt(0, KeyEvent.VK_2);
 			
-			onglets.addTab("tab1", p2);
+		//	onglets.addTab("tab1", p2);
 			//onglets.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 			
 			//onglets.setLayout(new GridLayout(2, 1));
