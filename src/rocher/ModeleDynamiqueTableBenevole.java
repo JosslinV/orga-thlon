@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import Database.RequestDataBase.RequestBenevole;
 import modele.contacts.Benevole;
 
 public class ModeleDynamiqueTableBenevole extends ModeleDynamiqueTable   {
@@ -12,16 +13,22 @@ public class ModeleDynamiqueTableBenevole extends ModeleDynamiqueTable   {
  
     private final String[] entetes = {"Commentaire", "Civilite", "Nom","prenom", "adresse", "code postal","ville","telephone","mail"};
  
-    public ModeleDynamiqueTableBenevole() {
+    public ModeleDynamiqueTableBenevole(ArrayList<Object> al) {
         super();
  
-        benevoles.add(new Benevole("Be","nevole"));
+        for ( Object b : al) {
+        	 benevoles.add( (Benevole) b);
+        }
+
+       /* benevoles.add(new Benevole("Be","nevole"));
         benevoles.add(new Benevole("Benevole2","Benevole2"));
         benevoles.add(new Benevole("Damien","Benevole2"));
         benevoles.add(new Benevole("Corinne","Benevole2"));
         benevoles.add(new Benevole("Emilie","Benevole2"));
         benevoles.add(new Benevole("Delphine","Benevole2"));
         benevoles.add(new Benevole("Eric","Benevole2"));
+        
+        */
     }
  
     public int getRowCount() {

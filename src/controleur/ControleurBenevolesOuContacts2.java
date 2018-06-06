@@ -6,6 +6,7 @@ import Database.RequestDataBase.RequestMateriel;
 import modele.Materiel;
 import modele.contacts.Benevole;
 import modele.contacts.ContactExterne;
+import rocher.FenetreAccueil;
 import rocher.ListeGenerique;
 import rocher.ListeString;
 import vue.BenevolesOuContacts2;
@@ -42,7 +43,7 @@ public class ControleurBenevolesOuContacts2 implements ActionListener {
 				for (Benevole bn : benevoles) {
 					aob.add(bn);
 				}
-				new ListeGenerique(aob);
+				new FenetreAccueil(aob);
 				/*ArrayList<String> nomBen = new ArrayList<String>();
 				for(Benevole m: benevoles) {
 					nomBen.add(m.toString());

@@ -27,7 +27,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 		this.ls=listeGenerique;
 		
 		if(list.get(0) instanceof Benevole) {
-			this.modele = new ModeleDynamiqueTableBenevole();
+			this.modele = new ModeleDynamiqueTableBenevole(list);
 			this.etat=EtatsVuesListe.BENEVOLE;
 			//this.ls.setTitle("Benevole");
 		}
