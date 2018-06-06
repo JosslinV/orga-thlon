@@ -73,16 +73,6 @@ public class VueCarte extends JPanel{
 	public void setTitre(String titre) {
 		lblibelle.setText(titre);
 	}
-	/*
-	public boolean getActionBouton(JButton b) {
-		//String action ="";
-
-		System.out.println(b.equals(this.btnEditer));
-		
-		
-	}
-	*/
-	
 	
 	public void afficherEtatBoutonsCarte(VueCarte carte, EtatCartes etat) {
 		switch(etat) {
@@ -133,6 +123,7 @@ public class VueCarte extends JPanel{
 		
 		public EtatCartes etat;
 		private VueCarte vueCarte;
+		private ModeleKanban modele;
 		//private Tache tache;
 		//private Date dateDebut;
 		//private int nbMoisRestant;
@@ -140,7 +131,7 @@ public class VueCarte extends JPanel{
 		public ControleurCarte(VueCarte vue) {
 			this.vueCarte = vue;
 			this.etat = EtatCartes.A_FAIRE;
-			//this.modele = new AFaire(tache);
+			this.modele = new ModeleKanban();
 			//this.nbMoisRestant = this.dateDebut - datesystem
 			//this.nbMoisRestant = 12; //exemple pour tester
 			
@@ -155,10 +146,10 @@ public class VueCarte extends JPanel{
 				//this.vueCarte.afficherTacheRecurrente(false);
 				if (b.getText().equals(">>")) {
 					System.out.println("Passage à l'état enCours");
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
+					this.modele.afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.A_FAIRE, EtatCartes.SUPPRIME);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.A_FAIRE, EtatCartes.SUPPRIME);
 					this.etat = EtatCartes.SUPPRIME;
 				}
 				break;
@@ -166,18 +157,18 @@ public class VueCarte extends JPanel{
 				System.out.println("VueCarte : etat EN_COURS");
 				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
 				if(b.getText().equals(">>")) {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.TERMINEE);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.TERMINEE);
 					this.etat = EtatCartes.TERMINEE;
 				}else if(b.getText().equals("<<")) {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.A_FAIRE);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.A_FAIRE);
 					this.etat = EtatCartes.A_FAIRE;
 				}else if (b.getIcon().toString() == "supprimer") {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.SUPPRIME);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.SUPPRIME);
 					this.etat = EtatCartes.SUPPRIME;
 				}else if (b.getIcon().toString() == "editer") {
 					//vue NouvelleTache apparait mode Edition
 				}else if(b.getIcon().toString() == "suspendre") {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.EN_ATTENTE);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.EN_ATTENTE);
 					this.etat = EtatCartes.EN_ATTENTE;
 				}
 				break;
@@ -185,10 +176,10 @@ public class VueCarte extends JPanel{
 				System.out.println("VueCarte : etat EN_ATTENTE");
 				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_ATTENTE);
 				if (b.getIcon().toString() == "suspendre") {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.EN_COURS);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.EN_COURS);
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.SUPPRIME);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.SUPPRIME);
 					this.etat = EtatCartes.SUPPRIME;
 				}
 				break;
@@ -196,7 +187,7 @@ public class VueCarte extends JPanel{
 				System.out.println("VueCarte : etat TERMINEE");
 				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.TERMINEE);
 				if (b.getIcon().toString() == "supprimer") {
-					this.vueCarte.vueKanban.afficherNouvelEtatCarte(vueCarte, EtatCartes.TERMINEE, EtatCartes.SUPPRIME);
+					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.TERMINEE, EtatCartes.SUPPRIME);
 					this.etat = EtatCartes.SUPPRIME;
 				}
 				break;

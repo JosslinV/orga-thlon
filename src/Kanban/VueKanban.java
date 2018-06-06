@@ -73,56 +73,7 @@ public class VueKanban extends JPanel {
 		
 	}
 
-	public void afficherNouvelEtatCarte(VueCarte carte, EtatCartes ancienEtat, EtatCartes nouvelEtat) {
-		switch(nouvelEtat) {
-		case A_FAIRE:
-			System.out.println("Vuekanban : etat A_FAIRE");
-
-			if(ancienEtat.equals(EtatCartes.EN_COURS)) {
-				pEnCours.remove(carte);
-			}
-			pAfaire.add(carte);
-			break;
-		case EN_COURS:
-			System.out.println("Vuekanban : etat EN_COURS");
-
-			if (ancienEtat.equals(EtatCartes.EN_ATTENTE)) {
-				pEnAttente.remove(carte);
-			}
-			if (ancienEtat.equals(EtatCartes.A_FAIRE)) {
-				pAfaire.remove(carte);
-			}
-			pEnCours.add(carte);
-			break;
-		case EN_ATTENTE:
-			System.out.println("Vuekanban : etat EN_ATTENTE");
-
-			pEnAttente.add(carte);
-			pEnCours.remove(carte);
-			break;
-		case TERMINEE:
-			System.out.println("Vuekanban : etat TERMINEE");
-
-			pEnCours.remove(carte);
-			pTermine.add(carte);
-			break;
-		case SUPPRIME:
-			System.out.println("Vuekanban : etat SUPPRIME");
-
-			if (ancienEtat.equals(EtatCartes.EN_COURS)) {
-				pEnCours.remove(carte);
-			}
-			if (ancienEtat.equals(EtatCartes.A_FAIRE)) {
-				pAfaire.remove(carte);
-			}
-			if (ancienEtat.equals(EtatCartes.EN_ATTENTE)) {
-				pEnAttente.remove(carte);
-			}
-			if (ancienEtat.equals(EtatCartes.TERMINEE)) {
-				pTermine.remove(carte);
-			}		
-		}
-	}
+	
 
 	
 
