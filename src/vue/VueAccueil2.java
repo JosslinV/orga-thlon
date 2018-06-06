@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controleur.ControleurGeneral;
-import rocher.ListeBenevoles;
 
 import java.awt.GridBagLayout;
 
@@ -35,7 +34,7 @@ public class VueAccueil2 extends JFrame {
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}  
 			}
 		});
 	}
@@ -99,8 +98,8 @@ public class VueAccueil2 extends JFrame {
 		JPanel panelContacts = new BenevolesOuContacts2();
 		this.panneauPrincipal.add(panelContacts, "BenevolesOuContacts");
 		
-		JPanel panelMateriel = new ListeBenevoles();
-		this.panneauPrincipal.add(panelMateriel, "listeMateriel");
+	//	JPanel panelMateriel = new ListeBenevoles();
+		//this.panneauPrincipal.add(panelMateriel, "listeMateriel");
 	}
 	
 	public JPanel getContentPane() {

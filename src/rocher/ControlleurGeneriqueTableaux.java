@@ -27,7 +27,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 		this.ls=listeGenerique;
 		
 		if(list.get(0) instanceof Benevole) {
-			this.modele = new ModeleDynamiqueTableBenevole();
+			this.modele = new ModeleDynamiqueTableBenevole(list);
 			this.etat=EtatsVuesListe.BENEVOLE;
 			//this.ls.setTitle("Benevole");
 		}
@@ -37,7 +37,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 			//this.ls.setTitle("Materiel");
 		}	
 		if(list.get(0) instanceof ContactExterne) {
-			this.modele = new ModeleDynamiqueTableContact();
+			this.modele = new ModeleDynamiqueTableContact(list);
 			this.etat=EtatsVuesListe.CONTACT;
 			//this.ls.setTitle("Contact");
 		}
@@ -50,7 +50,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 		switch (etat) {
 		case BENEVOLE:
 			if(a.getText()=="Ajouter")
-				modele.add(new Benevole("Bene","Bene"));
+				modele.add(new Benevole("Nouveau","Nouveau"));
 			else {
 				int[] selection = ls.getPanelPrincipal().getJTable().getSelectedRows();
 				modele.remove(selection);
@@ -58,7 +58,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 			break;
 		case MATERIEL:
 			if(a.getText()=="Ajouter")
-				modele.add(new Materiel("Matos"));
+				modele.add(new Materiel("Nouveau"));
 			else {
 				int[] selection = ls.getPanelPrincipal().getJTable().getSelectedRows();
 				modele.remove(selection);
@@ -66,7 +66,7 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 			break;
 		case CONTACT:
 			if(a.getText()=="Ajouter")
-				modele.add(new ContactExterne("Megan","contact"));
+				modele.add(new ContactExterne("Nouveau","Nouveau"));
 			else {
 				int[] selection = ls.getPanelPrincipal().getJTable().getSelectedRows();
 				modele.remove(selection);
