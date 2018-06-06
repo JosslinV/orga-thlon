@@ -34,7 +34,7 @@ public class VueAccueil2 extends JFrame {
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}  
 			}
 		});
 	}
