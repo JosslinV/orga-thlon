@@ -48,19 +48,19 @@ public class ModeleKanban extends JFrame{
 			System.out.println(tache.getLibelle());
 			if (!tache.isEnPause()) {
 				if (tache.getEtat() instanceof AFaire) {	//si etat Tache = afaire (etat avancement = 0)
-					VueCarte carteAFaire = new VueCarte(tache, kanban);
+					VueCarte carteAFaire = new VueCarte(tache, kanban, this);
 					A_FAIRE.add(carteAFaire);
 				}
 				if (tache.getEtat() instanceof EnCours) {   // etat Tache = enCours (etat avancement 0< <100)
-					VueCarte carteEnCours = new VueCarte(tache,kanban);
+					VueCarte carteEnCours = new VueCarte(tache,kanban, this);
 					EN_COURS.add(carteEnCours);
 				}
 				if (tache.getEtat() instanceof Termine) {   //etat Tache = terminé (etat avancement =100)
-					VueCarte carteTerminee = new VueCarte(tache,kanban);
+					VueCarte carteTerminee = new VueCarte(tache,kanban, this);
 					TERMINEE.add(carteTerminee);
 				}
 			else if (tache.getEtat() instanceof Suspendu) {
-					VueCarte carteSuspendue = new VueCarte(tache,kanban);
+					VueCarte carteSuspendue = new VueCarte(tache,kanban, this);
 					EN_ATTENTE.add(carteSuspendue);
 			}
 		}

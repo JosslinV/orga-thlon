@@ -42,31 +42,54 @@ public class VueKanban extends JPanel {
 		this.pAfaire = new JPanel();
 		pAfaire.setBackground(Color.white);
 		pAfaire.setBorder(new EmptyBorder(20,20,20,20));		
+		
+		if(this.cartes.get("enCours") != null) {
+		
 		for (VueCarte carteAFaire : this.cartes.get("aFaire")) {
 			pAfaire.add(carteAFaire);
+		}
+		
 		}
 		pCartes.add(pAfaire);
 		
 		this.pEnCours = new JPanel();
 		pEnCours.setBackground(Color.LIGHT_GRAY);
-		for (VueCarte carteEnCours : this.cartes.get("enCours")) {
-			pEnCours.add(carteEnCours);
+		
+		if(this.cartes.get("enCours") != null) {
+		
+			for (VueCarte carteEnCours : this.cartes.get("enCours")) {
+				pEnCours.add(carteEnCours);
+			}
+		
 		}
 		pEnCours.setBorder(new EmptyBorder(20,20,20,20));		
 		pCartes.add(pEnCours);
 		
 		this.pTermine = new JPanel();
 		pTermine.setBackground(Color.gray);
-		for (VueCarte carteTerminees : this.cartes.get("Terminees")) {
-			pTermine.add(carteTerminees);
+		
+		if(this.cartes.get("Terminees") != null) {
+			
+		
+			
+			for (VueCarte carteTerminees : this.cartes.get("Terminees")) {
+				pTermine.add(carteTerminees);
+			}
+		
 		}
+		
 		pTermine.setBorder(new EmptyBorder(20,20,20,20));	
 		pCartes.add(pTermine);
 		
 		this.pEnAttente = new JPanel();
 		pEnAttente.setBackground(Color.LIGHT_GRAY);
-		for (VueCarte carteEnAttente : this.cartes.get("enAttente")) {
-			pEnAttente.add(carteEnAttente);
+		
+		if(this.cartes.get("enAttente") != null) {
+			
+		
+			for (VueCarte carteEnAttente : this.cartes.get("enAttente")) {
+				pEnAttente.add(carteEnAttente);
+			}
 		}
 		pEnAttente.setBorder(new EmptyBorder(20,20,20,20));
 		pCartes.add(pEnAttente);

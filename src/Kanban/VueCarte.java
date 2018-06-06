@@ -28,11 +28,13 @@ public class VueCarte extends JPanel{
 	private JButton btnSupprimer;
 	private JButton btnPause;
 	private Tache tache;
+	private ModeleKanban modele ;
 	
-	public VueCarte(Tache tache, VueKanban vueKanban) {
+	public VueCarte(Tache tache, VueKanban vueKanban, ModeleKanban modele) {
 		ControleurCarte controleur = new ControleurCarte(this);
 		
 		this.tache = tache;
+		this.modele = modele ;
 		
 		this.setLayout(new BorderLayout());
 		JPanel pNord = new JPanel();
@@ -104,8 +106,14 @@ public class VueCarte extends JPanel{
 			this.setEnabled(false);
 			break;
 		}
+		
+		
+	
 	}
 	
+	public ModeleKanban getModele() {
+		return this.modele;
+	}
 	/*
 	public void afficherTacheRecurrente(boolean estRecurrente) {
 		this.btnFlecheArriere.setVisible(!estRecurrente);
@@ -131,7 +139,7 @@ public class VueCarte extends JPanel{
 		public ControleurCarte(VueCarte vue) {
 			this.vueCarte = vue;
 			this.etat = EtatCartes.A_FAIRE;
-			this.modele = new ModeleKanban();
+			this.modele = getModele();
 			//this.nbMoisRestant = this.dateDebut - datesystem
 			//this.nbMoisRestant = 12; //exemple pour tester
 			
