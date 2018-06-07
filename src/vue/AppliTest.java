@@ -16,12 +16,11 @@ public class AppliTest {
 		
 
 		//new VueNouveauMateriel();
-		//new VueNouvelleCourse();
+		new VueNouvelleCourse();
 		//new VueNouveauContactBenevole();
 		//new VueNouveauContactExterne();
 	
-	//	new VueNouvelleSousTache();
-
+		//new VueNouvelleSousTache();
 		
 		RequestMateriel reqMat = new RequestMateriel();
 		ArrayList<Materiel> materiels = reqMat.requestAll();
@@ -40,11 +39,11 @@ public class AppliTest {
 		ArrayList<String> nomBen = new ArrayList<String>();
 		for(Benevole m: benevoles) {
 			nomBen.add(m.toString());
-		new VueNouvelleEquipe(nomBen);
+		//new VueNouvelleEquipe(nomBen);
 		}
 		
-		new VueNouvelleSousTache() ;
-		new Fenetre_NouvelleTache() ;
+		//new VueNouvelleSousTache() ;
+		//new Fenetre_NouvelleTache() ;
 		/*
 		Object [][] donneesSousTaches = new Object [5][2];
 		TreeMap<String, Float> mapSousTaches = new TreeMap<String, Float>();

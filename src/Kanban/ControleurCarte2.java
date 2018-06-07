@@ -39,10 +39,10 @@ class ControleurCarte2 implements ActionListener{
 			//	VueCarte vuetest = this.vueCarte ;
 				//EtatCartes etattest = EtatCartes.A_FAIRE ;
 				//System.out.println("VueCarte : etat A_FAIRE");
-				//this.vueCarte.afficherTacheRecurrente(false);
+				vueCarte.afficherTacheRecurrente(false);
 				if (b.getText().equals(">>")) {
 					System.out.println("Passage � l'�tat enCours");
-					
+					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
 					vueCarte.getModele().afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
 					//vueCarte.getModele().getKanban().removeAll();
 					vueCarte.getModele().relancerFenetre();
@@ -75,6 +75,7 @@ class ControleurCarte2 implements ActionListener{
 					//vue NouvelleTache apparait mode Edition
 				}else if(b.getIcon().toString() == "suspendre") {
 					vueCarte.getModele().afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.EN_ATTENTE);
+					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_ATTENTE);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.EN_ATTENTE;
 				}
@@ -84,9 +85,9 @@ class ControleurCarte2 implements ActionListener{
 				
 			case EN_ATTENTE:
 				//System.out.println("VueCarte : etat EN_ATTENTE");
-				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_ATTENTE);
 				if (b.getIcon().toString() == "suspendre") {
 					vueCarte.getModele().afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.EN_COURS);
+					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {

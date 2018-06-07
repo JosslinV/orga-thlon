@@ -44,7 +44,6 @@ public class VueNouvelleCourse extends JPanel {
 	
 	private int id_Course;
 	private LocalDate date_creation; 
-	private JButton btDateDebutCourse;
 	private JTextField tfTitreCourse;
 	private JTextField tfNomEvenement;
 	private JTextField tfFormatCourse;
@@ -67,7 +66,7 @@ public class VueNouvelleCourse extends JPanel {
 	public VueNouvelleCourse() throws Exception {
 		this.fen = new JFrame();
 		
-		this.fen.setTitle(" : " + "création d'une nouvelle fiche COURSE");
+		this.fen.setTitle(" : " + "Ma nouvelle course");
 		this.fen.setLayout(new GridLayout(1,1));	
 			
 		ControleurNouvelleCourse controleur = new ControleurNouvelleCourse(this);
@@ -137,13 +136,6 @@ public class VueNouvelleCourse extends JPanel {
 		tfDateDebutCourse.setMinimumSize(new Dimension(70,20));
 		tfDateDebutCourse.setColumns(8);
 		spGauche.add(tfDateDebutCourse, c1);
-	
-		this.btDateDebutCourse = new JButton();
-		c1.gridx = 2;
-		c1.gridy = 0;
-		this.btDateDebutCourse.setPreferredSize(new Dimension(20,20));
-		this.btDateDebutCourse.setIcon(new ImageIcon("./src/vue/calendar.png"));
-		spGauche.add(this.btDateDebutCourse, c1);
 
 		JLabel lbDateFinCourse = new JLabel("Date de Fin");
 		c1.anchor = GridBagConstraints.LINE_START;
@@ -298,7 +290,6 @@ public class VueNouvelleCourse extends JPanel {
 		pSud.add(this.btValider);		
 		this.btAnnuler.addActionListener(controleur);
 		this.btValider.addActionListener(controleur);
-		this.btDateDebutCourse.addActionListener(controleur);
 		
 		//génération fenêtre
 		this.fen.add(this);
@@ -318,7 +309,8 @@ public class VueNouvelleCourse extends JPanel {
 		this.taCommentaireCourse.setEditable(actif);
 		this.parcoursTab.setEnabled(actif);
 		this.cbAgrement.setEnabled(actif);
-		this.btDateDebutCourse.setEnabled(actif);
+		this.tfAuteurCourse.setEditable(actif);
+		this.tfTitreCourse.setEditable(actif);
 	}	
 	  
 	public void modifierTexteBoutonsPourEdition(boolean estEditable) {

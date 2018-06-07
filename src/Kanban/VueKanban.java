@@ -2,12 +2,14 @@ package Kanban;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -24,6 +26,7 @@ public class VueKanban extends JPanel {
 	private LinkedList<VueCarte> cartesEnCours;
 	private LinkedList<VueCarte> cartesTerminees;
 	private LinkedList<VueCarte> cartesSuspendues;
+	private JButton btNouvelleTache;
 	
 	public VueKanban(Map<String, LinkedList<VueCarte>> cartes, ModeleKanban modele){
 		this.modele = modele ;
@@ -45,6 +48,9 @@ public class VueKanban extends JPanel {
 		pAfaire.setBackground(Color.white);
 		pAfaire.setBorder(new EmptyBorder(20,20,20,20));		
 		
+		this.btNouvelleTache= new JButton("Nouvelle carte"); 
+		this.btNouvelleTache.setPreferredSize(new Dimension(150,50));
+		pAfaire.add(this.btNouvelleTache);
 		if(this.cartes.get("enCours") != null) {
 		
 		for (VueCarte carteAFaire : this.cartes.get("aFaire")) {
