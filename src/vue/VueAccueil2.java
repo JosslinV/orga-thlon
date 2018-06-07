@@ -47,6 +47,7 @@ public class VueAccueil2 extends JFrame {
 					
 					VueAccueil2 frame = new VueAccueil2(aom);
 					frame.setVisible(true);
+					frame.setTitle("Orgathlon");
 					
 					}catch (Exception e1) {
 								// TODO Auto-generated catch block
