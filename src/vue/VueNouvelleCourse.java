@@ -317,7 +317,6 @@ public class VueNouvelleCourse extends JPanel {
 		this.tfFormatCourse.setEditable(actif);
 		this.taCommentaireCourse.setEditable(actif);
 		this.parcoursTab.setEnabled(actif);
-		this.spNbParticipants.setEnabled(actif);
 		this.cbAgrement.setEnabled(actif);
 		this.btDateDebutCourse.setEnabled(actif);
 	}	
