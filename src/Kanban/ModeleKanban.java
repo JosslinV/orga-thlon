@@ -23,6 +23,7 @@ public class ModeleKanban extends JFrame{
 	private LinkedList<VueCarte> EN_ATTENTE;
 	private LinkedList<VueCarte> TERMINEE;
 
+	private VueKanban kanban;
 	
 	
 	public ModeleKanban() {
@@ -45,13 +46,15 @@ public class ModeleKanban extends JFrame{
 		}
 		
 		
-		for(Tache tache:list) {
+		/*for(Tache tache:list) {
 			System.out.println(tache.getLibelle());
 		}
+		*/
+		
 		
 		for(Tache tache:list) {
 			
-			System.out.println(tache.getLibelle());
+			//System.out.println(tache.getLibelle());
 			if (!tache.isEnPause()) {
 				
 				if (tache.getEtat() instanceof AFaire) {	//si etat Tache = afaire (etat avancement = 0)
@@ -75,10 +78,10 @@ public class ModeleKanban extends JFrame{
 		
 		cartes.put("aFaire", A_FAIRE);
 		cartes.put("enCours", EN_COURS);
-		cartes.put("Terminee", EN_ATTENTE);
-		cartes.put("enAttente", TERMINEE);
+		cartes.put("enAttente", EN_ATTENTE);
+		cartes.put("Terminee", TERMINEE);
 		
-		VueKanban kanban = new VueKanban(cartes);
+		kanban = new VueKanban(cartes, this);
 
 		this.add(kanban);
 		this.setTitle("TABLEAU KANBAN");
@@ -92,35 +95,47 @@ public class ModeleKanban extends JFrame{
 	}
 	
 	public void afficherNouvelEtatCarte(VueCarte carte, EtatCartes ancienEtat, EtatCartes nouvelEtat) {
+
 		switch(nouvelEtat) {
 		case A_FAIRE:
+			
+			this.cartes.get("aFaire").add(carte);
 			System.out.println("Modelekanban : etat A_FAIRE");
 			if(ancienEtat.equals(EtatCartes.EN_COURS)) {
+				
 				this.cartes.get("enCours").remove(carte);
 			}
-			this.cartes.get("aFaire").add(carte);
+			
+	
+			
 			break;
 		case EN_COURS:
 			System.out.println("Vuekanban : etat EN_COURS");
-
+			this.cartes.get("enCours").add(carte);
 			if (ancienEtat.equals(EtatCartes.EN_ATTENTE)) {
+				
 				this.cartes.get("enAttente").remove(carte);
 			}
 			if (ancienEtat.equals(EtatCartes.A_FAIRE)) {
 				this.cartes.get("aFaire").remove(carte);
 			}
-			this.cartes.get("enCours").add(carte);
+			
+			
+	
+			
+			
 			break;
 		case EN_ATTENTE:
 			System.out.println("Vuekanban : etat EN_ATTENTE");
 			this.cartes.get("enAttente").add(carte);
 			this.cartes.get("enCours").remove(carte);
+		
 			break;
 		case TERMINEE:
 			System.out.println("Vuekanban : etat TERMINEE");
-
-			this.cartes.get("enCours").remove(carte);
 			this.cartes.get("Terminee").add(carte);
+			this.cartes.get("enCours").remove(carte);
+		
 			break;
 		case SUPPRIME:
 			System.out.println("Vuekanban : etat SUPPRIME");
@@ -136,14 +151,44 @@ public class ModeleKanban extends JFrame{
 			}
 			if (ancienEtat.equals(EtatCartes.TERMINEE)) {
 				this.cartes.get("Terminee").remove(carte);
-			}		
+			}	
+		
+			break;
 		}
+		
+		
+		
 	} 
 	
 	public Map<String, LinkedList<VueCarte>> getCartes() {
 		return cartes;
 	}
 	
+	
+	public ModeleKanban getModeleTest() {
+		return this;
+	}
+	
+	
+	public VueKanban getKanban() {
+		return this.kanban;
+	}
+	
+	public void relancerFenetre() {
+		
+		this.remove(kanban);
+		kanban = new VueKanban(cartes, this);
+
+		
+		this.add(kanban);
+		this.setTitle("TABLEAU KANBAN");
+		this.setLayout(new GridLayout(1,1));
+		this.pack();
+		this.setSize(1160, 650);
+		this.setResizable(true);
+		this.setVisible(true);
+		this.setLocationRelativeTo(null);
+	}
 	
 }
 

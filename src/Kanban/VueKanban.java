@@ -17,6 +17,7 @@ public class VueKanban extends JPanel {
 	private JPanel pEnCours;
 	private JPanel pEnAttente;
 	private JPanel pTermine;
+	private ModeleKanban modele ;
 	private Map<String, LinkedList<VueCarte>> cartes;
 	////private List<VueCarte> cartesRecurrentes;
 	private LinkedList<VueCarte> cartesAfaire;
@@ -24,7 +25,8 @@ public class VueKanban extends JPanel {
 	private LinkedList<VueCarte> cartesTerminees;
 	private LinkedList<VueCarte> cartesSuspendues;
 	
-	public VueKanban(Map<String, LinkedList<VueCarte>> cartes){
+	public VueKanban(Map<String, LinkedList<VueCarte>> cartes, ModeleKanban modele){
+		this.modele = modele ;
 		this.setLayout(new BorderLayout());
 		JPanel ptitres = new JPanel();
 		ptitres.setLayout(new GridLayout(1,4));
@@ -97,7 +99,21 @@ public class VueKanban extends JPanel {
 	}
 
 	
+	public void retirerCarte (JPanel jp, VueCarte vc) {
+		
+		jp.remove(vc);
+	}
+	
+	public void ajouterCarte (JPanel jp, VueCarte vc) {
+		jp.add(vc) ;
+	}
 
 	
+	public ModeleKanban getModele() {
+		return this.modele;
+	}
+	
 
+	
+	
 }
