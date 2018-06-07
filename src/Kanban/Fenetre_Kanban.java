@@ -48,8 +48,14 @@ public class Fenetre_Kanban extends JFrame{
 		
 		for(Tache tac:list) {
 			System.out.println(tac.getLibelle());
-			VueCarte carte = new VueCarte(tac, kanban);
-			A_FAIRE.add(carte);
+			/**************************************************************
+			 * //VueCarte carte = new VueCarte(tac, kanban);
+			 * A_FAIRE.add(carte);
+			 * 
+			 * 
+			 * ************************************************************
+			 */
+			
 		}
 		
 		cartes.put("aFaire", A_FAIRE);
