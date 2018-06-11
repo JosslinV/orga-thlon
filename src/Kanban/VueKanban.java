@@ -21,11 +21,6 @@ public class VueKanban extends JPanel {
 	private JPanel pTermine;
 	private ModeleKanban modele ;
 	private Map<String, LinkedList<VueCarte>> cartes;
-	////private List<VueCarte> cartesRecurrentes;
-	private LinkedList<VueCarte> cartesAfaire;
-	private LinkedList<VueCarte> cartesEnCours;
-	private LinkedList<VueCarte> cartesTerminees;
-	private LinkedList<VueCarte> cartesSuspendues;
 	private JButton btNouvelleTache;
 	
 	public VueKanban(Map<String, LinkedList<VueCarte>> cartes, ModeleKanban modele){
@@ -47,17 +42,16 @@ public class VueKanban extends JPanel {
 		this.pAfaire = new JPanel();
 		pAfaire.setBackground(Color.white);
 		pAfaire.setBorder(new EmptyBorder(20,20,20,20));		
-		
+		this.pAfaire.setPreferredSize(new Dimension(50,600));
 		this.btNouvelleTache= new JButton("Nouvelle carte"); 
 		this.btNouvelleTache.setPreferredSize(new Dimension(150,50));
 		pAfaire.add(this.btNouvelleTache);
 		if(this.cartes.get("enCours") != null) {
-		
 		for (VueCarte carteAFaire : this.cartes.get("aFaire")) {
 			pAfaire.add(carteAFaire);
 		}
-		
 		}
+
 		pCartes.add(pAfaire);
 		
 		this.pEnCours = new JPanel();
@@ -76,19 +70,18 @@ public class VueKanban extends JPanel {
 		this.pTermine = new JPanel();
 		pTermine.setBackground(Color.gray);
 		
-		if(this.cartes.get("Terminees") != null) {
+		if(this.cartes.get("Terminee") != null) {
 			
 		
 			
-			for (VueCarte carteTerminees : this.cartes.get("Terminees")) {
-				pTermine.add(carteTerminees);
+			for (VueCarte carteTerminee : this.cartes.get("Terminee")) {
+				pTermine.add(carteTerminee);
 			}
 		
 		}
 		
 		pTermine.setBorder(new EmptyBorder(20,20,20,20));	
 		pCartes.add(pTermine);
-		
 		this.pEnAttente = new JPanel();
 		pEnAttente.setBackground(Color.LIGHT_GRAY);
 		

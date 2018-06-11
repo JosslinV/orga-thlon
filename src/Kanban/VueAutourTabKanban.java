@@ -74,7 +74,7 @@ public class VueAutourTabKanban extends JPanel {
 		gbc_lblAuteur.gridy = 1;
 		panelLabel.add(lblAuteur, gbc_lblAuteur);
 		ModeleKanban f = new ModeleKanban(); //à supprimer dès création de la map dans le modelKanban 
-		this.add(new JScrollPane(new VueKanban(f.getCartes())),BorderLayout.CENTER);
+		this.add(new JScrollPane(new VueKanban(f.getCartes(), f)),BorderLayout.CENTER);
 	}
 
 	

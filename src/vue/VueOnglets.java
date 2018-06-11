@@ -33,8 +33,8 @@ import Kanban.VueAutourTabKanban;
 		}
 		*/
 		public VueOnglets() throws Exception {
-			JTabbedPane onglets = new JTabbedPane();
-		
+			JTabbedPane onglet1 = new JTabbedPane();
+
 			//JTabbedPane onglets2 = new JTabbedPane();
 			VueAutourTabKanban p = new VueAutourTabKanban();
 		//	VueAutourTabKanban p2 = new VueAutourTabKanban();
@@ -43,9 +43,13 @@ import Kanban.VueAutourTabKanban;
 			this.setLayout(new GridLayout(1,2));
 			
 			
-			onglets.setTabPlacement(JTabbedPane.TOP);
+			onglet1.setTabPlacement(JTabbedPane.TOP);
+
+
 			//onglets.setOpaque(true);
-			onglets.addTab("tab1", p);
+			onglet1.addTab("Ma première course", p);
+
+
 			//onglets.setMnemonicAt(0, KeyEvent.VK_2);
 			
 		//	onglets.addTab("tab1", p2);
@@ -54,7 +58,9 @@ import Kanban.VueAutourTabKanban;
 			//onglets.setLayout(new GridLayout(2, 1));
 			//onglets2.addTab("tab2", new ImageIcon("rocher/contacts.png"), p);
 			
-			this.add(onglets);
+			this.add(onglet1);
+
+
 			//this.add(new JButton("texte"));
 			//this.add(onglets2);
 			

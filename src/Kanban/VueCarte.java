@@ -1,6 +1,7 @@
 package Kanban;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -17,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import modele.Tache;
-import modele.Etat.Etat;
 
 public class VueCarte extends JPanel{
 	private VueKanban vueKanban;
@@ -71,7 +71,11 @@ public class VueCarte extends JPanel{
 		this.btnFlecheAvant.addActionListener(controleur);
 		this.btnPause.addActionListener(controleur);
 		this.btnSupprimer.addActionListener(controleur);
-		 
+		if (this.tache.isPredefinie()) {
+			this.lbProloop.setVisible(true); 
+		}else {
+			this.lbProloop.setVisible(false);
+		}
 	}
 	
 	public void setTitre(String titre) {
@@ -88,7 +92,11 @@ public class VueCarte extends JPanel{
 			this.btnSupprimer.setEnabled(true);
 			break;
 		case EN_COURS:
-			
+			this.btnFlecheAvant.setEnabled(true);
+			this.btnFlecheArriere.setEnabled(true);
+			this.btnEditer.setEnabled(true);
+			this.btnPause.setEnabled(true);
+			this.btnSupprimer.setEnabled(true);
 			break;
 		case EN_ATTENTE:
 			this.btnFlecheAvant.setEnabled(false);
@@ -101,154 +109,19 @@ public class VueCarte extends JPanel{
 			this.btnFlecheAvant.setEnabled(false);
 			this.btnPause.setEnabled(false);
 			this.btnEditer.setEnabled(false);
-			this.btnFlecheArriere.setEnabled(true);
+			this.btnFlecheArriere.setEnabled(false);
 			this.btnSupprimer.setEnabled(true);
 			break;
 		case SUPPRIME:
 			this.setEnabled(false);
 			break;
-		}
-		
-		
-	
+		}	
 	}
 	
 	public ModeleKanban getModele() {
 		return this.modele;
-	}
-	
-	public void afficherTacheRecurrente(boolean estRecurrente) {
-		this.btnFlecheArriere.setVisible(!estRecurrente);
-		this.btnFlecheAvant.setVisible(!estRecurrente);
-		this.lbProloop.setVisible(estRecurrente); // !!! Label (r�cup�rer le clic)
-	}
-	
-	
-	
-	public VueKanban getVueKanban() {
-		return vueKanban;
-	}
-	
-}
-/*
-	class ControleurCarte implements ActionListener{
-		
-		public EtatCartes etat;
-		private VueCarte vueCarte;
-		private ModeleKanban modele;
-		private Tache tache;
-		//private Date dateDebut;
-		//private int nbMoisRestant;
+	}	
 
-		public ControleurCarte(VueCarte vue, ModeleKanban modele) {
-			this.vueCarte = vue;
-			this.etat = EtatCartes.A_FAIRE;
-			//this.modele = getModele();
-			this.modele=modele ;
-			//this.nbMoisRestant = this.dateDebut - datesystem
-			//this.nbMoisRestant = 12; //exemple pour tester
-			
-		}
-
-		@Override  
-		public void actionPerformed(ActionEvent e) {
-			JButton b =(JButton) e.getSource();
-			switch(this.etat) {
-			
-			
-			case A_FAIRE:
-				ModeleKanban modeleTest = this.modele ;
-				ModeleKanban test = this.modele.getModeleTest();
-			//	VueCarte vuetest = this.vueCarte ;
-				//EtatCartes etattest = EtatCartes.A_FAIRE ;
-				//System.out.println("VueCarte : etat A_FAIRE");
-				//this.vueCarte.afficherTacheRecurrente(false);
-				if (b.getText().equals(">>")) {
-					System.out.println("Passage � l'�tat enCours");
-					
-					this.modele.afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
-					this.etat = EtatCartes.EN_COURS;
-				}else if (b.getIcon().toString() == "supprimer") {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.A_FAIRE, EtatCartes.SUPPRIME);
-					this.etat = EtatCartes.SUPPRIME;
-				}
-				
-				break;
-				
-				
-			case EN_COURS:
-				//System.out.println("VueCarte : etat EN_COURS");
-				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
-				if(b.getText().equals(">>")) {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.TERMINEE);
-					this.etat = EtatCartes.TERMINEE;
-				}else if(b.getText().equals("<<")) {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.A_FAIRE);
-					this.etat = EtatCartes.A_FAIRE;
-				}else if (b.getIcon().toString() == "supprimer") {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.SUPPRIME);
-					this.etat = EtatCartes.SUPPRIME;
-				}else if (b.getIcon().toString() == "editer") {
-					//vue NouvelleTache apparait mode Edition
-				}else if(b.getIcon().toString() == "suspendre") {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.EN_ATTENTE);
-					this.etat = EtatCartes.EN_ATTENTE;
-				}
-				break;
-				
-				
-				
-			case EN_ATTENTE:
-				//System.out.println("VueCarte : etat EN_ATTENTE");
-				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_ATTENTE);
-				if (b.getIcon().toString() == "suspendre") {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.EN_COURS);
-					this.etat = EtatCartes.EN_COURS;
-				}else if (b.getIcon().toString() == "supprimer") {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.SUPPRIME);
-					this.etat = EtatCartes.SUPPRIME;
-				}
-				break;
-				
-				
-				
-				
-			case TERMINEE:
-				//System.out.println("VueCarte : etat TERMINEE");
-				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.TERMINEE);
-				if (b.getIcon().toString() == "supprimer") {
-					this.modele.afficherNouvelEtatCarte(vueCarte, EtatCartes.TERMINEE, EtatCartes.SUPPRIME);
-					this.etat = EtatCartes.SUPPRIME;
-				}
-				break;
-			case SUPPRIME:
-				//System.out.println("VueCarte : etat SUPPRIME");
-				
-				break;
-			default: 
-				
-			}
-		}
 	
 }
 
-
-		
-
-		
-		
-	}
-
-
-	
-	
-	*/
-	
-
-	
-	
-	
-	
-	
-	
-//}

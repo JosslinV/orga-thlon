@@ -15,10 +15,10 @@ public class AppliTest {
 	public static void main(String[] a) throws Exception {
 		
 
-		//new VueNouveauMateriel();
-		new VueNouvelleCourse();
+		new VueNouveauMateriel();
+		//new VueNouvelleCourse();
 		//new VueNouveauContactBenevole();
-		//new VueNouveauContactExterne();
+		new VueNouveauContactExterne();
 	
 		//new VueNouvelleSousTache();
 		

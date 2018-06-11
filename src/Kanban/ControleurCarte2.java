@@ -10,6 +10,9 @@ import modele.Tache;
 class ControleurCarte2 implements ActionListener{
 		
 		public EtatCartes etat;
+		private modele.Etat.AFaire etatAFaire;
+		private modele.Etat.EnCours etatEnCours;
+		private modele.Etat.Termine etatTermine;
 		private VueCarte vueCarte;
 		private ModeleKanban modele;
 		//private Tache tache;
@@ -31,20 +34,11 @@ class ControleurCarte2 implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			JButton b =(JButton) e.getSource();
 			switch(this.etat) {
-			
-			
 			case A_FAIRE:
-				ModeleKanban modeleTest = this.modele ;
-				ModeleKanban test = vueCarte.getModele().getModeleTest();
-			//	VueCarte vuetest = this.vueCarte ;
-				//EtatCartes etattest = EtatCartes.A_FAIRE ;
-				//System.out.println("VueCarte : etat A_FAIRE");
-				vueCarte.afficherTacheRecurrente(false);
 				if (b.getText().equals(">>")) {
 					System.out.println("Passage � l'�tat enCours");
 					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
 					vueCarte.getModele().afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
-					//vueCarte.getModele().getKanban().removeAll();
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {
@@ -52,14 +46,12 @@ class ControleurCarte2 implements ActionListener{
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.SUPPRIME;
 				}
-				
 				break;
-				
-				
 			case EN_COURS:
-				//System.out.println("VueCarte : etat EN_COURS");
+				System.out.println("VueCarte : etat EN_COURS");
 				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
 				if(b.getText().equals(">>")) {
+					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.TERMINEE);
 					vueCarte.getModele().afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.TERMINEE);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.TERMINEE;
@@ -96,10 +88,7 @@ class ControleurCarte2 implements ActionListener{
 					this.etat = EtatCartes.SUPPRIME;
 				}
 				break;
-				
-				
-				
-				
+
 			case TERMINEE:
 				//System.out.println("VueCarte : etat TERMINEE");
 				vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.TERMINEE);

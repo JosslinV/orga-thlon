@@ -21,8 +21,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import controleur.ControleurFenetreBenevole;
-import controleur.ControleurFenetreMateriel;
 import controleur.ControleurNouveauMateriel;
 import modele.Materiel;
 import vue.Vue_nouvelleTache.TabModele;
@@ -122,11 +120,11 @@ public class VueNouveauMateriel extends JPanel {
 		
 		//tableau MTB
 		
-		
+		/*
 		this.tabMTB = new JTable(new TabModele(this.titresColonnes, this.donneesMTB));
 		this.tabMTB.setPreferredScrollableViewportSize(new Dimension(100,70)); 
 		p2.add(new JScrollPane(this.tabMTB), BorderLayout.SOUTH);
-
+*/
 		this.add(southPanel, BorderLayout.SOUTH);
 		southPanel.setBorder(new EmptyBorder(10,15,10,15));
 		southPanel.setLayout(new GridLayout(1,2,30,0));
@@ -141,7 +139,7 @@ public class VueNouveauMateriel extends JPanel {
 		
 		this.fen.add(this);
 		this.fen.pack();
-		this.fen.setSize(500, 600);
+		this.fen.setSize(500, 400);
 		this.fen.setResizable(false);
 		this.fen.setVisible(true);
 		this.fen.setLocationRelativeTo(null);
@@ -181,7 +179,7 @@ public class VueNouveauMateriel extends JPanel {
 	public JFrame getFen() {
 		return fen;
 	}
-	
+	/*
 	class TabModele extends AbstractTableModel {
 		private boolean DEBUG = false;
 		private String [] titresColonnes ;
@@ -209,25 +207,16 @@ public class VueNouveauMateriel extends JPanel {
 	    	return donnees[row][col];
 	    }
 
-	    /**
-	     * JTable uses this method to determine the default renderer/ editor for
-	     * each cell. If we didn't implement this method, then the last column
-	     * would contain text ("true"/"false"), rather than a check box.
-	     */
+
 	    public Class getColumnClass(int c) {
 	      return getValueAt(0, c).getClass();
 	    }
 
-	    /**
-	     * Don't need to implement this method unless your table's editable.
-	     */
+
 	    public boolean isCellEditable(int row, int col) {
 		    return true;
 	    }
-	    /**
-	     * Don't need to implement this method unless your table's data can
-	     * change.
-	     */
+
 	    
 	    public void setValueAt(Object value, int row, int col) {
 	    	donnees[row][col] = value;
