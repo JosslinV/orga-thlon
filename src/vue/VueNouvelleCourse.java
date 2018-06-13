@@ -43,15 +43,12 @@ import modele.Etat.Etat;
 public class VueNouvelleCourse extends JPanel {
 	
 	private int id_Course;
-	private LocalDate date_creation; 
 	private JTextField tfTitreCourse;
 	private JTextField tfNomEvenement;
 	private JTextField tfFormatCourse;
 	private JTextField tfDateDebutCourse;
-	private JFormattedTextField jtfDate = new JFormattedTextField(DateFormat.getDateInstance());
 	private JTextField tfDateFinCourse;
 	private JTextField tfBudget;
-	private JFormattedTextField jtfBudget = new JFormattedTextField(NumberFormat.getCurrencyInstance());
 	private JTextArea taCommentaireCourse;
 	private SpinnerNumberModel spmNbParticipants;
 	private JTable parcoursTab;

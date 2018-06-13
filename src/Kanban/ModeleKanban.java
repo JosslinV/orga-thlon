@@ -22,7 +22,6 @@ public class ModeleKanban extends JFrame{
 	private LinkedList<VueCarte> EN_COURS;
 	private LinkedList<VueCarte> EN_ATTENTE;
 	private LinkedList<VueCarte> TERMINEE;
-
 	private VueKanban kanban;
 	
 	
@@ -44,27 +43,32 @@ public class ModeleKanban extends JFrame{
 		} catch (Exception e) { 
 			e.printStackTrace();
 		}
-
+		
 		for(Tache tache:list) {
 			
 			//System.out.println(tache.getLibelle());
 			if (!tache.isEnPause()) {
 				
-				if (tache.getEtat() instanceof AFaire || tache.getEtatAvancement() == 0) {	
+				if (tache.getEtat() instanceof AFaire) {// || tache.getEtatAvancement() == 0) {	
 					VueCarte carte = new VueCarte(tache, this);
+					carte.afficherEtatBoutonsCarte(carte, EtatCartes.A_FAIRE);
 					this.A_FAIRE.add(carte);
 				}
-				if (tache.getEtat() instanceof EnCours || ( tache.getEtatAvancement() > 0 && tache.getEtatAvancement() <100)) {  
+				if (tache.getEtat() instanceof EnCours ) {//|| ( tache.getEtatAvancement() > 0 && tache.getEtatAvancement() <100)) {  
 					VueCarte carte = new VueCarte(tache, this);
+					carte.getTache().setEnPause(false);
+					carte.afficherEtatBoutonsCarte(carte, EtatCartes.EN_COURS);
 					this.EN_COURS.add(carte);
 				}
-				if (tache.getEtat() instanceof Termine || tache.getEtatAvancement() == 100) {   //etat Tache = terminé (etat avancement =100)
+				if (tache.getEtat() instanceof Termine ) {//|| tache.getEtatAvancement() == 100) {   //etat Tache = terminé (etat avancement =100)
 					VueCarte carte = new VueCarte(tache, this);
+					carte.afficherEtatBoutonsCarte(carte, EtatCartes.TERMINEE);
 					this.TERMINEE.add(carte);
 				}
 			}
-			else if (tache.getEtat() instanceof Suspendu) {
+			else if (tache.getEtat() instanceof Suspendu) {// || tache.isEnPause()) {
 					VueCarte carte = new VueCarte(tache, this);
+					carte.afficherEtatBoutonsCarte(carte, EtatCartes.EN_ATTENTE);
 					this.EN_ATTENTE.add(carte);
 			}
 		}
@@ -158,13 +162,13 @@ public class ModeleKanban extends JFrame{
 		
 		this.remove(kanban);
 		kanban = new VueKanban(cartes, this);
-
+		
 		
 		this.add(kanban);
 		this.setTitle("TABLEAU KANBAN");
 		this.setLayout(new GridLayout(1,1));
 		this.pack();
-		this.setSize(1160, 650);
+		this.setSize(1160, 1000);
 		this.setResizable(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

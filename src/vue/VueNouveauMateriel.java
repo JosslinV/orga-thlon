@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,6 +24,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import controleur.ControleurNouveauMateriel;
+import modele.Course;
 import modele.Materiel;
 import vue.Vue_nouvelleTache.TabModele;
 
@@ -52,7 +55,7 @@ public class VueNouveauMateriel extends JPanel {
 	
 	
 	
-	public VueNouveauMateriel() {
+	public VueNouveauMateriel(Course course) {
 		this.fen = new JFrame();
 		this.fen.setTitle("Nouvelle Fiche Matériel");
 		this.fen.setLayout(new GridLayout(1,1));
@@ -68,9 +71,9 @@ public class VueNouveauMateriel extends JPanel {
 		this.add(northPanel, BorderLayout.NORTH);
 		northPanel.setBorder(new EmptyBorder(10,20,0,20));
 		northPanel.setLayout(new GridLayout(7,2));
-		this.auteur = new JLabel("Créée par ... ");
+		this.auteur = new JLabel("Course créée par ");
 		northPanel.add(this.auteur);
-		northPanel.add(this.dateCreation = new JLabel("le ../../...."));
+		northPanel.add(new JLabel(course.getAuteurCourse()));
 		northPanel.add(new JLabel("Libellé"));
 		northPanel.add(this.libelle = new JTextField("",JTextField.LEFT));
 		northPanel.add(new JLabel("Stock initial"));
@@ -179,64 +182,8 @@ public class VueNouveauMateriel extends JPanel {
 	public JFrame getFen() {
 		return fen;
 	}
-	/*
-	class TabModele extends AbstractTableModel {
-		private boolean DEBUG = false;
-		private String [] titresColonnes ;
-		private Object [][] donnees;		
 
-		
-		public TabModele(String[] titresColonnes, Object[][] donnees) {
-			this.titresColonnes = titresColonnes;
-			this.donnees = donnees;
-		}
-		
-	    public int getColumnCount() {
-	    	return titresColonnes.length;
-	    }
-
-		public int getRowCount() {
-			return donnees.length;
-	    }
-
-	    public String getColumnName(int col) {
-	    	return titresColonnes[col];
-	    }
-
-	    public Object getValueAt(int row, int col) {
-	    	return donnees[row][col];
-	    }
-
-
-	    public Class getColumnClass(int c) {
-	      return getValueAt(0, c).getClass();
-	    }
-
-
-	    public boolean isCellEditable(int row, int col) {
-		    return true;
-	    }
-
-	    
-	    public void setValueAt(Object value, int row, int col) {
-	    	donnees[row][col] = value;
-	        fireTableCellUpdated(row, col);
-	    }
-	    
-	}
-
-	
-	public class TableComponent extends DefaultTableCellRenderer {
-
-	  public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-	    if (value instanceof JProgressBar)
-	      return (JProgressBar) value;
-	    else
-	      return this;
-	  }
-	}
-/*
- * for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
+/* for (int i = 0; i < NB_MAX_SOUSTACHES; i++) {
 			donneesSousTaches[i][0]= "" ;
 			donneesSousTaches[i][1]= new Float(0.0F);
 			//this.mapSousTaches.put(String.valueOf(donneesSousTaches[i][0]), (Float) donneesSousTaches[i][1]);

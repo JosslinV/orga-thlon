@@ -39,7 +39,7 @@ public class ControleurNouveauMateriel implements ActionListener {
 					inp.inputMateriel(materiel);
 				} catch(NullPointerException np) {
 					np.printStackTrace();
-					System.out.println("La classe n'a pu être créer (Libellé manquant?)");
+					System.out.println("La classe n'a pu être créée (Libellé manquant?)");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -65,6 +65,7 @@ public class ControleurNouveauMateriel implements ActionListener {
 		
 		return materiel;
 	}
+	
 	
 	
 }

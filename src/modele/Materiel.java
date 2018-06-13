@@ -3,7 +3,8 @@ package modele;
 public class Materiel {
 	
 	private String libelle;
-	private double stock;
+	private double stockInitial;
+	private double stockFinal;
 	private double budget;
 	private String description;
 	private int id_materiel ;
@@ -20,13 +21,6 @@ public class Materiel {
 		this.libelle = libelle;
 	}
 
-	public double getStock() {
-		return stock;
-	}
-
-	public void setStock(double stock) {
-		this.stock = stock;
-	}
 
 	public double getBudget() {
 		return budget;
@@ -34,6 +28,22 @@ public class Materiel {
 
 	public void setBudget(double budget) {
 		this.budget = budget;
+	}
+
+	public double getStockInitial() {
+		return stockInitial;
+	}
+
+	public void setStockInitial(double stockInitial) {
+		this.stockInitial = stockInitial;
+	}
+
+	public double getStockFinal() {
+		return stockFinal;
+	}
+
+	public void setStockFinal(double stockFinal) {
+		this.stockFinal = stockFinal;
 	}
 
 	public String getDescription() {
@@ -54,6 +64,6 @@ public class Materiel {
 	}
 	
 	public String toString() {
-		return " " + this.getLibelle() + " (Qté : " + this.getStock() + ")"; 
+		return " " + this.getLibelle() + " (Qté : " + this.getStockInitial() + ")"; 
 	}
 }

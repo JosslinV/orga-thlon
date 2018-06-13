@@ -18,7 +18,6 @@ class ControleurCarte2 implements ActionListener{
 		//private Tache tache;
 		//private Date dateDebut;
 		//private int nbMoisRestant;
-
 		public ControleurCarte2(VueCarte vue) {
 			this.vueCarte = vue;
 			this.modele = vue.getModele();
@@ -36,9 +35,10 @@ class ControleurCarte2 implements ActionListener{
 			switch(this.etat) {
 			case A_FAIRE:
 				if (b.getText().equals(">>")) {
-					System.out.println("Passage ï¿½ l'ï¿½tat enCours");
+					System.out.println("Passage à l'état enCours");
 					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
 					vueCarte.getModele().afficherNouvelEtatCarte(this.vueCarte, EtatCartes.A_FAIRE, EtatCartes.EN_COURS);
+					//vueCarte.getTache().setEtatAvancement(1.0F);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {
@@ -53,6 +53,7 @@ class ControleurCarte2 implements ActionListener{
 				if(b.getText().equals(">>")) {
 					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.TERMINEE);
 					vueCarte.getModele().afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.TERMINEE);
+					vueCarte.getTache().setEtatAvancement(100.0F);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.TERMINEE;
 				}else if(b.getText().equals("<<")) {
@@ -68,6 +69,7 @@ class ControleurCarte2 implements ActionListener{
 				}else if(b.getIcon().toString() == "suspendre") {
 					vueCarte.getModele().afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_COURS, EtatCartes.EN_ATTENTE);
 					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_ATTENTE);
+					vueCarte.getTache().setEnPause(true);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.EN_ATTENTE;
 				}
@@ -80,6 +82,7 @@ class ControleurCarte2 implements ActionListener{
 				if (b.getIcon().toString() == "suspendre") {
 					vueCarte.getModele().afficherNouvelEtatCarte(vueCarte, EtatCartes.EN_ATTENTE, EtatCartes.EN_COURS);
 					vueCarte.afficherEtatBoutonsCarte(vueCarte, EtatCartes.EN_COURS);
+					vueCarte.getTache().setEnPause(false);
 					vueCarte.getModele().relancerFenetre();
 					this.etat = EtatCartes.EN_COURS;
 				}else if (b.getIcon().toString() == "supprimer") {

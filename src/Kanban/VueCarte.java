@@ -120,7 +120,11 @@ public class VueCarte extends JPanel{
 	
 	public ModeleKanban getModele() {
 		return this.modele;
-	}	
+	}
+
+	public Tache getTache() {
+		return tache;
+	}
 
 	
 }

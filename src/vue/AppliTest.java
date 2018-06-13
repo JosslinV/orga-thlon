@@ -1,12 +1,10 @@
 package vue;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.UIManager;
 
 import Database.RequestDataBase.RequestBenevole;
 import Database.RequestDataBase.RequestMateriel;
+import modele.Course;
 import modele.Materiel;
 import modele.contacts.Benevole;
 
@@ -14,11 +12,11 @@ public class AppliTest {
 
 	public static void main(String[] a) throws Exception {
 		
-
-		new VueNouveauMateriel();
+		Course course = new Course("les 4 vallées");
+		new VueNouveauMateriel(course);
 		//new VueNouvelleCourse();
 		//new VueNouveauContactBenevole();
-		new VueNouveauContactExterne();
+		//new VueNouveauContactExterne();
 	
 		//new VueNouvelleSousTache();
 		
@@ -29,7 +27,7 @@ public class AppliTest {
 		    nom.add(m.toString());
 		  
 		}
-		//new Fenetre_NouvelleTache();
+		new Fenetre_NouvelleTache();
 		//new VueNouvelleListeMateriel(nom);
 		//new VueQuantiteMateriel(null, null);
 
