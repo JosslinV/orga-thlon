@@ -23,6 +23,7 @@ public class VueAutourTabKanban extends JPanel {
 	private JPanel panelLabel = new JPanel();
 	private JPanel bandeauHaut= new JPanel();
 	private JButton nouvelleCourse=new JButton("Nouvelle Course");
+	private ModeleKanban modeleKanban;
 	
 	
 	public VueAutourTabKanban() throws Exception{
@@ -73,10 +74,8 @@ public class VueAutourTabKanban extends JPanel {
 		gbc_lblAuteur.gridx = 1;
 		gbc_lblAuteur.gridy = 1;
 		panelLabel.add(lblAuteur, gbc_lblAuteur);
-		Fenetre_Kanban f = new Fenetre_Kanban(); //à supprimer dès création de la map dans le modelKanban 
-		this.add(new JScrollPane(new VueKanban(f.getCartes())),BorderLayout.CENTER);
+		this.modeleKanban = new ModeleKanban(); //à supprimer dès création de la map dans le modelKanban 
+		
+		this.add(new JScrollPane(new VueKanban(this.modeleKanban.getCartes(), this.modeleKanban)),BorderLayout.CENTER);
 	}
-
-	
-	
 }

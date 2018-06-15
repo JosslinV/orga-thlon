@@ -57,7 +57,7 @@ public class RequestMateriel {
 				Materiel materiel = new Materiel(result.getString("libelle_mat"));
 				
 				materiel.setId_materiel(result.getInt("id_Materiel"));
-				materiel.setStock(result.getInt("stock"));
+				//materiel.setStock(result.getInt("stock"));
 				materiel.setBudget(result.getDouble("budget_mat"));
 				materiel.setDescription(result.getString("description_mat"));
 				

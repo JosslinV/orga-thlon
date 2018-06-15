@@ -131,14 +131,6 @@ public class Tache {
 	public void setDateCreationTache(LocalDate dateCreationTache) {
 		this.dateCreationTache = dateCreationTache;
 	}
-
-	public String getEtatAvancementGlobal() {
-		return etatAvancementGlobal;
-	}
-
-	public void setEtatAvancementGlobal(String etatAvancementGlobal) {
-		this.etatAvancementGlobal = etatAvancementGlobal;
-	}
 	
 	public void affecterMateriel(Materiel item) {
 		this.materiel.add(item);

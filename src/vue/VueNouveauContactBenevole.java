@@ -38,8 +38,6 @@ public class VueNouveauContactBenevole extends JPanel{
 	private JCheckBox cbEstResponsableEquipe;
 	private JCheckBox cbEstResponsableTache;
 	private JTextField tfCP;
-	private JButton btAjouterEquipe;
-	private JButton bpEquipe;
 	private JTextArea taNote;
 	private JTextField tfVille;
 	private int idContactExt;
@@ -213,11 +211,12 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.LINE_START;
 		panneauPrincipal.add(jc, c);
+		/*
 		btAjouterEquipe = new JButton("+");
 		c.gridx = 2;
 		c.gridy = 6;
 		panneauPrincipal.add(btAjouterEquipe,c);
-		
+		*/
 		lbCP = new JLabel("Ville");
 		c.gridx = 4;
 		c.gridy = 6;
@@ -233,6 +232,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		panneauPrincipal.add(tfVille, c);
 		
 		//ligne 8 : bouton "Equipe" + tableau Prét Matériel
+		/*
 		this.bpEquipe = new JButton();
 		c.gridx = 1;
 		c.gridy = 8;
@@ -241,6 +241,7 @@ public class VueNouveauContactBenevole extends JPanel{
 		c.insets = new Insets(0,0,0,115);
 		c.ipady = 40;
 		panneauPrincipal.add(bpEquipe,c);
+		*/
 		
 		JLabel lbNote = new JLabel("Note");
 		c.gridx = 4;
@@ -320,8 +321,8 @@ public class VueNouveauContactBenevole extends JPanel{
 		this.tfVille.setEditable(active);
 		this.taNote.setEditable(active);
 		this.cbEstResponsableEquipe.setEnabled(active);
-		this.btAjouterEquipe.setEnabled(active);
-		this.bpEquipe.setEnabled(active);
+		//this.btAjouterEquipe.setEnabled(active);
+		//this.bpEquipe.setEnabled(active);
 	}
 
 	public Map<String,Object> rassemblerDonnees() {
