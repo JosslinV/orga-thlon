@@ -36,7 +36,6 @@ public class Course {
 	
 	public Course (String nom) {
 		this.nom_course = nom;
-		
 	}
 	
 	public String getAuteurCourse() {
@@ -84,7 +83,6 @@ public class Course {
 	public void setParcours(String parcours) {
 		this.parcours = parcours;
 	}
-
 
 	public float getBudget() {
 		return budget;
@@ -222,7 +220,6 @@ public class Course {
 	public void setId_Course(int id) {
 		this.id_course = id;
 	}
-
 	
 	public LocalDate getDate_debut_course() {
 		return date_debut_course;

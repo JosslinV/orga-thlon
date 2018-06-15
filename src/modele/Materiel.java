@@ -44,7 +44,6 @@ public class Materiel {
 		this.description = description;
 	}
 
-	
 	public int getId_materiel() {
 		return id_materiel;
 	}

@@ -29,8 +29,6 @@ public class Tache {
 	private boolean predefinie; 
 	private boolean enPause; 
 
-	
-
 	private LinkedList<Materiel> materiel;
 	private LinkedList<Benevole> benevole;
 	
@@ -166,7 +164,6 @@ public class Tache {
 		this.nomAuteurTache = nomAuteurTache;
 	}
 
-	
 	public String getNomResponsableTache() {
 		return nomResponsableTache;
 	}
@@ -191,7 +188,6 @@ public class Tache {
 		this.idResponsable = idResponsable;
 	}
 
-
 	public boolean isPredefinie() {
 		return predefinie;
 	}
@@ -199,7 +195,6 @@ public class Tache {
 	public void setPredefinie(boolean predefinie) {
 		this.predefinie = predefinie;
 	}
-	
 	
 	public boolean isEnPause() {
 		return enPause;
