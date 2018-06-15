@@ -2,7 +2,6 @@ package modele;
 
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 
 import modele.contacts.Contact;
 
