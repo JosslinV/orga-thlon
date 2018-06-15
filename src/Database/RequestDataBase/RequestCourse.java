@@ -9,7 +9,7 @@ import Database.DatabaseSettings;
 import modele.Course;
 
 public class RequestCourse {
-	
+	// Obtenir une course selon son id
 	public Course requestCourse(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
@@ -47,6 +47,7 @@ public class RequestCourse {
 		return null;
 	}
 	
+	// Obtenir la liste complète des courses
 	public ArrayList<Course> requestAll() throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();

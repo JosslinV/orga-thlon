@@ -11,6 +11,7 @@ import modele.Materiel;
 
 public class RequestMateriel {
 	
+	// Obtenir un matériel selon son id
 	public Materiel requestMateriel(int id) {
 
 		try {
@@ -40,6 +41,7 @@ public class RequestMateriel {
 		return null;
 	}
 	
+	// Obtenir une liste complète de matériel
 	public ArrayList<Materiel> requestAll() {
 
 		try {

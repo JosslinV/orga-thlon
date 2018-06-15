@@ -10,6 +10,7 @@ import modele.Tache;
 
 public class RequestTache {
 	
+	// Obtenir une tâche selon son id
 	public Tache requestTache(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
@@ -49,6 +50,7 @@ public class RequestTache {
 		return null;
 	}
 	
+	// Obtenir une liste complète de tâches
 	public ArrayList<Tache> requestAll() throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();

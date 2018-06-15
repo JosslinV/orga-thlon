@@ -13,46 +13,30 @@ import modele.Tache;
 
 public class RequestUtiliser {
 	
-	private List<Tache> list;
+	private List<Materiel> list;
 	
-	public  int requestUtiliser(Materiel mat, Tache tache) { //il faut à la fois une tache et un mat
-		int n=0 ;
+	public  List<Materiel> requestUtiliser(Tache tache) {
 		try {
 			Connection database = DatabaseSettings.connect();
 			Statement state = database.createStatement();
-			
-			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Utiliser WHERE id_Materiel = "+ mat.getId_materiel() 
-																					+"AND id_tache = "+ tache.getId_tache() + ";");
+			ResultSet result = state.executeQuery("SELECT * FROM Orgathlon.Utiliser WHERE id_tache = "+ tache.getId_tache() + ";");
 			
 			
-			/*
-			this.list = new LinkedList<Tache>();
+			this.list = new LinkedList<Materiel>();
 			
 			while(result.next()) {
-				RequestTache reqTac = new RequestTache();
-				Tache tac = reqTac.requestTache(result.getInt("id_Tache"));
+				RequestMateriel reqMat = new RequestMateriel();
+				Materiel mat = reqMat.requestMateriel(result.getInt("id_Materiel"));
 				
-				this.list.add(tac);	
+				this.list.add(mat);
 			}
-			
 			return this.list;
-			*/
-			
-			while(result.next()) {
-				//pour s'en servir
-				//AffectationMateriel am = new AffectationMateriel() ;
-				//am.AffecterMateriel(tache, mat, DB.requestUtiliser(mat, tache)")
-				n = result.getInt("quantiteAssignee")  ;
-				
-			
-			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DatabaseSettings.close();
 		}
-		return n ;
+		return null ;
 	}
 }

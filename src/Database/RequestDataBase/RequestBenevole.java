@@ -10,7 +10,7 @@ import Database.DatabaseSettings;
 import modele.contacts.Benevole;
 
 public class RequestBenevole {
-
+	//Obtenir un bénévole selon son ID
 	public Benevole requestBenevole(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
@@ -41,7 +41,7 @@ public class RequestBenevole {
 		}
 		return null;
 	}
-	
+	//Obtenir la liste complètes des bénévoles stockés
 	public ArrayList<Benevole> requestAll() throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();

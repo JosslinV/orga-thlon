@@ -14,7 +14,7 @@ public class RequestContenir {
 	
 	private List<Tache> list;
 
-	public  List<Tache> requestUtiliser(Course course) {
+	public  List<Tache> requestContenir(Course course) {
 		try {
 			Connection database = DatabaseSettings.connect();
 			Statement state = database.createStatement();

@@ -11,7 +11,7 @@ public class InputContact {
     private PreparedStatement preparedStatement = null;
     
 	public void inputContact(Contact donnees) throws Exception {
-		
+		// Si le contact fait partie de la classe ContactExterne
 		if(donnees instanceof ContactExterne) {
 			try {
 				Connection database = DatabaseSettings.connect();
@@ -34,7 +34,7 @@ public class InputContact {
 			} finally {
 				DatabaseSettings.close();
 			}
-			
+			// Si le contact fait partie de la classe Bénévoles
 		}else if(donnees instanceof Benevole) {
 			try {
 				Connection database = DatabaseSettings.connect();

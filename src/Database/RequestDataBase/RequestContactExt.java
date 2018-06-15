@@ -6,10 +6,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.DatabaseSettings;
+import modele.contacts.Contact;
 import modele.contacts.ContactExterne;
 
 public class RequestContactExt {
-
+	// Obtenir un contact externe selon son ID
 	public ContactExterne requestContactExt(int id) throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();
@@ -42,6 +43,7 @@ public class RequestContactExt {
 		return null;
 	}
 	
+	// Obtenir la liste complète de contact externe
 	public ArrayList<ContactExterne> requestAll() throws Exception{
 		try {
 			Connection database = DatabaseSettings.connect();

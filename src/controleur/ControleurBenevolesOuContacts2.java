@@ -2,20 +2,12 @@ package controleur;
 
 import java.util.ArrayList;
 
-import Database.RequestDataBase.RequestMateriel;
-import modele.Materiel;
 import modele.contacts.Benevole;
 import modele.contacts.ContactExterne;
 import rocher.FenetreAccueil;
-import rocher.ListeGenerique;
-import rocher.ListeString;
 import vue.BenevolesOuContacts2;
-import vue.VueNouvelleEquipe;
-import vue.VueQuantiteMateriel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import Database.RequestDataBase.RequestBenevole;
 import Database.RequestDataBase.RequestContactExt;
