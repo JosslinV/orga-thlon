@@ -15,7 +15,7 @@ public class InputMateriel {
 			
 			preparedStatement = database.prepareStatement("insert into  Orgathlon.Materiel values (default,?,?,?,?)");
 			preparedStatement.setString(1, donnees.getLibelle());
-			preparedStatement.setDouble(2, donnees.getStock());
+			preparedStatement.setDouble(2, donnees.getStockInitial());
 			preparedStatement.setDouble(3, donnees.getBudget());
 			preparedStatement.setString(4, donnees.getDescription());
 			preparedStatement.executeUpdate();

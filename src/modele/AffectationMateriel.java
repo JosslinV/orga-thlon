@@ -63,7 +63,7 @@ public class AffectationMateriel {
 	}
 	
 	public void AffecterMateriel (Tache t, Materiel m, float quantiteAffectee ) {
-		if(quantiteAffectee<m.getStock()) {
+		if(quantiteAffectee<m.getStockInitial()) {
 			String s = constituerString(t,m) ;
 		
 			if (!this.correspondance.containsKey(s)) {

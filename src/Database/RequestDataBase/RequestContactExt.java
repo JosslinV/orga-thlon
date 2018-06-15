@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.DatabaseSettings;
-import modele.contacts.Contact;
 import modele.contacts.ContactExterne;
 
 public class RequestContactExt {

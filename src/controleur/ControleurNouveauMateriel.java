@@ -60,7 +60,7 @@ public class ControleurNouveauMateriel implements ActionListener {
 		Materiel materiel = new Materiel(null);
 		materiel.setId_materiel(Integer.parseInt(String.valueOf(donnees.get("id_Materiel"))));
 		materiel.setLibelle(String.valueOf(donnees.get("libelle_mat")));
-		materiel.setStock(Double.parseDouble(String.valueOf(donnees.get("stock"))));
+		materiel.setStockInitial(Double.parseDouble(String.valueOf(donnees.get("stock"))));
 		materiel.setDescription(String.valueOf(donnees.get("prenom_contact")));
 		
 		return materiel;

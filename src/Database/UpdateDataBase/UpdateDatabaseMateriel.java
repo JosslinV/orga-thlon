@@ -16,7 +16,7 @@ public class UpdateDatabaseMateriel {
 			
 			preparedStatement = database.prepareStatement("UPDATE Orgathlon.Materiel SET libelle_mat=?, stock=?, budget_mat=?, description_mat=? WHERE id_materiel=?");
 			preparedStatement.setString(1, donnees.getLibelle());
-			preparedStatement.setDouble(2, donnees.getStock());
+			preparedStatement.setDouble(2, donnees.getStockInitial());
 			preparedStatement.setDouble(3, donnees.getBudget());
 			preparedStatement.setString(4, donnees.getDescription());
 			preparedStatement.setInt(5, donnees.getId_materiel());

@@ -50,7 +50,7 @@ public class ModeleDynamiqueTableMateriel extends ModeleDynamiqueTable {
             case 0:
                 return materiels.get(rowIndex).getLibelle();
             case 1:
-                return materiels.get(rowIndex).getStock();
+                return materiels.get(rowIndex).getStockInitial();
             case 2:
                 return materiels.get(rowIndex).getBudget();
             case 3:
