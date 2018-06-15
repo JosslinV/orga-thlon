@@ -20,32 +20,25 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 	private ListeGenerique ls;
 	private EtatsVuesListe etat;
 	
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public ControlleurGeneriqueTableaux(ListeGenerique listeGenerique,ArrayList<Object> list) {
 		this.ls=listeGenerique;
 		
 		if(list.get(0) instanceof Benevole) {
 			this.modele = new ModeleDynamiqueTableBenevole(list);
 			this.etat=EtatsVuesListe.BENEVOLE;
-			//this.ls.setTitle("Benevole");
 		}
 		if(list.get(0) instanceof Materiel) {
 			this.modele = new ModeleDynamiqueTableMateriel(list);
 			this.etat=EtatsVuesListe.MATERIEL;
-			//this.ls.setTitle("Materiel");
 		}	
 		if(list.get(0) instanceof ContactExterne) {
 			this.modele = new ModeleDynamiqueTableContact(list);
 			this.etat=EtatsVuesListe.CONTACT;
-			//this.ls.setTitle("Contact");
 		}
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		//System.out.println("ok");
 		JButton a = (JButton)arg0.getSource();
 		switch (etat) {
 		case BENEVOLE:
@@ -81,53 +74,5 @@ public class ControlleurGeneriqueTableaux implements ActionListener {
 	public ModeleDynamiqueTable getModele() {
 		return this.modele;
 	}
- /*
-	  private class AddAction extends AbstractAction {
-	        private AddAction() {
-	            super("Ajouter");
-	        }
-	 
-	        public void actionPerformed(ActionEvent e) {
-	            modele.addContact(new Contact("Megan"));
-	        }
-	    }
-	    
-	    
-Here be dragons	 	
-___________________________________________________
-@@@@@@@@@@@@@@@@@@@@@**^^""~~~"^@@^*@*@@**@@@@@@@@@
-@@@@@@@@@@@@@*^^'"~   , - ' '; ,@@b. '  -e@@@@@@@@@
-@@@@@@@@*^"~      . '     . ' ,@@@@(  e@*@@@@@@@@@@
-@@@@@^~         .       .   ' @@@@@@, ~^@@@@@@@@@@@
-@@@~ ,e**@@*e,  ,e**e, .    ' '@@@@@@e,  "*@@@@@'^@
-@',e@@@@@@@@@@ e@@@@@@       ' '*@@@@@@    @@@'   0
-@@@@@@@@@@@@@@@@@@@@@',e,     ;  ~^*^'    ;^~   ' 0
-@@@@@@@@@@@@@@@^""^@@e@@@   .'           ,'   .'  @
-@@@@@@@@@@@@@@'    '@@@@@ '         ,  ,e'  .    ;@
-@@@@@@@@@@@@@' ,&&,  ^@*'     ,  .  i^"@e, ,e@e  @@
-@@@@@@@@@@@@' ,@@@@,          ;  ,& !,,@@@e@@@@ e@@
-@@@@@,~*@@*' ,@@@@@@e,   ',   e^~^@,   ~'@@@@@@,@@@
-@@@@@@, ~" ,e@@@@@@@@@*e*@*  ,@e  @@""@e,,@@@@@@@@@
-@@@@@@@@ee@@@@@@@@@@@@@@@" ,e@' ,e@' e@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@" ,@" ,e@@e,,@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@~ ,@@@,,0@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@,,@@@@@@@@@@@@@@@@@@@@@@@@@
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-
-	    private class RemoveAction extends AbstractAction {
-	        private RemoveAction() {
-	            super("Supprimmer");
-	        }
-	 
-	        public void actionPerformed(ActionEvent e) {
-	            int[] selection = tableau.getSelectedRows();
-	 
-	            for(int i = selection.length - 1; i >= 0; i--){
-	                modele.removeContact(selection[i]);
-	            }
-	        }
-	    }
-	    */
-	
 
 }

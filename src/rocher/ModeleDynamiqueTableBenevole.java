@@ -3,9 +3,6 @@ package rocher;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
-import Database.RequestDataBase.RequestBenevole;
 import modele.contacts.Benevole;
 
 public class ModeleDynamiqueTableBenevole extends ModeleDynamiqueTable   {
@@ -20,15 +17,6 @@ public class ModeleDynamiqueTableBenevole extends ModeleDynamiqueTable   {
         	 benevoles.add( (Benevole) b);
         }
 
-       /* benevoles.add(new Benevole("Be","nevole"));
-        benevoles.add(new Benevole("Benevole2","Benevole2"));
-        benevoles.add(new Benevole("Damien","Benevole2"));
-        benevoles.add(new Benevole("Corinne","Benevole2"));
-        benevoles.add(new Benevole("Emilie","Benevole2"));
-        benevoles.add(new Benevole("Delphine","Benevole2"));
-        benevoles.add(new Benevole("Eric","Benevole2"));
-        
-        */
     }
  
     public int getRowCount() {
@@ -64,19 +52,17 @@ public class ModeleDynamiqueTableBenevole extends ModeleDynamiqueTable   {
             case 8:
             	return benevoles.get(rowIndex).getMail_c();
             default:
-                return null; //Ne devrait jamais arriver
+                return null;
         }
     }
  
     public void add(Object contact) {
-    	//System.out.println("added");
         benevoles.add((Benevole)contact);
         fireTableRowsInserted(benevoles.size() -1, benevoles.size() -1);
     }
  
     public void remove(int[] rowIndex) {
     	for(int i=rowIndex.length-1;i>=0;i--) {
-    	//System.out.println(rowIndex[i]);
         benevoles.remove(rowIndex[i]);
     	}
         fireTableRowsDeleted(rowIndex[0], rowIndex.length-1);

@@ -20,16 +20,6 @@ public class ModeleDynamiqueTableContact extends ModeleDynamiqueTable {
         for ( Object b : al) {
        	 contacts.add( (ContactExterne) b);
         }
- /*
-        contacts.add(new ContactExterne("Johnathan","Contact"));
-        contacts.add(new ContactExterne("Nicolas","Contact"));
-        contacts.add(new ContactExterne("Damien","Contact"));
-        contacts.add(new ContactExterne("Corinne","Contact"));
-        contacts.add(new ContactExterne("Emilie","Contact"));
-        contacts.add(new ContactExterne("Delphine","Contact"));
-        contacts.add(new ContactExterne("Eric","Contact"));
-        
-        */
     }
  
     public int getRowCount() {
@@ -65,12 +55,11 @@ public class ModeleDynamiqueTableContact extends ModeleDynamiqueTable {
             case 8:
             	return contacts.get(rowIndex).getMail_c();
             default:
-                return null; //Ne devrait jamais arriver
+                return null; 
         }
     }
  
     public void add(Object contact) {
-    	//System.out.println("added");
         contacts.add((Contact)contact);
         fireTableRowsInserted(contacts.size() -1, contacts.size() -1);
     }

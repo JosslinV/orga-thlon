@@ -5,27 +5,21 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import modele.contacts.Contact;
-import rocher.ControlleurGeneriqueTableaux.EtatsVuesListe;
-
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
+
 
 public class ListeGenerique extends JPanel {
 	private JScrollPane panelPrincipal;
-	/**
-	 * Create the panel.
-	 */
+ 
 	private JLabel lblTitre;
-		//ControlleurGeneriqueTableaux.EtatsVuesListe
+		
+	//ControlleurGeneriqueTableaux.EtatsVuesListe
 	public ListeGenerique(ArrayList<Object> list) {
 		setLayout(new BorderLayout(0, 0));
 		
@@ -83,9 +77,6 @@ public class ListeGenerique extends JPanel {
 		gbc_bt_Retour.gridy = 1;
 		panel_bas_boutons.add(bt_Retour, gbc_bt_Retour);
 		
-		//JPanel panel_1 = new VueTableau();
-		//panelPrincipal.add(panel_1, BorderLayout.CENTER);
-	
 
 	}
 	

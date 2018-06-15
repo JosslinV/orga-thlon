@@ -1,11 +1,6 @@
 package rocher;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
-
-import modele.contacts.Contact;
 
 public abstract class ModeleDynamiqueTable  extends AbstractTableModel {
    

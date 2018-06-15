@@ -20,17 +20,7 @@ public class ModeleDynamiqueTableMateriel extends ModeleDynamiqueTable {
         
         for ( Object b : al) {
        	 materiels.add( (Materiel) b);
-        }
-       /* materiels.add(new Materiel("Johnathan"));
-        materiels.add(new Materiel("Nicolas"));
-        materiels.add(new Materiel("Damien"));
-        materiels.add(new Materiel("Corinne"));
-        materiels.add(new Materiel("Emilie"));
-        materiels.add(new Materiel("Delphine"));
-        materiels.add(new Materiel("Eric"));
-        
-        */
-        
+        }        
     }
  
     public int getRowCount() {
@@ -61,7 +51,6 @@ public class ModeleDynamiqueTableMateriel extends ModeleDynamiqueTable {
     }
  
     public void add(Object contact) {
-    	//System.out.println("added");
         materiels.add((Materiel)contact);
         fireTableRowsInserted(materiels.size() -1, materiels.size() -1);
     }

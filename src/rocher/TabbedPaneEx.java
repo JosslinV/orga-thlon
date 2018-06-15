@@ -1,6 +1,5 @@
 package rocher;
 
-
 import java.awt.GridLayout;
 import java.awt.Label;
 
@@ -28,9 +27,6 @@ public class TabbedPaneEx {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// set grid layout for the frame
-		//frame.getContentPane().setLayout(new GridLayout(1, 1));
-
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		tabbedPane.addTab("Tab1",image ,p);
@@ -46,22 +42,5 @@ public class TabbedPaneEx {
 		p.setLayout(new GridLayout(1, 1));
 		return p;
 	}
-
-	//public static void main(String[] args) {
-
-  //Schedule a job for the event-dispatching thread:
-
-  //creating and showing this application's GUI.
-
- /* javax.swing.SwingUtilities.invokeLater(new Runnable() {
-
-public void run() {
-
-    createAndShowGUI(); 
-
-}
-
-  });*/
-   // }
 
 }
